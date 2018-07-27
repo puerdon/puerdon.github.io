@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="CH2 寫作者工具主要用於檢查拼字是否錯誤。 拼寫錯誤的種類 非單詞錯誤 (non-word error)將單詞拼成非單詞的形式，例如將 the 拼成 hte，而後者是一個在英語中沒有的單字。此類錯誤的成因可能是誤打(在鍵盤附近而按錯或者打太快)，也可能是將特殊的拼法記錯，例如把 knight 記成 night。 單詞錯誤 (word error)">
+  <meta name="description" content="Polymorphic function所謂多態的函數指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的 t">
+<meta name="keywords" content="Haskell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Language And Computer">
-<meta property="og:url" content="https://puerdon.github.io/2018/06/21/language-and-computer/index.html">
+<meta property="og:title" content="Haskell">
+<meta property="og:url" content="https://puerdon.github.io/2018/07/28/haskell/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
-<meta property="og:description" content="CH2 寫作者工具主要用於檢查拼字是否錯誤。 拼寫錯誤的種類 非單詞錯誤 (non-word error)將單詞拼成非單詞的形式，例如將 the 拼成 hte，而後者是一個在英語中沒有的單字。此類錯誤的成因可能是誤打(在鍵盤附近而按錯或者打太快)，也可能是將特殊的拼法記錯，例如把 knight 記成 night。 單詞錯誤 (word error)">
+<meta property="og:description" content="Polymorphic function所謂多態的函數指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的 t">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-06-21T08:04:35.228Z">
+<meta property="og:updated_time" content="2018-07-27T16:33:26.389Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Language And Computer">
-<meta name="twitter:description" content="CH2 寫作者工具主要用於檢查拼字是否錯誤。 拼寫錯誤的種類 非單詞錯誤 (non-word error)將單詞拼成非單詞的形式，例如將 the 拼成 hte，而後者是一個在英語中沒有的單字。此類錯誤的成因可能是誤打(在鍵盤附近而按錯或者打太快)，也可能是將特殊的拼法記錯，例如把 knight 記成 night。 單詞錯誤 (word error)">
+<meta name="twitter:title" content="Haskell">
+<meta name="twitter:description" content="Polymorphic function所謂多態的函數指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的 t">
 
 
 
 
 
 
-  <link rel="canonical" href="https://puerdon.github.io/2018/06/21/language-and-computer/"/>
+  <link rel="canonical" href="https://puerdon.github.io/2018/07/28/haskell/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>Language And Computer | Puerdon Biki</title>
+  <title>Haskell | Puerdon Biki</title>
   
 
 
@@ -280,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/06/21/language-and-computer/">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/07/28/haskell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="puerdon">
@@ -297,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Language And Computer
+          <h1 class="post-title" itemprop="name headline">Haskell
               
             
           </h1>
@@ -322,7 +323,7 @@
                 
               
 
-              <time title="Created: 2018-06-21 10:38:14 / Modified: 16:04:35" itemprop="dateCreated datePublished" datetime="2018-06-21T10:38:14+08:00">2018-06-21</time>
+              <time title="Created: 2018-07-28 00:22:13 / Modified: 00:33:26" itemprop="dateCreated datePublished" datetime="2018-07-28T00:22:13+08:00">2018-07-28</time>
             
 
             
@@ -360,11 +361,11 @@
       
 
       
-        <h1 id="CH2-寫作者工具"><a href="#CH2-寫作者工具" class="headerlink" title="CH2 寫作者工具"></a>CH2 寫作者工具</h1><p>主要用於檢查拼字是否錯誤。</p>
-<h2 id="拼寫錯誤的種類"><a href="#拼寫錯誤的種類" class="headerlink" title="拼寫錯誤的種類"></a>拼寫錯誤的種類</h2><ul>
-<li>非單詞錯誤 (non-word error)<br>將單詞拼成非單詞的形式，例如將 the 拼成 hte，而後者是一個在英語中沒有的單字。此類錯誤的成因可能是誤打(在鍵盤附近而按錯或者打太快)，也可能是將特殊的拼法記錯，例如把 knight 記成 night。</li>
-<li>單詞錯誤 (word error)</li>
-</ul>
+        <h1 id="Polymorphic-function"><a href="#Polymorphic-function" class="headerlink" title="Polymorphic function"></a>Polymorphic function</h1><p>所謂多態的函數指的是<strong>可作用於多種類型的輸入</strong>的函數。<br>以length函數為例：  </p>
+<p>length :: [a] -&gt; Int  </p>
+<p>length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
+<p>length函數簽名中的 <em>type variable</em> a 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
+<h1 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h1><p>提供了處理副作用（例如IO, Maybe）的統一框架。</p>
 
       
     </div>
@@ -383,6 +384,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Haskell/" rel="tag"># Haskell</a>
+          
+        </div>
+      
 
       
       
@@ -392,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/19/git-note/" rel="next" title="git筆記">
-                <i class="fa fa-chevron-left"></i> git筆記
+              <a href="/2018/06/21/linear-algebra/" rel="next" title="linear-algebra">
+                <i class="fa fa-chevron-left"></i> linear-algebra
               </a>
             
           </div>
@@ -401,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/21/linear-algebra/" rel="prev" title="linear-algebra">
-                linear-algebra <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -539,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CH2-寫作者工具"><span class="nav-number">1.</span> <span class="nav-text">CH2 寫作者工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#拼寫錯誤的種類"><span class="nav-number">1.1.</span> <span class="nav-text">拼寫錯誤的種類</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Polymorphic-function"><span class="nav-number">1.</span> <span class="nav-text">Polymorphic function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Monad"><span class="nav-number">2.</span> <span class="nav-text">Monad</span></a></li></ol></div>
             
 
           </div>

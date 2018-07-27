@@ -277,6 +277,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/07/28/haskell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/28/haskell/" itemprop="url">
+                  Haskell
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-07-28 00:22:13 / Modified: 00:33:26" itemprop="dateCreated datePublished" datetime="2018-07-28T00:22:13+08:00">2018-07-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Polymorphic-function"><a href="#Polymorphic-function" class="headerlink" title="Polymorphic function"></a>Polymorphic function</h1><p>所謂多態的函數指的是<strong>可作用於多種類型的輸入</strong>的函數。<br>以length函數為例：  </p>
+<p>length :: [a] -&gt; Int  </p>
+<p>length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
+<p>length函數簽名中的 <em>type variable</em> a 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
+<h1 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h1><p>提供了處理副作用（例如IO, Maybe）的統一框架。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/06/21/linear-algebra/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1237,7 +1381,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1260,7 +1404,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -1465,6 +1611,8 @@
 
   
   
+    
+      
     
       
         
