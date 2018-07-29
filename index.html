@@ -323,12 +323,24 @@
                 
               
 
-              <time title="Created: 2018-07-28 00:22:13 / Modified: 00:33:26" itemprop="dateCreated datePublished" datetime="2018-07-28T00:22:13+08:00">2018-07-28</time>
+              <time title="Created: 2018-07-28 00:22:13" itemprop="dateCreated datePublished" datetime="2018-07-28T00:22:13+08:00">2018-07-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-29 13:33:29" itemprop="dateModified" datetime="2018-07-29T13:33:29+08:00">2018-07-29</time>
               
             
           </span>
@@ -368,6 +380,19 @@
 <p>length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
 <p>length函數簽名中的 <em>type variable</em> a 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
 <h1 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h1><p>提供了處理副作用（例如IO, Maybe）的統一框架。</p>
+<h1 id="宣告新的type"><a href="#宣告新的type" class="headerlink" title="宣告新的type"></a>宣告新的type</h1><p><a href="https://wiki.haskell.org/Constructor" target="_blank" rel="noopener">Constructor on Haskell Wiki</a></p>
+<h2 id="Type-declaration-為現存的type宣告新的名字"><a href="#Type-declaration-為現存的type宣告新的名字" class="headerlink" title="Type declaration: 為現存的type宣告新的名字"></a>Type declaration: 為現存的type宣告新的名字</h2><p><code>Char</code>是一個Haskell本身就定義好的type，如果要以<code>Char</code>為基礎，建立新的type，那麼就要使用<code>type</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type String = [Char]</span><br></pre></td></tr></table></figure></p>
+<p><code>Int</code>也是一個Haskell本身就有的、用以表達整數的type，如果想建立一個正整數座標的Point type，並包在tuple中，可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type Point = (Int, Int)</span><br></pre></td></tr></table></figure></p>
+<p>當然，定義好新的type之後，新的type就可以用在別的type宣告中。</p>
+<p>也許有一系列的function都與「將一個Point轉換到另一個Point」有關，因此可以為這群函數宣告一個新的type：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type Transformation = Point -&gt; Point</span><br></pre></td></tr></table></figure></p>
+<p>Type declaration也可以接收其他的type作為參數：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type Pair a = (a, a)</span><br></pre></td></tr></table></figure></p>
+<p>一個Pair可以是Pair Int (Int, Int)，可能是(Char, Char)</p>
+<h2 id="Data-declaration-宣告全新的type"><a href="#Data-declaration-宣告全新的type" class="headerlink" title="Data declaration: 宣告全新的type"></a>Data declaration: 宣告全新的type</h2><p>與type declaration只是宣告一個「關於既存類型的同義詞」不同，使用<code>data</code>關鍵字可以宣告全新的類型。<br>在Prelude中，<code>Bool</code>類型即是以下列方式宣告的：  </p>
+<pre><code>data Bool = True | False
+</code></pre><ul>
+<li>在<code>=</code>左邊的稱為 type constructor (上例中的<code>Bool</code>)</li>
+<li>在<code>=</code>右邊的稱為 data constructor 或 value constructor (上例中的<code>True</code> 或 <code>False</code>)</li>
+</ul>
 
           
         
