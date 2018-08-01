@@ -108,21 +108,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分類">
-<meta property="og:url" content="https://puerdon.github.io/categories/index.html">
+  <meta name="description" content="所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的">
+<meta name="keywords" content="Haskell,polymorphic function,function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Haskell中的polymorphic-function">
+<meta property="og:url" content="https://puerdon.github.io/2018/08/01/Haskell中的polymorphic-function/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
+<meta property="og:description" content="所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-08-01T08:14:13.201Z">
+<meta property="og:updated_time" content="2018-08-01T08:31:52.168Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分類">
+<meta name="twitter:title" content="Haskell中的polymorphic-function">
+<meta name="twitter:description" content="所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的">
 
 
 
 
 
 
-  <link rel="canonical" href="https://puerdon.github.io/categories/"/>
+  <link rel="canonical" href="https://puerdon.github.io/2018/08/01/Haskell中的polymorphic-function/"/>
 
 
 
@@ -132,7 +136,7 @@
   };
 </script>
 
-  <title>分類 | Puerdon Biki</title>
+  <title>Haskell中的polymorphic-function | Puerdon Biki</title>
   
 
 
@@ -232,7 +236,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
   </li>
@@ -252,25 +256,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -298,80 +283,191 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/01/Haskell中的polymorphic-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">分類</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                7 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Haskell/">Haskell</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/">language</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/梵文/">梵文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/統計/">統計</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/線性代數/">線性代數</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/資料庫/">資料庫</a><span class="category-list-count">2</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Haskell中的polymorphic-function
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-01 16:30:32 / Modified: 16:31:52" itemprop="dateCreated datePublished" datetime="2018-08-01T16:30:32+08:00">2018-08-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Haskell/" itemprop="url" rel="index"><span itemprop="name">Haskell</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>所謂polymorphic function(多態函數)指的是<strong>可作用於多種類型的輸入</strong>的函數。<br>以length函數為例：  </p>
+<p>length :: [a] -&gt; Int  </p>
+<p>length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
+<p>length函數簽名中的 <em>type variable</em> a 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Haskell/" rel="tag"># Haskell</a>
+          
+            <a href="/tags/polymorphic-function/" rel="tag"># polymorphic function</a>
+          
+            <a href="/tags/function/" rel="tag"># function</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/01/SQL/" rel="next" title="SQL">
+                <i class="fa fa-chevron-left"></i> SQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/01/Haskell中的IO-Action/" rel="prev" title="Haskell中的IO Action">
+                Haskell中的IO Action <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
