@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Puerdon Biki">
 <meta property="og:description" content="Polymorphic function所謂多態的函數指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的 t">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-07-29T05:33:29.193Z">
+<meta property="og:updated_time" content="2018-07-29T16:34:35.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Haskell">
 <meta name="twitter:description" content="Polymorphic function所謂多態的函數指的是可作用於多種類型的輸入的函數。以length函數為例：   length :: [a] -&amp;gt; Int   length函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。   length函數簽名中的 t">
@@ -340,7 +340,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-29 13:33:29" itemprop="dateModified" datetime="2018-07-29T13:33:29+08:00">2018-07-29</time>
+                <time title="Modified: 2018-07-30 00:34:35" itemprop="dateModified" datetime="2018-07-30T00:34:35+08:00">2018-07-30</time>
               
             
           </span>
@@ -385,13 +385,13 @@
 <p>也許有一系列的function都與「將一個Point轉換到另一個Point」有關，因此可以為這群函數宣告一個新的type：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type Transformation = Point -&gt; Point</span><br></pre></td></tr></table></figure></p>
 <p>Type declaration也可以接收其他的type作為參數：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type Pair a = (a, a)</span><br></pre></td></tr></table></figure></p>
 <p>一個Pair可以是Pair Int (Int, Int)，可能是(Char, Char)</p>
-<h2 id="Data-declaration-宣告全新的type"><a href="#Data-declaration-宣告全新的type" class="headerlink" title="Data declaration: 宣告全新的type"></a>Data declaration: 宣告全新的type</h2><p>與type declaration只是宣告一個「關於既存類型的同義詞」不同，使用<code>data</code>關鍵字可以宣告全新的類型。<br>在Prelude中，<code>Bool</code>類型即是以下列方式宣告的：  </p>
-<pre><code>data Bool = True | False
-</code></pre><ul>
-<li>在<code>=</code>左邊的稱為 type constructor (上例中的<code>Bool</code>)</li>
-<li>在<code>=</code>右邊的稱為 data constructor 或 value constructor (上例中的<code>True</code> 或 <code>False</code>)</li>
-</ul>
-
+<h2 id="Data-declaration-宣告全新的type"><a href="#Data-declaration-宣告全新的type" class="headerlink" title="Data declaration: 宣告全新的type"></a>Data declaration: 宣告全新的type</h2><p>與type declaration只是宣告一個「關於既存類型的同義詞」不同，使用<code>data</code>關鍵字可以宣告全新的類型。<br>在Prelude中，<code>Bool</code>類型即是以下列方式宣告的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">data Bool = True | False</span><br><span class="line">```  </span><br><span class="line">- 在``=``左邊的稱為 type constructor (上例中的``Bool``)</span><br><span class="line">- 在``=``右邊的稱為 data constructor 或 value constructor (上例中的``True`` 或 ``False``)</span><br><span class="line"></span><br><span class="line"># Action</span><br><span class="line">[r/haskell: what is exactly side effect?](https://www.reddit.com/r/haskell/comments/2p9cvz/noob_question_what_is_exactly_side_effect/)  </span><br><span class="line">[Haskell Wiki: Intro to Haskell IO/Actions](https://wiki.haskell.org/Introduction_to_Haskell_IO/Actions)</span><br><span class="line"></span><br><span class="line">在Haskell中，一個interactive program被視為一個「以目前世界狀態為input、以改變後的世界狀態為output」的純函數(pure function)，新的世界狀態反映了在程式執行過程中所產生的副作用(side effect)。  </span><br><span class="line">&gt; 問題：副作用是什麼？如何定義？</span><br><span class="line"></span><br><span class="line">假設有個``type World``用來反映世界的狀態，那麼一個interactive program便可用類別為 ``World -&gt; World`` 的函數來表達，並簡稱為``IO``：</span><br></pre></td></tr></table></figure></p>
+<p>type IO = World -&gt; World<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 以使用者在鍵盤上敲敲打打的事件為例，可以把**使用者敲打鍵盤之前**的世界狀態視為原本的世界狀態，把**使用者敲打鍵盤之後**的世界狀態視為後來的世界狀態。也就是說，「敲打鍵盤」這個副作用改變了世界的狀態。</span><br><span class="line"></span><br><span class="line">但一個interactive program除了副作用之外，我們也有可能希望能回傳值，以供後續使用。像是「使用者在鍵盤上輸入文字」這個副作用，在敲鍵盤之外，我們還希望可以從他的敲鍵盤的行為讀取（萃取？）到他所輸入的值，這個值之後可以用來繼續丟到下一個用來登入系統的函數。因此有必要重新修改一下上面對``type IO``的定義：</span><br></pre></td></tr></table></figure></p>
+<p>type IO a = World -&gt; (a, World)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">例如：  </span><br><span class="line">- 「從user的鍵盤輸入而讀取來的一個字元」具有``IO Char``的類型。這個字元的類型之所以不只是``Char``，是因為要強調它是一個**透過副作用(aka IO action)才得來的字元**  </span><br><span class="line">- 打印一個字串在螢幕上具有``IO ()``的類型，因為將一個字串打印在螢幕上，只是**純粹改變螢幕的狀態**，所以回傳一個``()``代表回傳空值。``()``稱為unit。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 	</span><br><span class="line">一個具有``IO``類型的表達式(expression)叫做一個IO action。</span><br><span class="line"></span><br><span class="line">IO action的幾個範例：</span><br><span class="line">&gt; - 將字串&quot;hello&quot;印在console上: 具有``IO ()``類型  </span><br><span class="line">&gt; - 從console中讀取一行input: 具有``IO String``類型    </span><br><span class="line">&gt; - 建立一個網路連線連到 www.google.com 的 port 80: 具有``IO Socket``類型  </span><br><span class="line">&gt; - 從terminal中讀取兩行輸入，並將兩行的輸入讀取成兩個數字，將兩個數字相加後，印在螢幕上: 具有``IO Int``類型  </span><br><span class="line">&gt; - 一個以滑鼠動作為輸入、並將一格格的圖像顯示在螢幕上的第一人稱射擊遊戲: 具有``IO ()``類型</span><br><span class="line"></span><br><span class="line">必須記住的是，一個IO action，由於本身就是一個expression，在Haskell中和``Int``或``Char``一樣被當成一個值(value)來看待，既可以**綁定到變數名稱上(使用``let``或``where``)**、也可以**作為函數的參數**、更可以**作為函數的回傳值**。</span><br><span class="line"></span><br><span class="line">最後這一點（將``IO action``作為函數的回傳值）使我們可以細緻區分``putStrLn``函數與該函數的回傳值之間的區別。</span><br></pre></td></tr></table></figure></p>
+<p>putStrLn :: String -&gt; IO ()<br><code>`  
+putStrLn
+是一個以</code>String<code></code>為參數並回傳函數，</p>
+<h2 id="do區塊"><a href="#do區塊" class="headerlink" title="do區塊"></a><code>do</code>區塊</h2><h2 id="return"><a href="#return" class="headerlink" title="return"></a><code>return</code></h2>
       
     </div>
 
@@ -433,6 +433,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/01/關於資料庫的一些術語/" rel="prev" title="關於資料庫的一些術語">
+                關於資料庫的一些術語 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -506,7 +510,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -531,7 +535,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -567,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Polymorphic-function"><span class="nav-number">1.</span> <span class="nav-text">Polymorphic function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Monad"><span class="nav-number">2.</span> <span class="nav-text">Monad</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宣告新的type"><span class="nav-number">3.</span> <span class="nav-text">宣告新的type</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-declaration-為現存的type宣告新的名字"><span class="nav-number">3.1.</span> <span class="nav-text">Type declaration: 為現存的type宣告新的名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-declaration-宣告全新的type"><span class="nav-number">3.2.</span> <span class="nav-text">Data declaration: 宣告全新的type</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Polymorphic-function"><span class="nav-number">1.</span> <span class="nav-text">Polymorphic function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Monad"><span class="nav-number">2.</span> <span class="nav-text">Monad</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宣告新的type"><span class="nav-number">3.</span> <span class="nav-text">宣告新的type</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-declaration-為現存的type宣告新的名字"><span class="nav-number">3.1.</span> <span class="nav-text">Type declaration: 為現存的type宣告新的名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-declaration-宣告全新的type"><span class="nav-number">3.2.</span> <span class="nav-text">Data declaration: 宣告全新的type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do區塊"><span class="nav-number">3.3.</span> <span class="nav-text">do區塊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return"><span class="nav-number">3.4.</span> <span class="nav-text">return</span></a></li></ol></li></ol></div>
             
 
           </div>
