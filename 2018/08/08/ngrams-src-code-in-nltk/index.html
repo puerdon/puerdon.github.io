@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。 &amp;lt; !– more –&amp;gt; 作用以 bigrams（就是2-grams的意思）為例，假設你給他一個string list的輸入，那麽他會輸出一個tuple list，其中每個tuple都是由緊鄰的兩個string所組成，從第一個str">
+  <meta name="description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。">
 <meta name="keywords" content="nltk,python,nlp,ngrams">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nltk 中 ngrams 原始碼分析">
 <meta property="og:url" content="https://puerdon.github.io/2018/08/08/ngrams-src-code-in-nltk/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
-<meta property="og:description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。 &amp;lt; !– more –&amp;gt; 作用以 bigrams（就是2-grams的意思）為例，假設你給他一個string list的輸入，那麽他會輸出一個tuple list，其中每個tuple都是由緊鄰的兩個string所組成，從第一個str">
+<meta property="og:description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-08-08T08:14:22.171Z">
+<meta property="og:updated_time" content="2018-08-08T08:27:23.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nltk 中 ngrams 原始碼分析">
-<meta name="twitter:description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。 &amp;lt; !– more –&amp;gt; 作用以 bigrams（就是2-grams的意思）為例，假設你給他一個string list的輸入，那麽他會輸出一個tuple list，其中每個tuple都是由緊鄰的兩個string所組成，從第一個str">
+<meta name="twitter:description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。">
 
 
 
@@ -339,7 +339,7 @@
                 
               
 
-              <time title="Created: 2018-08-08 11:38:38 / Modified: 16:14:22" itemprop="dateCreated datePublished" datetime="2018-08-08T11:38:38+08:00">2018-08-08</time>
+              <time title="Created: 2018-08-08 11:38:38 / Modified: 16:27:23" itemprop="dateCreated datePublished" datetime="2018-08-08T11:38:38+08:00">2018-08-08</time>
             
 
             
@@ -396,7 +396,7 @@
 
       
         <p>在Python自然語言處理套件 <a href="http://www.nltk.org" target="_blank" rel="noopener">nltk</a> 中，在 <a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">nltk.util</a> 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。</p>
-<p>&lt; !– more –&gt;</p>
+<a id="more"></a>
 <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>以 bigrams（就是2-grams的意思）為例，假設你給他一個string list的輸入，那麽他會輸出一個tuple list，其中每個tuple都是由緊鄰的兩個string所組成，從第一個string到最後一個string。  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.util <span class="keyword">import</span> bigrams</span><br><span class="line">list(bigrams[<span class="string">'I'</span>, <span class="string">'have'</span>, <span class="string">'a'</span>, <span class="string">'dream'</span>, <span class="string">'.'</span>])</span><br><span class="line"><span class="comment"># 會得到 [('I', 'have'), ('have', 'a'), ('a', 'dream'), ('dream', '.')]</span></span><br></pre></td></tr></table></figure>
 <p>事實上，根據bigrams可以接受任何 Sequence type 或 Iterator type 的值作為輸入。</p>
