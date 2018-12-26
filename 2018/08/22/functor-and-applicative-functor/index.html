@@ -108,21 +108,24 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://puerdon.github.io/tags/index.html">
+  <meta name="description" content="lifting(a -&amp;gt; b) -&amp;gt; (f a -&amp;gt; f b) 接收一個函數a -&amp;gt; b，回傳一個新的函數f a -&amp;gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [） 這件事情在Haskell中叫做lifting。 比較使用 list comprehesion[x * y |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="functor-and-applicative-functor">
+<meta property="og:url" content="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
+<meta property="og:description" content="lifting(a -&amp;gt; b) -&amp;gt; (f a -&amp;gt; f b) 接收一個函數a -&amp;gt; b，回傳一個新的函數f a -&amp;gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [） 這件事情在Haskell中叫做lifting。 比較使用 list comprehesion[x * y |">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-08-01T08:18:09.221Z">
+<meta property="og:updated_time" content="2018-08-22T09:32:11.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="functor-and-applicative-functor">
+<meta name="twitter:description" content="lifting(a -&amp;gt; b) -&amp;gt; (f a -&amp;gt; f b) 接收一個函數a -&amp;gt; b，回傳一個新的函數f a -&amp;gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [） 這件事情在Haskell中叫做lifting。 比較使用 list comprehesion[x * y |">
 
 
 
 
 
 
-  <link rel="canonical" href="https://puerdon.github.io/tags/"/>
+  <link rel="canonical" href="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/"/>
 
 
 
@@ -132,7 +135,7 @@
   };
 </script>
 
-  <title>tags | Puerdon Biki</title>
+  <title>functor-and-applicative-functor | Puerdon Biki</title>
   
 
 
@@ -224,7 +227,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-hashtag"></i> <br />Tags</a>
   </li>
@@ -253,25 +256,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -298,160 +282,170 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">tags</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                
-                
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                
-                  
-                    
-                  
-                
-                  
-                
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                25 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Git/" style="font-size: 12px; color: #ccc">Git</a> <a href="/tags/Haskell/" style="font-size: 30px; color: #111">Haskell</a> <a href="/tags/IO-Action/" style="font-size: 12px; color: #ccc">IO Action</a> <a href="/tags/MIT演算法筆記/" style="font-size: 12px; color: #ccc">MIT演算法筆記</a> <a href="/tags/SQL/" style="font-size: 12px; color: #ccc">SQL</a> <a href="/tags/TF-IDF/" style="font-size: 12px; color: #ccc">TF-IDF</a> <a href="/tags/function/" style="font-size: 12px; color: #ccc">function</a> <a href="/tags/generator/" style="font-size: 12px; color: #ccc">generator</a> <a href="/tags/iterable/" style="font-size: 12px; color: #ccc">iterable</a> <a href="/tags/iterator/" style="font-size: 12px; color: #ccc">iterator</a> <a href="/tags/likelihood/" style="font-size: 12px; color: #ccc">likelihood</a> <a href="/tags/ngrams/" style="font-size: 12px; color: #ccc">ngrams</a> <a href="/tags/nlp/" style="font-size: 12px; color: #ccc">nlp</a> <a href="/tags/nltk/" style="font-size: 12px; color: #ccc">nltk</a> <a href="/tags/polymorphic-function/" style="font-size: 12px; color: #ccc">polymorphic function</a> <a href="/tags/prabability/" style="font-size: 12px; color: #ccc">prabability</a> <a href="/tags/python/" style="font-size: 21px; color: #6f6f6f">python</a> <a href="/tags/statistics/" style="font-size: 12px; color: #ccc">statistics</a> <a href="/tags/type/" style="font-size: 12px; color: #ccc">type</a> <a href="/tags/typeclass/" style="font-size: 12px; color: #ccc">typeclass</a> <a href="/tags/副作用/" style="font-size: 12px; color: #ccc">副作用</a> <a href="/tags/名詞/" style="font-size: 12px; color: #ccc">名詞</a> <a href="/tags/梵文/" style="font-size: 12px; color: #ccc">梵文</a> <a href="/tags/統計/" style="font-size: 12px; color: #ccc">統計</a> <a href="/tags/資料庫/" style="font-size: 12px; color: #ccc">資料庫</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">functor-and-applicative-functor
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-22 14:01:48 / Modified: 17:32:11" itemprop="dateCreated datePublished" datetime="2018-08-22T14:01:48+08:00">2018-08-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="lifting"><a href="#lifting" class="headerlink" title="lifting"></a>lifting</h1><p><code>(a -&gt; b) -&gt; (f a -&gt; f b)</code></p>
+<p>接收一個函數<code>a -&gt; b</code>，回傳一個新的函數<code>f a -&gt; f b</code>，新函數和舊函數的差別在於<strong>新函數可以處理任何type為functor typeclass的instance的值（例如<code>[Int]</code>, <code>[</code>）</strong></p>
+<p>這件事情在Haskell中叫做lifting。</p>
+<h1 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h1><h2 id="使用-list-comprehesion"><a href="#使用-list-comprehesion" class="headerlink" title="使用 list comprehesion"></a>使用 list comprehesion</h2><p><code>[x * y | x &lt;- [1..5], y &lt;- [6..10]]</code></p>
+<h2 id="使用-Functor-和-Applicative"><a href="#使用-Functor-和-Applicative" class="headerlink" title="使用 Functor 和 Applicative"></a>使用 Functor 和 Applicative</h2><p><code>(*) &lt;$&gt; [1..5] &lt;*&gt; [6..10]</code></p>
+<h1 id="IO-Action也是Applicative"><a href="#IO-Action也是Applicative" class="headerlink" title="IO Action也是Applicative"></a>IO Action也是Applicative</h1><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Applicative</span> <span class="type">IO</span> <span class="keyword">where</span></span></span><br><span class="line">    pure    = return</span><br><span class="line">    a &lt;*&gt; b = <span class="keyword">do</span></span><br><span class="line">        f &lt;- a</span><br><span class="line">        x &lt;- b</span><br><span class="line">        return (f x)</span><br></pre></td></tr></table></figure>
+<p>IO action 也是 Applicative 的一個 instance。IO action 中的 Applicative 涉及 sequencing。</p>
+<p>根據上面的定義，在<code>a &lt;*&gt; b</code>當中：</p>
+<ul>
+<li><p>先執行 IO Action a </p>
+<p>pure is all about putting a value in a minimal context that still holds it as its result</p>
+</li>
+</ul>
+<p>   If <code>&lt;*&gt;</code> were specialized for IO it would have a type of <code>(&lt;*&gt;) :: IO (a -&gt; b) -&gt; IO a -&gt; IO b</code>. It would take an I/O action that yields a function as its result and another I/O action and create a new I/O action from those two that, when performed, first performs the first one to get the function and then performs the second one to get the value and then it would yield that function applied to the value as its result. We used do syntax to implement it here. Remember, do syntax is about taking several I/O actions and gluing them into one, which is exactly what we do here.</p>
+<p>With Maybe and [], we could think of &lt;*&gt; as simply extracting a function from its left parameter and then sort of applying it over the right one. With IO, extracting is still in the game, but now we also have a notion of sequencing, because we’re taking two I/O actions and we’re sequencing, or gluing, them into one. We have to extract the function from the first I/O action, but to extract a result from an I/O action, it has to be performed.</p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/17/CH2 三個重要方法/" rel="next" title="Quantitative Corpus Linguistics with R">
+                <i class="fa fa-chevron-left"></i> Quantitative Corpus Linguistics with R
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -481,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -638,6 +641,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lifting"><span class="nav-number">1.</span> <span class="nav-text">lifting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比較"><span class="nav-number">2.</span> <span class="nav-text">比較</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-list-comprehesion"><span class="nav-number">2.1.</span> <span class="nav-text">使用 list comprehesion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Functor-和-Applicative"><span class="nav-number">2.2.</span> <span class="nav-text">使用 Functor 和 Applicative</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO-Action也是Applicative"><span class="nav-number">3.</span> <span class="nav-text">IO Action也是Applicative</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
