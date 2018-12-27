@@ -293,6 +293,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/12/26/statistics-for-linguistics-with-R/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/26/statistics-for-linguistics-with-R/" itemprop="url">
+                  \[讀書筆記\] Statistics for linguistists with R
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-26 22:14:31" itemprop="dateCreated datePublished" datetime="2018-12-26T22:14:31+08:00">2018-12-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-27 21:01:51" itemprop="dateModified" datetime="2018-12-27T21:01:51+08:00">2018-12-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/統計/" itemprop="url" rel="index"><span itemprop="name">統計</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>讀書筆記</p>
+<p>Stefan Th. Gries, 2013, Statistics for Linguistics with R: A Practical Introduction</p>
+<h1 id="CH1-經驗性研究基礎"><a href="#CH1-經驗性研究基礎" class="headerlink" title="CH1: 經驗性研究基礎"></a>CH1: 經驗性研究基礎</h1><h2 id="三大目標"><a href="#三大目標" class="headerlink" title="三大目標"></a>三大目標</h2><ol>
+<li>description</li>
+<li>explanation</li>
+<li>prediction (optional)</li>
+</ol>
+<h2 id="量性研究的邏輯"><a href="#量性研究的邏輯" class="headerlink" title="量性研究的邏輯"></a>量性研究的邏輯</h2><ul>
+<li><p>量性研究報告的一般形式</p>
+<ul>
+<li>Introduction</li>
+<li>methods</li>
+<li>results</li>
+<li>discussion</li>
+</ul>
+</li>
+<li><p>流程</p>
+<ul>
+<li>初步探索階段<ul>
+<li>描述感興趣現象的特徵、相關文獻回顧、收集資料 (通常寫在introduction)</li>
+<li>(numeric/categorial) variables: 影響著結果的變因，例如現在感興趣的主題為使用「把」字句的動詞，那麼可能的variables可以是句子長度、動詞及物性、主語的Animacy、說話場景等等。一個variable包含兩個以上的level。<ul>
+<li>列出不同文獻對不同 variables 的探討</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提出假說&amp;可操作化(operationalization)流程階段<ol>
+<li>步驟一：以文字形式提出假說<ul>
+<li>何謂假說？不能只針對單一特定事件、必須要有條件句(If…then…)的結構、可否證性</li>
+<li>兩種假說<ul>
+<li>If [IV (independant variables)], then [DV (dependant variables)] 的形式，通常IV是導致DV變化的原因<ul>
+<li>confounding v. moderator variables </li>
+</ul>
+</li>
+<li>沒有IV，只有關於DV的值、變異與分布狀況的假說</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>步驟二：(在開始收集資料前!)列出可否證該假說的條件<ul>
+<li>除了自己提出的假說 H1 (alternative hypothesis)</li>
+<li>還要提出一個與H1互補(通常是在H1加上否定)的虛無假說 H0 (null hypothesis)</li>
+<li>H0和H1必須涵蓋所有可能的結果</li>
+<li>directional vs. non-directional H1:<ul>
+<li>directional H1: 所提出的H1除了指出與H0不同之外，更提出了「方向性」，是大於或小於? </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>步驟三：operationalizing the variables<br>針對variables究竟應該怎麼去搜集？去計算？要去觀察哪些東西？<ul>
+<li>nominal (binary) variable: 只有是或否</li>
+<li>categorial: 離散狀態的variable，狀態間無法進行排序，例如：性別變數</li>
+<li>ordinal: 連續狀態的variable，狀態間可進行排序，但之間做乘積沒有意義</li>
+<li>ratio: 連續狀態的variable，且之間做乘積有意義</li>
+</ul>
+</li>
+<li>步驟四：Scientific hypotheses in statistical/mathematical form</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>收集資料與儲存階段<br>這個步驟要考量的是抽樣樣本是否具有代表性(因為我們不可能得到整個母體)<ul>
+<li>representive: 母體的不同部分都在樣本中</li>
+<li>balanced: 母體的不同部分的大小反映在樣本中</li>
+<li>例如想要觀察台北青少年在口語中使用「不然勒」的情況，我們必須要去取得青少年跟同儕、老師、家長、陌生人對話地語料才能符合代表性的要求，而我們採收的語料中跟不同對象對話的數量，也必須符合青少年在日常生活中與這些對象實際對話的比例，才能符合平衡原則。</li>
+</ul>
+</li>
+<li>The decision</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/12/26/analyzing-linguistic-data/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -604,6 +844,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/17/CH2 三個重要方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/17/CH2 三個重要方法/" itemprop="url">
+                  Quantitative Corpus Linguistics with R
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-17 15:00:58" itemprop="dateCreated datePublished" datetime="2018-08-17T15:00:58+08:00">2018-08-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-26 22:38:31" itemprop="dateModified" datetime="2018-12-26T22:38:31+08:00">2018-12-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/語料庫語言學/" itemprop="url" rel="index"><span itemprop="name">語料庫語言學</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
+<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
+</blockquote>
+<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
+<ul>
+<li>lemmatized</li>
+<li>POS tag</li>
+<li>morphological</li>
+<li>phonological</li>
+<li>syntactically parsed</li>
+<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
+</ul>
+<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
+<ul>
+<li><strong>各種pattern</strong>的出現頻率</li>
+<li><strong>pattern之間</strong>的共同出現頻率</li>
+</ul>
+<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
+<p>但什麼是詞？不同語言中的詞。</p>
+<p>type vs. token</p>
+<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
+<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
+<li>collocation (本篇重點)</li>
+<li>colligation</li>
+<li>collostruction</li>
+</ul>
+<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
+<li>語言教學</li>
+<li>語義學</li>
+</ul>
+<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
+<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/17/algebraic-data-type-in-Haskell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -855,207 +1296,6 @@
 <li><a href="https://stackoverflow.com/questions/16770/haskells-algebraic-data-types/5917133#5917133" target="_blank" rel="noopener">Haskell’s algebraic data types</a></li>
 <li><a href="https://github.com/ScalaTaiwan/ScalaTaiwan/tree/master/2018-03-07-Programming_with_Algebraic_Data_Types" target="_blank" rel="noopener">資源整理</a></li>
 </ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/17/CH2 三個重要方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/17/CH2 三個重要方法/" itemprop="url">
-                  Quantitative Corpus Linguistics with R
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-17 15:00:58" itemprop="dateCreated datePublished" datetime="2018-08-17T15:00:58+08:00">2018-08-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-26 22:38:31" itemprop="dateModified" datetime="2018-12-26T22:38:31+08:00">2018-12-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/語料庫語言學/" itemprop="url" rel="index"><span itemprop="name">語料庫語言學</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
-<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
-</blockquote>
-<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
-<ul>
-<li>lemmatized</li>
-<li>POS tag</li>
-<li>morphological</li>
-<li>phonological</li>
-<li>syntactically parsed</li>
-<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
-</ul>
-<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
-<ul>
-<li><strong>各種pattern</strong>的出現頻率</li>
-<li><strong>pattern之間</strong>的共同出現頻率</li>
-</ul>
-<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
-<p>但什麼是詞？不同語言中的詞。</p>
-<p>type vs. token</p>
-<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
-<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
-<li>collocation (本篇重點)</li>
-<li>colligation</li>
-<li>collostruction</li>
-</ul>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>語言教學</li>
-<li>語義學</li>
-</ul>
-<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
-<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
 
           
         
@@ -1952,174 +2192,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/02/MIT-intro-to-algr-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/02/MIT-intro-to-algr-2/" itemprop="url">
-                  MIT-intro-to-algr-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-02 23:03:57 / Modified: 23:49:45" itemprop="dateCreated datePublished" datetime="2018-08-02T23:03:57+08:00">2018-08-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Random-access-Machine"><a href="#Random-access-Machine" class="headerlink" title="Random access Machine"></a>Random access Machine</h1><h1 id="Pointer-Machine"><a href="#Pointer-Machine" class="headerlink" title="Pointer Machine"></a>Pointer Machine</h1><h1 id="Python-machine"><a href="#Python-machine" class="headerlink" title="Python machine"></a>Python machine</h1><p>更現代的Python結合以上兩種模型。</p>
-<h2 id="基本情況"><a href="#基本情況" class="headerlink" title="基本情況"></a>基本情況</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>Python中實作List的方式使用RAM模型，透過<code>a_list[i]</code>取得list中某一索引的元素，所花的時間為常數時間O(1)。</p>
-<blockquote>
-<p>如果以linked list的方式來實作，那麼取出索引i的元素所花的時間即成為線性時間O(n)。</p>
-</blockquote>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>如果一物件有適當數量的元素，那麼取出該物件屬性的執行時間也是常數時間O(1)。</p>
-<h2 id="幾個例子"><a href="#幾個例子" class="headerlink" title="幾個例子"></a>幾個例子</h2><h3 id="list-append"><a href="#list-append" class="headerlink" title="list.append"></a><code>list.append</code></h3><p>使用 table doubling 方法（在之後的第九課將提到），使執行時間達到常數時間O(n)。</p>
-<h3 id="new-list-list1-list2"><a href="#new-list-list1-list2" class="headerlink" title="new_list = list1 + list2"></a><code>new_list = list1 + list2</code></h3><p>上面的程式碼在底層其實是執行下方的程式碼。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new_list = []</span><br><span class="line">for x in list1:</span><br><span class="line">    new_list.append(x)</span><br><span class="line">for y in list2:</span><br><span class="line">    new_list.append(y)</span><br></pre></td></tr></table></figure></p>
-<p>因此可利用<code>append()</code>方法的執行時間來推導將兩個list相連在一起的執行時間: O(|list1| + |list2|)，即正比於兩個list的元素數量總和。</p>
-<h3 id="elm-in-a-list"><a href="#elm-in-a-list" class="headerlink" title="elm in a_list"></a><code>elm in a_list</code></h3><p>線性時間O(n)，從第一個元素依序檢查到最後一個。</p>
-<h3 id="len-a-list"><a href="#len-a-list" class="headerlink" title="len(a_list)"></a><code>len(a_list)</code></h3><p>常數時間O(1)，因為Python在底層已經先計算好並儲存每個list的長度。所以呼叫<code>len(a_list)</code>只是去叫出那個被儲存的值。</p>
-<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>以hash table實作，因此以<code>dict[key]</code>叫出該對應value的執行時間為常數時間O(n)。</p>
-<h2 id="Document-distance-Problem"><a href="#Document-distance-Problem" class="headerlink" title="Document distance Problem"></a>Document distance Problem</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>有兩份文件，想測量這兩份文件的距離，即這兩份文件的共通性。</p>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>Google index page</li>
-<li>Mirror of Wiki</li>
-<li>檢查兩份期末報告是否互相抄襲</li>
-</ul>
-<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
-<li>文件:由words組成</li>
-<li>word: 為字元(a-z, A-Z, 0-9)組成的字串</li>
-</ul>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>可以把兩份文件的共通性以兩份文件所包含字詞的共通性來思考。</p>
-<h3 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h3><ol>
-<li>將文件分割為words</li>
-<li>算出每個word的出現頻率</li>
-<li>算兩個文件的word陣列的內積（即角度）</li>
-</ol>
-<h1 id="課程連結"><a href="#課程連結" class="headerlink" title="課程連結"></a>課程連結</h1><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/" target="_blank" rel="noopener">MIT 6.006 Introduction to ALgorithms, Fall 2011</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2167,7 +2239,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
