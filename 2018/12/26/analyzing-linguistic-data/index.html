@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="CH1: An introduction to RCH2: Graphical data explorationRandom variables:CH3: Probability distributionsCH4: Basic statistical methodsCH5: Clustering and classificationCH6: Regression modelingCH7: Mixe">
+  <meta name="description" content="CH1: An introduction to RCH2: Graphical data exploration2.1 何謂隨機變數 (Random variables)?一個實驗的結果即是一個隨機變數。  例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。 例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。 例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」">
 <meta name="keywords" content="R,統計,計算語言學">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Analyzing linguistic data - a practical introduction to satistics using R">
 <meta property="og:url" content="https://puerdon.github.io/2018/12/26/analyzing-linguistic-data/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
-<meta property="og:description" content="CH1: An introduction to RCH2: Graphical data explorationRandom variables:CH3: Probability distributionsCH4: Basic statistical methodsCH5: Clustering and classificationCH6: Regression modelingCH7: Mixe">
+<meta property="og:description" content="CH1: An introduction to RCH2: Graphical data exploration2.1 何謂隨機變數 (Random variables)?一個實驗的結果即是一個隨機變數。  例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。 例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。 例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-12-27T13:05:29.683Z">
+<meta property="og:updated_time" content="2018-12-27T13:18:34.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Analyzing linguistic data - a practical introduction to satistics using R">
-<meta name="twitter:description" content="CH1: An introduction to RCH2: Graphical data explorationRandom variables:CH3: Probability distributionsCH4: Basic statistical methodsCH5: Clustering and classificationCH6: Regression modelingCH7: Mixe">
+<meta name="twitter:description" content="CH1: An introduction to RCH2: Graphical data exploration2.1 何謂隨機變數 (Random variables)?一個實驗的結果即是一個隨機變數。  例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。 例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。 例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」">
 
 
 
@@ -356,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-27 21:05:29" itemprop="dateModified" datetime="2018-12-27T21:05:29+08:00">2018-12-27</time>
+                <time title="Modified: 2018-12-27 21:18:34" itemprop="dateModified" datetime="2018-12-27T21:18:34+08:00">2018-12-27</time>
               
             
           </span>
@@ -407,7 +407,20 @@
       
 
       
-        <h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="Random-variables"><a href="#Random-variables" class="headerlink" title="Random variables:"></a>Random variables:</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>
+        <h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="2-1-何謂隨機變數-Random-variables"><a href="#2-1-何謂隨機變數-Random-variables" class="headerlink" title="2.1 何謂隨機變數 (Random variables)?"></a>2.1 何謂隨機變數 (Random variables)?</h2><p>一個實驗的結果即是一個隨機變數。</p>
+<ul>
+<li>例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。</li>
+<li>例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。</li>
+<li>例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。</li>
+</ul>
+<p>「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。</p>
+<h2 id="2-2-視覺化單一隨機變數"><a href="#2-2-視覺化單一隨機變數" class="headerlink" title="2.2 視覺化單一隨機變數"></a>2.2 視覺化單一隨機變數</h2><h2 id="2-3-視覺化兩個以上的變數"><a href="#2-3-視覺化兩個以上的變數" class="headerlink" title="2.3 視覺化兩個以上的變數"></a>2.3 視覺化兩個以上的變數</h2><h2 id="2-4-Trellis-graphics"><a href="#2-4-Trellis-graphics" class="headerlink" title="2.4 Trellis graphics"></a>2.4 Trellis graphics</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><p>Many statistical tests exploit the properties of the probability distributions of random variables.</p>
+<h2 id="3-1-Distributions"><a href="#3-1-Distributions" class="headerlink" title="3.1 Distributions"></a>3.1 Distributions</h2><p>一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:</p>
+<ul>
+<li>離散</li>
+<li>連續</li>
+</ul>
+<h2 id="3-2-離散分佈"><a href="#3-2-離散分佈" class="headerlink" title="3.2 離散分佈"></a>3.2 離散分佈</h2><h2 id="3-3-連續分佈"><a href="#3-3-連續分佈" class="headerlink" title="3.3 連續分佈"></a>3.3 連續分佈</h2><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>
       
     </div>
 
@@ -691,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CH1-An-introduction-to-R"><span class="nav-number">1.</span> <span class="nav-text">CH1: An introduction to R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH2-Graphical-data-exploration"><span class="nav-number">2.</span> <span class="nav-text">CH2: Graphical data exploration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-variables"><span class="nav-number">2.1.</span> <span class="nav-text">Random variables:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH3-Probability-distributions"><span class="nav-number">3.</span> <span class="nav-text">CH3: Probability distributions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH4-Basic-statistical-methods"><span class="nav-number">4.</span> <span class="nav-text">CH4: Basic statistical methods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH5-Clustering-and-classification"><span class="nav-number">5.</span> <span class="nav-text">CH5: Clustering and classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH6-Regression-modeling"><span class="nav-number">6.</span> <span class="nav-text">CH6: Regression modeling</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH7-Mixed-models"><span class="nav-number">7.</span> <span class="nav-text">CH7: Mixed models</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CH1-An-introduction-to-R"><span class="nav-number">1.</span> <span class="nav-text">CH1: An introduction to R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH2-Graphical-data-exploration"><span class="nav-number">2.</span> <span class="nav-text">CH2: Graphical data exploration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-何謂隨機變數-Random-variables"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 何謂隨機變數 (Random variables)?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-視覺化單一隨機變數"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 視覺化單一隨機變數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-視覺化兩個以上的變數"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 視覺化兩個以上的變數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Trellis-graphics"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Trellis graphics</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH3-Probability-distributions"><span class="nav-number">3.</span> <span class="nav-text">CH3: Probability distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Distributions"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Distributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-離散分佈"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 離散分佈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-連續分佈"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 連續分佈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH4-Basic-statistical-methods"><span class="nav-number">4.</span> <span class="nav-text">CH4: Basic statistical methods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH5-Clustering-and-classification"><span class="nav-number">5.</span> <span class="nav-text">CH5: Clustering and classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH6-Regression-modeling"><span class="nav-number">6.</span> <span class="nav-text">CH6: Regression modeling</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH7-Mixed-models"><span class="nav-number">7.</span> <span class="nav-text">CH7: Mixed models</span></a></li></ol></div>
             
 
           </div>
