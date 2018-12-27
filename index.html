@@ -293,6 +293,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/12/26/analyzing-linguistic-data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/26/analyzing-linguistic-data/" itemprop="url">
+                  analyzing-linguistic-data
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-26 22:11:28 / Modified: 22:13:01" itemprop="dateCreated datePublished" datetime="2018-12-26T22:11:28+08:00">2018-12-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/統計/" itemprop="url" rel="index"><span itemprop="name">統計</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="fff"><a href="#fff" class="headerlink" title="fff"></a>fff</h1>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -394,207 +551,6 @@
 </ul>
 <p>   If <code>&lt;*&gt;</code> were specialized for IO it would have a type of <code>(&lt;*&gt;) :: IO (a -&gt; b) -&gt; IO a -&gt; IO b</code>. It would take an I/O action that yields a function as its result and another I/O action and create a new I/O action from those two that, when performed, first performs the first one to get the function and then performs the second one to get the value and then it would yield that function applied to the value as its result. We used do syntax to implement it here. Remember, do syntax is about taking several I/O actions and gluing them into one, which is exactly what we do here.</p>
 <p>With Maybe and [], we could think of &lt;*&gt; as simply extracting a function from its left parameter and then sort of applying it over the right one. With IO, extracting is still in the game, but now we also have a notion of sequencing, because we’re taking two I/O actions and we’re sequencing, or gluing, them into one. We have to extract the function from the first I/O action, but to extract a result from an I/O action, it has to be performed.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/17/CH2 三個重要方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/17/CH2 三個重要方法/" itemprop="url">
-                  Quantitative Corpus Linguistics with R
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-17 15:00:58" itemprop="dateCreated datePublished" datetime="2018-08-17T15:00:58+08:00">2018-08-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-08-22 23:55:06" itemprop="dateModified" datetime="2018-08-22T23:55:06+08:00">2018-08-22</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Haskell/" itemprop="url" rel="index"><span itemprop="name">Haskell</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
-<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
-</blockquote>
-<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
-<ul>
-<li>lemmatized</li>
-<li>POS tag</li>
-<li>morphological</li>
-<li>phonological</li>
-<li>syntactically parsed</li>
-<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
-</ul>
-<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
-<ul>
-<li><strong>各種pattern</strong>的出現頻率</li>
-<li><strong>pattern之間</strong>的共同出現頻率</li>
-</ul>
-<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
-<p>但什麼是詞？不同語言中的詞。</p>
-<p>type vs. token</p>
-<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
-<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
-<li>collocation (本篇重點)</li>
-<li>colligation</li>
-<li>collostruction</li>
-</ul>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>語言教學</li>
-<li>語義學</li>
-</ul>
-<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
-<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
 
           
         
@@ -899,6 +855,207 @@
 <li><a href="https://stackoverflow.com/questions/16770/haskells-algebraic-data-types/5917133#5917133" target="_blank" rel="noopener">Haskell’s algebraic data types</a></li>
 <li><a href="https://github.com/ScalaTaiwan/ScalaTaiwan/tree/master/2018-03-07-Programming_with_Algebraic_Data_Types" target="_blank" rel="noopener">資源整理</a></li>
 </ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/17/CH2 三個重要方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/17/CH2 三個重要方法/" itemprop="url">
+                  Quantitative Corpus Linguistics with R
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-17 15:00:58" itemprop="dateCreated datePublished" datetime="2018-08-17T15:00:58+08:00">2018-08-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-26 22:38:31" itemprop="dateModified" datetime="2018-12-26T22:38:31+08:00">2018-12-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/語料庫語言學/" itemprop="url" rel="index"><span itemprop="name">語料庫語言學</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
+<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
+</blockquote>
+<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
+<ul>
+<li>lemmatized</li>
+<li>POS tag</li>
+<li>morphological</li>
+<li>phonological</li>
+<li>syntactically parsed</li>
+<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
+</ul>
+<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
+<ul>
+<li><strong>各種pattern</strong>的出現頻率</li>
+<li><strong>pattern之間</strong>的共同出現頻率</li>
+</ul>
+<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
+<p>但什麼是詞？不同語言中的詞。</p>
+<p>type vs. token</p>
+<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
+<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
+<li>collocation (本篇重點)</li>
+<li>colligation</li>
+<li>collostruction</li>
+</ul>
+<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
+<li>語言教學</li>
+<li>語義學</li>
+</ul>
+<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
+<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
 
           
         
@@ -1963,186 +2120,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/01/Haskell中的IO-Action/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/01/Haskell中的IO-Action/" itemprop="url">
-                  Haskell中的IO Action
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-01 16:34:31" itemprop="dateCreated datePublished" datetime="2018-08-01T16:34:31+08:00">2018-08-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-08-10 10:56:30" itemprop="dateModified" datetime="2018-08-10T10:56:30+08:00">2018-08-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Haskell/" itemprop="url" rel="index"><span itemprop="name">Haskell</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>參考資料：<br><a href="https://www.reddit.com/r/haskell/comments/2p9cvz/noob_question_what_is_exactly_side_effect/" target="_blank" rel="noopener">r/haskell: what is exactly side effect?</a><br><a href="https://wiki.haskell.org/Introduction_to_Haskell_IO/Actions" target="_blank" rel="noopener">Haskell Wiki: Intro to Haskell IO/Actions</a></p>
-</blockquote>
-<p>在Haskell中，一個interactive program被視為一個「以目前世界狀態為input、以改變後的世界狀態為output」的純函數(pure function)，新的世界狀態反映了在程式執行過程中所產生的副作用(side effect)。  </p>
-<blockquote>
-<p>問題：副作用是什麼？如何定義？</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/01/Haskell中的IO-Action/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2190,7 +2167,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2225,7 +2202,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2296,7 +2275,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
