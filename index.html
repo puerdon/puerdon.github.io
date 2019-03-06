@@ -293,6 +293,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2019/03/06/taiwan-same-sex-marriage-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/06/taiwan-same-sex-marriage-1/" itemprop="url">
+                  台灣同性婚姻論述分析(I)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-06 15:38:32 / Modified: 18:10:10" itemprop="dateCreated datePublished" datetime="2019-03-06T15:38:32+08:00">2019-03-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>近年來，同婚議題在台灣社會逐漸受到重視，並在2017年大法官宣布目前保障一男一女的民法婚姻制度違憲之後，更帶來保守派反動力量的復甦。同婚的支持方與反對方之間的對立在2018年大選時達到高峰，首先由反對方（以下一代幸福聯盟為代表）提出了三案公投案，而後支持方（以伴侶盟為代表）也提出了兩案公投案。也因此使得同婚議題浮上政治檯面，無論支持兩好三壞或是三好兩壞，可以說同婚議題首次以如此「高調」的方式登上台灣社會的舞台。</p>
+<p>媒體上我們看見各種關於同婚議題的論述，舉凡倫理、家庭、兒童、教育、宗教、法律、性、愛、價值…等，這顯示了同婚議題從來不只是兩個相愛的人是否能夠在制度中結婚而已。兩造立場的論述動用了大量上述列舉的角度來傳播自己的主張，大幅增加了同婚議題的複雜度。</p>
+<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>我所好奇的是，究竟兩造立場動用了哪些角度和哪些觀點來宣傳自己的理念？在我們都很清楚兩造立場的對立背後，能不能透過更具體的證據（例如他們所使用的語言）來看出他們論述方式的不同？而我們又能從這些論述方式又觀察到哪些模式？這是我對同婚議題的最關心的地方，同時也能夠從語言學所提供的工具來做觀察和分析。</p>
+<h1 id="取材的考量"><a href="#取材的考量" class="headerlink" title="取材的考量"></a>取材的考量</h1><p>當然，所謂兩造立場可能是個虛構的概念。我們在各大網路論壇上能看到許多使用者的觀點，可能座落在支持/反對光譜上的某個座標，可能因為某些原因支持而同時因為另一些原因反對。因此我在語料選擇上，決定以官方提供的語料作為分析對象。我預設兩邊的公投發起方：下福盟與伴侶盟，分別處於光譜上的極端兩點，因此我將以這兩個組織的官方網站上的文字為主要分析對象。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>透過 python 對兩個組織的官方網站（<a href="https://taiwanfamily.com/" target="_blank" rel="noopener">下福盟</a>和<a href="http://lgbtfamiliesinfo.tw/" target="_blank" rel="noopener">伴侶盟</a>）進行爬蟲。將爬下來的文字做前處理，包括斷句、去除非中文字元、以 jieba 套件加上我自定義的詞典進行分詞。如此以來我已能取得能用以觀察分析豐富語料。</p>
+<p>另外，這兩個網站都是類似wordpress部落格的形式，因此可以說兩個網站中的文章大致擁有相同的register：都屬於在網路上的「書寫語言」（相對於口語而言），並且每篇文章自成一格，是書寫者單方面向閱聽人傳遞訊息。</p>
+<p>有了語料，要如何開始做分析呢？我將以 Paul Baker 於 2006 所寫的 Using Corpora in Discourse Analysis 為藍圖，其中提供了許多利用語料庫做言談分析的方法，包括頻率分析、Concordance、Collocation、Keyness…等。之後沒有意外的話，也會按照這些方法，從爬下的語料中搾出有意義的觀察。</p>
+<h1 id="兩份語料的數據"><a href="#兩份語料的數據" class="headerlink" title="兩份語料的數據"></a>兩份語料的數據</h1><p>以下資料為2019年3月6日進行爬蟲時所得的數據：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">下福盟</th>
+<th style="text-align:left">伴侶盟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">文章數</td>
+<td style="text-align:left">319 篇</td>
+<td style="text-align:left">200 篇</td>
+</tr>
+<tr>
+<td style="text-align:left">中文字元數</td>
+<td style="text-align:left">484705 字</td>
+<td style="text-align:left">129932 字</td>
+</tr>
+<tr>
+<td style="text-align:left">平均每篇字數</td>
+<td style="text-align:left">1591 字</td>
+<td style="text-align:left">650 字</td>
+</tr>
+<tr>
+<td style="text-align:left">總詞數(含重複)</td>
+<td style="text-align:left">235488 個</td>
+<td style="text-align:left">63504 個</td>
+</tr>
+<tr>
+<td style="text-align:left">平均每詞字數</td>
+<td style="text-align:left">2.1 字</td>
+<td style="text-align:left">2.0 字</td>
+</tr>
+<tr>
+<td style="text-align:left">總詞數(不含重複)</td>
+<td style="text-align:left">33680 個</td>
+<td style="text-align:left">15851 個</td>
+</tr>
+<tr>
+<td style="text-align:left">type token ratio</td>
+<td style="text-align:left">0.14</td>
+<td style="text-align:left">0.25</td>
+</tr>
+</tbody>
+</table>
+<p>首先比較文章數，可以看到下福盟的文章數幾乎是伴侶盟的1.6倍，多出了119篇文章。在包含所有重複的總詞數方面，下福盟的總詞數為伴侶盟的3.7倍。</p>
+<p>但有趣的是，當統計不重複的總詞數(word type)時，下福盟只剩下伴侶盟的2.12倍。再看到type token ratio（也就是拿word type除以word token所得的比率，是檢視語料詞彙豐富度的一個指標之一），發現下福盟的詞語豐富度比伴侶盟的還要來得低，幾乎是伴侶盟詞彙豐富度的一半。</p>
+<p>以上只是就語料本身的客觀數據進行分析，至於為什麼下福盟的詞語豐富度變得比伴侶盟來得低，要回答這個問題可能就必須進入到語料本身做更細緻的觀察和分析。</p>
+<h1 id="兩份語料的數據-1"><a href="#兩份語料的數據-1" class="headerlink" title="兩份語料的數據"></a>兩份語料的數據</h1>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/12/26/statistics-for-linguistics-with-R/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2035,174 +2231,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/02/MIT-intro-to-algr-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/02/MIT-intro-to-algr-2/" itemprop="url">
-                  MIT-intro-to-algr-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-02 23:03:57 / Modified: 23:49:45" itemprop="dateCreated datePublished" datetime="2018-08-02T23:03:57+08:00">2018-08-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Random-access-Machine"><a href="#Random-access-Machine" class="headerlink" title="Random access Machine"></a>Random access Machine</h1><h1 id="Pointer-Machine"><a href="#Pointer-Machine" class="headerlink" title="Pointer Machine"></a>Pointer Machine</h1><h1 id="Python-machine"><a href="#Python-machine" class="headerlink" title="Python machine"></a>Python machine</h1><p>更現代的Python結合以上兩種模型。</p>
-<h2 id="基本情況"><a href="#基本情況" class="headerlink" title="基本情況"></a>基本情況</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>Python中實作List的方式使用RAM模型，透過<code>a_list[i]</code>取得list中某一索引的元素，所花的時間為常數時間O(1)。</p>
-<blockquote>
-<p>如果以linked list的方式來實作，那麼取出索引i的元素所花的時間即成為線性時間O(n)。</p>
-</blockquote>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>如果一物件有適當數量的元素，那麼取出該物件屬性的執行時間也是常數時間O(1)。</p>
-<h2 id="幾個例子"><a href="#幾個例子" class="headerlink" title="幾個例子"></a>幾個例子</h2><h3 id="list-append"><a href="#list-append" class="headerlink" title="list.append"></a><code>list.append</code></h3><p>使用 table doubling 方法（在之後的第九課將提到），使執行時間達到常數時間O(n)。</p>
-<h3 id="new-list-list1-list2"><a href="#new-list-list1-list2" class="headerlink" title="new_list = list1 + list2"></a><code>new_list = list1 + list2</code></h3><p>上面的程式碼在底層其實是執行下方的程式碼。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new_list = []</span><br><span class="line">for x in list1:</span><br><span class="line">    new_list.append(x)</span><br><span class="line">for y in list2:</span><br><span class="line">    new_list.append(y)</span><br></pre></td></tr></table></figure></p>
-<p>因此可利用<code>append()</code>方法的執行時間來推導將兩個list相連在一起的執行時間: O(|list1| + |list2|)，即正比於兩個list的元素數量總和。</p>
-<h3 id="elm-in-a-list"><a href="#elm-in-a-list" class="headerlink" title="elm in a_list"></a><code>elm in a_list</code></h3><p>線性時間O(n)，從第一個元素依序檢查到最後一個。</p>
-<h3 id="len-a-list"><a href="#len-a-list" class="headerlink" title="len(a_list)"></a><code>len(a_list)</code></h3><p>常數時間O(1)，因為Python在底層已經先計算好並儲存每個list的長度。所以呼叫<code>len(a_list)</code>只是去叫出那個被儲存的值。</p>
-<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>以hash table實作，因此以<code>dict[key]</code>叫出該對應value的執行時間為常數時間O(n)。</p>
-<h2 id="Document-distance-Problem"><a href="#Document-distance-Problem" class="headerlink" title="Document distance Problem"></a>Document distance Problem</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>有兩份文件，想測量這兩份文件的距離，即這兩份文件的共通性。</p>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>Google index page</li>
-<li>Mirror of Wiki</li>
-<li>檢查兩份期末報告是否互相抄襲</li>
-</ul>
-<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
-<li>文件:由words組成</li>
-<li>word: 為字元(a-z, A-Z, 0-9)組成的字串</li>
-</ul>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>可以把兩份文件的共通性以兩份文件所包含字詞的共通性來思考。</p>
-<h3 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h3><ol>
-<li>將文件分割為words</li>
-<li>算出每個word的出現頻率</li>
-<li>算兩個文件的word陣列的內積（即角度）</li>
-</ol>
-<h1 id="課程連結"><a href="#課程連結" class="headerlink" title="課程連結"></a>課程連結</h1><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/" target="_blank" rel="noopener">MIT 6.006 Introduction to ALgorithms, Fall 2011</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2250,7 +2278,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
