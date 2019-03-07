@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="lifting(a -&amp;gt; b) -&amp;gt; (f a -&amp;gt; f b) 接收一個函數a -&amp;gt; b，回傳一個新的函數f a -&amp;gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [） 這件事情在Haskell中叫做lifting。 比較使用 list comprehesion[x * y |">
+  <meta name="description" content="Baayen, R. H. CH1: An introduction to R Factor: A non-numeric predicatorc (p. 9) Levels: Values of s factor (p. 9)  Contingency table (crosstab): (p. 13)  CH2: Graphical data exploration2.1 何謂隨機變數 (Ra">
+<meta name="keywords" content="R,統計,計算語言學">
 <meta property="og:type" content="article">
-<meta property="og:title" content="functor-and-applicative-functor">
-<meta property="og:url" content="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/index.html">
+<meta property="og:title" content="[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R">
+<meta property="og:url" content="https://puerdon.github.io/2018/12/26/analyzing-linguistic-data/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
-<meta property="og:description" content="lifting(a -&amp;gt; b) -&amp;gt; (f a -&amp;gt; f b) 接收一個函數a -&amp;gt; b，回傳一個新的函數f a -&amp;gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [） 這件事情在Haskell中叫做lifting。 比較使用 list comprehesion[x * y |">
+<meta property="og:description" content="Baayen, R. H. CH1: An introduction to R Factor: A non-numeric predicatorc (p. 9) Levels: Values of s factor (p. 9)  Contingency table (crosstab): (p. 13)  CH2: Graphical data exploration2.1 何謂隨機變數 (Ra">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-08-22T09:32:11.371Z">
+<meta property="og:updated_time" content="2019-03-07T06:48:29.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="functor-and-applicative-functor">
-<meta name="twitter:description" content="lifting(a -&amp;gt; b) -&amp;gt; (f a -&amp;gt; f b) 接收一個函數a -&amp;gt; b，回傳一個新的函數f a -&amp;gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [） 這件事情在Haskell中叫做lifting。 比較使用 list comprehesion[x * y |">
+<meta name="twitter:title" content="[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R">
+<meta name="twitter:description" content="Baayen, R. H. CH1: An introduction to R Factor: A non-numeric predicatorc (p. 9) Levels: Values of s factor (p. 9)  Contingency table (crosstab): (p. 13)  CH2: Graphical data exploration2.1 何謂隨機變數 (Ra">
 
 
 
 
 
 
-  <link rel="canonical" href="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/"/>
+  <link rel="canonical" href="https://puerdon.github.io/2018/12/26/analyzing-linguistic-data/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>functor-and-applicative-functor | Puerdon Biki</title>
+  <title>[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R | Puerdon Biki</title>
   
 
 
@@ -296,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/12/26/analyzing-linguistic-data/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="puerdon">
@@ -313,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">functor-and-applicative-functor
+          <h1 class="post-title" itemprop="name headline">[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R
               
             
           </h1>
@@ -338,16 +339,46 @@
                 
               
 
-              <time title="Created: 2018-08-22 14:01:48 / Modified: 17:32:11" itemprop="dateCreated datePublished" datetime="2018-08-22T14:01:48+08:00">2018-08-22</time>
+              <time title="Created: 2018-12-26 22:11:28" itemprop="dateCreated datePublished" datetime="2018-12-26T22:11:28+08:00">2018-12-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-07 14:48:29" itemprop="dateModified" datetime="2019-03-07T14:48:29+08:00">2019-03-07</time>
               
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/統計/" itemprop="url" rel="index"><span itemprop="name">統計</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -376,22 +407,67 @@
       
 
       
-        <h1 id="lifting"><a href="#lifting" class="headerlink" title="lifting"></a>lifting</h1><p><code>(a -&gt; b) -&gt; (f a -&gt; f b)</code></p>
-<p>接收一個函數<code>a -&gt; b</code>，回傳一個新的函數<code>f a -&gt; f b</code>，新函數和舊函數的差別在於<strong>新函數可以處理任何type為functor typeclass的instance的值（例如<code>[Int]</code>, <code>[</code>）</strong></p>
-<p>這件事情在Haskell中叫做lifting。</p>
-<h1 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h1><h2 id="使用-list-comprehesion"><a href="#使用-list-comprehesion" class="headerlink" title="使用 list comprehesion"></a>使用 list comprehesion</h2><p><code>[x * y | x &lt;- [1..5], y &lt;- [6..10]]</code></p>
-<h2 id="使用-Functor-和-Applicative"><a href="#使用-Functor-和-Applicative" class="headerlink" title="使用 Functor 和 Applicative"></a>使用 Functor 和 Applicative</h2><p><code>(*) &lt;$&gt; [1..5] &lt;*&gt; [6..10]</code></p>
-<h1 id="IO-Action也是Applicative"><a href="#IO-Action也是Applicative" class="headerlink" title="IO Action也是Applicative"></a>IO Action也是Applicative</h1><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Applicative</span> <span class="type">IO</span> <span class="keyword">where</span></span></span><br><span class="line">    pure    = return</span><br><span class="line">    a &lt;*&gt; b = <span class="keyword">do</span></span><br><span class="line">        f &lt;- a</span><br><span class="line">        x &lt;- b</span><br><span class="line">        return (f x)</span><br></pre></td></tr></table></figure>
-<p>IO action 也是 Applicative 的一個 instance。IO action 中的 Applicative 涉及 sequencing。</p>
-<p>根據上面的定義，在<code>a &lt;*&gt; b</code>當中：</p>
+        <p>Baayen, R. H.</p>
+<h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><ul>
+<li>Factor: A non-numeric predicatorc (p. 9)</li>
+<li>Levels: Values of s factor (p. 9) </li>
+<li>Contingency table (crosstab): (p. 13)</li>
+</ul>
+<h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="2-1-何謂隨機變數-Random-variables"><a href="#2-1-何謂隨機變數-Random-variables" class="headerlink" title="2.1 何謂隨機變數 (Random variables)?"></a>2.1 何謂隨機變數 (Random variables)?</h2><p>一個實驗的結果即是一個隨機變數。</p>
 <ul>
-<li><p>先執行 IO Action a </p>
-<p>pure is all about putting a value in a minimal context that still holds it as its result</p>
+<li>例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。</li>
+<li>例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。</li>
+<li>例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。</li>
+</ul>
+<p>「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。</p>
+<h2 id="2-2-視覺化單一隨機變數"><a href="#2-2-視覺化單一隨機變數" class="headerlink" title="2.2 視覺化單一隨機變數"></a>2.2 視覺化單一隨機變數</h2><h3 id="Bar-chart-和-histogram-的差別"><a href="#Bar-chart-和-histogram-的差別" class="headerlink" title="Bar chart 和 histogram 的差別"></a>Bar chart 和 histogram 的差別</h3><p>Bar chart 用於離散變數或 factor 上。<br>Histogram 用於連續變數上，且 histogram 中的資料面積總和為<br> 1。</p>
+<h3 id="為何常常需要將尺度以log轉換-p-31下方"><a href="#為何常常需要將尺度以log轉換-p-31下方" class="headerlink" title="為何常常需要將尺度以log轉換? (p. 31下方)"></a>為何常常需要將尺度以log轉換? (p. 31下方)</h3><p>降低隨機變數分布的偏移。</p>
+<h2 id="2-3-視覺化兩個以上的變數"><a href="#2-3-視覺化兩個以上的變數" class="headerlink" title="2.3 視覺化兩個以上的變數"></a>2.3 視覺化兩個以上的變數</h2><ul>
+<li>mosaic plot:<ul>
+<li>先將資料轉成contingency table (<code>xtabs()</code>)</li>
+<li>再丟進 <code>mosalplot()</code></li>
+</ul>
+</li>
+<li>scatter plot: 用於表示兩個連續隨機變數之間的關係。<ul>
+<li>heteroskadastic</li>
+<li>corrrelation </li>
+<li>scatter smoother</li>
+</ul>
+</li>
+<li>pairs plot (scatterplot matrix)<ul>
+<li>適合兩個以上的隨機變數，兩兩之間互相比較，呈現關係<ul>
+<li>multicollinearlity (p. 37)  </li>
+</ul>
 </li>
 </ul>
-<p>   If <code>&lt;*&gt;</code> were specialized for IO it would have a type of <code>(&lt;*&gt;) :: IO (a -&gt; b) -&gt; IO a -&gt; IO b</code>. It would take an I/O action that yields a function as its result and another I/O action and create a new I/O action from those two that, when performed, first performs the first one to get the function and then performs the second one to get the value and then it would yield that function applied to the value as its result. We used do syntax to implement it here. Remember, do syntax is about taking several I/O actions and gluing them into one, which is exactly what we do here.</p>
-<p>With Maybe and [], we could think of &lt;*&gt; as simply extracting a function from its left parameter and then sort of applying it over the right one. With IO, extracting is still in the game, but now we also have a notion of sequencing, because we’re taking two I/O actions and we’re sequencing, or gluing, them into one. We have to extract the function from the first I/O action, but to extract a result from an I/O action, it has to be performed.</p>
-
+</li>
+</ul>
+<h2 id="2-4-Trellis-graphics-格狀圖"><a href="#2-4-Trellis-graphics-格狀圖" class="headerlink" title="2.4 Trellis graphics (格狀圖)"></a>2.4 Trellis graphics (格狀圖)</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><p>Many statistical tests exploit the properties of the probability distributions of random variables. (許多統計檢定在做的事就在發揮隨機變數的機率分佈性質。)</p>
+<h2 id="3-1-Distributions"><a href="#3-1-Distributions" class="headerlink" title="3.1 Distributions"></a>3.1 Distributions</h2><p>一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:</p>
+<ul>
+<li>離散</li>
+<li>連續</li>
+</ul>
+<h2 id="3-2-離散分佈"><a href="#3-2-離散分佈" class="headerlink" title="3.2 離散分佈"></a>3.2 離散分佈</h2><p>問題：在CELEX lexical database (Bayen et al., 1995)中列出了一個 1860萬詞的語料庫中，各個英文詞彙出現的頻率。發現 the 這個功能詞出現的頻率為 1093547 次，換成機率也就是 0.05885575 （這個值可以視為 the 出現在英文當中的機率的估計值）。然後現在我們又看到更早的Brown語料庫，在這個含有100萬詞的語料庫中，按照剛剛 0.05885575 的機率值，我們預期應該可以看到 the 出現 58856 次，但實際上卻找到了 69971 次。我們想知道的是，<strong>預期中與實際中的差異究竟算不算太大？</strong></p>
+<p>詞彙定義：</p>
+<ul>
+<li>probability of success (p)</li>
+<li>probability of failure (1-p)</li>
+<li>number of trials (n)</li>
+<li>binomially dstributed random variable with parameters p and n</li>
+<li>還要區分兩種對象:<ul>
+<li>母體(population)的性質</li>
+<li>樣本(sample)的性質</li>
+</ul>
+</li>
+<li>Poisson distrbution</li>
+</ul>
+<h2 id="3-3-連續分佈"><a href="#3-3-連續分佈" class="headerlink" title="3.3 連續分佈"></a>3.3 連續分佈</h2><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><p>The logic underlying the statistical tests: a statistical test produces a <strong>test statistic (檢定統計量)</strong> of which the distribution is known.</p>
+<p>我們想知道的是，這個<strong>檢定統計量</strong>是否是一個極端值，極端到不能只用巧合來解釋（巧合的相反是必然）。</p>
+<p>一般做法是先提出一個像是稻草人般的虛無假設，這個虛無假設的檢定統計量不是極端值。如果我們透過統計檢定發現得到的檢定統計量是個極端值</p>
+<p>本書採用的立場為 Frequentist statistical inference 而非 Bayesian inference。</p>
+<h2 id="p-value"><a href="#p-value" class="headerlink" title="p-value"></a>p-value</h2><p>A measure of suurprise</p>
+<h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>
       
     </div>
 
@@ -409,6 +485,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+            <a href="/tags/統計/" rel="tag"># 統計</a>
+          
+            <a href="/tags/計算語言學/" rel="tag"># 計算語言學</a>
+          
+        </div>
+      
 
       
       
@@ -418,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/17/CH2 三個重要方法/" rel="next" title="Quantitative Corpus Linguistics with R">
-                <i class="fa fa-chevron-left"></i> Quantitative Corpus Linguistics with R
+              <a href="/2018/08/22/functor-and-applicative-functor/" rel="next" title="functor-and-applicative-functor">
+                <i class="fa fa-chevron-left"></i> functor-and-applicative-functor
               </a>
             
           </div>
@@ -428,8 +514,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/26/analyzing-linguistic-data/" rel="prev" title="[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R">
-                [讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/01/statistics-for-linguistics-with-R/" rel="prev" title="[讀書筆記] Statistics for linguistists with R">
+                [讀書筆記] Statistics for linguistists with R <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -665,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lifting"><span class="nav-number">1.</span> <span class="nav-text">lifting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比較"><span class="nav-number">2.</span> <span class="nav-text">比較</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-list-comprehesion"><span class="nav-number">2.1.</span> <span class="nav-text">使用 list comprehesion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Functor-和-Applicative"><span class="nav-number">2.2.</span> <span class="nav-text">使用 Functor 和 Applicative</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO-Action也是Applicative"><span class="nav-number">3.</span> <span class="nav-text">IO Action也是Applicative</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CH1-An-introduction-to-R"><span class="nav-number">1.</span> <span class="nav-text">CH1: An introduction to R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH2-Graphical-data-exploration"><span class="nav-number">2.</span> <span class="nav-text">CH2: Graphical data exploration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-何謂隨機變數-Random-variables"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 何謂隨機變數 (Random variables)?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-視覺化單一隨機變數"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 視覺化單一隨機變數</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bar-chart-和-histogram-的差別"><span class="nav-number">2.2.1.</span> <span class="nav-text">Bar chart 和 histogram 的差別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#為何常常需要將尺度以log轉換-p-31下方"><span class="nav-number">2.2.2.</span> <span class="nav-text">為何常常需要將尺度以log轉換? (p. 31下方)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-視覺化兩個以上的變數"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 視覺化兩個以上的變數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Trellis-graphics-格狀圖"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Trellis graphics (格狀圖)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH3-Probability-distributions"><span class="nav-number">3.</span> <span class="nav-text">CH3: Probability distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Distributions"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Distributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-離散分佈"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 離散分佈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-連續分佈"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 連續分佈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH4-Basic-statistical-methods"><span class="nav-number">4.</span> <span class="nav-text">CH4: Basic statistical methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p-value"><span class="nav-number">4.1.</span> <span class="nav-text">p-value</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH5-Clustering-and-classification"><span class="nav-number">5.</span> <span class="nav-text">CH5: Clustering and classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH6-Regression-modeling"><span class="nav-number">6.</span> <span class="nav-text">CH6: Regression modeling</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH7-Mixed-models"><span class="nav-number">7.</span> <span class="nav-text">CH7: Mixed models</span></a></li></ol></div>
             
 
           </div>
