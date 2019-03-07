@@ -356,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-07 14:57:44" itemprop="dateModified" datetime="2019-03-07T14:57:44+08:00">2019-03-07</time>
+                <time title="Modified: 2019-03-07 15:00:41" itemprop="dateModified" datetime="2019-03-07T15:00:41+08:00">2019-03-07</time>
               
             
           </span>
@@ -390,104 +390,14 @@
 
       
         
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>近年來，同婚議題在台灣社會逐漸受到重視，並在2017年大法官宣布目前保障一男一女的民法婚姻制度違憲之後，更帶來保守派反動力量的復甦。同婚的支持方與反對方之間的對立在2018年大選時達到高峰，首先由反對方（以下一代幸福聯盟為代表）提出了三案公投案，而後支持方（以伴侶盟為代表）也提出了兩案公投案。也因此使得同婚議題浮上政治檯面，無論支持兩好三壞或是三好兩壞，可以說同婚議題首次以如此「高調」的方式登上台灣社會的舞台。</p>
-<p>&lt; !–more–&gt;</p>
-<p>媒體上我們看見各種關於同婚議題的論述，舉凡倫理、家庭、兒童、教育、宗教、法律、性、愛、價值…等，這顯示了同婚議題從來不只是兩個相愛的人是否能夠在制度中結婚而已。兩造立場的論述動用了大量上述列舉的角度來傳播自己的主張，大幅增加了同婚議題的複雜度。</p>
-<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><p>我所好奇的是，究竟兩造立場動用了哪些角度和哪些觀點來宣傳自己的理念？在我們都很清楚兩造立場的對立背後，能不能透過更具體的證據（例如他們所使用的語言）來看出他們論述方式的不同？而我們又能從這些論述方式又觀察到哪些模式？這是我對同婚議題的最關心的地方，同時也能夠從語言學所提供的工具來做觀察和分析。</p>
-<h1 id="取材的考量"><a href="#取材的考量" class="headerlink" title="取材的考量"></a>取材的考量</h1><p>當然，所謂兩造立場可能是個虛構的概念。我們在各大網路論壇上能看到許多使用者的觀點，可能座落在支持/反對光譜上的某個座標，可能因為某些原因支持而同時因為另一些原因反對。因此我在語料選擇上，決定以官方提供的語料作為分析對象。我預設兩邊的公投發起方：下福盟與伴侶盟，分別處於光譜上的極端兩點，因此我將以這兩個組織的官方網站上的文字為主要分析對象。</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>透過 python 對兩個組織的官方網站（<a href="https://taiwanfamily.com/" target="_blank" rel="noopener">下福盟</a>和<a href="http://lgbtfamiliesinfo.tw/" target="_blank" rel="noopener">伴侶盟</a>）進行爬蟲。將爬下來的文字做前處理，包括斷句、去除非中文字元、以 jieba 套件加上我自定義的詞典進行分詞。如此以來我已能取得能用以觀察分析豐富語料。</p>
-<p>另外，這兩個網站都是類似wordpress部落格的形式，因此可以說兩個網站中的文章大致擁有相同的register：都屬於在網路上的「書寫語言」（相對於口語而言），並且每篇文章自成一格，是書寫者單方面向閱聽人傳遞訊息。</p>
-<p>有了語料，要如何開始做分析呢？我將以 Paul Baker 於 2006 年出版的 <a href="https://www.lancaster.ac.uk/staff/bakerjp/usingcorpora.htm" target="_blank" rel="noopener">Using Corpora in Discourse Analysis</a> 為藍圖，其中提供了許多利用語料庫做言談分析的方法和案例，包括頻率分析、Concordance、Collocation、Keyness…等。之後沒有意外的話，也會按照這些方法，從爬下的語料中搾出有意義的觀察。</p>
-<h1 id="兩份語料的數據"><a href="#兩份語料的數據" class="headerlink" title="兩份語料的數據"></a>兩份語料的數據</h1><p>以下資料為2019年3月6日進行爬蟲時所得的數據：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th style="text-align:left">下福盟</th>
-<th style="text-align:left">伴侶盟</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">文章數</td>
-<td style="text-align:left">319 篇</td>
-<td style="text-align:left">200 篇</td>
-</tr>
-<tr>
-<td style="text-align:left">中文字元數</td>
-<td style="text-align:left">484705 字</td>
-<td style="text-align:left">129932 字</td>
-</tr>
-<tr>
-<td style="text-align:left">平均每篇字數</td>
-<td style="text-align:left">1591 字</td>
-<td style="text-align:left">650 字</td>
-</tr>
-<tr>
-<td style="text-align:left">總詞數(含重複)</td>
-<td style="text-align:left">235488 個</td>
-<td style="text-align:left">63504 個</td>
-</tr>
-<tr>
-<td style="text-align:left">平均每詞字數</td>
-<td style="text-align:left">2.1 字</td>
-<td style="text-align:left">2.0 字</td>
-</tr>
-<tr>
-<td style="text-align:left">總詞數(不含重複)</td>
-<td style="text-align:left">33680 個</td>
-<td style="text-align:left">15851 個</td>
-</tr>
-<tr>
-<td style="text-align:left">type token ratio</td>
-<td style="text-align:left">0.14</td>
-<td style="text-align:left">0.25</td>
-</tr>
-</tbody>
-</table>
-<p>首先比較文章數，可以看到下福盟的文章數幾乎是伴侶盟的1.6倍，多出了119篇文章。在包含所有重複的總詞數方面，下福盟的總詞數為伴侶盟的3.7倍。</p>
-<p>但有趣的是，當統計不重複的總詞數(word type)時，下福盟只剩下伴侶盟的2.12倍。再看到type token ratio（也就是拿word type除以word token所得的比率，是檢視語料詞彙豐富度的一個指標之一），發現下福盟的詞語豐富度比伴侶盟的還要來得低，幾乎是伴侶盟詞彙豐富度的一半。</p>
-<p>以上只是就語料本身的客觀數據進行分析，至於為什麼下福盟的詞語豐富度變得比伴侶盟來得低，要回答這個問題可能就必須進入到語料本身做更細緻的觀察和分析。</p>
-<h1 id="前100個高頻詞"><a href="#前100個高頻詞" class="headerlink" title="前100個高頻詞"></a>前100個高頻詞</h1><p>我找出了兩份語料中的前100個高頻詞，想看在兩份語料的高頻詞中，有哪些共同出現的詞，而又有哪些詞只頻繁地出現在其中一份語料。</p>
-<h2 id="同時出現在兩份語料的高頻詞"><a href="#同時出現在兩份語料的高頻詞" class="headerlink" title="同時出現在兩份語料的高頻詞"></a>同時出現在兩份語料的高頻詞</h2><p>若按照詞的主題區分，可以區分如下：</p>
-<ul>
-<li>關於法律：民法、憲法、大法官、立法、法案、伴侶、婚姻、公投</li>
-<li>關於認同：認同、同性戀、性別</li>
-<li>關於社會：教育、社會、政治</li>
-<li>關於兒童：兒童、孩子</li>
-</ul>
-<p>這些詞除了反映討論的議題（婚姻、憲法、法案…等）本身之外，更反映了兩造立場在討論此議題時接聚焦討論的共通話題，尤其是關於兒童的詞彙，頻繁出現在兩邊的論述中，顯示兒童是台灣同婚議題的話題熱點之一（有些是關於收養問題，有些則是下福盟做出「同婚/同運將對兒童造成不良影響」的指控）。與此相關的還有「教育」一詞，同婚議題不只關注兩個人之間的婚姻制度的連結，更折射出「我們應該如何教育下一代」的討論。至於為什麼同婚議題會牽涉「教育下一代」問題，或者換個問法，從論述生產者的角度來看，為什麼教育下一代的問題會「被選擇」作為討論的焦點，或許可以是下一步的討論方向。</p>
-<h2 id="只出現於下福盟的高頻詞"><a href="#只出現於下福盟的高頻詞" class="headerlink" title="只出現於下福盟的高頻詞"></a>只出現於下福盟的高頻詞</h2><pre><code>&apos;歡迎&apos;, &apos;發展&apos;, &apos;須知&apos;, &apos;附&apos;, &apos;職業&apos;, &apos;行為&apos;, &apos;理由&apos;, &apos;發生&apos;, &apos;想&apos;, &apos;朋友&apos;,
-&apos;法&apos;, &apos;合法化&apos;, &apos;健康&apos;, &apos;人民&apos;, &apos;事實&apos;, &apos;原則&apos;, &apos;結合&apos;, &apos;投稿&apos;, &apos;本站&apos;, &apos;一種&apos;
-&apos;筆名&apos;, &apos;編輯&apos;, &apos;最新消息&apos;, &apos;信箱&apos;, &apos;文化&apos;, &apos;性行為&apos;, &apos;成家&apos;, &apos;民主&apos;, &apos;完全&apos;, &apos;讀者&apos;
-&apos;同運&apos;, &apos;讚&apos;, &apos;最大&apos;, &apos;媒體&apos;, &apos;背景&apos;, &apos;性解放&apos;, &apos;增刪&apos;, &apos;多元&apos;, &apos;本名&apos;, &apos;不願&apos;
-&apos;幫&apos;, &apos;這種&apos;, &apos;兒童&apos;, &apos;主流&apos;, &apos;收養&apos;, &apos;成為&apos;, &apos;不要&apos;, &apos;保留&apos;, &apos;醫療&apos;
-&apos;刊登&apos;, &apos;信時&apos;, &apos;調查&apos;, &apos;加入&apos;, &apos;收到&apos;, &apos;宗教&apos;, &apos;教授&apos;, &apos;非常&apos;, &apos;定義&apos;, &apos;事&apos;
-&apos;意識&apos;, &apos;粉絲團&apos;, &apos;資料&apos;, &apos;婚姻制度&apos;, &apos;目的&apos;, &apos;意見&apos;, &apos;色情&apos;, &apos;很多&apos;, &apos;道德&apos;, &apos;爭議&apos;
-</code></pre><p>將其中一些詞語分類如下：</p>
-<ul>
-<li>關於性：性行為、性解放、色情</li>
-<li>關於醫療：醫療</li>
-<li>關於運動指涉：同運</li>
-<li>負面語意的詞：這種、爭議</li>
-</ul>
-<p>我們可以看到關於性的議題大量使用於下福盟的論述。這裡我們還是能問同一個問題：為什麼性行為、性解放、色情這些題目會在同性婚姻議題的脈絡下出現？下福盟這樣的選擇反映出了什麼策略？另外是關於醫療，婚姻制度在什麼意義下與醫療相關，這是一個值得深究的問題。</p>
-<p>「同運」一詞（同志運動的縮略詞）的出現，讓我們得以指認使用這個詞的使用者並非同運人士本身，這個詞在下福盟的脈絡下，常常是作為受批判的對象， 諸如「同運團體在學校洗腦學生騙學生同志狼師多ｐ雜交」和「同運不敢面對的真相」…等標題。這反映了台灣脈絡下同志運動的一個有趣的語言使用：「同運」一詞常出現於反對同運者的論述中，而在同志運動者的論述中，往往是用未縮略的形式，也就是「同志運動」來指涉自身參與的運動。</p>
-<p>許多詞在中文看似中性，僅僅表達語義和概念，但其實在現今的使用中已大多含有負面的意義，有學者稱之為discourse prosody或semantic prosody，而出現在下福盟的高頻字「這種」就是其中一例。例如當我說：「像他這種人…」，你大概就會預測接下來我大概不會做太正面的評斷。此詞的出現或許暗示了下福盟對同婚議題的態度。</p>
-<h2 id="只出現於伴侶盟的高頻詞"><a href="#只出現於伴侶盟的高頻詞" class="headerlink" title="只出現於伴侶盟的高頻詞"></a>只出現於伴侶盟的高頻詞</h2><pre><code>&apos;同婚&apos;, &apos;希望&apos;, &apos;族群&apos;, &apos;一起&apos;, &apos;形式&apos;, &apos;進行&apos;, &apos;黨&apos;, &apos;修法&apos;, &apos;許秀雯&apos;, &apos;直接&apos;
-&apos;醫師&apos;, &apos;現行&apos;, &apos;申請&apos;, &apos;陳&apos;, &apos;跨&apos;, &apos;黃&apos;, &apos;原文&apos;, &apos;公開&apos;, &apos;處理&apos;, &apos;立委&apos;
-&apos;多元性&apos;, &apos;工作&apos;, &apos;香港&apos;, &apos;廁所&apos;, &apos;性平&apos;, &apos;法院&apos;, &apos;跨性&apos;, &apos;跨性別者&apos;, &apos;參選人&apos;, &apos;適用&apos;
-&apos;心理&apos;, &apos;新聞&apos;, &apos;反同&apos;, &apos;行政&apos;, &apos;完成&apos;, &apos;平權&apos;, &apos;愛家&apos;, &apos;釋憲&apos;, &apos;違憲&apos;, &apos;未來&apos;
-&apos;立法院&apos;, &apos;第一&apos;, &apos;報導&apos;, &apos;提案&apos;, &apos;友善&apos;, &apos;了解&apos;, &apos;草案&apos;, &apos;世界&apos;, &apos;禁止&apos;, &apos;造成&apos;
-&apos;連署&apos;, &apos;連結&apos;, &apos;修改&apos;, &apos;聽&apos;, &apos;話&apos;, &apos;登記&apos;, &apos;未&apos;, &apos;出櫃&apos;, &apos;註&apos;, &apos;記者&apos;
-&apos;目前&apos;, &apos;二人&apos;, &apos;站&apos;, &apos;雙性&apos;, &apos;專法&apos;, &apos;委員會&apos;, &apos;台北市&apos;, &apos;記&apos;, &apos;男性&apos;
-</code></pre><p>至於只出現於伴侶盟的高頻詞，一眼掃過去似乎不太有「具煽動性」的字詞。正如上面對下福盟的討論，從「反同」與「愛家」二詞能判斷出這應該不是伴侶盟所用以指涉的「反同方」會用來自我指涉的詞語。</p>
-<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p>這是這一系列的第一篇，將較多篇幅著墨在前言、目標和語料介紹，同時做了初步的高頻詞分析，尤其是觀察只出現在其中一方的高頻詞，就能看到一些有趣的現象。</p>
-<p>當然只憑頻率的多寡並不能做過多的推論，因為仍需要檢視該詞是如何被使用的。以「性解放」一詞為例，單憑下福盟語料中該詞的高頻出現，並不能馬上確定說下福盟對「性解放」的態度究竟是什麼，必須要進到語料中去看這個詞出現在哪些句子中，而那些句子又是怎麼描述這個詞。另一方面像是「這種」這種在現今中文使用的脈絡下本身就具有負面情緒的詞，似乎能夠直接推論出該語料在情緒表態和情緒煽動上的效果。</p>
-<p>同婚議題彷彿是個有待詞語照亮的燈籠，一個一個的詞語在燈籠裡的不同位置點亮火光，於是兩造立場的論述形成了樣式截然不同的燈籠。當我們選擇（或無意識地使用）一個詞語的時候，同時也是壓抑著其他詞語選項的出現。這或許就是透過高頻詞分析可以看見的，看見一個原本黯淡無光的燈籠如何妝點亮相，並呈現在世人眼前，或者為了吸睛，或者為了魅惑。</p>
-
-          
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>近年來，同婚議題在台灣社會逐漸受到重視，並在2017年大法官宣布目前保障一男一女的民法婚姻制度違憲之後，更帶來保守派反動力量的復甦。同婚的支持方與反對方之間的對立在2018年大選時達到高峰，首先由反對方（以下一代幸福聯盟為代表）提出了三案公投案，而後支持方（以伴侶盟為代表）也提出了兩案公投案。也因此使得同婚議題浮上政治檯面，無論支持兩好三壞或是三好兩壞，可以說同婚議題首次以如此「高調」的方式登上台灣社會的舞台。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/06/taiwan-same-sex-marriage-1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -602,7 +512,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-07 14:57:56" itemprop="dateModified" datetime="2019-03-07T14:57:56+08:00">2019-03-07</time>
+                <time title="Modified: 2019-03-07 15:01:10" itemprop="dateModified" datetime="2019-03-07T15:01:10+08:00">2019-03-07</time>
               
             
           </span>
@@ -654,91 +564,14 @@
 
       
         
-          
-            <p>Stefan Th. Gries, 2013, Statistics for Linguistics with R: A Practical Introduction</p>
-<p>&lt; !–more–&gt;</p>
-<h1 id="本書結構"><a href="#本書結構" class="headerlink" title="本書結構"></a>本書結構</h1><p>Ch 1: 經驗研究的基礎<br>Ch 2: R<br>Ch 3: 描述統計<br>Ch 4: 分析統計<br>Ch 5: Selected multifactorial and multivariate methods</p>
-<h1 id="CH1-經驗性研究基礎"><a href="#CH1-經驗性研究基礎" class="headerlink" title="CH1: 經驗性研究基礎"></a>CH1: 經驗性研究基礎</h1><h2 id="科學量性研究的三大目標"><a href="#科學量性研究的三大目標" class="headerlink" title="科學量性研究的三大目標"></a>科學量性研究的三大目標</h2><ol>
-<li><strong>描述</strong>針對某現象的資料 -&gt; Ch 2</li>
-<li>提出假說，<strong>解釋</strong>資料何以如此</li>
-<li>預測 (非必要)</li>
-</ol>
-<h2 id="量性研究的設計與邏輯"><a href="#量性研究的設計與邏輯" class="headerlink" title="量性研究的設計與邏輯"></a>量性研究的設計與邏輯</h2><ul>
-<li>量性研究報告的一般形式<ul>
-<li>Introduction</li>
-<li>methods</li>
-<li>results</li>
-<li>discussion</li>
-</ul>
-</li>
-</ul>
-<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="3-1-初步探索"><a href="#3-1-初步探索" class="headerlink" title="3.1 初步探索"></a>3.1 初步探索</h4><ul>
-<li>針對感興趣的現象的進行描述與文獻回顧 (通常寫在introduction)</li>
-<li>(numeric/categorial) variables: 影響著結果的變因，例如現在感興趣的主題為使用「把」字句的動詞，那麼可能的variables可以是句子長度、動詞及物性、主語的Animacy、說話場景等等。一個variable包含兩個以上的levels (或稱作states)。</li>
-<li>列出不同文獻對不同 variables 的探討</li>
-</ul>
-<h4 id="3-2-提出假說-amp-可操作化-operationalization-流程階段-p-10-20"><a href="#3-2-提出假說-amp-可操作化-operationalization-流程階段-p-10-20" class="headerlink" title="3.2 提出假說&amp;可操作化(operationalization)流程階段 (p. 10-20)"></a>3.2 提出假說&amp;可操作化(operationalization)流程階段 (p. 10-20)</h4><h5 id="步驟一：以文字形式提出假說"><a href="#步驟一：以文字形式提出假說" class="headerlink" title="步驟一：以文字形式提出假說"></a>步驟一：以文字形式提出假說</h5><p>何謂假說？</p>
-<ul>
-<li>不能只針對單一特定事件</li>
-<li>必須要有條件句(If…then…)的結構</li>
-<li>可否證性</li>
-</ul>
-<p>兩種假說</p>
-<ul>
-<li>第一種假說的形式：<ul>
-<li>為 IV 和 DV 之間的關係</li>
-<li>具有「若 IV 則 DV」的形式<ul>
-<li>通常IV是導致DV變化的原因</li>
-</ul>
-</li>
-<li>區分 confounding v. moderator variables:<ul>
-<li>confounding v: correlated with </li>
-<li>moderator v: often extrandeous to the initial design of a sudy; influence the relationship between IV/DV </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第二種假說的形式：沒有IV，僅只有針對依變數(DV)的值、變異與分布狀況提出假說</li>
-</ul>
-<h5 id="步驟二：-在開始收集資料前-列出可否證該假說的條件-gt-虛無假說"><a href="#步驟二：-在開始收集資料前-列出可否證該假說的條件-gt-虛無假說" class="headerlink" title="步驟二：(在開始收集資料前!)列出可否證該假說的條件 -&gt; 虛無假說"></a>步驟二：(在開始收集資料前!)列出可否證該假說的條件 -&gt; 虛無假說</h5><ul>
-<li>除了自己提出的假說 H1 (alternative hypothesis)</li>
-<li>還要提出一個與H1互補(通常是在H1加上否定)的虛無假說 H0 (null hypothesis)</li>
-<li>H0和H1必須涵蓋所有的樣本空間，也就是所有結果</li>
-<li>在大多數的情況下<ul>
-<li>第一種假說的H0會是：「IV和DV之間沒有關係，就算有也只是因為偶然」</li>
-<li>第二種假說的H0會是：「DV只是隨機分佈，或是常態分佈」</li>
-</ul>
-</li>
-<li>區分兩種H1: directional vs. non-directional:<ul>
-<li>directional H1: 不只是宣稱 DV 和 IV 之間有某種相關性，更宣稱這樣的相關性有「方向性」，也就是「如果IV如何如何，DV就會<strong>比較常出現</strong>」，或者是「如果IV如何如何，DV就會<strong>比較少出現</strong>」</li>
-<li>non-directional H1: 這樣的假說只是宣稱存在著某種差別或相關性，但沒有指定這種差別或相關性的方向 <ul>
-<li>切記，H1, H0 假說的提出一定要在著手收集資料之前先做好</li>
-<li>這部分通常寫在introduction，或者是method的一開頭<br>-<h5 id="步驟三：operationalizing-the-variables"><a href="#步驟三：operationalizing-the-variables" class="headerlink" title="步驟三：operationalizing the variables"></a>步驟三：operationalizing the variables</h5></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>變數究竟應該怎麼去搜集？去計算？要去觀察哪些東西？</p>
-<p>根據 level of measurement 可分成：</p>
-<ul>
-<li><p>nominal (binary) variable: 只有是或否</p>
-</li>
-<li><p>categorial: 離散狀態的variable，狀態間無法進行排序，例如：性別變數</p>
-</li>
-<li><p>ordinal: 連續狀態的variable，狀態間可進行排序，但之間做乘積沒有意義</p>
-</li>
-<li><p>ratio: 連續狀態的variable，且之間做乘積有意義</p>
-</li>
-</ul>
-<h5 id="步驟四：Scientific-hypotheses-in-statistical-mathematical-form"><a href="#步驟四：Scientific-hypotheses-in-statistical-mathematical-form" class="headerlink" title="步驟四：Scientific hypotheses in statistical/mathematical form"></a>步驟四：Scientific hypotheses in statistical/mathematical form</h5><h4 id="3-3-收集資料與儲存階段"><a href="#3-3-收集資料與儲存階段" class="headerlink" title="3.3 收集資料與儲存階段"></a>3.3 收集資料與儲存階段</h4><p>這個步驟要考量的是抽樣樣本是否具有代表性(因為我們不可能得到整個母體)。</p>
-<ul>
-<li>representive: 母體的不同部分都在樣本中</li>
-<li>balanced: 母體的不同部分的大小反映在樣本中</li>
-<li>例如想要觀察台北青少年在口語中使用「不然勒」的情況，我們必須要去取得青少年跟同儕、老師、家長、陌生人對話地語料才能符合代表性的要求，而我們採收的語料中跟不同對象對話的數量，也必須符合青少年在日常生活中與這些對象實際對話的比例，才能符合平衡原則。</li>
-</ul>
-<h4 id="The-decision"><a href="#The-decision" class="headerlink" title="The decision"></a>The decision</h4>
-          
+          <p>作者: Stefan Th. Gries<br>出版年: 2013<br>書名: Statistics for Linguistics with R: A Practical Introduction</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/01/statistics-for-linguistics-with-R/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -853,7 +686,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-07 14:48:29" itemprop="dateModified" datetime="2019-03-07T14:48:29+08:00">2019-03-07</time>
+                <time title="Modified: 2019-03-07 15:01:48" itemprop="dateModified" datetime="2019-03-07T15:01:48+08:00">2019-03-07</time>
               
             
           </span>
@@ -905,69 +738,14 @@
 
       
         
-          
-            <p>Baayen, R. H.</p>
-<h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><ul>
-<li>Factor: A non-numeric predicatorc (p. 9)</li>
-<li>Levels: Values of s factor (p. 9) </li>
-<li>Contingency table (crosstab): (p. 13)</li>
-</ul>
-<h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="2-1-何謂隨機變數-Random-variables"><a href="#2-1-何謂隨機變數-Random-variables" class="headerlink" title="2.1 何謂隨機變數 (Random variables)?"></a>2.1 何謂隨機變數 (Random variables)?</h2><p>一個實驗的結果即是一個隨機變數。</p>
-<ul>
-<li>例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。</li>
-<li>例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。</li>
-<li>例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。</li>
-</ul>
-<p>「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。</p>
-<h2 id="2-2-視覺化單一隨機變數"><a href="#2-2-視覺化單一隨機變數" class="headerlink" title="2.2 視覺化單一隨機變數"></a>2.2 視覺化單一隨機變數</h2><h3 id="Bar-chart-和-histogram-的差別"><a href="#Bar-chart-和-histogram-的差別" class="headerlink" title="Bar chart 和 histogram 的差別"></a>Bar chart 和 histogram 的差別</h3><p>Bar chart 用於離散變數或 factor 上。<br>Histogram 用於連續變數上，且 histogram 中的資料面積總和為<br> 1。</p>
-<h3 id="為何常常需要將尺度以log轉換-p-31下方"><a href="#為何常常需要將尺度以log轉換-p-31下方" class="headerlink" title="為何常常需要將尺度以log轉換? (p. 31下方)"></a>為何常常需要將尺度以log轉換? (p. 31下方)</h3><p>降低隨機變數分布的偏移。</p>
-<h2 id="2-3-視覺化兩個以上的變數"><a href="#2-3-視覺化兩個以上的變數" class="headerlink" title="2.3 視覺化兩個以上的變數"></a>2.3 視覺化兩個以上的變數</h2><ul>
-<li>mosaic plot:<ul>
-<li>先將資料轉成contingency table (<code>xtabs()</code>)</li>
-<li>再丟進 <code>mosalplot()</code></li>
-</ul>
-</li>
-<li>scatter plot: 用於表示兩個連續隨機變數之間的關係。<ul>
-<li>heteroskadastic</li>
-<li>corrrelation </li>
-<li>scatter smoother</li>
-</ul>
-</li>
-<li>pairs plot (scatterplot matrix)<ul>
-<li>適合兩個以上的隨機變數，兩兩之間互相比較，呈現關係<ul>
-<li>multicollinearlity (p. 37)  </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-4-Trellis-graphics-格狀圖"><a href="#2-4-Trellis-graphics-格狀圖" class="headerlink" title="2.4 Trellis graphics (格狀圖)"></a>2.4 Trellis graphics (格狀圖)</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><p>Many statistical tests exploit the properties of the probability distributions of random variables. (許多統計檢定在做的事就在發揮隨機變數的機率分佈性質。)</p>
-<h2 id="3-1-Distributions"><a href="#3-1-Distributions" class="headerlink" title="3.1 Distributions"></a>3.1 Distributions</h2><p>一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:</p>
-<ul>
-<li>離散</li>
-<li>連續</li>
-</ul>
-<h2 id="3-2-離散分佈"><a href="#3-2-離散分佈" class="headerlink" title="3.2 離散分佈"></a>3.2 離散分佈</h2><p>問題：在CELEX lexical database (Bayen et al., 1995)中列出了一個 1860萬詞的語料庫中，各個英文詞彙出現的頻率。發現 the 這個功能詞出現的頻率為 1093547 次，換成機率也就是 0.05885575 （這個值可以視為 the 出現在英文當中的機率的估計值）。然後現在我們又看到更早的Brown語料庫，在這個含有100萬詞的語料庫中，按照剛剛 0.05885575 的機率值，我們預期應該可以看到 the 出現 58856 次，但實際上卻找到了 69971 次。我們想知道的是，<strong>預期中與實際中的差異究竟算不算太大？</strong></p>
-<p>詞彙定義：</p>
-<ul>
-<li>probability of success (p)</li>
-<li>probability of failure (1-p)</li>
-<li>number of trials (n)</li>
-<li>binomially dstributed random variable with parameters p and n</li>
-<li>還要區分兩種對象:<ul>
-<li>母體(population)的性質</li>
-<li>樣本(sample)的性質</li>
-</ul>
-</li>
-<li>Poisson distrbution</li>
-</ul>
-<h2 id="3-3-連續分佈"><a href="#3-3-連續分佈" class="headerlink" title="3.3 連續分佈"></a>3.3 連續分佈</h2><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><p>The logic underlying the statistical tests: a statistical test produces a <strong>test statistic (檢定統計量)</strong> of which the distribution is known.</p>
-<p>我們想知道的是，這個<strong>檢定統計量</strong>是否是一個極端值，極端到不能只用巧合來解釋（巧合的相反是必然）。</p>
-<p>一般做法是先提出一個像是稻草人般的虛無假設，這個虛無假設的檢定統計量不是極端值。如果我們透過統計檢定發現得到的檢定統計量是個極端值</p>
-<p>本書採用的立場為 Frequentist statistical inference 而非 Bayesian inference。</p>
-<h2 id="p-value"><a href="#p-value" class="headerlink" title="p-value"></a>p-value</h2><p>A measure of suurprise</p>
-<h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>
-          
+          <p>作者: Baayen<br>出版年: 2013<br>書名: Analyzing linguistic data - a practical introduction to satistics using R</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/26/analyzing-linguistic-data/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
