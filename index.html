@@ -538,6 +538,256 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2019/03/01/statistics-for-linguistics-with-R/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/statistics-for-linguistics-with-R/" itemprop="url">
+                  讀書筆記 Statistics for linguistists with R
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-01 22:14:31" itemprop="dateCreated datePublished" datetime="2019-03-01T22:14:31+08:00">2019-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-07 14:45:57" itemprop="dateModified" datetime="2019-03-07T14:45:57+08:00">2019-03-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/統計/" itemprop="url" rel="index"><span itemprop="name">統計</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Stefan Th. Gries, 2013, Statistics for Linguistics with R: A Practical Introduction</p>
+<h1 id="本書結構"><a href="#本書結構" class="headerlink" title="本書結構"></a>本書結構</h1><p>Ch 1: 經驗研究的基礎<br>Ch 2: R<br>Ch 3: 描述統計<br>Ch 4: 分析統計<br>Ch 5: Selected multifactorial and multivariate methods</p>
+<h1 id="CH1-經驗性研究基礎"><a href="#CH1-經驗性研究基礎" class="headerlink" title="CH1: 經驗性研究基礎"></a>CH1: 經驗性研究基礎</h1><h2 id="科學量性研究的三大目標"><a href="#科學量性研究的三大目標" class="headerlink" title="科學量性研究的三大目標"></a>科學量性研究的三大目標</h2><ol>
+<li><strong>描述</strong>針對某現象的資料 -&gt; Ch 2</li>
+<li>提出假說，<strong>解釋</strong>資料何以如此</li>
+<li>預測 (非必要)</li>
+</ol>
+<h2 id="量性研究的設計與邏輯"><a href="#量性研究的設計與邏輯" class="headerlink" title="量性研究的設計與邏輯"></a>量性研究的設計與邏輯</h2><ul>
+<li>量性研究報告的一般形式<ul>
+<li>Introduction</li>
+<li>methods</li>
+<li>results</li>
+<li>discussion</li>
+</ul>
+</li>
+</ul>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="3-1-初步探索"><a href="#3-1-初步探索" class="headerlink" title="3.1 初步探索"></a>3.1 初步探索</h4><ul>
+<li>針對感興趣的現象的進行描述與文獻回顧 (通常寫在introduction)</li>
+<li>(numeric/categorial) variables: 影響著結果的變因，例如現在感興趣的主題為使用「把」字句的動詞，那麼可能的variables可以是句子長度、動詞及物性、主語的Animacy、說話場景等等。一個variable包含兩個以上的levels (或稱作states)。</li>
+<li>列出不同文獻對不同 variables 的探討</li>
+</ul>
+<h4 id="3-2-提出假說-amp-可操作化-operationalization-流程階段-p-10-20"><a href="#3-2-提出假說-amp-可操作化-operationalization-流程階段-p-10-20" class="headerlink" title="3.2 提出假說&amp;可操作化(operationalization)流程階段 (p. 10-20)"></a>3.2 提出假說&amp;可操作化(operationalization)流程階段 (p. 10-20)</h4><h5 id="步驟一：以文字形式提出假說"><a href="#步驟一：以文字形式提出假說" class="headerlink" title="步驟一：以文字形式提出假說"></a>步驟一：以文字形式提出假說</h5><p>何謂假說？</p>
+<ul>
+<li>不能只針對單一特定事件</li>
+<li>必須要有條件句(If…then…)的結構</li>
+<li>可否證性</li>
+</ul>
+<p>兩種假說</p>
+<ul>
+<li>第一種假說的形式：<ul>
+<li>為 IV 和 DV 之間的關係</li>
+<li>具有「若 IV 則 DV」的形式<ul>
+<li>通常IV是導致DV變化的原因</li>
+</ul>
+</li>
+<li>區分 confounding v. moderator variables:<ul>
+<li>confounding v: correlated with </li>
+<li>moderator v: often extrandeous to the initial design of a sudy; influence the relationship between IV/DV </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第二種假說的形式：沒有IV，僅只有針對依變數(DV)的值、變異與分布狀況提出假說</li>
+</ul>
+<h5 id="步驟二：-在開始收集資料前-列出可否證該假說的條件-gt-虛無假說"><a href="#步驟二：-在開始收集資料前-列出可否證該假說的條件-gt-虛無假說" class="headerlink" title="步驟二：(在開始收集資料前!)列出可否證該假說的條件 -&gt; 虛無假說"></a>步驟二：(在開始收集資料前!)列出可否證該假說的條件 -&gt; 虛無假說</h5><ul>
+<li>除了自己提出的假說 H1 (alternative hypothesis)</li>
+<li>還要提出一個與H1互補(通常是在H1加上否定)的虛無假說 H0 (null hypothesis)</li>
+<li>H0和H1必須涵蓋所有的樣本空間，也就是所有結果</li>
+<li>在大多數的情況下<ul>
+<li>第一種假說的H0會是：「IV和DV之間沒有關係，就算有也只是因為偶然」</li>
+<li>第二種假說的H0會是：「DV只是隨機分佈，或是常態分佈」</li>
+</ul>
+</li>
+<li>區分兩種H1: directional vs. non-directional:<ul>
+<li>directional H1: 不只是宣稱 DV 和 IV 之間有某種相關性，更宣稱這樣的相關性有「方向性」，也就是「如果IV如何如何，DV就會<strong>比較常出現</strong>」，或者是「如果IV如何如何，DV就會<strong>比較少出現</strong>」</li>
+<li>non-directional H1: 這樣的假說只是宣稱存在著某種差別或相關性，但沒有指定這種差別或相關性的方向 <ul>
+<li>切記，H1, H0 假說的提出一定要在著手收集資料之前先做好</li>
+<li>這部分通常寫在introduction，或者是method的一開頭<br>-<h5 id="步驟三：operationalizing-the-variables"><a href="#步驟三：operationalizing-the-variables" class="headerlink" title="步驟三：operationalizing the variables"></a>步驟三：operationalizing the variables</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>變數究竟應該怎麼去搜集？去計算？要去觀察哪些東西？</p>
+<p>根據 level of measurement 可分成：</p>
+<ul>
+<li><p>nominal (binary) variable: 只有是或否</p>
+</li>
+<li><p>categorial: 離散狀態的variable，狀態間無法進行排序，例如：性別變數</p>
+</li>
+<li><p>ordinal: 連續狀態的variable，狀態間可進行排序，但之間做乘積沒有意義</p>
+</li>
+<li><p>ratio: 連續狀態的variable，且之間做乘積有意義</p>
+</li>
+</ul>
+<h5 id="步驟四：Scientific-hypotheses-in-statistical-mathematical-form"><a href="#步驟四：Scientific-hypotheses-in-statistical-mathematical-form" class="headerlink" title="步驟四：Scientific hypotheses in statistical/mathematical form"></a>步驟四：Scientific hypotheses in statistical/mathematical form</h5><h4 id="3-3-收集資料與儲存階段"><a href="#3-3-收集資料與儲存階段" class="headerlink" title="3.3 收集資料與儲存階段"></a>3.3 收集資料與儲存階段</h4><p>這個步驟要考量的是抽樣樣本是否具有代表性(因為我們不可能得到整個母體)。</p>
+<ul>
+<li>representive: 母體的不同部分都在樣本中</li>
+<li>balanced: 母體的不同部分的大小反映在樣本中</li>
+<li>例如想要觀察台北青少年在口語中使用「不然勒」的情況，我們必須要去取得青少年跟同儕、老師、家長、陌生人對話地語料才能符合代表性的要求，而我們採收的語料中跟不同對象對話的數量，也必須符合青少年在日常生活中與這些對象實際對話的比例，才能符合平衡原則。</li>
+</ul>
+<h4 id="The-decision"><a href="#The-decision" class="headerlink" title="The decision"></a>The decision</h4>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/22/functor-and-applicative-functor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2040,174 +2290,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/02/MIT-intro-to-algr-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/02/MIT-intro-to-algr-2/" itemprop="url">
-                  MIT-intro-to-algr-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-02 23:03:57 / Modified: 23:49:45" itemprop="dateCreated datePublished" datetime="2018-08-02T23:03:57+08:00">2018-08-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Random-access-Machine"><a href="#Random-access-Machine" class="headerlink" title="Random access Machine"></a>Random access Machine</h1><h1 id="Pointer-Machine"><a href="#Pointer-Machine" class="headerlink" title="Pointer Machine"></a>Pointer Machine</h1><h1 id="Python-machine"><a href="#Python-machine" class="headerlink" title="Python machine"></a>Python machine</h1><p>更現代的Python結合以上兩種模型。</p>
-<h2 id="基本情況"><a href="#基本情況" class="headerlink" title="基本情況"></a>基本情況</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>Python中實作List的方式使用RAM模型，透過<code>a_list[i]</code>取得list中某一索引的元素，所花的時間為常數時間O(1)。</p>
-<blockquote>
-<p>如果以linked list的方式來實作，那麼取出索引i的元素所花的時間即成為線性時間O(n)。</p>
-</blockquote>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>如果一物件有適當數量的元素，那麼取出該物件屬性的執行時間也是常數時間O(1)。</p>
-<h2 id="幾個例子"><a href="#幾個例子" class="headerlink" title="幾個例子"></a>幾個例子</h2><h3 id="list-append"><a href="#list-append" class="headerlink" title="list.append"></a><code>list.append</code></h3><p>使用 table doubling 方法（在之後的第九課將提到），使執行時間達到常數時間O(n)。</p>
-<h3 id="new-list-list1-list2"><a href="#new-list-list1-list2" class="headerlink" title="new_list = list1 + list2"></a><code>new_list = list1 + list2</code></h3><p>上面的程式碼在底層其實是執行下方的程式碼。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new_list = []</span><br><span class="line">for x in list1:</span><br><span class="line">    new_list.append(x)</span><br><span class="line">for y in list2:</span><br><span class="line">    new_list.append(y)</span><br></pre></td></tr></table></figure></p>
-<p>因此可利用<code>append()</code>方法的執行時間來推導將兩個list相連在一起的執行時間: O(|list1| + |list2|)，即正比於兩個list的元素數量總和。</p>
-<h3 id="elm-in-a-list"><a href="#elm-in-a-list" class="headerlink" title="elm in a_list"></a><code>elm in a_list</code></h3><p>線性時間O(n)，從第一個元素依序檢查到最後一個。</p>
-<h3 id="len-a-list"><a href="#len-a-list" class="headerlink" title="len(a_list)"></a><code>len(a_list)</code></h3><p>常數時間O(1)，因為Python在底層已經先計算好並儲存每個list的長度。所以呼叫<code>len(a_list)</code>只是去叫出那個被儲存的值。</p>
-<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>以hash table實作，因此以<code>dict[key]</code>叫出該對應value的執行時間為常數時間O(n)。</p>
-<h2 id="Document-distance-Problem"><a href="#Document-distance-Problem" class="headerlink" title="Document distance Problem"></a>Document distance Problem</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>有兩份文件，想測量這兩份文件的距離，即這兩份文件的共通性。</p>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>Google index page</li>
-<li>Mirror of Wiki</li>
-<li>檢查兩份期末報告是否互相抄襲</li>
-</ul>
-<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
-<li>文件:由words組成</li>
-<li>word: 為字元(a-z, A-Z, 0-9)組成的字串</li>
-</ul>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>可以把兩份文件的共通性以兩份文件所包含字詞的共通性來思考。</p>
-<h3 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h3><ol>
-<li>將文件分割為words</li>
-<li>算出每個word的出現頻率</li>
-<li>算兩個文件的word陣列的內積（即角度）</li>
-</ol>
-<h1 id="課程連結"><a href="#課程連結" class="headerlink" title="課程連結"></a>課程連結</h1><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/" target="_blank" rel="noopener">MIT 6.006 Introduction to ALgorithms, Fall 2011</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2255,7 +2337,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2369,7 +2451,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
