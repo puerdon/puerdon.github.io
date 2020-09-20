@@ -1,4 +1,402 @@
-<!DOCTYPE html><html lang="zh-TW"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>nltk 中 ngrams 原始碼分析 | Puerdon Biki</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">nltk 中 ngrams 原始碼分析</h1><a id="logo" href="/.">Puerdon Biki</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首頁</i></a><a href="/archives/"><i class="fa fa-archive"> 歸檔</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">nltk 中 ngrams 原始碼分析</h1><div class="post-meta">2018-08-08<span> | </span><span class="category"><a href="/categories/NLP/">NLP</a></span></div><div class="post-content"><p>在Python自然語言處理套件 <a href="http://www.nltk.org" target="_blank" rel="noopener">nltk</a> 中，在 <a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">nltk.util</a> 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。</p>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-TW">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。">
+<meta name="keywords" content="nltk,python,nlp,ngrams">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nltk 中 ngrams 原始碼分析">
+<meta property="og:url" content="https://puerdon.github.io/2018/08/08/ngrams-src-code-in-nltk/index.html">
+<meta property="og:site_name" content="Puerdon Biki">
+<meta property="og:description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2018-08-08T09:07:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nltk 中 ngrams 原始碼分析">
+<meta name="twitter:description" content="在Python自然語言處理套件 nltk 中，在 nltk.util 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://puerdon.github.io/2018/08/08/ngrams-src-code-in-nltk/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>nltk 中 ngrams 原始碼分析 | Puerdon Biki</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Puerdon Biki</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切換導航欄">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-hashtag"></i> <br>標籤</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-object-group"></i> <br>分類</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/08/ngrams-src-code-in-nltk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nltk 中 ngrams 原始碼分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+
+              
+                
+              
+
+              <time title="創建時間：2018-08-08 11:38:38 / 修改時間：17:07:12" itemprop="dateCreated datePublished" datetime="2018-08-08T11:38:38+08:00">2018-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Python自然語言處理套件 <a href="http://www.nltk.org" target="_blank" rel="noopener">nltk</a> 中，在 <a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">nltk.util</a> 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。</p>
 <a id="more"></a>
 <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>以 bigrams（就是2-grams的意思）為例，假設你給他一個string list的輸入，那麽他會輸出一個tuple list，其中每個tuple都是由緊鄰的兩個string所組成，從第一個string到最後一個string。  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.util <span class="keyword">import</span> bigrams</span><br><span class="line">list(bigrams[<span class="string">'I'</span>, <span class="string">'have'</span>, <span class="string">'a'</span>, <span class="string">'dream'</span>, <span class="string">'.'</span>])</span><br><span class="line"><span class="comment"># 會得到 [('I', 'have'), ('have', 'a'), ('a', 'dream'), ('dream', '.')]</span></span><br></pre></td></tr></table></figure>
@@ -17,4 +415,503 @@
 </ul>
 <h1 id="完整原始碼"><a href="#完整原始碼" class="headerlink" title="完整原始碼"></a>完整原始碼</h1><p><a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">官網原始碼連結</a>  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##########################################################################</span></span><br><span class="line"><span class="comment"># Ngram iteration</span></span><br><span class="line"><span class="comment">##########################################################################</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pad_sequence</span><span class="params">(sequence, n, pad_left=False, pad_right=False,</span></span></span><br><span class="line"><span class="function"><span class="params">                 left_pad_symbol=None, right_pad_symbol=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns a padded sequence of items before ngram extraction.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_left=True, pad_right=True, left_pad_symbol='&lt;s&gt;', right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        ['&lt;s&gt;', 1, 2, 3, 4, 5, '&lt;/s&gt;']</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_left=True, left_pad_symbol='&lt;s&gt;'))</span></span><br><span class="line"><span class="string">        ['&lt;s&gt;', 1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_right=True, right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [1, 2, 3, 4, 5, '&lt;/s&gt;']</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be padded</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param pad_left: whether the ngrams should be left-padded</span></span><br><span class="line"><span class="string">    :type pad_left: bool</span></span><br><span class="line"><span class="string">    :param pad_right: whether the ngrams should be right-padded</span></span><br><span class="line"><span class="string">    :type pad_right: bool</span></span><br><span class="line"><span class="string">    :param left_pad_symbol: the symbol to use for left padding (default is None)</span></span><br><span class="line"><span class="string">    :type left_pad_symbol: any</span></span><br><span class="line"><span class="string">    :param right_pad_symbol: the symbol to use for right padding (default is None)</span></span><br><span class="line"><span class="string">    :type right_pad_symbol: any</span></span><br><span class="line"><span class="string">    :rtype: sequence or iter</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sequence = iter(sequence)</span><br><span class="line">    <span class="keyword">if</span> pad_left:</span><br><span class="line">        sequence = chain((left_pad_symbol,) * (n<span class="number">-1</span>), sequence)</span><br><span class="line">    <span class="keyword">if</span> pad_right:</span><br><span class="line">        sequence = chain(sequence, (right_pad_symbol,) * (n<span class="number">-1</span>))</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br><span class="line"></span><br><span class="line"><span class="comment"># add a flag to pad the sequence so we get peripheral ngrams?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ngrams</span><span class="params">(sequence, n, pad_left=False, pad_right=False,</span></span></span><br><span class="line"><span class="function"><span class="params">           left_pad_symbol=None, right_pad_symbol=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the ngrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import ngrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 3))</span></span><br><span class="line"><span class="string">        [(1, 2, 3), (2, 3, 4), (3, 4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Wrap with list for a list version of this function.  Set pad_left</span></span><br><span class="line"><span class="string">    or pad_right to true in order to get additional ngrams:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_right=True))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5), (5, None)]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_right=True, right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5), (5, '&lt;/s&gt;')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_left=True, left_pad_symbol='&lt;s&gt;'))</span></span><br><span class="line"><span class="string">        [('&lt;s&gt;', 1), (1, 2), (2, 3), (3, 4), (4, 5)]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_left=True, pad_right=True, left_pad_symbol='&lt;s&gt;', right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [('&lt;s&gt;', 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, '&lt;/s&gt;')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into ngrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param pad_left: whether the ngrams should be left-padded</span></span><br><span class="line"><span class="string">    :type pad_left: bool</span></span><br><span class="line"><span class="string">    :param pad_right: whether the ngrams should be right-padded</span></span><br><span class="line"><span class="string">    :type pad_right: bool</span></span><br><span class="line"><span class="string">    :param left_pad_symbol: the symbol to use for left padding (default is None)</span></span><br><span class="line"><span class="string">    :type left_pad_symbol: any</span></span><br><span class="line"><span class="string">    :param right_pad_symbol: the symbol to use for right padding (default is None)</span></span><br><span class="line"><span class="string">    :type right_pad_symbol: any</span></span><br><span class="line"><span class="string">    :rtype: sequence or iter</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sequence = pad_sequence(sequence, n, pad_left, pad_right,</span><br><span class="line">                            left_pad_symbol, right_pad_symbol)</span><br><span class="line"></span><br><span class="line">    history = []</span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        history.append(next(sequence))</span><br><span class="line">        n -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> sequence:</span><br><span class="line">        history.append(item)</span><br><span class="line">        <span class="keyword">yield</span> tuple(history)</span><br><span class="line">        <span class="keyword">del</span> history[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bigrams</span><span class="params">(sequence, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the bigrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import bigrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(bigrams([1,2,3,4,5]))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Use bigrams for a list version of this function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into bigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> ngrams(sequence, <span class="number">2</span>, **kwargs):</span><br><span class="line">        <span class="keyword">yield</span> item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trigrams</span><span class="params">(sequence, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the trigrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import trigrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(trigrams([1,2,3,4,5]))</span></span><br><span class="line"><span class="string">        [(1, 2, 3), (2, 3, 4), (3, 4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Use trigrams for a list version of this function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> ngrams(sequence, <span class="number">3</span>, **kwargs):</span><br><span class="line">        <span class="keyword">yield</span> item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">everygrams</span><span class="params">(sequence, min_len=<span class="number">1</span>, max_len=<span class="number">-1</span>, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns all possible ngrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; sent = 'a b c'.split()</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(everygrams(sent))</span></span><br><span class="line"><span class="string">        [('a',), ('b',), ('c',), ('a', 'b'), ('b', 'c'), ('a', 'b', 'c')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(everygrams(sent, max_len=2))</span></span><br><span class="line"><span class="string">        [('a',), ('b',), ('c',), ('a', 'b'), ('b', 'c')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param min_len: minimum length of the ngrams, aka. n-gram order/degree of ngram</span></span><br><span class="line"><span class="string">    :type  min_len: int</span></span><br><span class="line"><span class="string">    :param max_len: maximum length of the ngrams (set to length of sequence by default)</span></span><br><span class="line"><span class="string">    :type  max_len: int</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> max_len == <span class="number">-1</span>:</span><br><span class="line">        max_len = len(sequence)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> range(min_len, max_len+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> ng <span class="keyword">in</span> ngrams(sequence, n, **kwargs):</span><br><span class="line">            <span class="keyword">yield</span> ng</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">skipgrams</span><span class="params">(sequence, n, k, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns all possible skipgrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    Skipgrams are ngrams that allows tokens to be skipped.</span></span><br><span class="line"><span class="string">    Refer to http://homepages.inf.ed.ac.uk/ballison/pdf/lrec_skipgrams.pdf</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; sent = "Insurgents killed in ongoing fighting".split()</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(skipgrams(sent, 2, 2))</span></span><br><span class="line"><span class="string">        [('Insurgents', 'killed'), ('Insurgents', 'in'), ('Insurgents', 'ongoing'), ('killed', 'in'), ('killed', 'ongoing'), ('killed', 'fighting'), ('in', 'ongoing'), ('in', 'fighting'), ('ongoing', 'fighting')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(skipgrams(sent, 3, 2))</span></span><br><span class="line"><span class="string">        [('Insurgents', 'killed', 'in'), ('Insurgents', 'killed', 'ongoing'), ('Insurgents', 'killed', 'fighting'), ('Insurgents', 'in', 'ongoing'), ('Insurgents', 'in', 'fighting'), ('Insurgents', 'ongoing', 'fighting'), ('killed', 'in', 'ongoing'), ('killed', 'in', 'fighting'), ('killed', 'ongoing', 'fighting'), ('in', 'ongoing', 'fighting')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param k: the skip distance</span></span><br><span class="line"><span class="string">    :type  k: int</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Pads the sequence as desired by **kwargs.</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'pad_left'</span> <span class="keyword">in</span> kwargs <span class="keyword">or</span> <span class="string">'pad_right'</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        sequence = pad_sequence(sequence, n, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Note when iterating through the ngrams, the pad_right here is not</span></span><br><span class="line">    <span class="comment"># the **kwargs padding, it's for the algorithm to detect the SENTINEL</span></span><br><span class="line">    <span class="comment"># object on the right pad to stop inner loop.</span></span><br><span class="line">    SENTINEL = object()</span><br><span class="line">    <span class="keyword">for</span> ngram <span class="keyword">in</span> ngrams(sequence, n + k, pad_right=<span class="keyword">True</span>, right_pad_symbol=SENTINEL):</span><br><span class="line">        head = ngram[:<span class="number">1</span>]</span><br><span class="line">        tail = ngram[<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">for</span> skip_tail <span class="keyword">in</span> combinations(tail, n - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> skip_tail[<span class="number">-1</span>] <span class="keyword">is</span> SENTINEL:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">yield</span> head + skip_tail</span><br></pre></td></tr></table></figure>
-</div><div class="tags"><a href="/tags/nltk/"><i class="fa fa-tag"></i>nltk</a><a href="/tags/python/"><i class="fa fa-tag"></i>python</a><a href="/tags/nlp/"><i class="fa fa-tag"></i>nlp</a><a href="/tags/ngrams/"><i class="fa fa-tag"></i>ngrams</a></div><div class="post-nav"><a class="pre" href="/2018/08/10/python-iterable-iterator-generator/">Python中的iterable, iterator和generator</a><a class="next" href="/2018/08/04/tf-idf/">TF-IDF</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://puerdon.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分類</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Haskell/">Haskell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/梵文/">梵文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/統計/">統計</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/自然語言處理/">自然語言處理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/語料庫語言學/">語料庫語言學</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/資料庫/">資料庫</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 標籤</i></div><div class="tagcloud"><a href="/tags/Haskell/" style="font-size: 15px;">Haskell</a> <a href="/tags/function/" style="font-size: 15px;">function</a> <a href="/tags/資料庫/" style="font-size: 15px;">資料庫</a> <a href="/tags/語言學/" style="font-size: 15px;">語言學</a> <a href="/tags/R/" style="font-size: 15px;">R</a> <a href="/tags/語料庫/" style="font-size: 15px;">語料庫</a> <a href="/tags/IO-Action/" style="font-size: 15px;">IO Action</a> <a href="/tags/副作用/" style="font-size: 15px;">副作用</a> <a href="/tags/polymorphic-function/" style="font-size: 15px;">polymorphic function</a> <a href="/tags/MIT演算法筆記/" style="font-size: 15px;">MIT演算法筆記</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/梵文/" style="font-size: 15px;">梵文</a> <a href="/tags/名詞/" style="font-size: 15px;">名詞</a> <a href="/tags/統計/" style="font-size: 15px;">統計</a> <a href="/tags/計算語言學/" style="font-size: 15px;">計算語言學</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/likelihood/" style="font-size: 15px;">likelihood</a> <a href="/tags/prabability/" style="font-size: 15px;">prabability</a> <a href="/tags/statistics/" style="font-size: 15px;">statistics</a> <a href="/tags/nltk/" style="font-size: 15px;">nltk</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/nlp/" style="font-size: 15px;">nlp</a> <a href="/tags/ngrams/" style="font-size: 15px;">ngrams</a> <a href="/tags/iterator/" style="font-size: 15px;">iterator</a> <a href="/tags/iterable/" style="font-size: 15px;">iterable</a> <a href="/tags/generator/" style="font-size: 15px;">generator</a> <a href="/tags/TF-IDF/" style="font-size: 15px;">TF-IDF</a> <a href="/tags/type/" style="font-size: 15px;">type</a> <a href="/tags/typeclass/" style="font-size: 15px;">typeclass</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/06/taiwan-same-sex-marriage-1/">台灣同性婚姻論述分析(I)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/statistics-for-linguistics-with-R/">[讀書筆記] Statistics for linguistists with R</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/26/analyzing-linguistic-data/">[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/22/functor-and-applicative-functor/">functor-and-applicative-functor</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/CH2 三個重要方法/">Quantitative Corpus Linguistics with R</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/17/algebraic-data-type-in-Haskell/">Haskell 中的 Algebraic data type</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/10/likelihood-and-probability/">likelihood-and-probability</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/10/python-iterable-iterator-generator/">Python中的iterable, iterator和generator</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/08/ngrams-src-code-in-nltk/">nltk 中 ngrams 原始碼分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/tf-idf/">TF-IDF</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Puerdon Biki.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="複製成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nltk/" rel="tag"># nltk</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/nlp/" rel="tag"># nlp</a>
+          
+            <a href="/tags/ngrams/" rel="tag"># ngrams</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/04/tf-idf/" rel="next" title="TF-IDF">
+                <i class="fa fa-chevron-left"></i> TF-IDF
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/10/python-iterable-iterator-generator/" rel="prev" title="Python中的iterable, iterator和generator">
+                Python中的iterable, iterator和generator <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">puerdon</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">文章</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分類</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">標籤</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/puerdon" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#作用"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大圖像：6個函數"><span class="nav-number">2.1.</span> <span class="nav-text">大圖像：6個函數</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整原始碼"><span class="nav-number">3.</span> <span class="nav-text">完整原始碼</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-shower"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">puerdon</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
