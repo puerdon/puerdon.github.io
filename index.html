@@ -294,6 +294,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2020/09/21/Linux檔案權限筆記/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/21/Linux檔案權限筆記/" itemprop="url">
+                  Linux檔案權限筆記
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+
+              
+                
+              
+
+              <time title="創建時間：2020-09-21 17:38:23 / 修改時間：18:10:24" itemprop="dateCreated datePublished" datetime="2020-09-21T17:38:23+08:00">2020-09-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ls後的檔案屬性"><a href="#ls後的檔案屬性" class="headerlink" title="ls後的檔案屬性"></a><code>ls</code>後的檔案屬性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-        rwx    rwx    rwx      1</span><br><span class="line">檔案類型  owner  group   other   連結數</span><br></pre></td></tr></table></figure>
+<h1 id="rwx的數字表示法"><a href="#rwx的數字表示法" class="headerlink" title="rwx的數字表示法"></a><code>rwx</code>的數字表示法</h1><ul>
+<li><code>r</code>: 4</li>
+<li><code>w</code>: 2</li>
+<li><code>x</code>: 1</li>
+</ul>
+<p>所以<code>rwx</code>為 7，<code>rw-</code>為 6，<code>r-x</code>為 5。</p>
+<h1 id="同時修改檔案或目錄的使用者-群組"><a href="#同時修改檔案或目錄的使用者-群組" class="headerlink" title="同時修改檔案或目錄的使用者:群組"></a>同時修改檔案或目錄的使用者:群組</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown [-R] 帳號名稱:群組名稱 檔案或目錄</span><br></pre></td></tr></table></figure>
+<p>加上<code>-R</code>參數可以對目錄下的所有檔案作用。</p>
+<h1 id="權限對檔案的意義"><a href="#權限對檔案的意義" class="headerlink" title="權限對檔案的意義"></a>權限對檔案的意義</h1><ul>
+<li><code>r</code>: 使用者可以讀取該檔案內容。</li>
+<li><code>w</code>: 使用者可以修改檔案內容，<strong>但不能刪除該檔案，刪除的權限與目錄的權限有關</strong></li>
+<li><code>x</code>: 使用者可以執行該檔案。</li>
+</ul>
+<h1 id="權限對資料夾-目錄-的意義"><a href="#權限對資料夾-目錄-的意義" class="headerlink" title="權限對資料夾(=目錄)的意義"></a>權限對資料夾(=目錄)的意義</h1><ul>
+<li><code>r</code>: 若使用者對目錄具有<code>r</code>權限，表示使用者可以透過<code>ls</code>讀取目錄內的檔案名稱。</li>
+<li><code>w</code>: 若使用者對目錄具有<code>w</code>權限，則代表使用者能更動該目錄的結構，具體來說可以：<ul>
+<li>建立新的檔案和目錄</li>
+<li><strong>刪除已經存在的檔案和目錄 (無論這些檔案的權限)</strong></li>
+<li>將已存在的檔案或目錄更名</li>
+<li>搬移該目錄內的檔案或目錄</li>
+</ul>
+</li>
+<li><code>x</code>: 若使用者對目錄具有<code>x</code>權限，則表示使用者能透過<code>cd</code>進入該目錄，並以該目錄作為工作目錄 (working directory)</li>
+</ul>
+<h1 id="一些細節"><a href="#一些細節" class="headerlink" title="一些細節"></a>一些細節</h1><ul>
+<li>通常要讀取一個目錄中的檔案時，至少要對目錄具有<code>x</code>權限。</li>
+</ul>
+<h1 id="建立一個新檔案或新目錄時的預設權限設定為何"><a href="#建立一個新檔案或新目錄時的預設權限設定為何" class="headerlink" title="建立一個新檔案或新目錄時的預設權限設定為何?"></a>建立一個新檔案或新目錄時的預設權限設定為何?</h1><p>以 <code>umask -S</code> 進行查詢。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="http://linux.vbird.org/linux_basic/0210filepermission.php" target="_blank" rel="noopener">鳥哥的Linux私房菜</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2020/09/20/天城體輸入法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -661,12 +850,24 @@
                 
               
 
-              <time title="創建時間：2020-09-20 15:49:00 / 修改時間：20:45:29" itemprop="dateCreated datePublished" datetime="2020-09-20T15:49:00+08:00">2020-09-20</time>
+              <time title="創建時間：2020-09-20 15:49:00" itemprop="dateCreated datePublished" datetime="2020-09-20T15:49:00+08:00">2020-09-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新於</span>
+                
+                <time title="修改時間：2020-09-21 00:48:36" itemprop="dateModified" datetime="2020-09-21T00:48:36+08:00">2020-09-21</time>
               
             
           </span>
@@ -726,11 +927,30 @@
       
         
           
-            <h1 id="朗讀心經"><a href="#朗讀心經" class="headerlink" title="朗讀心經"></a>朗讀心經</h1><h1 id="The-Joy-of-Sanskrit"><a href="#The-Joy-of-Sanskrit" class="headerlink" title="The Joy of Sanskrit"></a>The Joy of Sanskrit</h1><h4 id="nbsp"><a href="#nbsp" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+            <h1 id="朗讀心經"><a href="#朗讀心經" class="headerlink" title="朗讀心經"></a>朗讀心經</h1><h1 id="The-Joy-of-Sanskrit"><a href="#The-Joy-of-Sanskrit" class="headerlink" title="The Joy of Sanskrit"></a>The Joy of Sanskrit</h1><p>本課程使用的教科書 (The Joy of Sanskrit (Taylor &amp; Scotellaro 2014))[<a href="https://press.anu.edu.au/publications/textbooks/joy-sanskrit]" target="_blank" rel="noopener">https://press.anu.edu.au/publications/textbooks/joy-sanskrit]</a></p>
+<h4 id="nbsp"><a href="#nbsp" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
 <p>अभ्यासो न हि त्यक्तव्यो अभ्यासो हि परं बलम्<br>abhyāso na hi tyaktavyo abhyāso hi paraṃ balam<br>反覆練習 否定 強調 應被放棄的 反覆練習 強調 至高 力量<br>M.SG.NOM. NEG. Par. FPP. M.SG.NOM. Par. N.SG.NOM. N.SG.NOM.<br>反覆練習是不應被放棄的，反覆練習是至高的力量；</p>
 </blockquote>
 <h4 id="nbsp-1"><a href="#nbsp-1" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
 <p>अनभ्यासे विषं विद्या अजीर्ने अजीर्णे विषम्<br>abhyāse viṣaṃ vidyā ajīrṇe bhojanaṃ viṣam<br>於不反覆練習 毒 知識 於不消化 食物 毒<br>M.SG.LOC. N.SG.NOM. F.SG.NOM. M.SG.LOC. N.SG.NOM. N.SG.NOM.<br>知識於不反覆練習時是毒藥，食物於不消化時是毒藥。</p>
+</blockquote>
+<h4 id="nbsp-2"><a href="#nbsp-2" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>नमो नमः<br>namo namaḥ<br>你好！</p>
+</blockquote>
+<h4 id="nbsp-3"><a href="#nbsp-3" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवतः नाम किम्<br>bhavataḥ nāma kim<br>M.SG.GEN. M.SG.NOM. M.SG.NOM.<br>bhavant的屬格 {} {}<br>您叫什麼名字？（您的名字是什麼？）（對男生）</p>
+</blockquote>
+<h4 id="nbsp-4"><a href="#nbsp-4" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवत्याः  नाम किम्<br>bhavatyāḥ nāma kim<br>F.SG.GEN. M.SG.NOM. M.SG.NOM.<br>bhavantī {} {}<br>您叫什麼名字？（對女生）</p>
+</blockquote>
+<h4 id="nbsp-5"><a href="#nbsp-5" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>मम नाम …<br>mama nāma …<br>1.SG.GEN. M.SG.NOM.<br>我的名字是…</p>
+</blockquote>
+<h4 id="nbsp-6"><a href="#nbsp-6" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवतः कुशलम् अस्ति वा<br>bhavataḥ kuśalam asti vā<br>M.SG.GEN. N.SG.NOM. 3.SG.PRES.<br>bhavant {} {}<br>您好嗎？（對男生）</p>
+</blockquote>
+<h4 id="nbsp-7"><a href="#nbsp-7" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवतः कुशलम् अस्ति वा<br>bhavataḥ kuśalam asti vā<br>M.SG.GEN. N.SG.NOM. 3.SG.PRES.<br>bhavant {} {}<br>您好嗎？（對男生）</p>
 </blockquote>
 
           
@@ -1178,7 +1398,7 @@
                 
                   <span class="post-meta-item-text">更新於</span>
                 
-                <time title="修改時間：2019-03-07 15:01:48" itemprop="dateModified" datetime="2019-03-07T15:01:48+08:00">2019-03-07</time>
+                <time title="修改時間：2020-09-21 17:41:09" itemprop="dateModified" datetime="2020-09-21T17:41:09+08:00">2020-09-21</time>
               
             
           </span>
@@ -1933,190 +2153,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/2018/08/10/likelihood-and-probability/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/10/likelihood-and-probability/" itemprop="url">
-                  likelihood-and-probability
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
-
-              <time title="創建時間：2018-08-10 16:56:14" itemprop="dateCreated datePublished" datetime="2018-08-10T16:56:14+08:00">2018-08-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
-                <time title="修改時間：2018-08-13 23:15:45" itemprop="dateModified" datetime="2018-08-13T23:15:45+08:00">2018-08-13</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/統計/" itemprop="url" rel="index"><span itemprop="name">統計</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>似然率和機率是不同的概念。</p>
-<h1 id="名詞定義"><a href="#名詞定義" class="headerlink" title="名詞定義"></a>名詞定義</h1><ul>
-<li>假說 hypothesis: 一個假說由欲估計的data model的一組parameter所構成。</li>
-</ul>
-<p>提出假說的目的在於<strong>根據觀察得到的資料</strong>去回推<strong>現象背後的未知模型</strong>。一</p>
-<p>機率：在給定的一假說（資料分布）之下，抽樣得到某特徵的資料的機率。關注的是<strong>資料</strong>。</p>
-<p>似然率：在給定資料的條件下，去度量不同<strong>假說</strong>成立的可能性。關注的是<strong>假說</strong>。似然率的概念之所以與機率不同，是因為對於一組觀察到的資料而言，會有無窮多個假說，我們不可能全部列舉。但是對於機率而言，一個檢驗的所有可能結果必須先定義好，才能讓所有可能結果的機率加總等於一。</p>
-<h2 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h2><p>根據得到的資料，從眾多假說中找出Likelihood最高的假說，來作為Parameter。</p>
-<p>likelihood是用來看假說的可能性。</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="https://www.psychologicalscience.org/observer/bayes-for-beginners-probability-and-likelihood" target="_blank" rel="noopener">Bayes for Beginners: Probability and Likelihood</a></li>
-<li><a href="https://alexanderetz.com/2015/04/15/understanding-bayes-a-look-at-the-likelihood/" target="_blank" rel="noopener">Understanding Bayes: A Look at the Likelihood</a></li>
-<li><a href="https://www.youtube.com/watch?v=pYxNSUDSFH4" target="_blank" rel="noopener">StatQuest: Probability and Likilihood</a></li>
-<li><a href="https://towardsdatascience.com/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1" target="_blank" rel="noopener">這篇文章有簡單提到似然率和機率的差別</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2164,7 +2200,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">文章</span>
                   </a>
                 </div>
@@ -2207,7 +2243,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分類</span>
                   </a>
                 </div>
@@ -2290,7 +2328,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">31</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">標籤</span>
                   </a>
                 </div>
