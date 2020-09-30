@@ -361,13 +361,6 @@
   </url>
   
   <url>
-    <loc>https://puerdon.github.io/tags/hexo/</loc>
-    <lastmod>2020-09-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://puerdon.github.io/tags/likelihood/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
@@ -383,6 +376,13 @@
   
   <url>
     <loc>https://puerdon.github.io/tags/statistics/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://puerdon.github.io/tags/hexo/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -445,13 +445,6 @@
   </url>
   
   <url>
-    <loc>https://puerdon.github.io/tags/%E5%A4%A9%E5%9F%8E%E9%AB%94/</loc>
-    <lastmod>2020-09-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://puerdon.github.io/tags/type/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
@@ -466,7 +459,7 @@
   </url>
   
   <url>
-    <loc>https://puerdon.github.io/tags/%E5%AF%A6%E7%94%A8%E6%8C%87%E4%BB%A4/</loc>
+    <loc>https://puerdon.github.io/tags/%E5%A4%A9%E5%9F%8E%E9%AB%94/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -474,6 +467,13 @@
   
   <url>
     <loc>https://puerdon.github.io/tags/%E5%BE%B7%E6%96%87/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://puerdon.github.io/tags/%E5%AF%A6%E7%94%A8%E6%8C%87%E4%BB%A4/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
