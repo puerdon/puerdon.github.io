@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="一個以中文詞搜尋相應巴利文條目的簡易搜尋網站">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="中文-巴利文字典">
+    <meta property="og:url" content="https://puerdon.github.io/chinese-pali-dict/index.html">
+    <meta property="og:site_name" content="Puerdon Biki">
+    <meta property="og:description" content="一個以中文詞搜尋相應巴利文條目的簡易搜尋網站">
+    <meta property="og:locale" content="zh-TW">
+    <meta property="og:updated_time" content="2020-09-30T09:41:09.526Z">
+    <title>中文-巴利文字典</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <style type="text/css">
+    #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        background: #e5e5e5;
+        min-height: 1000px;
+    }
+
+    .highlight {
+        background: yellow;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://puerdon.github.io/chinese-pali-dict">
+                    <h3 class="title is-3 has-text-white">中文-巴利文字典</h3>
+                </a>
+            </div>
+        </nav>
+        <section class="section">
+            <div class="container">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-medium" type="text" v-model="word" placeholder="請輸入欲查詢的中文詞">
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button @click="submit" class="button is-link">查詢</button>
+                    </div>
+                    <div class="control">
+                        <button @click="clear" class="button is-link is-light">清除</button>
+                    </div>
+                </div>
+                <div v-if="errored" class="has-text-danger">
+                    <p>{{ error_message }}</p>
+                </div>
+                <div class="block"></div>
+                <h3 v-if="init" class="title is-3">搜尋結果總共 {{ result_number }} 筆</h3>
+                <article v-for="r in result" :key="r.word" class="message is-link">
+                    <div class="message-header">
+                        <!-- <h5 class="card-header-title title is-5  has-text-white"> -->
+                        {{ r.word }}
+                        <!-- </h5> -->
+                    </div>
+                    <div class="message-body has-text-black">
+                        <p v-html="highlight(r.meaning)"></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <!-- <div v-if="errored" class="has-text-danger">
+                    <p>{{ error_message }}</p>
+                </div>
+                <h2 v-if="init" class="title is-2">搜尋結果總共 {{ result_number }} 筆</h2>
+                <article v-for="r in result" :key="r.word" class="message is-link">
+                    <div class="message-header">
+                        <h4 class="card-header-title title is-4">
+                            {{ r.word }}
+                        </h4>
+                    </div>
+                    <div class="message-body">
+                        {{ r.meaning }}
+                    </div>
+                </article> -->
+            </div>
+        </section>
+        <!-- 
+        <section v-if="result.status == 'success'" class="section">
+          
+        </section> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            word: "",
+            result: [],
+            errored: false,
+            error_message: "",
+            init: false
+        },
+        methods: {
+            submit: function() {
+                this.result = []
+                this.init = false
+                this.errored = false
+
+                axios.get('http://140.112.147.132:8989/search?word=' + this.word)
+                    .then((response) => {
+                        console.log(response.data)
+
+                        if (response.data.status == 'error') {
+                            this.errored = true
+                            this.error_message = response.data.result
+                        }
+
+                        // 成功
+                        else {
+                            this.result = response.data.result
+                            this.init = true
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        this.errored = true
+                        this.error_message = error
+                    })
+            },
+            clear: function() {
+                this.word = ""
+                this.result = []
+            },
+            highlight: function(w) {
+                var l = w.split(this.word)
+                return l.join("<span class=\"highlight\">" + this.word + "</span>")
+            }
+        },
+        computed: {
+            result_number: function() {
+                return this.result.length
+            }
+        },
+    })
+    </script>
+</body>
+
+</html>
