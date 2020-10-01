@@ -382,6 +382,13 @@
   </url>
   
   <url>
+    <loc>https://puerdon.github.io/tags/polymorphic-function/</loc>
+    <lastmod>2020-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://puerdon.github.io/tags/IO-Action/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
@@ -396,20 +403,6 @@
   </url>
   
   <url>
-    <loc>https://puerdon.github.io/tags/polymorphic-function/</loc>
-    <lastmod>2020-10-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://puerdon.github.io/tags/MIT%E6%BC%94%E7%AE%97%E6%B3%95%E7%AD%86%E8%A8%98/</loc>
-    <lastmod>2020-10-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://puerdon.github.io/tags/Linux/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
@@ -418,6 +411,13 @@
   
   <url>
     <loc>https://puerdon.github.io/tags/%E6%AA%94%E6%A1%88%E6%AC%8A%E9%99%90/</loc>
+    <lastmod>2020-10-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://puerdon.github.io/tags/MIT%E6%BC%94%E7%AE%97%E6%B3%95%E7%AD%86%E8%A8%98/</loc>
     <lastmod>2020-10-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
