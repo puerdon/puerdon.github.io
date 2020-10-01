@@ -12,88 +12,130 @@
     <meta property="og:locale" content="zh-TW">
     <meta property="og:updated_time" content="2020-09-30T09:41:09.526Z">
     <title>中文-巴利文字典</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <style type="text/css">
     #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
+        font-family: serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    body {
-        background: #e5e5e5;
-        min-height: 1000px;
+    body,
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        /*background: #e5e5e5;*/
+        /*min-height: 1000px;*/
+        font-family: serif;
     }
 
     .highlight {
         background: yellow;
     }
+
+    .is-large.input,
+    .is-large.textarea,
+    .message,
+    .modal p,
+    .modal pre,
+    .has-text-danger {
+        font-size: 1.8rem;
+    }
+
+    .message-body {
+        padding: 0.5em 0.75em;
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+
+/*    .modal {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        position: fixed;
+        z-index: 40;
+    }*/
     </style>
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <nav class="navbar has-background-info-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://puerdon.github.io/chinese-pali-dict">
-                    <h3 class="title is-3 has-text-white">中文-巴利文字典</h3>
+                <a class="navbar-item pl-5" href="https://puerdon.github.io/chinese-pali-dict">
+                    <h1 class="title is-1 has-text-white pt-4 pb-4">中文－巴利文字典</h1>
                 </a>
             </div>
         </nav>
         <section class="section">
             <div class="container">
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-medium" type="text" v-model="word" placeholder="請輸入欲查詢的中文詞">
+                <div class="columns">
+                    <div class="column is-full-mobile is-full" v-cloak>
+                        <!-- 使用方法 -->
+                        <article class="message">
+                            <div class="message-body">
+                                <p>使用方法：請輸入您想查詢的中文字詞，繁簡體皆可，搜尋結果將給出所有釋義中包含您輸入字詞的巴利文條目。若發現沒有得到適當的結果，可以多嘗試輸入其他同義詞（例如：唱歌、歌唱、歌、唱）。</p>
+                            </div>
+                        </article>
+                        <!-- 搜尋欄 -->
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="text" v-model="word" placeholder="請輸入欲查詢的中文詞">
+                            </div>
+                        </div>
+                        <!-- 按鈕 -->
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button @click="submit" type="submit" v-bind:class="{'is-loading': isLoading }" class="button is-link is-large">查詢</button>
+                            </div>
+                            <div class="control">
+                                <button @click="clear" class="button is-link is-light is-large">清除</button>
+                            </div>
+                            <div class="control">
+                                <button @click="openInfo" class="button is-outlined is-large">關於本搜尋介面</button>
+                            </div>
+                        </div>
+                        <!-- 錯誤訊息 -->
+                        <div v-if="errored" class="has-text-danger">
+                            <p>{{ error_message }}</p>
+                        </div>
+                        <div class="block"></div>
+                        <!-- 搜尋結果 -->
+                        <h3 v-if="init" class="title is-3">搜尋結果總共 {{ result_number }} 筆</h3>
+                        <article v-for="r in result" :key="r.word" class="message is-link">
+                            <div class="message-header">
+                                <!-- <h5 class="card-header-title title is-5  has-text-white"> -->
+                                <p class="is-size-3">{{ r.word }}</p>
+                                <!-- </h5> -->
+                            </div>
+                            <div class="message-body has-text-black">
+                                <p class="is-size-3" v-html="highlight(r.meaning)"></p>
+                            </div>
+                        </article>
+                        <!-- modal -->
+                        <div class="modal" v-show="showInfo" style="display: flex">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">關於本搜尋介面</p>
+                                    <button class="delete" aria-label="close" @click="closeInfo"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <p class="block">本搜尋介面所使用的字典為A.P. Buddhadatta Mahāthera所編纂的Concise Pali-English Dictionary，後由大馬比丘 Mahāñāṇo 進行漢譯，並由明法比丘繼續編輯至 2009 年。網頁版字典請見<a href="http://www.dhammarain.org.tw/books/concise-pali-Han-revised-by-Ven-Metta-2009.htm" target="_blank">此連結</a>。本網站所使用的csv檔來自<a href="https://github.com/siongui/data/tree/master/dictionary" target="_blank">siongui的GitHub倉庫</a>。</p>
+                                    <p class="block">若有任何使用上的疑問與建議，請來信至：<pre>dondon726 小老鼠 gmail 點 com </pre></p>
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button @click="submit" class="button is-link">查詢</button>
-                    </div>
-                    <div class="control">
-                        <button @click="clear" class="button is-link is-light">清除</button>
-                    </div>
-                </div>
-                <div v-if="errored" class="has-text-danger">
-                    <p>{{ error_message }}</p>
-                </div>
-                <div class="block"></div>
-                <h3 v-if="init" class="title is-3">搜尋結果總共 {{ result_number }} 筆</h3>
-                <article v-for="r in result" :key="r.word" class="message is-link">
-                    <div class="message-header">
-                        <!-- <h5 class="card-header-title title is-5  has-text-white"> -->
-                        {{ r.word }}
-                        <!-- </h5> -->
-                    </div>
-                    <div class="message-body has-text-black">
-                        <p v-html="highlight(r.meaning)"></p>
-                    </div>
-                </article>
             </div>
         </section>
-        <section class="section">
-            <div class="container">
-                <!-- <div v-if="errored" class="has-text-danger">
-                    <p>{{ error_message }}</p>
-                </div>
-                <h2 v-if="init" class="title is-2">搜尋結果總共 {{ result_number }} 筆</h2>
-                <article v-for="r in result" :key="r.word" class="message is-link">
-                    <div class="message-header">
-                        <h4 class="card-header-title title is-4">
-                            {{ r.word }}
-                        </h4>
-                    </div>
-                    <div class="message-body">
-                        {{ r.meaning }}
-                    </div>
-                </article> -->
-            </div>
-        </section>
-        <!-- 
-        <section v-if="result.status == 'success'" class="section">
-          
-        </section> -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -105,31 +147,37 @@
             result: [],
             errored: false,
             error_message: "",
-            init: false
+            init: false,
+            isLoading: false,
+            showInfo:false
         },
         methods: {
             submit: function() {
                 this.result = []
                 this.init = false
                 this.errored = false
+                this.isLoading = true
 
                 axios.get('https://paliapi.pythonanywhere.com/search?word=' + this.word)
                     .then((response) => {
                         console.log(response.data)
 
                         if (response.data.status == 'error') {
+                            this.isLoading = false
                             this.errored = true
                             this.error_message = response.data.result
                         }
 
                         // 成功
                         else {
+                            this.isLoading = false
                             this.result = response.data.result
                             this.init = true
                         }
                     })
                     .catch(error => {
                         console.log(error)
+                        this.isLoading = false
                         this.errored = true
                         this.error_message = error
                     })
@@ -141,6 +189,12 @@
             highlight: function(w) {
                 var l = w.split(this.word)
                 return l.join("<span class=\"highlight\">" + this.word + "</span>")
+            },
+            openInfo: function() {
+                this.showInfo = true
+            },
+            closeInfo: function() {
+                this.showInfo = false
             }
         },
         computed: {
