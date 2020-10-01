@@ -110,25 +110,21 @@
 
 
 
-  <meta name="description" content="你有一個list，你想依序一次取出一個元素；你有一個string, 你想依序一次取出一個字元；你有一個tuple of tuple，你想依序一次取出一個tuple；你有一個dict，你想一次取出一對(key, value)；你有一個文本的file object，你想一次取出一行； Iterable可迭代對象。讓我們先看看Python3官方文件Glossary中Iterable條目的內容：">
-<meta name="keywords" content="python,iterator,iterable,generator">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python中的iterable, iterator和generator">
-<meta property="og:url" content="https://puerdon.github.io/python-iterable-iterator-generator/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Abhidhānappadīpikā">
+<meta property="og:url" content="https://puerdon.github.io/Abhidhanappadipika/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
-<meta property="og:description" content="你有一個list，你想依序一次取出一個元素；你有一個string, 你想依序一次取出一個字元；你有一個tuple of tuple，你想依序一次取出一個tuple；你有一個dict，你想一次取出一對(key, value)；你有一個文本的file object，你想一次取出一行； Iterable可迭代對象。讓我們先看看Python3官方文件Glossary中Iterable條目的內容：">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2018-08-10T06:40:48.000Z">
+<meta property="og:updated_time" content="2020-09-30T17:59:13.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python中的iterable, iterator和generator">
-<meta name="twitter:description" content="你有一個list，你想依序一次取出一個元素；你有一個string, 你想依序一次取出一個字元；你有一個tuple of tuple，你想依序一次取出一個tuple；你有一個dict，你想一次取出一對(key, value)；你有一個文本的file object，你想一次取出一行； Iterable可迭代對象。讓我們先看看Python3官方文件Glossary中Iterable條目的內容：">
+<meta name="twitter:title" content="Abhidhānappadīpikā">
 
 
 
 
 
 
-  <link rel="canonical" href="https://puerdon.github.io/python-iterable-iterator-generator/">
+  <link rel="canonical" href="https://puerdon.github.io/Abhidhanappadipika/">
 
 
 
@@ -138,7 +134,7 @@
   };
 </script>
 
-  <title>Python中的iterable, iterator和generator | Puerdon Biki</title>
+  <title>Abhidhānappadīpikā | Puerdon Biki</title>
   
 
 
@@ -300,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/python-iterable-iterator-generator/">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/Abhidhanappadipika/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="puerdon">
@@ -317,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python中的iterable, iterator和generator
+          <h1 class="post-title" itemprop="name headline">Abhidhānappadīpikā
               
             
           </h1>
@@ -342,7 +338,7 @@
                 
               
 
-              <time title="創建時間：2018-08-10 10:57:05 / 修改時間：14:40:48" itemprop="dateCreated datePublished" datetime="2018-08-10T10:57:05+08:00">2018-08-10</time>
+              <time title="創建時間：2020-10-01 01:59:12 / 修改時間：01:59:13" itemprop="dateCreated datePublished" datetime="2020-10-01T01:59:12+08:00">2020-10-01</time>
             
 
             
@@ -352,24 +348,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -398,29 +376,7 @@
       
 
       
-        <p>你有一個<code>list</code>，你想依序一次取出一個元素；<br>你有一個<code>string</code>, 你想依序一次取出一個字元；<br>你有一個<code>tuple</code> of <code>tuple</code>，你想依序一次取出一個<code>tuple</code>；<br>你有一個<code>dict</code>，你想一次取出一對<code>(key, value)</code>；<br>你有一個文本的<code>file</code> object，你想一次取出一行；</p>
-<h1 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h1><p>可迭代對象。讓我們先看看Python3官方文件Glossary中Iterable條目的內容：   </p>
-<blockquote>
-<h2 id="Iterable-可迭代物件"><a href="#Iterable-可迭代物件" class="headerlink" title="Iterable (可迭代物件)"></a>Iterable (可迭代物件)</h2><p>iterable(可迭代物件)是一種能夠一次回傳一個成員的物件。所有<strong>sequence類別</strong>的物件（例如<code>list</code>, <code>str</code>, <code>tuple</code>）和一些 <strong>non-sequence類別</strong>的物件（例如<code>dict</code>, <code>file</code> objects）都是iterable物件。另外，任何定義有<code>__iter__()</code>方法或者<code>__getitem__()</code>方法的<code>class</code>，實例化後的物件也算是iterable。</p>
-<blockquote>
-<p>Sequence: 定義有<code>__getitem__()</code>方法（可透過整數索引來存取其成員）和 <code>__len__()</code>方法（回傳sequence長度）的物件。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>Iterables可以用在<code>for</code>迴圈和一些需要 sequence 的函數中(例如<code>zip()</code>, <code>map()</code>等等). 當iterable作為內建函數<code>iter()</code>的參數時，該函數會回傳該iterable的 iterator（迭代器）。Iterator可用來將包含一組值的集合拆開，一次取出其中一個值。在使用iterable，使用者通常不必自己呼叫<code>__iter__()</code>來產生iterator. Python中的 <code>for</code> 陳述式已經幫你把事情都處理好了：當你把一個iterable丟給<code>for...in...</code>時（例如<code>for i in [1, 2, 3, 4, 5]</code>），在執行迴圈時，會自動幫你產生一個iterator，並把該iterator賦予一個暫時的未命名變數。</p>
-</blockquote>
-<p>iterable和iterator是用來稱呼同一件事的不同構成要素：可以把iterable想像成有待分配的素材，像是一籃裝有20顆籃球的籃子，籃子中的每一顆籃球都是籃子中的一份子。現在想把籃球發給班上20個人，但籃球不會自己長出腳來走到每個人的腳邊，因此需要指派體育股長，讓他一次從籃子中取出一顆籃球發給每個人，迭代器 (iterator)扮演的角色就如同體育股長一樣，每次從iterable中取出一個成員。</p>
-<h1 id="常見做法"><a href="#常見做法" class="headerlink" title="常見做法"></a>常見做法</h1><p>Often the iterable classes will implement both <strong>iter</strong>() and <strong>next</strong>() in the same class, and have <strong>iter</strong>() return self, which makes the <em>iterable</em> class both an iterable and its own iterator. It’s perfectly fine to return a different object as the iterator, though.</p>
-<h1 id="能產生各種iterator的強大工具itertools"><a href="#能產生各種iterator的強大工具itertools" class="headerlink" title="能產生各種iterator的強大工具itertools"></a>能產生各種iterator的強大工具<code>itertools</code></h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="https://nvie.com/posts/iterators-vs-generators/" target="_blank" rel="noopener">Iterables vs. Iterators vs. Generators</a></li>
-<li><a href="https://www.datacamp.com/community/tutorials/python-iterator-tutorial" target="_blank" rel="noopener">DataCamp: Python Iterator Tutorial</a></li>
-<li><a href="https://anandology.com/python-practice-book/iterators.html" target="_blank" rel="noopener">Python Practice Book: 5. Iterators &amp; Generators</a></li>
-<li><a href="http://www.dabeaz.com/generators-uk/" target="_blank" rel="noopener">Generator Tricks for Systems Programmers (v2.0) by (David M. Beazley)</a></li>
-<li><a href="http://www.dabeaz.com/finalgenerator/" target="_blank" rel="noopener">Generators: The Final Frontier (by David M. Beazley)</a></li>
-<li><a href="https://docs.python.org/3/library/itertools.html" target="_blank" rel="noopener">Python3: <code>itertools</code></a></li>
-<li>為何要在 <code>__iter__</code> 方法中回傳<code>self</code>: <a href="https://stackoverflow.com/questions/35657927/what-is-the-use-of-returning-self-in-the-iter-method" target="_blank" rel="noopener">stackoverflow: What is the use of returning self in the <strong>iter</strong> method?</a></li>
-</ul>
-
+        
       
     </div>
 
@@ -438,18 +394,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/iterator/" rel="tag"># iterator</a>
-          
-            <a href="/tags/iterable/" rel="tag"># iterable</a>
-          
-            <a href="/tags/generator/" rel="tag"># generator</a>
-          
-        </div>
-      
 
       
       
@@ -459,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ngrams-src-code-in-nltk/" rel="next" title="nltk 中 ngrams 原始碼分析">
-                <i class="fa fa-chevron-left"></i> nltk 中 ngrams 原始碼分析
+              <a href="/梵文內連音-Internal-Sandhi/" rel="next" title="梵文內連音(Internal Sandhi)">
+                <i class="fa fa-chevron-left"></i> 梵文內連音(Internal Sandhi)
               </a>
             
           </div>
@@ -468,10 +412,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/likelihood-and-probability/" rel="prev" title="likelihood-and-probability">
-                likelihood-and-probability <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -520,17 +460,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目錄
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            本站概要
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -718,22 +649,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Iterable"><span class="nav-number">1.</span> <span class="nav-text">Iterable</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterable-可迭代物件"><span class="nav-number">1.1.</span> <span class="nav-text">Iterable (可迭代物件)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常見做法"><span class="nav-number">2.</span> <span class="nav-text">常見做法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#能產生各種iterator的強大工具itertools"><span class="nav-number">3.</span> <span class="nav-text">能產生各種iterator的強大工具itertools</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考資料"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
