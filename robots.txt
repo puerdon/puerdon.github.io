@@ -3,6 +3,7 @@ Allow: /
 Allow: /archives/
 Allow: /categories/
 Allow: /tags/
+Allow: /chinese-pali-dict/
 
 Disallow: /vendors/
 Disallow: /fancybox/
