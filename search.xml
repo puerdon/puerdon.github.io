@@ -22,6 +22,51 @@
       </tags>
   </entry>
   <entry>
+    <title>Quantitative Corpus Linguistics with R</title>
+    <url>/CH2%20%E4%B8%89%E5%80%8B%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
+<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
+</blockquote>
+<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
+<ul>
+<li>lemmatized</li>
+<li>POS tag</li>
+<li>morphological</li>
+<li>phonological</li>
+<li>syntactically parsed</li>
+<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
+</ul>
+<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
+<ul>
+<li><strong>各種pattern</strong>的出現頻率</li>
+<li><strong>pattern之間</strong>的共同出現頻率</li>
+</ul>
+<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
+<p>但什麼是詞？不同語言中的詞。</p>
+<p>type vs. token</p>
+<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
+<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
+<li>collocation (本篇重點)</li>
+<li>colligation</li>
+<li>collostruction</li>
+</ul>
+<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
+<li>語言教學</li>
+<li>語義學</li>
+</ul>
+<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
+<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
+]]></content>
+      <categories>
+        <category>語料庫語言學</category>
+      </categories>
+      <tags>
+        <tag>語言學</tag>
+        <tag>R</tag>
+        <tag>語料庫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Haskell中的IO Action</title>
     <url>/Haskell%E4%B8%AD%E7%9A%84IO-Action/</url>
     <content><![CDATA[<blockquote>
@@ -69,48 +114,29 @@
       </tags>
   </entry>
   <entry>
-    <title>Quantitative Corpus Linguistics with R</title>
-    <url>/CH2%20%E4%B8%89%E5%80%8B%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
-<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
-</blockquote>
-<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
-<ul>
-<li>lemmatized</li>
-<li>POS tag</li>
-<li>morphological</li>
-<li>phonological</li>
-<li>syntactically parsed</li>
-<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
-</ul>
-<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
-<ul>
-<li><strong>各種pattern</strong>的出現頻率</li>
-<li><strong>pattern之間</strong>的共同出現頻率</li>
-</ul>
-<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
-<p>但什麼是詞？不同語言中的詞。</p>
-<p>type vs. token</p>
-<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
-<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
-<li>collocation (本篇重點)</li>
-<li>colligation</li>
-<li>collostruction</li>
-</ul>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>語言教學</li>
-<li>語義學</li>
-</ul>
-<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
-<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
+    <title>Haskell中的polymorphic-function</title>
+    <url>/Haskell%E4%B8%AD%E7%9A%84polymorphic-function/</url>
+    <content><![CDATA[<p>所謂polymorphic function(多態函數)指的是<strong>可作用於多種類型的輸入</strong>的函數。</p>
+<a id="more"></a>
+<p>以length函數為例：  </p>
+<p>‘’’<br>length :: [a] -&gt; Int<br>‘’’</p>
+<p><code>length</code>函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
+<p><code>length</code>函數簽名中的 <em>type variable</em> <code>a</code> 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
+<p>再舉個例子：</p>
+<p>‘’’<br>id :: a -&gt; a<br>‘’’</p>
+<p><code>id</code>函數是一個不管給他什麼參數，都會回傳自己的參數。可以觀察到兩件事：</p>
+<ol>
+<li><code>id</code>函數的簽名中，只出現 <strong>type variable</strong> <code>a</code>，也就是說<code>id</code>函數可以接收任何type的參數。</li>
+<li><code>id</code>函數接收的type和回傳的type是同一個。</li>
+</ol>
 ]]></content>
       <categories>
-        <category>語料庫語言學</category>
+        <category>Haskell</category>
       </categories>
       <tags>
-        <tag>語言學</tag>
-        <tag>R</tag>
-        <tag>語料庫</tag>
+        <tag>Haskell</tag>
+        <tag>function</tag>
+        <tag>polymorphic function</tag>
       </tags>
   </entry>
   <entry>
@@ -155,32 +181,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>檔案權限</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Haskell中的polymorphic-function</title>
-    <url>/Haskell%E4%B8%AD%E7%9A%84polymorphic-function/</url>
-    <content><![CDATA[<p>所謂polymorphic function(多態函數)指的是<strong>可作用於多種類型的輸入</strong>的函數。</p>
-<a id="more"></a>
-<p>以length函數為例：  </p>
-<p>‘’’<br>length :: [a] -&gt; Int<br>‘’’</p>
-<p><code>length</code>函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
-<p><code>length</code>函數簽名中的 <em>type variable</em> <code>a</code> 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
-<p>再舉個例子：</p>
-<p>‘’’<br>id :: a -&gt; a<br>‘’’</p>
-<p><code>id</code>函數是一個不管給他什麼參數，都會回傳自己的參數。可以觀察到兩件事：</p>
-<ol>
-<li><code>id</code>函數的簽名中，只出現 <strong>type variable</strong> <code>a</code>，也就是說<code>id</code>函數可以接收任何type的參數。</li>
-<li><code>id</code>函數接收的type和回傳的type是同一個。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Haskell</category>
-      </categories>
-      <tags>
-        <tag>Haskell</tag>
-        <tag>function</tag>
-        <tag>polymorphic function</tag>
       </tags>
   </entry>
   <entry>
@@ -751,6 +751,23 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo中的helper使用方法</title>
+    <url>/hexo%E4%B8%AD%E7%9A%84helper%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>Hexo中的Helpers是不能用在source當中的，一定要寫在theme當中的layout裡頭才可以。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="https://hexo.io/api/helper" target="_blank" rel="noopener">官網: Helper</a></li>
+<li><a href="https://stackoverflow.com/questions/33729493/how-to-use-helpers-in-hexo-source-files" target="_blank" rel="noopener">How to use helpers in Hexo source files?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>likelihood-and-probability</title>
     <url>/likelihood-and-probability/</url>
     <content><![CDATA[<p>似然率和機率是不同的概念。</p>
@@ -829,23 +846,6 @@
       </categories>
       <tags>
         <tag>巴利文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo中的helper使用方法</title>
-    <url>/hexo%E4%B8%AD%E7%9A%84helper%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>Hexo中的Helpers是不能用在source當中的，一定要寫在theme當中的layout裡頭才可以。</p>
-<p>參考資料：</p>
-<ul>
-<li><a href="https://hexo.io/api/helper" target="_blank" rel="noopener">官網: Helper</a></li>
-<li><a href="https://stackoverflow.com/questions/33729493/how-to-use-helpers-in-hexo-source-files" target="_blank" rel="noopener">How to use helpers in Hexo source files?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1039,6 +1039,38 @@
       </tags>
   </entry>
   <entry>
+    <title>TF-IDF</title>
+    <url>/tf-idf/</url>
+    <content><![CDATA[<h1 id="TF-IDF是什麼"><a href="#TF-IDF是什麼" class="headerlink" title="TF-IDF是什麼"></a>TF-IDF是什麼</h1><p>TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。</p>
+<h1 id="所以TF-IDF用來做什麼"><a href="#所以TF-IDF用來做什麼" class="headerlink" title="所以TF-IDF用來做什麼"></a>所以TF-IDF用來做什麼</h1><p>顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的<strong>預設</strong>是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？</p>
+<a id="more"></a>
+<h1 id="先說普通版本的詞頻計算"><a href="#先說普通版本的詞頻計算" class="headerlink" title="先說普通版本的詞頻計算"></a>先說普通版本的詞頻計算</h1><p>最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。</p>
+<h1 id="可是卻沒有考量到不同詞的特性"><a href="#可是卻沒有考量到不同詞的特性" class="headerlink" title="可是卻沒有考量到不同詞的特性"></a>可是卻沒有考量到不同詞的特性</h1><p>雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。</p>
+<h1 id="所以要想個方法可以降低常用詞詞頻的干擾"><a href="#所以要想個方法可以降低常用詞詞頻的干擾" class="headerlink" title="所以要想個方法可以降低常用詞詞頻的干擾"></a>所以要想個方法可以降低常用詞詞頻的干擾</h1><p>這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。<br>但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。<br>因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。<br>還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。</p>
+]]></content>
+      <categories>
+        <category>自然語言處理</category>
+      </categories>
+      <tags>
+        <tag>TF-IDF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>執著, 取 Upaya / Upādāna / Ādāna</title>
+    <url>/upaya-%E5%9F%B7%E8%91%97/</url>
+    <content><![CDATA[<h2 id="Upaya"><a href="#Upaya" class="headerlink" title="Upaya"></a>Upaya</h2><p>來自 upa + -i，也作upāya，只用形容詞，例如anūpaya (an + upaya: unattached) 和 rūpūpaya (rūpa + upaya: clinging to form)。</p>
+<p>… sabbaloke anūpayo … 於一切世間之不執著 (<a href="https://www.digitalpalireader.online/_dprhtml/index.html?loc=a.3.0.0.0.2.2.m&amp;para=1" target="_blank" rel="noopener">AN.4.23</a>)</p>
+<h2 id="Upadana"><a href="#Upadana" class="headerlink" title="Upādāna"></a>Upādāna</h2><p>來自upa + ā + dā，本義為燃料，也就是使某事物持續活動的動力，也有執取之義，「五取蘊」即用此字 (pañc’upānāna-khaandhā)。</p>
+<h2 id="Adana"><a href="#Adana" class="headerlink" title="Ādāna"></a>Ādāna</h2><p>來自upa + ā + dā</p>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>台灣同性婚姻論述分析(I)</title>
     <url>/taiwan-same-sex-marriage-1/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>近年來，同婚議題在台灣社會逐漸受到重視，並在2017年大法官宣布目前保障一男一女的民法婚姻制度違憲之後，更帶來保守派反動力量的復甦。同婚的支持方與反對方之間的對立在2018年大選時達到高峰，首先由反對方（以下一代幸福聯盟為代表）提出了三案公投案，而後支持方（以伴侶盟為代表）也提出了兩案公投案。也因此使得同婚議題浮上政治檯面，無論支持兩好三壞或是三好兩壞，可以說同婚議題首次以如此「高調」的方式登上台灣社會的舞台。</p>
@@ -1132,56 +1164,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>TF-IDF</title>
-    <url>/tf-idf/</url>
-    <content><![CDATA[<h1 id="TF-IDF是什麼"><a href="#TF-IDF是什麼" class="headerlink" title="TF-IDF是什麼"></a>TF-IDF是什麼</h1><p>TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。</p>
-<h1 id="所以TF-IDF用來做什麼"><a href="#所以TF-IDF用來做什麼" class="headerlink" title="所以TF-IDF用來做什麼"></a>所以TF-IDF用來做什麼</h1><p>顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的<strong>預設</strong>是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？</p>
-<a id="more"></a>
-<h1 id="先說普通版本的詞頻計算"><a href="#先說普通版本的詞頻計算" class="headerlink" title="先說普通版本的詞頻計算"></a>先說普通版本的詞頻計算</h1><p>最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。</p>
-<h1 id="可是卻沒有考量到不同詞的特性"><a href="#可是卻沒有考量到不同詞的特性" class="headerlink" title="可是卻沒有考量到不同詞的特性"></a>可是卻沒有考量到不同詞的特性</h1><p>雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。</p>
-<h1 id="所以要想個方法可以降低常用詞詞頻的干擾"><a href="#所以要想個方法可以降低常用詞詞頻的干擾" class="headerlink" title="所以要想個方法可以降低常用詞詞頻的干擾"></a>所以要想個方法可以降低常用詞詞頻的干擾</h1><p>這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。<br>但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。<br>因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。<br>還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。</p>
-]]></content>
-      <categories>
-        <category>自然語言處理</category>
-      </categories>
-      <tags>
-        <tag>TF-IDF</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>執著, 取 Upaya / Upādāna / Ādāna</title>
-    <url>/upaya-%E5%9F%B7%E8%91%97/</url>
-    <content><![CDATA[<h2 id="Upaya"><a href="#Upaya" class="headerlink" title="Upaya"></a>Upaya</h2><p>來自 upa + -i，也作upāya，只用形容詞，例如anūpaya (an + upaya: unattached) 和 rūpūpaya (rūpa + upaya: clinging to form)。</p>
-<p>… sabbaloke anūpayo … 於一切世間之不執著 (<a href="https://www.digitalpalireader.online/_dprhtml/index.html?loc=a.3.0.0.0.2.2.m&amp;para=1" target="_blank" rel="noopener">AN.4.23</a>)</p>
-<h2 id="Upadana"><a href="#Upadana" class="headerlink" title="Upādāna"></a>Upādāna</h2><p>來自upa + ā + dā，本義為燃料，也就是使某事物持續活動的動力，也有執取之義，「五取蘊」即用此字 (pañc’upānāna-khaandhā)。</p>
-<h2 id="Adana"><a href="#Adana" class="headerlink" title="Ādāna"></a>Ādāna</h2><p>來自upa + ā + dā</p>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>中文梵語學習教材</title>
-    <url>/%E4%B8%AD%E6%96%87%E6%A2%B5%E8%AA%9E%E5%AD%B8%E7%BF%92%E6%95%99%E6%9D%90/</url>
-    <content><![CDATA[<h2 id="梵文入門與習題分析-吳汝鈞-2017"><a href="#梵文入門與習題分析-吳汝鈞-2017" class="headerlink" title="梵文入門與習題分析(吳汝鈞, 2017)"></a>梵文入門與習題分析(吳汝鈞, 2017)</h2><p><img src="https://www.books.com.tw/img/001/077/76/0010777618.jpg" alt></p>
-<h2 id="基本資訊"><a href="#基本資訊" class="headerlink" title="基本資訊"></a>基本資訊</h2><p>書名：梵文入門與習題分析</p>
-<p>作者：吳汝鈞</p>
-<p>出版社：台灣學生書局</p>
-<h2 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h2><p>這本書基本上是根據 George L. Hart (1984) 的 <em>A Rapid Sanskrit Method</em> 編寫的，我自己對照了 Hart (1984) 和吳老師的這本書，可以看到在目錄的結構上也分常吻合原書的內容編排方式。因此可以把這本《梵文入門與習題分析》看做是 <em>A Rapid Sanskrit Method</em> 的中文版再加上編者自己的整理，對於比較想閱讀中文的朋友應該比較適合。</p>
-<p>除此之外，這本書最珍貴的地方在於附在課本後面的習題分析，學梵語需要進行大量的分析練習才能熟練，有了詳細的習題分析，自學者也能從中得到很大的幫助。</p>
-<p>這本書要說不足的地方，應該是一開始對於梵語發音的介紹著墨過少，如果是第一次接觸梵語的人可能會覺得，都還沒熟悉梵文字母和發音，怎麼一下子就進到了文法講解。所以最好是要先有簡單的發音知識再來讀這本書比較好。本書沒有使用天城體，而是直接使用拉丁字母拼寫梵文。</p>
-]]></content>
-      <categories>
-        <category>梵文</category>
-      </categories>
-      <tags>
-        <tag>梵文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>จัด(ได้)ว่า... (可以)算作是...</title>
     <url>/%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B9%88%E0%B8%B2-%E5%8F%AF%E4%BB%A5%E7%AE%97%E4%BD%9C%E6%98%AF/</url>
     <content><![CDATA[<p>เธอบอกว่าคุณจัดว่าเป็นดาว<br>她說你可以算是一個明星。</p>
@@ -1221,6 +1203,24 @@
       <tags>
         <tag>巴利文</tag>
         <tag>法句經</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>中文梵語學習教材</title>
+    <url>/%E4%B8%AD%E6%96%87%E6%A2%B5%E8%AA%9E%E5%AD%B8%E7%BF%92%E6%95%99%E6%9D%90/</url>
+    <content><![CDATA[<h2 id="梵文入門與習題分析-吳汝鈞-2017"><a href="#梵文入門與習題分析-吳汝鈞-2017" class="headerlink" title="梵文入門與習題分析(吳汝鈞, 2017)"></a>梵文入門與習題分析(吳汝鈞, 2017)</h2><p><img src="https://www.books.com.tw/img/001/077/76/0010777618.jpg" alt></p>
+<h2 id="基本資訊"><a href="#基本資訊" class="headerlink" title="基本資訊"></a>基本資訊</h2><p>書名：梵文入門與習題分析</p>
+<p>作者：吳汝鈞</p>
+<p>出版社：台灣學生書局</p>
+<h2 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h2><p>這本書基本上是根據 George L. Hart (1984) 的 <em>A Rapid Sanskrit Method</em> 編寫的，我自己對照了 Hart (1984) 和吳老師的這本書，可以看到在目錄的結構上也分常吻合原書的內容編排方式。因此可以把這本《梵文入門與習題分析》看做是 <em>A Rapid Sanskrit Method</em> 的中文版再加上編者自己的整理，對於比較想閱讀中文的朋友應該比較適合。</p>
+<p>除此之外，這本書最珍貴的地方在於附在課本後面的習題分析，學梵語需要進行大量的分析練習才能熟練，有了詳細的習題分析，自學者也能從中得到很大的幫助。</p>
+<p>這本書要說不足的地方，應該是一開始對於梵語發音的介紹著墨過少，如果是第一次接觸梵語的人可能會覺得，都還沒熟悉梵文字母和發音，怎麼一下子就進到了文法講解。所以最好是要先有簡單的發音知識再來讀這本書比較好。本書沒有使用天城體，而是直接使用拉丁字母拼寫梵文。</p>
+]]></content>
+      <categories>
+        <category>梵文</category>
+      </categories>
+      <tags>
+        <tag>梵文</tag>
       </tags>
   </entry>
   <entry>
@@ -1314,13 +1314,13 @@
   <entry>
     <title>德文反身動詞以及中文的「讓自己...」</title>
     <url>/%E5%BE%B7%E6%96%87%E5%8F%8D%E8%BA%AB%E5%8B%95%E8%A9%9E%E4%BB%A5%E5%8F%8A%E4%B8%AD%E6%96%87%E7%9A%84%E3%80%8C%E8%AE%93%E8%87%AA%E5%B7%B1-%E3%80%8D/</url>
-    <content><![CDATA[<h1 id="列舉幾個德文的反身動詞"><a href="#列舉幾個德文的反身動詞" class="headerlink" title="列舉幾個德文的反身動詞"></a>列舉幾個德文的反身動詞</h1><ul>
+    <content><![CDATA[<h2 id="列舉幾個德文的反身動詞"><a href="#列舉幾個德文的反身動詞" class="headerlink" title="列舉幾個德文的反身動詞"></a>列舉幾個德文的反身動詞</h2><ul>
 <li>sich entspannen 讓自己放鬆</li>
 <li>sich merken 讓自己記住; 記得</li>
 <li>sich verbessern 讓自己變得更好; 進步</li>
 <li>sich ändern 讓自己改變</li>
 </ul>
-<h1 id="觀察一"><a href="#觀察一" class="headerlink" title="觀察一"></a>觀察一</h1><ul>
+<h2 id="觀察一"><a href="#觀察一" class="headerlink" title="觀察一"></a>觀察一</h2><ul>
 <li>這些動詞似乎都有一個及物動詞的用法，有時是以物作主語: Lesen entspannt. (閱讀使人放鬆); Dieses Erlebnis hat ihn sehr geändert. (這一經歷使他大大的改變了看法。)</li>
 <li>有時是人做主語: Er will damit seine finanzielle Lage verbessern. (他想以此改善自己的經濟狀況。) Ich habe gemerkt, … (我有發現到…)</li>
 </ul>
@@ -1331,36 +1331,6 @@
       <tags>
         <tag>德文</tag>
         <tag>學習心得</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拜拜/別太執著/</title>
-    <url>/%E6%8B%9C%E6%8B%9C-%E5%88%A5%E5%A4%AA%E5%9F%B7%E8%91%97/</url>
-    <content><![CDATA[<p><a href="https://www.youtube.com/watch?v=WLpjq8LS2gc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WLpjq8LS2gc</a></p>
-<h2 id="beten-anbeten"><a href="#beten-anbeten" class="headerlink" title="beten / anbeten"></a>beten / anbeten</h2><p>這兩詞的差別在於不及物/及物的差別。</p>
-<ul>
-<li>beten (vi) 拜拜, 祈禱<ul>
-<li>Neben einem Hochhaus ist ein kleiner Tempel, wo Leute beten. 在高樓旁邊會有小小間的廟，人們在裡面拜拜。</li>
-</ul>
-</li>
-<li>anbeten (vt) 拜(某神)<ul>
-<li>Die jungen Leute gehen in einen Tempel, um den Testgott anzubeten, dass er ihnen gute Ergebnisse gibt. 年輕人會到廟裡乞求文昌帝君，希望能得到好成績。</li>
-<li>Testgott / Heiratsgott / Schwangerschaftsgott anbeten 拜文昌帝君/月老/註生娘娘</li>
-</ul>
-</li>
-</ul>
-<h2 id="etw-verbissen-sehen"><a href="#etw-verbissen-sehen" class="headerlink" title="etw. verbissen sehen"></a>etw. verbissen sehen</h2><p>In Taiwan wird nicht alles so verbissen gesehen. 台灣人不是對每件事都那麼嚴肅/死板。</p>
-<p>其他例句：</p>
-<ul>
-<li>Du solltest nicht alles so verbissen sehen. 你不應該對每件事都那麼認真/嚴肅/執著。</li>
-<li>Sehen Sie das nicht so verbissen. 這件事您別太嚴肅看待。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>德語</category>
-      </categories>
-      <tags>
-        <tag>德語</tag>
       </tags>
   </entry>
   <entry>
@@ -1430,6 +1400,59 @@
       </tags>
   </entry>
   <entry>
+    <title>拜拜/別太執著/</title>
+    <url>/%E6%8B%9C%E6%8B%9C-%E5%88%A5%E5%A4%AA%E5%9F%B7%E8%91%97/</url>
+    <content><![CDATA[<p><a href="https://www.youtube.com/watch?v=WLpjq8LS2gc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WLpjq8LS2gc</a></p>
+<h2 id="beten-anbeten"><a href="#beten-anbeten" class="headerlink" title="beten / anbeten"></a>beten / anbeten</h2><p>這兩詞的差別在於不及物/及物的差別。</p>
+<ul>
+<li>beten (vi) 拜拜, 祈禱<ul>
+<li>Neben einem Hochhaus ist ein kleiner Tempel, wo Leute beten. 在高樓旁邊會有小小間的廟，人們在裡面拜拜。</li>
+</ul>
+</li>
+<li>anbeten (vt) 拜(某神)<ul>
+<li>Die jungen Leute gehen in einen Tempel, um den Testgott anzubeten, dass er ihnen gute Ergebnisse gibt. 年輕人會到廟裡乞求文昌帝君，希望能得到好成績。</li>
+<li>Testgott / Heiratsgott / Schwangerschaftsgott anbeten 拜文昌帝君/月老/註生娘娘</li>
+</ul>
+</li>
+</ul>
+<h2 id="etw-verbissen-sehen"><a href="#etw-verbissen-sehen" class="headerlink" title="etw. verbissen sehen"></a>etw. verbissen sehen</h2><p>In Taiwan wird nicht alles so verbissen gesehen. 台灣人不是對每件事都那麼嚴肅/死板。</p>
+<p>其他例句：</p>
+<ul>
+<li>Du solltest nicht alles so verbissen sehen. 你不應該對每件事都那麼認真/嚴肅/執著。</li>
+<li>Sehen Sie das nicht so verbissen. 這件事您別太嚴肅看待。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>德語</category>
+      </categories>
+      <tags>
+        <tag>德語</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梵文內連音(Internal Sandhi)</title>
+    <url>/%E6%A2%B5%E6%96%87%E5%85%A7%E9%80%A3%E9%9F%B3-Internal-Sandhi/</url>
+    <content><![CDATA[<p>內連音出現在詞內，例如一個動詞詞根要加上<code>-ta</code>形成過去被動分詞時，動詞詞根的尾音和<code>-t</code>可能就會產生內連音。</p>
+<h1 id="t-的內連音"><a href="#t-的內連音" class="headerlink" title="-t 的內連音"></a>-t 的內連音</h1><h2 id="使用場景："><a href="#使用場景：" class="headerlink" title="使用場景："></a>使用場景：</h2><ul>
+<li>不定式 (Inf.): 動詞詞根 + -tum</li>
+<li>過去被動分詞 (P.P.P): 動詞詞根 + -ta</li>
+<li>Absolutive: 動詞詞根 + -tvā</li>
+</ul>
+<h2 id="原則一：動詞詞根的末子音要盡量接近t的發音特徵"><a href="#原則一：動詞詞根的末子音要盡量接近t的發音特徵" class="headerlink" title="原則一：動詞詞根的末子音要盡量接近t的發音特徵"></a>原則一：動詞詞根的末子音要盡量接近<code>t</code>的發音特徵</h2><p>由於 <code>t</code> 是一個無聲不送氣的子音 <code>[-voiced][-aspirated]</code> ，所以當動詞詞根原本的末子音是有聲時，就要變成無聲；原本的末子音是送氣時，就要變成不送氣。</p>
+<p>例如：</p>
+<ul>
+<li>d &gt; t: chid -&gt; chittvā</li>
+<li></li>
+</ul>
+<h2 id="特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h"><a href="#特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h" class="headerlink" title="特殊規則：動詞詞根的末子音是有聲有送氣時 (jh, ḍh, dh, bh, h)"></a>特殊規則：動詞詞根的末子音是<code>有聲有送氣</code>時 (jh, ḍh, dh, bh, h)</h2><h1 id="s-gt-s-Ruki"><a href="#s-gt-s-Ruki" class="headerlink" title="s -&gt; ṣ (Ruki)"></a>s -&gt; ṣ (Ruki)</h1><h2 id="使用場景：名詞複數位格-su"><a href="#使用場景：名詞複數位格-su" class="headerlink" title="使用場景：名詞複數位格 (-su)"></a>使用場景：名詞複數位格 (-su)</h2><h1 id="n-gt-n-Ruki"><a href="#n-gt-n-Ruki" class="headerlink" title="n -&gt; ṇ (Ruki)"></a>n -&gt; ṇ (Ruki)</h1><h2 id="使用場景：陽性-中性-a-名詞單數具格-ena"><a href="#使用場景：陽性-中性-a-名詞單數具格-ena" class="headerlink" title="使用場景：陽性, 中性 -a 名詞單數具格 (-ena)"></a>使用場景：陽性, 中性 -a 名詞單數具格 (-ena)</h2>]]></content>
+      <categories>
+        <category>梵文</category>
+      </categories>
+      <tags>
+        <tag>梵文</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>梵文二上-W1筆記</title>
     <url>/%E6%A2%B5%E6%96%87%E4%BA%8C%E4%B8%8A-W1%E7%AD%86%E8%A8%98/</url>
     <content><![CDATA[<h1 id="朗讀心經"><a href="#朗讀心經" class="headerlink" title="朗讀心經"></a>朗讀心經</h1><h1 id="The-Joy-of-Sanskrit"><a href="#The-Joy-of-Sanskrit" class="headerlink" title="The Joy of Sanskrit"></a>The Joy of Sanskrit</h1><p>本課程使用的教科書 (The Joy of Sanskrit (Taylor &amp; Scotellaro 2014))[<a href="https://press.anu.edu.au/publications/textbooks/joy-sanskrit]" target="_blank" rel="noopener">https://press.anu.edu.au/publications/textbooks/joy-sanskrit]</a></p>
@@ -1491,44 +1514,6 @@
       </tags>
   </entry>
   <entry>
-    <title>[資源分享] 如何用緬甸文拼寫巴利文</title>
-    <url>/%E8%B3%87%E6%BA%90%E5%88%86%E4%BA%AB-%E5%A6%82%E4%BD%95%E7%94%A8%E7%B7%AC%E7%94%B8%E6%96%87%E6%8B%BC%E5%AF%AB%E5%B7%B4%E5%88%A9%E6%96%87/</url>
-    <content><![CDATA[<p><a href="https://viss.wordpress.com/2015/02/22/side-by-side-a-comparison-of-lanna-and-burmese-letters/" target="_blank" rel="noopener">https://viss.wordpress.com/2015/02/22/side-by-side-a-comparison-of-lanna-and-burmese-letters/</a></p>
-<p>這篇部落格文章介紹了以緬甸文和蘭納文拼寫巴利文的方式</p>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
-        <tag>書寫系統</tag>
-        <tag>緬甸文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>梵文內連音(Internal Sandhi)</title>
-    <url>/%E6%A2%B5%E6%96%87%E5%85%A7%E9%80%A3%E9%9F%B3-Internal-Sandhi/</url>
-    <content><![CDATA[<p>內連音出現在詞內，例如一個動詞詞根要加上<code>-ta</code>形成過去被動分詞時，動詞詞根的尾音和<code>-t</code>可能就會產生內連音。</p>
-<h1 id="t-的內連音"><a href="#t-的內連音" class="headerlink" title="-t 的內連音"></a>-t 的內連音</h1><h2 id="使用場景："><a href="#使用場景：" class="headerlink" title="使用場景："></a>使用場景：</h2><ul>
-<li>不定式 (Inf.): 動詞詞根 + -tum</li>
-<li>過去被動分詞 (P.P.P): 動詞詞根 + -ta</li>
-<li>Absolutive: 動詞詞根 + -tvā</li>
-</ul>
-<h2 id="原則一：動詞詞根的末子音要盡量接近t的發音特徵"><a href="#原則一：動詞詞根的末子音要盡量接近t的發音特徵" class="headerlink" title="原則一：動詞詞根的末子音要盡量接近t的發音特徵"></a>原則一：動詞詞根的末子音要盡量接近<code>t</code>的發音特徵</h2><p>由於 <code>t</code> 是一個無聲不送氣的子音 <code>[-voiced][-aspirated]</code> ，所以當動詞詞根原本的末子音是有聲時，就要變成無聲；原本的末子音是送氣時，就要變成不送氣。</p>
-<p>例如：</p>
-<ul>
-<li>d &gt; t: chid -&gt; chittvā</li>
-<li></li>
-</ul>
-<h2 id="特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h"><a href="#特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h" class="headerlink" title="特殊規則：動詞詞根的末子音是有聲有送氣時 (jh, ḍh, dh, bh, h)"></a>特殊規則：動詞詞根的末子音是<code>有聲有送氣</code>時 (jh, ḍh, dh, bh, h)</h2><h1 id="s-gt-s-Ruki"><a href="#s-gt-s-Ruki" class="headerlink" title="s -&gt; ṣ (Ruki)"></a>s -&gt; ṣ (Ruki)</h1><h2 id="使用場景：名詞複數位格-su"><a href="#使用場景：名詞複數位格-su" class="headerlink" title="使用場景：名詞複數位格 (-su)"></a>使用場景：名詞複數位格 (-su)</h2><h1 id="n-gt-n-Ruki"><a href="#n-gt-n-Ruki" class="headerlink" title="n -&gt; ṇ (Ruki)"></a>n -&gt; ṇ (Ruki)</h1><h2 id="使用場景：陽性-中性-a-名詞單數具格-ena"><a href="#使用場景：陽性-中性-a-名詞單數具格-ena" class="headerlink" title="使用場景：陽性, 中性 -a 名詞單數具格 (-ena)"></a>使用場景：陽性, 中性 -a 名詞單數具格 (-ena)</h2>]]></content>
-      <categories>
-        <category>梵文</category>
-      </categories>
-      <tags>
-        <tag>梵文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用Twitter語料庫學泰文</title>
     <url>/%E7%94%A8twitter%E8%AA%9E%E6%96%99%E5%BA%AB%E5%AD%B8%E6%B3%B0%E6%96%87/</url>
     <content><![CDATA[<p>今天想跟大家分享另外一個學泰文的資源。常常我們學到一個新單字的時候，可能意思知道了，字典上也有兩三句例句，但實際上還是不太會用。</p>
@@ -1561,6 +1546,21 @@
       <tags>
         <tag>語料庫</tag>
         <tag>泰語</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[資源分享] 如何用緬甸文拼寫巴利文</title>
+    <url>/%E8%B3%87%E6%BA%90%E5%88%86%E4%BA%AB-%E5%A6%82%E4%BD%95%E7%94%A8%E7%B7%AC%E7%94%B8%E6%96%87%E6%8B%BC%E5%AF%AB%E5%B7%B4%E5%88%A9%E6%96%87/</url>
+    <content><![CDATA[<p><a href="https://viss.wordpress.com/2015/02/22/side-by-side-a-comparison-of-lanna-and-burmese-letters/" target="_blank" rel="noopener">https://viss.wordpress.com/2015/02/22/side-by-side-a-comparison-of-lanna-and-burmese-letters/</a></p>
+<p>這篇部落格文章介紹了以緬甸文和蘭納文拼寫巴利文的方式</p>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>書寫系統</tag>
+        <tag>緬甸文</tag>
       </tags>
   </entry>
   <entry>
