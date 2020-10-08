@@ -331,6 +331,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/如何在GitHub上對其他人的專案做出貢獻/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="puerdon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Puerdon Biki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/如何在GitHub上對其他人的專案做出貢獻/" itemprop="url">
+                  如何在GitHub上對其他人的專案做出貢獻
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+
+              
+                
+              
+
+              <time title="創建時間：2020-10-08 22:08:15 / 修改時間：22:42:46" itemprop="dateCreated datePublished" datetime="2020-10-08T22:08:15+08:00">2020-10-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h2><p>以下步驟整理自參考資料的第一個連結：</p>
+<ul>
+<li>Step 1: 到你想修改的專案的GitHub頁面，按下 Fork，這時會把這個專案複製一份到你自己的倉庫裡</li>
+<li>Step 2: 將這個自己倉庫裡的專案 <code>git clone</code> 到自己的電腦裡</li>
+<li>Step 3: 開一個新的分支 <code>git checkout -b &lt;新分支名&gt;</code></li>
+<li>Step 4: 開始修改原始碼</li>
+<li>Step 5: <code>commit</code> 修改後的原始碼<ul>
+<li>先 <code>git add</code></li>
+<li>再 <code>git commit -m &lt;commit的訊息&gt;</code></li>
+</ul>
+</li>
+<li>Step 6: 將這一份專案重新 <code>push</code> 回到 GitHub<ul>
+<li><code>git push origin &lt;新分支名&gt;</code></li>
+</ul>
+</li>
+<li>Step 7: 接下來到你自己GitHub倉庫，找到你剛剛 <code>push</code> 上去的專案，應該會在專案頁面看到一個 <code>Compare &amp; pull request</code> 的綠色按鈕，按下去，這一步會開始比對程式碼是否可以跟原作者的程式碼合併在一起。一個理解 <code>Pull request</code> 的方式就是想像那個原作者站在他的專案裡面，現在你想要「要求」他將你所更新的程式碼給「拉」進來他的專案中。</li>
+<li>Step 8: 填寫 <code>Pull request</code> 的標題和內文，稍微敘述一下你做了什麼，然後按 <code>Create pull request</code> 後送出。</li>
+<li>Step 9: 接下來就等email通知，原作者是否接受你所做的 <code>Pull request</code>。</li>
+</ul>
+<p>在參考資料的第二個連結中，還多了三個步驟要插在上述的 Step 2 後面，主要是做更多的檢查工作，已確保你clone下來的程式碼與原專案的程式碼是同步的（想像一個情況，就在你clone下來以後，原作者剛好更新了他的程式碼，那麼這時你手上有的就不是最新的了），在這裡先一併補上：</p>
+<ul>
+<li>檢查你clone下來的專案的 <code>&quot;origin&quot; remote</code> 是不是就是剛剛 fork 進你 GitHub 倉庫裡的那個（如果Step 1, 2有做對的話，通常這一步就是正確的）<ul>
+<li>以 <code>git remote -v</code> 做檢查</li>
+</ul>
+</li>
+<li>將原作者的專案設為 <code>&quot;upstream&quot; remote</code><ul>
+<li><code>git remote add upstream &lt;原作者的專案的Git網址&gt;</code></li>
+</ul>
+</li>
+<li>從上一部所設定的 <code>&quot;upstream&quot; remote</code> 下載原作者最新的程式碼<ul>
+<li><code>git pull upstream master</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li>GitHub專案: firstcontributions /<br>first-contributions <a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener">https://github.com/firstcontributions/first-contributions</a></li>
+<li>Step-by-step guide to contributing on GitHub (Data School) <a href="https://www.dataschool.io/how-to-contribute-on-github/" target="_blank" rel="noopener">https://www.dataschool.io/how-to-contribute-on-github/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/德文反身動詞以及中文的「讓自己-」/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1842,187 +2037,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/中文梵語學習教材/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/中文梵語學習教材/" itemprop="url">
-                  中文梵語學習教材
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
-
-              <time title="創建時間：2020-10-01 15:18:59" itemprop="dateCreated datePublished" datetime="2020-10-01T15:18:59+08:00">2020-10-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
-                <time title="修改時間：2020-10-02 00:15:43" itemprop="dateModified" datetime="2020-10-02T00:15:43+08:00">2020-10-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/梵文/" itemprop="url" rel="index"><span itemprop="name">梵文</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="梵文入門與習題分析-吳汝鈞-2017"><a href="#梵文入門與習題分析-吳汝鈞-2017" class="headerlink" title="梵文入門與習題分析(吳汝鈞, 2017)"></a>梵文入門與習題分析(吳汝鈞, 2017)</h2><p><img src="https://www.books.com.tw/img/001/077/76/0010777618.jpg" alt></p>
-<h2 id="基本資訊"><a href="#基本資訊" class="headerlink" title="基本資訊"></a>基本資訊</h2><p>書名：梵文入門與習題分析</p>
-<p>作者：吳汝鈞</p>
-<p>出版社：台灣學生書局</p>
-<h2 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h2><p>這本書基本上是根據 George L. Hart (1984) 的 <em>A Rapid Sanskrit Method</em> 編寫的，我自己對照了 Hart (1984) 和吳老師的這本書，可以看到在目錄的結構上也分常吻合原書的內容編排方式。因此可以把這本《梵文入門與習題分析》看做是 <em>A Rapid Sanskrit Method</em> 的中文版再加上編者自己的整理，對於比較想閱讀中文的朋友應該比較適合。</p>
-<p>除此之外，這本書最珍貴的地方在於附在課本後面的習題分析，學梵語需要進行大量的分析練習才能熟練，有了詳細的習題分析，自學者也能從中得到很大的幫助。</p>
-<p>這本書要說不足的地方，應該是一開始對於梵語發音的介紹著墨過少，如果是第一次接觸梵語的人可能會覺得，都還沒熟悉梵文字母和發音，怎麼一下子就進到了文法講解。所以最好是要先有簡單的發音知識再來讀這本書比較好。本書沒有使用天城體，而是直接使用拉丁字母拼寫梵文。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -2065,7 +2084,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">文章</span>
                   </a>
                 </div>
@@ -2237,7 +2256,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">標籤</span>
                   </a>
                 </div>
@@ -2277,6 +2298,10 @@
                 
                 
                 <li>
+                    <a href="/如何在GitHub上對其他人的專案做出貢獻/" title="如何在GitHub上對其他人的專案做出貢獻" target="_blank">如何在GitHub上對其他人的專案做出貢獻</a>
+                </li>
+                
+                <li>
                     <a href="/德文反身動詞以及中文的「讓自己-」/" title="德文反身動詞以及中文的「讓自己...」" target="_blank">德文反身動詞以及中文的「讓自己...」</a>
                 </li>
                 
@@ -2302,10 +2327,6 @@
                 
                 <li>
                     <a href="/《法句經-dhammapada》第183偈/" title="《法句經 Dhammapada》第183偈" target="_blank">《法句經 Dhammapada》第183偈</a>
-                </li>
-                
-                <li>
-                    <a href="/資源分享-如何用緬甸文拼寫巴利文/" title="[資源分享] 如何用緬甸文拼寫巴利文" target="_blank">[資源分享] 如何用緬甸文拼寫巴利文</a>
                 </li>
                 
             </ul>
