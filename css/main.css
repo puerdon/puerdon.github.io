@@ -1837,7 +1837,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6e24ff;
+  background: #baf5e0;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2823,9 +2823,21 @@ hr {
     text-align: center;
   }
 }
-h1 {
-  font-size: 20px;
-}
 .post-title {
   background-color: #f6f6f6;
+  font-size: 3em;
+}
+.posts-expand .post-title {
+  font-size: 2em;
+}
+.post-body {
+  font-family: serif;
+}
+body {
+  font-size: 1.5em;
+}
+.posts-expand .post-body h2 {
+  text-align: center;
+  padding: 2em 0;
+  font-size: 1.5em;
 }
