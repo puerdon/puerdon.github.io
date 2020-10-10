@@ -93,62 +93,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux檔案權限筆記</title>
-    <url>/Linux%E6%AA%94%E6%A1%88%E6%AC%8A%E9%99%90%E7%AD%86%E8%A8%98/</url>
-    <content><![CDATA[<h1 id="ls後的檔案屬性"><a href="#ls後的檔案屬性" class="headerlink" title="ls後的檔案屬性"></a><code>ls</code>後的檔案屬性</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-        rwx    rwx    rwx      1</span><br><span class="line">檔案類型  owner  group   other   連結數</span><br></pre></td></tr></table></figure>
-<h1 id="rwx的數字表示法"><a href="#rwx的數字表示法" class="headerlink" title="rwx的數字表示法"></a><code>rwx</code>的數字表示法</h1><ul>
-<li><code>r</code>: 4</li>
-<li><code>w</code>: 2</li>
-<li><code>x</code>: 1</li>
-</ul>
-<p>所以<code>rwx</code>為 7，<code>rw-</code>為 6，<code>r-x</code>為 5。</p>
-<h1 id="同時修改檔案或目錄的使用者-群組"><a href="#同時修改檔案或目錄的使用者-群組" class="headerlink" title="同時修改檔案或目錄的使用者:群組"></a>同時修改檔案或目錄的使用者:群組</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ chown [-R] 帳號名稱:群組名稱 檔案或目錄</span><br></pre></td></tr></table></figure>
-<p>加上<code>-R</code>參數可以對目錄下的所有檔案作用。</p>
-<h1 id="權限對檔案的意義"><a href="#權限對檔案的意義" class="headerlink" title="權限對檔案的意義"></a>權限對檔案的意義</h1><ul>
-<li><code>r</code>: 使用者可以讀取該檔案內容。</li>
-<li><code>w</code>: 使用者可以修改檔案內容，<strong>但不能刪除該檔案，刪除的權限與目錄的權限有關</strong></li>
-<li><code>x</code>: 使用者可以執行該檔案。</li>
-</ul>
-<h1 id="權限對資料夾-目錄-的意義"><a href="#權限對資料夾-目錄-的意義" class="headerlink" title="權限對資料夾(=目錄)的意義"></a>權限對資料夾(=目錄)的意義</h1><ul>
-<li><code>r</code>: 若使用者對目錄具有<code>r</code>權限，表示使用者可以透過<code>ls</code>讀取目錄內的檔案名稱。</li>
-<li><code>w</code>: 若使用者對目錄具有<code>w</code>權限，則代表使用者能更動該目錄的結構，具體來說可以：<ul>
-<li>建立新的檔案和目錄</li>
-<li><strong>刪除已經存在的檔案和目錄 (無論這些檔案的權限)</strong></li>
-<li>將已存在的檔案或目錄更名</li>
-<li>搬移該目錄內的檔案或目錄</li>
-</ul>
-</li>
-<li><code>x</code>: 若使用者對目錄具有<code>x</code>權限，則表示使用者能透過<code>cd</code>進入該目錄，並以該目錄作為工作目錄 (working directory)</li>
-</ul>
-<h1 id="一些細節"><a href="#一些細節" class="headerlink" title="一些細節"></a>一些細節</h1><ul>
-<li>通常要讀取一個目錄中的檔案時，至少要對目錄具有<code>x</code>權限。</li>
-</ul>
-<h1 id="建立一個新檔案或新目錄時的預設權限設定為何"><a href="#建立一個新檔案或新目錄時的預設權限設定為何" class="headerlink" title="建立一個新檔案或新目錄時的預設權限設定為何?"></a>建立一個新檔案或新目錄時的預設權限設定為何?</h1><p>以 <code>umask -S</code> 進行查詢。</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="http://linux.vbird.org/linux_basic/0210filepermission.php" target="_blank" rel="noopener">鳥哥的Linux私房菜</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>檔案權限</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Princeton-Algorithms-01</title>
-    <url>/Princeton-Algorithms-01/</url>
-    <content><![CDATA[<h1 id="解決問題所依循的程序"><a href="#解決問題所依循的程序" class="headerlink" title="解決問題所依循的程序"></a>解決問題所依循的程序</h1><h1 id="以Dynamic-Connectivity問題為例"><a href="#以Dynamic-Connectivity問題為例" class="headerlink" title="以Dynamic Connectivity問題為例"></a>以Dynamic Connectivity問題為例</h1><h2 id="問題的描述"><a href="#問題的描述" class="headerlink" title="問題的描述"></a>問題的描述</h2><p>輸入為一連串由一對對正整數所組成的序列，例如(2, 10), (0, 3), (4, 5)…，每個正整數代表的是某種類型的物件（可以代表社交網絡中的一個人、網絡中的一個節點等等），而一對正整數 (3, 10) 的意思是，將 3 與 10 「連在一起。</p>
-<h2 id="實際應用"><a href="#實際應用" class="headerlink" title="實際應用"></a>實際應用</h2><ul>
-<li>網絡分析</li>
-<li>程式語言中變數名稱的相等性</li>
-<li>數學上的集合</li>
-</ul>
-<h2 id="開始製定Union-Find-API"><a href="#開始製定Union-Find-API" class="headerlink" title="開始製定Union-Find API"></a>開始製定Union-Find API</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.id = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n)]</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span><span class="params">(self, a , b)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 找出位置  的元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, p)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 將 p 和 q 連在一起</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, p, q)</span>:</span></span><br></pre></td></tr></table></figure>
-<h2 id="第一種實作-Quick-Find"><a href="#第一種實作-Quick-Find" class="headerlink" title="第一種實作: Quick-Find"></a>第一種實作: Quick-Find</h2>]]></content>
-  </entry>
-  <entry>
     <title>Haskell中的IO Action</title>
     <url>/Haskell%E4%B8%AD%E7%9A%84IO-Action/</url>
     <content><![CDATA[<blockquote>
@@ -196,78 +140,145 @@
       </tags>
   </entry>
   <entry>
-    <title>[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R</title>
-    <url>/analyzing-linguistic-data/</url>
-    <content><![CDATA[<p>作者: Baayen<br>出版年: 2013<br>書名: Analyzing linguistic data - a practical introduction to satistics using R</p>
-<a id="more"></a>
-<h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><ul>
-<li>Factor: A non-numeric predicatorc (p. 9)</li>
-<li>Levels: Values of s factor (p. 9) </li>
-<li>Contingency table (crosstab): (p. 13)</li>
+    <title>Linux檔案權限筆記</title>
+    <url>/Linux%E6%AA%94%E6%A1%88%E6%AC%8A%E9%99%90%E7%AD%86%E8%A8%98/</url>
+    <content><![CDATA[<h1 id="ls後的檔案屬性"><a href="#ls後的檔案屬性" class="headerlink" title="ls後的檔案屬性"></a><code>ls</code>後的檔案屬性</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-        rwx    rwx    rwx      1</span><br><span class="line">檔案類型  owner  group   other   連結數</span><br></pre></td></tr></table></figure>
+<h1 id="rwx的數字表示法"><a href="#rwx的數字表示法" class="headerlink" title="rwx的數字表示法"></a><code>rwx</code>的數字表示法</h1><ul>
+<li><code>r</code>: 4</li>
+<li><code>w</code>: 2</li>
+<li><code>x</code>: 1</li>
 </ul>
-<h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="2-1-何謂隨機變數-Random-variables"><a href="#2-1-何謂隨機變數-Random-variables" class="headerlink" title="2.1 何謂隨機變數 (Random variables)?"></a>2.1 何謂隨機變數 (Random variables)?</h2><p>一個實驗的結果即是一個隨機變數。</p>
-<ul>
-<li>例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。</li>
-<li>例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。</li>
-<li>例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。</li>
+<p>所以<code>rwx</code>為 7，<code>rw-</code>為 6，<code>r-x</code>為 5。</p>
+<h1 id="同時修改檔案或目錄的使用者-群組"><a href="#同時修改檔案或目錄的使用者-群組" class="headerlink" title="同時修改檔案或目錄的使用者:群組"></a>同時修改檔案或目錄的使用者:群組</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ chown [-R] 帳號名稱:群組名稱 檔案或目錄</span><br></pre></td></tr></table></figure>
+<p>加上<code>-R</code>參數可以對目錄下的所有檔案作用。</p>
+<h1 id="權限對檔案的意義"><a href="#權限對檔案的意義" class="headerlink" title="權限對檔案的意義"></a>權限對檔案的意義</h1><ul>
+<li><code>r</code>: 使用者可以讀取該檔案內容。</li>
+<li><code>w</code>: 使用者可以修改檔案內容，<strong>但不能刪除該檔案，刪除的權限與目錄的權限有關</strong></li>
+<li><code>x</code>: 使用者可以執行該檔案。</li>
 </ul>
-<p>「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。</p>
-<h2 id="2-2-視覺化單一隨機變數"><a href="#2-2-視覺化單一隨機變數" class="headerlink" title="2.2 視覺化單一隨機變數"></a>2.2 視覺化單一隨機變數</h2><h3 id="Bar-chart-和-histogram-的差別"><a href="#Bar-chart-和-histogram-的差別" class="headerlink" title="Bar chart 和 histogram 的差別"></a>Bar chart 和 histogram 的差別</h3><p>Bar chart 用於離散變數或 factor 上。<br>Histogram 用於連續變數上，且 histogram 中的資料面積總和為<br> 1。</p>
-<h3 id="為何常常需要將尺度以log轉換-p-31下方"><a href="#為何常常需要將尺度以log轉換-p-31下方" class="headerlink" title="為何常常需要將尺度以log轉換? (p. 31下方)"></a>為何常常需要將尺度以log轉換? (p. 31下方)</h3><p>降低隨機變數分布的偏移。</p>
-<h2 id="2-3-視覺化兩個以上的變數"><a href="#2-3-視覺化兩個以上的變數" class="headerlink" title="2.3 視覺化兩個以上的變數"></a>2.3 視覺化兩個以上的變數</h2><ul>
-<li>mosaic plot:<ul>
-<li>先將資料轉成contingency table (<code>xtabs()</code>)</li>
-<li>再丟進 <code>mosalplot()</code></li>
-</ul>
-</li>
-<li>scatter plot: 用於表示兩個連續隨機變數之間的關係。<ul>
-<li>heteroskadastic</li>
-<li>corrrelation </li>
-<li>scatter smoother</li>
+<h1 id="權限對資料夾-目錄-的意義"><a href="#權限對資料夾-目錄-的意義" class="headerlink" title="權限對資料夾(=目錄)的意義"></a>權限對資料夾(=目錄)的意義</h1><ul>
+<li><code>r</code>: 若使用者對目錄具有<code>r</code>權限，表示使用者可以透過<code>ls</code>讀取目錄內的檔案名稱。</li>
+<li><code>w</code>: 若使用者對目錄具有<code>w</code>權限，則代表使用者能更動該目錄的結構，具體來說可以：<ul>
+<li>建立新的檔案和目錄</li>
+<li><strong>刪除已經存在的檔案和目錄 (無論這些檔案的權限)</strong></li>
+<li>將已存在的檔案或目錄更名</li>
+<li>搬移該目錄內的檔案或目錄</li>
 </ul>
 </li>
-<li>pairs plot (scatterplot matrix)<ul>
-<li>適合兩個以上的隨機變數，兩兩之間互相比較，呈現關係<ul>
-<li>multicollinearlity (p. 37)  </li>
+<li><code>x</code>: 若使用者對目錄具有<code>x</code>權限，則表示使用者能透過<code>cd</code>進入該目錄，並以該目錄作為工作目錄 (working directory)</li>
 </ul>
-</li>
+<h1 id="一些細節"><a href="#一些細節" class="headerlink" title="一些細節"></a>一些細節</h1><ul>
+<li>通常要讀取一個目錄中的檔案時，至少要對目錄具有<code>x</code>權限。</li>
 </ul>
-</li>
+<h1 id="建立一個新檔案或新目錄時的預設權限設定為何"><a href="#建立一個新檔案或新目錄時的預設權限設定為何" class="headerlink" title="建立一個新檔案或新目錄時的預設權限設定為何?"></a>建立一個新檔案或新目錄時的預設權限設定為何?</h1><p>以 <code>umask -S</code> 進行查詢。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="http://linux.vbird.org/linux_basic/0210filepermission.php" target="_blank" rel="noopener">鳥哥的Linux私房菜</a></li>
 </ul>
-<h2 id="2-4-Trellis-graphics-格狀圖"><a href="#2-4-Trellis-graphics-格狀圖" class="headerlink" title="2.4 Trellis graphics (格狀圖)"></a>2.4 Trellis graphics (格狀圖)</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><p>Many statistical tests exploit the properties of the probability distributions of random variables. (許多統計檢定在做的事就在發揮隨機變數的機率分佈性質。)</p>
-<h2 id="3-1-Distributions"><a href="#3-1-Distributions" class="headerlink" title="3.1 Distributions"></a>3.1 Distributions</h2><p>一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:</p>
-<ul>
-<li>離散</li>
-<li>連續</li>
-</ul>
-<h2 id="3-2-離散分佈"><a href="#3-2-離散分佈" class="headerlink" title="3.2 離散分佈"></a>3.2 離散分佈</h2><p>問題：在CELEX lexical database (Bayen et al., 1995)中列出了一個 1860萬詞的語料庫中，各個英文詞彙出現的頻率。發現 the 這個功能詞出現的頻率為 1093547 次，換成機率也就是 0.05885575 （這個值可以視為 the 出現在英文當中的機率的估計值）。然後現在我們又看到更早的Brown語料庫，在這個含有100萬詞的語料庫中，按照剛剛 0.05885575 的機率值，我們預期應該可以看到 the 出現 58856 次，但實際上卻找到了 69971 次。我們想知道的是，<strong>預期中與實際中的差異究竟算不算太大？</strong></p>
-<p>詞彙定義：</p>
-<ul>
-<li>probability of success (p)</li>
-<li>probability of failure (1-p)</li>
-<li>number of trials (n)</li>
-<li>binomially dstributed random variable with parameters p and n</li>
-<li>還要區分兩種對象:<ul>
-<li>母體(population)的性質</li>
-<li>樣本(sample)的性質</li>
-</ul>
-</li>
-<li>Poisson distrbution</li>
-</ul>
-<h2 id="3-3-連續分佈"><a href="#3-3-連續分佈" class="headerlink" title="3.3 連續分佈"></a>3.3 連續分佈</h2><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><p>The logic underlying the statistical tests: a statistical test produces a <strong>test statistic (檢定統計量)</strong> of which the distribution is known.</p>
-<p>我們想知道的是，這個<strong>檢定統計量</strong>是否是一個極端值，極端到不能只用巧合來解釋（巧合的相反是必然）。</p>
-<p>一般做法是先提出一個像是稻草人般的虛無假設，這個虛無假設的檢定統計量不是極端值。如果我們透過統計檢定發現得到的檢定統計量是個極端值</p>
-<p>本書採用的立場為 Frequentist statistical inference 而非 Bayesian inference。</p>
-<h2 id="p-value"><a href="#p-value" class="headerlink" title="p-value"></a>p-value</h2><p>A measure of suurprise</p>
-<h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>]]></content>
+]]></content>
       <categories>
-        <category>統計</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>R</tag>
-        <tag>統計</tag>
-        <tag>計算語言學</tag>
+        <tag>Linux</tag>
+        <tag>檔案權限</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>MIT-intro-to-algr-2</title>
+    <url>/MIT-intro-to-algr-2/</url>
+    <content><![CDATA[<h1 id="Random-access-Machine"><a href="#Random-access-Machine" class="headerlink" title="Random access Machine"></a>Random access Machine</h1><h1 id="Pointer-Machine"><a href="#Pointer-Machine" class="headerlink" title="Pointer Machine"></a>Pointer Machine</h1><h1 id="Python-machine"><a href="#Python-machine" class="headerlink" title="Python machine"></a>Python machine</h1><p>更現代的Python結合以上兩種模型。</p>
+<h2 id="基本情況"><a href="#基本情況" class="headerlink" title="基本情況"></a>基本情況</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>Python中實作List的方式使用RAM模型，透過<code>a_list[i]</code>取得list中某一索引的元素，所花的時間為常數時間O(1)。</p>
+<blockquote>
+<p>如果以linked list的方式來實作，那麼取出索引i的元素所花的時間即成為線性時間O(n)。</p>
+</blockquote>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>如果一物件有適當數量的元素，那麼取出該物件屬性的執行時間也是常數時間O(1)。</p>
+<h2 id="幾個例子"><a href="#幾個例子" class="headerlink" title="幾個例子"></a>幾個例子</h2><h3 id="list-append"><a href="#list-append" class="headerlink" title="list.append"></a><code>list.append</code></h3><p>使用 table doubling 方法（在之後的第九課將提到），使執行時間達到常數時間O(n)。</p>
+<h3 id="new-list-list1-list2"><a href="#new-list-list1-list2" class="headerlink" title="new_list = list1 + list2"></a><code>new_list = list1 + list2</code></h3><p>上面的程式碼在底層其實是執行下方的程式碼。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_list = []</span><br><span class="line">for x in list1:</span><br><span class="line">    new_list.append(x)</span><br><span class="line">for y in list2:</span><br><span class="line">    new_list.append(y)</span><br></pre></td></tr></table></figure></p>
+<p>因此可利用<code>append()</code>方法的執行時間來推導將兩個list相連在一起的執行時間: O(|list1| + |list2|)，即正比於兩個list的元素數量總和。</p>
+<h3 id="elm-in-a-list"><a href="#elm-in-a-list" class="headerlink" title="elm in a_list"></a><code>elm in a_list</code></h3><p>線性時間O(n)，從第一個元素依序檢查到最後一個。</p>
+<h3 id="len-a-list"><a href="#len-a-list" class="headerlink" title="len(a_list)"></a><code>len(a_list)</code></h3><p>常數時間O(1)，因為Python在底層已經先計算好並儲存每個list的長度。所以呼叫<code>len(a_list)</code>只是去叫出那個被儲存的值。</p>
+<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>以hash table實作，因此以<code>dict[key]</code>叫出該對應value的執行時間為常數時間O(n)。</p>
+<h2 id="Document-distance-Problem"><a href="#Document-distance-Problem" class="headerlink" title="Document distance Problem"></a>Document distance Problem</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>有兩份文件，想測量這兩份文件的距離，即這兩份文件的共通性。</p>
+<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
+<li>Google index page</li>
+<li>Mirror of Wiki</li>
+<li>檢查兩份期末報告是否互相抄襲</li>
+</ul>
+<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
+<li>文件:由words組成</li>
+<li>word: 為字元(a-z, A-Z, 0-9)組成的字串</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>可以把兩份文件的共通性以兩份文件所包含字詞的共通性來思考。</p>
+<h3 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h3><ol>
+<li>將文件分割為words</li>
+<li>算出每個word的出現頻率</li>
+<li>算兩個文件的word陣列的內積（即角度）</li>
+</ol>
+<h1 id="課程連結"><a href="#課程連結" class="headerlink" title="課程連結"></a>課程連結</h1><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/" target="_blank" rel="noopener">MIT 6.006 Introduction to ALgorithms, Fall 2011</a></p>
+]]></content>
+      <tags>
+        <tag>MIT演算法筆記</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL</title>
+    <url>/SQL/</url>
+    <content><![CDATA[<h1 id="全名"><a href="#全名" class="headerlink" title="全名"></a>全名</h1><p>SQL 是 Structured Query Language 的縮寫。</p>
+<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>SQL是一種用來處理紀錄在 RDBMS (Relational Database Management System 關聯式資料庫管理系統，例如：MySQL, Oracle, Microsoft Access, PostreSQL) 當中資料的語言。</p>
+<a id="more"></a>
+<p>依據用途可以分成以下四種子語言：</p>
+<ul>
+<li>DDL (Data Definition Language)<br>用來定義、修正、刪除資料表的架構<ul>
+<li><code>CREATE</code></li>
+<li><code>ALTER</code></li>
+<li><code>DROP</code></li>
+<li><code>TRUNCATE</code></li>
+</ul>
+</li>
+<li>DML (Data Manipulation Language)<br>對DB中的資料進行新增、刪除、更新的動作<ul>
+<li><code>INSERT</code></li>
+<li><code>UPDATE</code></li>
+<li><code>DELETE</code></li>
+<li><code>MERGE</code></li>
+</ul>
+</li>
+<li>DQL (Data Query Language)<br>用來查詢DB中的符合特定條件的資料<ul>
+<li><code>SELECT</code></li>
+<li><code>FROM</code></li>
+<li><code>WHERE</code></li>
+</ul>
+</li>
+<li>DCL (Data Control Language)<br>授與特定權限、控制DB操縱事務的發生等等<ul>
+<li><code>GRANT</code></li>
+<li><code>ROLLBACK</code></li>
+<li><code>COMMIT</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">[Wiki] SQL</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SQL_syntax" target="_blank" rel="noopener">[Wiki] SQL syntax</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>資料庫</category>
+      </categories>
+      <tags>
+        <tag>資料庫</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Princeton-Algorithms-01</title>
+    <url>/Princeton-Algorithms-01/</url>
+    <content><![CDATA[<h1 id="解決問題所依循的程序"><a href="#解決問題所依循的程序" class="headerlink" title="解決問題所依循的程序"></a>解決問題所依循的程序</h1><h1 id="以Dynamic-Connectivity問題為例"><a href="#以Dynamic-Connectivity問題為例" class="headerlink" title="以Dynamic Connectivity問題為例"></a>以Dynamic Connectivity問題為例</h1><h2 id="問題的描述"><a href="#問題的描述" class="headerlink" title="問題的描述"></a>問題的描述</h2><p>輸入為一連串由一對對正整數所組成的序列，例如(2, 10), (0, 3), (4, 5)…，每個正整數代表的是某種類型的物件（可以代表社交網絡中的一個人、網絡中的一個節點等等），而一對正整數 (3, 10) 的意思是，將 3 與 10 「連在一起。</p>
+<h2 id="實際應用"><a href="#實際應用" class="headerlink" title="實際應用"></a>實際應用</h2><ul>
+<li>網絡分析</li>
+<li>程式語言中變數名稱的相等性</li>
+<li>數學上的集合</li>
+</ul>
+<h2 id="開始製定Union-Find-API"><a href="#開始製定Union-Find-API" class="headerlink" title="開始製定Union-Find API"></a>開始製定Union-Find API</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.id = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n)]</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span><span class="params">(self, a , b)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 找出位置  的元素</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, p)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 將 p 和 q 連在一起</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, p, q)</span>:</span></span><br></pre></td></tr></table></figure>
+<h2 id="第一種實作-Quick-Find"><a href="#第一種實作-Quick-Find" class="headerlink" title="第一種實作: Quick-Find"></a>第一種實作: Quick-Find</h2>]]></content>
   </entry>
   <entry>
     <title>梵文名詞表格</title>
@@ -475,99 +486,77 @@
       </tags>
   </entry>
   <entry>
-    <title>SQL</title>
-    <url>/SQL/</url>
-    <content><![CDATA[<h1 id="全名"><a href="#全名" class="headerlink" title="全名"></a>全名</h1><p>SQL 是 Structured Query Language 的縮寫。</p>
-<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>SQL是一種用來處理紀錄在 RDBMS (Relational Database Management System 關聯式資料庫管理系統，例如：MySQL, Oracle, Microsoft Access, PostreSQL) 當中資料的語言。</p>
+    <title>[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R</title>
+    <url>/analyzing-linguistic-data/</url>
+    <content><![CDATA[<p>作者: Baayen<br>出版年: 2013<br>書名: Analyzing linguistic data - a practical introduction to satistics using R</p>
 <a id="more"></a>
-<p>依據用途可以分成以下四種子語言：</p>
+<h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><ul>
+<li>Factor: A non-numeric predicatorc (p. 9)</li>
+<li>Levels: Values of s factor (p. 9) </li>
+<li>Contingency table (crosstab): (p. 13)</li>
+</ul>
+<h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="2-1-何謂隨機變數-Random-variables"><a href="#2-1-何謂隨機變數-Random-variables" class="headerlink" title="2.1 何謂隨機變數 (Random variables)?"></a>2.1 何謂隨機變數 (Random variables)?</h2><p>一個實驗的結果即是一個隨機變數。</p>
 <ul>
-<li>DDL (Data Definition Language)<br>用來定義、修正、刪除資料表的架構<ul>
-<li><code>CREATE</code></li>
-<li><code>ALTER</code></li>
-<li><code>DROP</code></li>
-<li><code>TRUNCATE</code></li>
+<li>例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。</li>
+<li>例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。</li>
+<li>例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。</li>
+</ul>
+<p>「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。</p>
+<h2 id="2-2-視覺化單一隨機變數"><a href="#2-2-視覺化單一隨機變數" class="headerlink" title="2.2 視覺化單一隨機變數"></a>2.2 視覺化單一隨機變數</h2><h3 id="Bar-chart-和-histogram-的差別"><a href="#Bar-chart-和-histogram-的差別" class="headerlink" title="Bar chart 和 histogram 的差別"></a>Bar chart 和 histogram 的差別</h3><p>Bar chart 用於離散變數或 factor 上。<br>Histogram 用於連續變數上，且 histogram 中的資料面積總和為<br> 1。</p>
+<h3 id="為何常常需要將尺度以log轉換-p-31下方"><a href="#為何常常需要將尺度以log轉換-p-31下方" class="headerlink" title="為何常常需要將尺度以log轉換? (p. 31下方)"></a>為何常常需要將尺度以log轉換? (p. 31下方)</h3><p>降低隨機變數分布的偏移。</p>
+<h2 id="2-3-視覺化兩個以上的變數"><a href="#2-3-視覺化兩個以上的變數" class="headerlink" title="2.3 視覺化兩個以上的變數"></a>2.3 視覺化兩個以上的變數</h2><ul>
+<li>mosaic plot:<ul>
+<li>先將資料轉成contingency table (<code>xtabs()</code>)</li>
+<li>再丟進 <code>mosalplot()</code></li>
 </ul>
 </li>
-<li>DML (Data Manipulation Language)<br>對DB中的資料進行新增、刪除、更新的動作<ul>
-<li><code>INSERT</code></li>
-<li><code>UPDATE</code></li>
-<li><code>DELETE</code></li>
-<li><code>MERGE</code></li>
+<li>scatter plot: 用於表示兩個連續隨機變數之間的關係。<ul>
+<li>heteroskadastic</li>
+<li>corrrelation </li>
+<li>scatter smoother</li>
 </ul>
 </li>
-<li>DQL (Data Query Language)<br>用來查詢DB中的符合特定條件的資料<ul>
-<li><code>SELECT</code></li>
-<li><code>FROM</code></li>
-<li><code>WHERE</code></li>
-</ul>
-</li>
-<li>DCL (Data Control Language)<br>授與特定權限、控制DB操縱事務的發生等等<ul>
-<li><code>GRANT</code></li>
-<li><code>ROLLBACK</code></li>
-<li><code>COMMIT</code></li>
+<li>pairs plot (scatterplot matrix)<ul>
+<li>適合兩個以上的隨機變數，兩兩之間互相比較，呈現關係<ul>
+<li>multicollinearlity (p. 37)  </li>
 </ul>
 </li>
 </ul>
-<h1 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="https://en.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">[Wiki] SQL</a></li>
-<li><a href="https://en.wikipedia.org/wiki/SQL_syntax" target="_blank" rel="noopener">[Wiki] SQL syntax</a></li>
+</li>
 </ul>
-]]></content>
+<h2 id="2-4-Trellis-graphics-格狀圖"><a href="#2-4-Trellis-graphics-格狀圖" class="headerlink" title="2.4 Trellis graphics (格狀圖)"></a>2.4 Trellis graphics (格狀圖)</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><p>Many statistical tests exploit the properties of the probability distributions of random variables. (許多統計檢定在做的事就在發揮隨機變數的機率分佈性質。)</p>
+<h2 id="3-1-Distributions"><a href="#3-1-Distributions" class="headerlink" title="3.1 Distributions"></a>3.1 Distributions</h2><p>一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:</p>
+<ul>
+<li>離散</li>
+<li>連續</li>
+</ul>
+<h2 id="3-2-離散分佈"><a href="#3-2-離散分佈" class="headerlink" title="3.2 離散分佈"></a>3.2 離散分佈</h2><p>問題：在CELEX lexical database (Bayen et al., 1995)中列出了一個 1860萬詞的語料庫中，各個英文詞彙出現的頻率。發現 the 這個功能詞出現的頻率為 1093547 次，換成機率也就是 0.05885575 （這個值可以視為 the 出現在英文當中的機率的估計值）。然後現在我們又看到更早的Brown語料庫，在這個含有100萬詞的語料庫中，按照剛剛 0.05885575 的機率值，我們預期應該可以看到 the 出現 58856 次，但實際上卻找到了 69971 次。我們想知道的是，<strong>預期中與實際中的差異究竟算不算太大？</strong></p>
+<p>詞彙定義：</p>
+<ul>
+<li>probability of success (p)</li>
+<li>probability of failure (1-p)</li>
+<li>number of trials (n)</li>
+<li>binomially dstributed random variable with parameters p and n</li>
+<li>還要區分兩種對象:<ul>
+<li>母體(population)的性質</li>
+<li>樣本(sample)的性質</li>
+</ul>
+</li>
+<li>Poisson distrbution</li>
+</ul>
+<h2 id="3-3-連續分佈"><a href="#3-3-連續分佈" class="headerlink" title="3.3 連續分佈"></a>3.3 連續分佈</h2><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><p>The logic underlying the statistical tests: a statistical test produces a <strong>test statistic (檢定統計量)</strong> of which the distribution is known.</p>
+<p>我們想知道的是，這個<strong>檢定統計量</strong>是否是一個極端值，極端到不能只用巧合來解釋（巧合的相反是必然）。</p>
+<p>一般做法是先提出一個像是稻草人般的虛無假設，這個虛無假設的檢定統計量不是極端值。如果我們透過統計檢定發現得到的檢定統計量是個極端值</p>
+<p>本書採用的立場為 Frequentist statistical inference 而非 Bayesian inference。</p>
+<h2 id="p-value"><a href="#p-value" class="headerlink" title="p-value"></a>p-value</h2><p>A measure of suurprise</p>
+<h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>]]></content>
       <categories>
-        <category>資料庫</category>
+        <category>統計</category>
       </categories>
       <tags>
-        <tag>資料庫</tag>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>functor-and-applicative-functor</title>
-    <url>/functor-and-applicative-functor/</url>
-    <content><![CDATA[<h1 id="lifting"><a href="#lifting" class="headerlink" title="lifting"></a>lifting</h1><p><code>(a -&gt; b) -&gt; (f a -&gt; f b)</code></p>
-<p>接收一個函數<code>a -&gt; b</code>，回傳一個新的函數<code>f a -&gt; f b</code>，新函數和舊函數的差別在於<strong>新函數可以處理任何type為functor typeclass的instance的值（例如<code>[Int]</code>, <code>[</code>）</strong></p>
-<p>這件事情在Haskell中叫做lifting。</p>
-<h1 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h1><h2 id="使用-list-comprehesion"><a href="#使用-list-comprehesion" class="headerlink" title="使用 list comprehesion"></a>使用 list comprehesion</h2><p><code>[x * y | x &lt;- [1..5], y &lt;- [6..10]]</code></p>
-<h2 id="使用-Functor-和-Applicative"><a href="#使用-Functor-和-Applicative" class="headerlink" title="使用 Functor 和 Applicative"></a>使用 Functor 和 Applicative</h2><p><code>(*) &lt;$&gt; [1..5] &lt;*&gt; [6..10]</code></p>
-<h1 id="IO-Action也是Applicative"><a href="#IO-Action也是Applicative" class="headerlink" title="IO Action也是Applicative"></a>IO Action也是Applicative</h1><figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Applicative</span> <span class="type">IO</span> <span class="keyword">where</span></span></span><br><span class="line">    pure    = return</span><br><span class="line">    a &lt;*&gt; b = <span class="keyword">do</span></span><br><span class="line">        f &lt;- a</span><br><span class="line">        x &lt;- b</span><br><span class="line">        return (f x)</span><br></pre></td></tr></table></figure>
-<p>IO action 也是 Applicative 的一個 instance。IO action 中的 Applicative 涉及 sequencing。</p>
-<p>根據上面的定義，在<code>a &lt;*&gt; b</code>當中：</p>
-<ul>
-<li><p>先執行 IO Action a </p>
-<p>pure is all about putting a value in a minimal context that still holds it as its result</p>
-</li>
-</ul>
-<p>   If <code>&lt;*&gt;</code> were specialized for IO it would have a type of <code>(&lt;*&gt;) :: IO (a -&gt; b) -&gt; IO a -&gt; IO b</code>. It would take an I/O action that yields a function as its result and another I/O action and create a new I/O action from those two that, when performed, first performs the first one to get the function and then performs the second one to get the value and then it would yield that function applied to the value as its result. We used do syntax to implement it here. Remember, do syntax is about taking several I/O actions and gluing them into one, which is exactly what we do here.</p>
-<p>With Maybe and [], we could think of &lt;*&gt; as simply extracting a function from its left parameter and then sort of applying it over the right one. With IO, extracting is still in the game, but now we also have a notion of sequencing, because we’re taking two I/O actions and we’re sequencing, or gluing, them into one. We have to extract the function from the first I/O action, but to extract a result from an I/O action, it has to be performed.</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>git筆記</title>
-    <url>/git-note/</url>
-    <content><![CDATA[<h1 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h1><hr>
-<h1 id="分支branch"><a href="#分支branch" class="headerlink" title="分支branch"></a>分支<code>branch</code></h1><blockquote>
-<p><code>branch</code>本質上僅僅是個指向 <code>commit 物件</code>的可變<strong>指標</strong>。Git 會使用 <code>master</code> 作為分支的預設名字。在若干次提交後，你其實已經有了一個指向最後一次提交物件的 <code>master</code> 分支，它在每次提交的時候都會自動向前移動。</p>
-</blockquote>
-<p>分支其實就是從某個<code>commit物件</code>往回看的歷史。</p>
-<h2 id="建立新分支"><a href="#建立新分支" class="headerlink" title="建立新分支"></a>建立新分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git branch &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<p>這個指令僅僅建立了新的分支，而不會自動將所在位址切換到這個新分支上。要切換到新分支上，需透過下方的<code>git checkout</code>指令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
-<p>執行 <code>git checkout</code> 就是把<code>HEAD</code>指標指到新的分支上。</p>
-<p>捷徑：建立新分支，同時切換到該分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout -b &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h2><h3 id="使用merge"><a href="#使用merge" class="headerlink" title="使用merge"></a>使用<code>merge</code></h3><h3 id="使用rebase"><a href="#使用rebase" class="headerlink" title="使用rebase"></a>使用<code>rebase</code></h3><hr>
-<h1 id="指向目前所在分支的HEAD指標"><a href="#指向目前所在分支的HEAD指標" class="headerlink" title="指向目前所在分支的HEAD指標"></a>指向<strong>目前所在分支</strong>的<code>HEAD</code>指標</h1><p>指向<strong>目前所checkout的commit</strong>。<br>每次執行<code>git checkout</code>指令，都會連帶改動<code>HEAD</code>所指向的reference。</p>
-<p>例如在執行下面代碼後：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;a_commit&gt;</span><br></pre></td></tr></table></figure>
-<p><code>HEAD</code>就會同時指向該<code>a_commit</code>。</p>
-<p><code>HEAD</code>通常指向一個分支的名稱</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
+        <tag>R</tag>
+        <tag>統計</tag>
+        <tag>計算語言學</tag>
       </tags>
   </entry>
   <entry>
@@ -714,41 +703,52 @@
       </categories>
   </entry>
   <entry>
-    <title>MIT-intro-to-algr-2</title>
-    <url>/MIT-intro-to-algr-2/</url>
-    <content><![CDATA[<h1 id="Random-access-Machine"><a href="#Random-access-Machine" class="headerlink" title="Random access Machine"></a>Random access Machine</h1><h1 id="Pointer-Machine"><a href="#Pointer-Machine" class="headerlink" title="Pointer Machine"></a>Pointer Machine</h1><h1 id="Python-machine"><a href="#Python-machine" class="headerlink" title="Python machine"></a>Python machine</h1><p>更現代的Python結合以上兩種模型。</p>
-<h2 id="基本情況"><a href="#基本情況" class="headerlink" title="基本情況"></a>基本情況</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>Python中實作List的方式使用RAM模型，透過<code>a_list[i]</code>取得list中某一索引的元素，所花的時間為常數時間O(1)。</p>
-<blockquote>
-<p>如果以linked list的方式來實作，那麼取出索引i的元素所花的時間即成為線性時間O(n)。</p>
+    <title>git筆記</title>
+    <url>/git-note/</url>
+    <content><![CDATA[<h1 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h1><hr>
+<h1 id="分支branch"><a href="#分支branch" class="headerlink" title="分支branch"></a>分支<code>branch</code></h1><blockquote>
+<p><code>branch</code>本質上僅僅是個指向 <code>commit 物件</code>的可變<strong>指標</strong>。Git 會使用 <code>master</code> 作為分支的預設名字。在若干次提交後，你其實已經有了一個指向最後一次提交物件的 <code>master</code> 分支，它在每次提交的時候都會自動向前移動。</p>
 </blockquote>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>如果一物件有適當數量的元素，那麼取出該物件屬性的執行時間也是常數時間O(1)。</p>
-<h2 id="幾個例子"><a href="#幾個例子" class="headerlink" title="幾個例子"></a>幾個例子</h2><h3 id="list-append"><a href="#list-append" class="headerlink" title="list.append"></a><code>list.append</code></h3><p>使用 table doubling 方法（在之後的第九課將提到），使執行時間達到常數時間O(n)。</p>
-<h3 id="new-list-list1-list2"><a href="#new-list-list1-list2" class="headerlink" title="new_list = list1 + list2"></a><code>new_list = list1 + list2</code></h3><p>上面的程式碼在底層其實是執行下方的程式碼。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_list = []</span><br><span class="line">for x in list1:</span><br><span class="line">    new_list.append(x)</span><br><span class="line">for y in list2:</span><br><span class="line">    new_list.append(y)</span><br></pre></td></tr></table></figure></p>
-<p>因此可利用<code>append()</code>方法的執行時間來推導將兩個list相連在一起的執行時間: O(|list1| + |list2|)，即正比於兩個list的元素數量總和。</p>
-<h3 id="elm-in-a-list"><a href="#elm-in-a-list" class="headerlink" title="elm in a_list"></a><code>elm in a_list</code></h3><p>線性時間O(n)，從第一個元素依序檢查到最後一個。</p>
-<h3 id="len-a-list"><a href="#len-a-list" class="headerlink" title="len(a_list)"></a><code>len(a_list)</code></h3><p>常數時間O(1)，因為Python在底層已經先計算好並儲存每個list的長度。所以呼叫<code>len(a_list)</code>只是去叫出那個被儲存的值。</p>
-<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>以hash table實作，因此以<code>dict[key]</code>叫出該對應value的執行時間為常數時間O(n)。</p>
-<h2 id="Document-distance-Problem"><a href="#Document-distance-Problem" class="headerlink" title="Document distance Problem"></a>Document distance Problem</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>有兩份文件，想測量這兩份文件的距離，即這兩份文件的共通性。</p>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>Google index page</li>
-<li>Mirror of Wiki</li>
-<li>檢查兩份期末報告是否互相抄襲</li>
-</ul>
-<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
-<li>文件:由words組成</li>
-<li>word: 為字元(a-z, A-Z, 0-9)組成的字串</li>
-</ul>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>可以把兩份文件的共通性以兩份文件所包含字詞的共通性來思考。</p>
-<h3 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h3><ol>
-<li>將文件分割為words</li>
-<li>算出每個word的出現頻率</li>
-<li>算兩個文件的word陣列的內積（即角度）</li>
-</ol>
-<h1 id="課程連結"><a href="#課程連結" class="headerlink" title="課程連結"></a>課程連結</h1><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/" target="_blank" rel="noopener">MIT 6.006 Introduction to ALgorithms, Fall 2011</a></p>
+<p>分支其實就是從某個<code>commit物件</code>往回看的歷史。</p>
+<h2 id="建立新分支"><a href="#建立新分支" class="headerlink" title="建立新分支"></a>建立新分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git branch &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
+<p>這個指令僅僅建立了新的分支，而不會自動將所在位址切換到這個新分支上。要切換到新分支上，需透過下方的<code>git checkout</code>指令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
+<p>執行 <code>git checkout</code> 就是把<code>HEAD</code>指標指到新的分支上。</p>
+<p>捷徑：建立新分支，同時切換到該分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout -b &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h2><h3 id="使用merge"><a href="#使用merge" class="headerlink" title="使用merge"></a>使用<code>merge</code></h3><h3 id="使用rebase"><a href="#使用rebase" class="headerlink" title="使用rebase"></a>使用<code>rebase</code></h3><hr>
+<h1 id="指向目前所在分支的HEAD指標"><a href="#指向目前所在分支的HEAD指標" class="headerlink" title="指向目前所在分支的HEAD指標"></a>指向<strong>目前所在分支</strong>的<code>HEAD</code>指標</h1><p>指向<strong>目前所checkout的commit</strong>。<br>每次執行<code>git checkout</code>指令，都會連帶改動<code>HEAD</code>所指向的reference。</p>
+<p>例如在執行下面代碼後：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;a_commit&gt;</span><br></pre></td></tr></table></figure>
+<p><code>HEAD</code>就會同時指向該<code>a_commit</code>。</p>
+<p><code>HEAD</code>通常指向一個分支的名稱</p>
 ]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
       <tags>
-        <tag>MIT演算法筆記</tag>
+        <tag>Git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>functor-and-applicative-functor</title>
+    <url>/functor-and-applicative-functor/</url>
+    <content><![CDATA[<h1 id="lifting"><a href="#lifting" class="headerlink" title="lifting"></a>lifting</h1><p><code>(a -&gt; b) -&gt; (f a -&gt; f b)</code></p>
+<p>接收一個函數<code>a -&gt; b</code>，回傳一個新的函數<code>f a -&gt; f b</code>，新函數和舊函數的差別在於<strong>新函數可以處理任何type為functor typeclass的instance的值（例如<code>[Int]</code>, <code>[</code>）</strong></p>
+<p>這件事情在Haskell中叫做lifting。</p>
+<h1 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h1><h2 id="使用-list-comprehesion"><a href="#使用-list-comprehesion" class="headerlink" title="使用 list comprehesion"></a>使用 list comprehesion</h2><p><code>[x * y | x &lt;- [1..5], y &lt;- [6..10]]</code></p>
+<h2 id="使用-Functor-和-Applicative"><a href="#使用-Functor-和-Applicative" class="headerlink" title="使用 Functor 和 Applicative"></a>使用 Functor 和 Applicative</h2><p><code>(*) &lt;$&gt; [1..5] &lt;*&gt; [6..10]</code></p>
+<h1 id="IO-Action也是Applicative"><a href="#IO-Action也是Applicative" class="headerlink" title="IO Action也是Applicative"></a>IO Action也是Applicative</h1><figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Applicative</span> <span class="type">IO</span> <span class="keyword">where</span></span></span><br><span class="line">    pure    = return</span><br><span class="line">    a &lt;*&gt; b = <span class="keyword">do</span></span><br><span class="line">        f &lt;- a</span><br><span class="line">        x &lt;- b</span><br><span class="line">        return (f x)</span><br></pre></td></tr></table></figure>
+<p>IO action 也是 Applicative 的一個 instance。IO action 中的 Applicative 涉及 sequencing。</p>
+<p>根據上面的定義，在<code>a &lt;*&gt; b</code>當中：</p>
+<ul>
+<li><p>先執行 IO Action a </p>
+<p>pure is all about putting a value in a minimal context that still holds it as its result</p>
+</li>
+</ul>
+<p>   If <code>&lt;*&gt;</code> were specialized for IO it would have a type of <code>(&lt;*&gt;) :: IO (a -&gt; b) -&gt; IO a -&gt; IO b</code>. It would take an I/O action that yields a function as its result and another I/O action and create a new I/O action from those two that, when performed, first performs the first one to get the function and then performs the second one to get the value and then it would yield that function applied to the value as its result. We used do syntax to implement it here. Remember, do syntax is about taking several I/O actions and gluing them into one, which is exactly what we do here.</p>
+<p>With Maybe and [], we could think of &lt;*&gt; as simply extracting a function from its left parameter and then sort of applying it over the right one. With IO, extracting is still in the game, but now we also have a notion of sequencing, because we’re taking two I/O actions and we’re sequencing, or gluing, them into one. We have to extract the function from the first I/O action, but to extract a result from an I/O action, it has to be performed.</p>
+]]></content>
   </entry>
   <entry>
     <title>likelihood-and-probability</title>
@@ -809,77 +809,6 @@
         <tag>python</tag>
         <tag>nlp</tag>
         <tag>ngrams</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo中的helper使用方法</title>
-    <url>/hexo%E4%B8%AD%E7%9A%84helper%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>Hexo中的Helpers是不能用在source當中的，一定要寫在theme當中的layout裡頭才可以。</p>
-<p>參考資料：</p>
-<ul>
-<li><a href="https://hexo.io/api/helper" target="_blank" rel="noopener">官網: Helper</a></li>
-<li><a href="https://stackoverflow.com/questions/33729493/how-to-use-helpers-in-hexo-source-files" target="_blank" rel="noopener">How to use helpers in Hexo source files?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>巴利語參考文獻和學習資源</title>
-    <url>/pali-references-and-learning-resource/</url>
-    <content><![CDATA[<p>巴利語學習資源整理。</p>
-<a id="more"></a>
-<!-- toc -->
-<h2 id="巴利語概述"><a href="#巴利語概述" class="headerlink" title="巴利語概述"></a>巴利語概述</h2><h3 id="Geiger-Wilhelm-1916-1943-Pali-Literature-and-Language"><a href="#Geiger-Wilhelm-1916-1943-Pali-Literature-and-Language" class="headerlink" title="Geiger, Wilhelm. (1916/1943). Pāli Literature and Language."></a>Geiger, Wilhelm. (1916/1943). <em>Pāli Literature and Language</em>.</h3><p>原書為德文，1943年由Batakrishna Ghosh翻譯成英文。</p>
-<h3 id="Hazra-Kanai-Lal-1994-Pali-Language-and-Literature-A-Systematic-Survey-and-Historical-Study-Vol-1-Language-History-and-Structure-Literature-Canonical-Pali-Texts-Vol-2-Literature-Non-Canonical-Pali-Texts"><a href="#Hazra-Kanai-Lal-1994-Pali-Language-and-Literature-A-Systematic-Survey-and-Historical-Study-Vol-1-Language-History-and-Structure-Literature-Canonical-Pali-Texts-Vol-2-Literature-Non-Canonical-Pali-Texts" class="headerlink" title="Hazra, Kanai Lal. (1994). Pāli Language and Literature: A Systematic Survey and Historical Study (Vol. 1: Language: History and Structure, Literature: Canonical Pāli Texts; Vol. 2: Literature: Non-Canonical Pāli Texts)."></a>Hazra, Kanai Lal. (1994). <em>Pāli Language and Literature: A Systematic Survey and Historical Study (Vol. 1: Language: History and Structure, Literature: Canonical Pāli Texts; Vol. 2: Literature: Non-Canonical Pāli Texts)</em>.</h3><p>兩大冊，第一冊講語言的歷史和結構以及佛典文學，第二冊講非佛典的巴利文文學。</p>
-<h3 id="De-Alvis-James-1863-An-Introduction-to-Kachchayana’s-Grammar-of-the-Pali-Language"><a href="#De-Alvis-James-1863-An-Introduction-to-Kachchayana’s-Grammar-of-the-Pali-Language" class="headerlink" title="De Alvis, James. (1863). An Introduction to Kachchāyana’s Grammar of the Pāli Language."></a>De Alvis, James. (1863). An Introduction to Kachchāyana’s Grammar of the Pāli Language.</h3><p>連結: <a href="https://archive.org/details/cu31924074308432" target="_blank" rel="noopener">https://archive.org/details/cu31924074308432</a></p>
-<h2 id="巴利語教材"><a href="#巴利語教材" class="headerlink" title="巴利語教材"></a>巴利語教材</h2><h3 id="溫宗堃-編譯-2015-展讀巴利新課程-進入佛陀的語言世界-法鼓文化"><a href="#溫宗堃-編譯-2015-展讀巴利新課程-進入佛陀的語言世界-法鼓文化" class="headerlink" title="溫宗堃 (編譯). (2015). 展讀巴利新課程: 進入佛陀的語言世界. 法鼓文化."></a>溫宗堃 (編譯). (2015). <em>展讀巴利新課程: 進入佛陀的語言世界</em>. 法鼓文化.</h3><p>本書編譯自Gair, James W. &amp; Karunatillake, W. S. (1994). <em>A New Course in Reading Pāli: Entering the World of the Buddha</em>.</p>
-<p>本書特點為一開始就為學習者呈現原汁原味的佛典內容，一邊介紹文法，一邊選用有相應文法內容的佛經，讓學習者從一開始就能一邊學巴利文、一邊讀原典。但由於這樣的選擇，也讓每一課的信息量變得非常多，每課為了要讓讀者看懂經文，都會列出數十個出現在選文中的單字，而文法內容也非常密集。</p>
-<h3 id="Andersen-1907-A-Pali-reader-with-notes-and-glossary"><a href="#Andersen-1907-A-Pali-reader-with-notes-and-glossary" class="headerlink" title="Andersen. (1907). A Pāli reader: with notes and glossary."></a>Andersen. (1907). A Pāli reader: with notes and glossary.</h3><p>本書有Part I 和 Part II，Part I 為本生故事和法句經的原文，Part II 則是辭典。</p>
-<p>Part I 連結: <a href="https://archive.org/details/palireaderpaligl0000dine_f8r8/page/118/mode/2up" target="_blank" rel="noopener">https://archive.org/details/palireaderpaligl0000dine_f8r8/page/118/mode/2up</a><br>Part II 連結: <a href="https://archive.org/details/cu31924071132082/page/n7/mode/2up" target="_blank" rel="noopener">https://archive.org/details/cu31924071132082/page/n7/mode/2up</a> </p>
-<h3 id="An-Easy-Introduction-to-Pali"><a href="#An-Easy-Introduction-to-Pali" class="headerlink" title="An Easy Introduction to Pāli"></a>An Easy Introduction to Pāli</h3><p>連結: <a href="https://ia800105.us.archive.org/26/items/MyPaliCourse/Easy%20Intro%20Pali.pdf" target="_blank" rel="noopener">https://ia800105.us.archive.org/26/items/MyPaliCourse/Easy%20Intro%20Pali.pdf</a></p>
-<p>這本教科書在最後部分給出了各種書寫巴利文的書寫系統，並有清楚的表格並列。至於內容我尚未回顧。</p>
-<h2 id="巴利語辭典"><a href="#巴利語辭典" class="headerlink" title="巴利語辭典"></a>巴利語辭典</h2><h3 id="線上-巴利字典-https-palidictionary-appspot-com"><a href="#線上-巴利字典-https-palidictionary-appspot-com" class="headerlink" title="[線上] 巴利字典 https://palidictionary.appspot.com/"></a>[線上] 巴利字典 <a href="https://palidictionary.appspot.com/" target="_blank" rel="noopener">https://palidictionary.appspot.com/</a></h3><p>網站作者: Siong-Ui Te (戴上為) [<a href="https://github.com/siongui" target="_blank" rel="noopener">GitHub</a>]</p>
-<p>將多本巴利字典編譯為可線上搜尋的好用電子資源，目前有巴-漢, 巴-日, 巴-英, 巴-越, 巴-緬五種雙語詞典。</p>
-<p>據網站作者所稱，本網站所使用的電子字典資源來自<a href="http://dhamma.sutta.org/pali-course/Pali-Chinese-English%20Dictionary.html" target="_blank" rel="noopener">Pali Canon E-Dictionary Version 1.95 (PCED)</a></p>
-<h3 id="巴-英-Childers-R-C-1875-A-Dictionary-of-the-Pali-Language"><a href="#巴-英-Childers-R-C-1875-A-Dictionary-of-the-Pali-Language" class="headerlink" title="[巴-英] Childers, R. C. (1875) A Dictionary of the Pali Language."></a>[巴-英] Childers, R. C. (1875) <em>A Dictionary of the Pali Language</em>.</h3><p>下載連結：<a href="https://archive.org/details/adictionaryplil00chilgoog" target="_blank" rel="noopener">https://archive.org/details/adictionaryplil00chilgoog</a></p>
-<p>可選擇pdf, txt, epub, kindle…等格式，pdf檔為字典的圖片檔，而txt, epub, kindle檔則是使用OCR將圖片轉為文字的版本，因此可以使用簡易的單字查詢功能。</p>
-<h3 id="巴-泰-英-Bhikkhu-P-A-Payutto’s-Dictionary-of-Buddhism"><a href="#巴-泰-英-Bhikkhu-P-A-Payutto’s-Dictionary-of-Buddhism" class="headerlink" title="[巴-泰-英] Bhikkhu P. A. Payutto’s Dictionary of Buddhism"></a>[巴-泰-英] Bhikkhu P. A. Payutto’s <em>Dictionary of Buddhism</em></h3><p>介紹與下載連結請參見：<a href="https://www.tipitaka.org/thai-dict" target="_blank" rel="noopener">https://www.tipitaka.org/thai-dict</a></p>
-<p>實際上包含了三份檔案：</p>
-<ul>
-<li>Dictionary of Numerical Dhammas （介紹各種法數的名相，也就是各個含有數字的佛教名詞，例如一心、二門、三界、四諦、五蘊、六度…等。其他類似編譯方式的經典：《增一阿含經》和《法集名數經》。）</li>
-<li>Thai-English Buddhist Dictionary</li>
-<li>English-Thai Buddhist Dictionary</li>
-</ul>
-<h3 id="巴利文專有名詞辭典"><a href="#巴利文專有名詞辭典" class="headerlink" title="巴利文專有名詞辭典"></a>巴利文專有名詞辭典</h3><p>連結: <a href="http://www.metta.lk/pali-utils/Pali-Proper-Names/index.html" target="_blank" rel="noopener">http://www.metta.lk/pali-utils/Pali-Proper-Names/index.html</a></p>
-<h3 id="DILA佛學術語字辭典"><a href="#DILA佛學術語字辭典" class="headerlink" title="DILA佛學術語字辭典"></a>DILA佛學術語字辭典</h3><p>連結: <a href="http://glossaries.dila.edu.tw/api?locale=zh-TW" target="_blank" rel="noopener">http://glossaries.dila.edu.tw/api?locale=zh-TW</a></p>
-<h3 id="A-Critical-Pali-Dictionary-the-University-of-Cologne"><a href="#A-Critical-Pali-Dictionary-the-University-of-Cologne" class="headerlink" title="A Critical Pāli Dictionary (the University of Cologne)"></a>A Critical Pāli Dictionary (the University of Cologne)</h3><p>連結: <a href="https://cpd.uni-koeln.de/search" target="_blank" rel="noopener">https://cpd.uni-koeln.de/search</a><br>本字典來由詳細介紹: <a href="https://cpd.uni-koeln.de/intro/" target="_blank" rel="noopener">https://cpd.uni-koeln.de/intro/</a></p>
-<p>實際上本字典只編到 kapeti</p>
-<h2 id="巴利經典閱讀"><a href="#巴利經典閱讀" class="headerlink" title="巴利經典閱讀"></a>巴利經典閱讀</h2><h3 id="Digital-Pali-Reader"><a href="#Digital-Pali-Reader" class="headerlink" title="Digital Pāli Reader"></a>Digital Pāli Reader</h3><p>連結：<a href="https://www.digitalpalireader.online/_dprhtml/index.html" target="_blank" rel="noopener">https://www.digitalpalireader.online/_dprhtml/index.html</a><br>可線上閱讀/搜尋/查詢巴利經文。</p>
-<h2 id="書寫巴利語的各種書寫文字"><a href="#書寫巴利語的各種書寫文字" class="headerlink" title="書寫巴利語的各種書寫文字"></a>書寫巴利語的各種書寫文字</h2><h3 id="水野弘元巴利文語法附錄"><a href="#水野弘元巴利文語法附錄" class="headerlink" title="水野弘元巴利文語法附錄"></a>水野弘元巴利文語法附錄</h3><h3 id="An-East-introduction-to-Pali附錄"><a href="#An-East-introduction-to-Pali附錄" class="headerlink" title="An East introduction to Pali附錄"></a>An East introduction to Pali附錄</h3><h3 id="大影"><a href="#大影" class="headerlink" title="大影"></a>大影</h3><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="GRETIL-巴利原文文本下載"><a href="#GRETIL-巴利原文文本下載" class="headerlink" title="GRETIL: 巴利原文文本下載"></a>GRETIL: 巴利原文文本下載</h3><p>GRETIL - Göttingen Register of Electronic Texts in Indian Languages</p>
-<p>三藏內和三藏外的文本皆有。</p>
-<p>連結: <a href="http://gretil.sub.uni-goettingen.de/gretil.html#Pali" target="_blank" rel="noopener">http://gretil.sub.uni-goettingen.de/gretil.html#Pali</a></p>
-<h3 id="The-OCBS-Pali-Bibliography"><a href="#The-OCBS-Pali-Bibliography" class="headerlink" title="The OCBS Pali Bibliography"></a>The OCBS Pali Bibliography</h3><p>由 Oxford Centre for Buddhist Studies 所維護的巴利語相關文獻。</p>
-<ul>
-<li>連結: <a href="http://palihub.org/the-ocbs-pali-bibliography/" target="_blank" rel="noopener">http://palihub.org/the-ocbs-pali-bibliography/</a></li>
-<li>連結: <a href="https://www.zotero.org/palibib/library" target="_blank" rel="noopener">https://www.zotero.org/palibib/library</a></li>
-</ul>
-<h3 id="南傳佛教圖書館-Theravada-Buddhism-E-Library"><a href="#南傳佛教圖書館-Theravada-Buddhism-E-Library" class="headerlink" title="南傳佛教圖書館 Theravada Buddhism E-Library"></a>南傳佛教圖書館 Theravada Buddhism E-Library</h3><p>連結: <a href="http://kusala.online-dhamma.net/%e6%96%87%e5%ad%97%e8%b3%87%e6%96%99/%e5%8d%97%e5%82%b3%e4%bd%9b%e6%95%99%e5%9c%96%e6%9b%b8%e9%a4%a8%20Theravada%20Buddhism%20E-Library/" target="_blank" rel="noopener">http://kusala.online-dhamma.net/%e6%96%87%e5%ad%97%e8%b3%87%e6%96%99/%e5%8d%97%e5%82%b3%e4%bd%9b%e6%95%99%e5%9c%96%e6%9b%b8%e9%a4%a8%20Theravada%20Buddhism%20E-Library/</a></p>
-<p>有大量資源提供下載。</p>
-<h3 id="法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典"><a href="#法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典" class="headerlink" title="法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典"></a>法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典</h3><p>連結: <a href="http://kusala.online-dhamma.net/%E6%96%87%E5%AD%97%E8%B3%87%E6%96%99/%E5%8D%97%E5%82%B3%E4%BD%9B%E6%95%99%E5%9C%96%E6%9B%B8%E9%A4%A8%20Theravada%20Buddhism%20E-Library/069%20%E5%B7%B4%E5%88%A9%E8%BE%AD%E5%85%B8%20-%E4%B8%AD/%E4%BD%9B%E6%95%99%E8%AA%9E%E6%96%87%E5%AD%B8%E7%BF%92%E6%9D%90%E6%96%99%E8%88%87%E5%AD%97%E8%BE%AD%E5%85%B8%E3%80%80Language%20Study,%20Dictionaries.htm" target="_blank" rel="noopener">http://kusala.online-dhamma.net/%E6%96%87%E5%AD%97%E8%B3%87%E6%96%99/%E5%8D%97%E5%82%B3%E4%BD%9B%E6%95%99%E5%9C%96%E6%9B%B8%E9%A4%A8%20Theravada%20Buddhism%20E-Library/069%20%E5%B7%B4%E5%88%A9%E8%BE%AD%E5%85%B8%20-%E4%B8%AD/%E4%BD%9B%E6%95%99%E8%AA%9E%E6%96%87%E5%AD%B8%E7%BF%92%E6%9D%90%E6%96%99%E8%88%87%E5%AD%97%E8%BE%AD%E5%85%B8%E3%80%80Language%20Study,%20Dictionaries.htm</a></p>
-<h3 id="巴利語詞頻統計"><a href="#巴利語詞頻統計" class="headerlink" title="巴利語詞頻統計"></a>巴利語詞頻統計</h3><p><a href="http://dhamma.sutta.org/pali-course/Pali-Chinese-translate-project.html" target="_blank" rel="noopener">http://dhamma.sutta.org/pali-course/Pali-Chinese-translate-project.html</a></p>
-<h3 id="蔡奇林-2004-網海一滴：網路上的巴利教學與研究資源舉隅-《佛教圖書館館訊》第40期，頁21-35"><a href="#蔡奇林-2004-網海一滴：網路上的巴利教學與研究資源舉隅-《佛教圖書館館訊》第40期，頁21-35" class="headerlink" title="蔡奇林. (2004). 網海一滴：網路上的巴利教學與研究資源舉隅. 《佛教圖書館館訊》第40期，頁21-35."></a>蔡奇林. (2004). <em>網海一滴：網路上的巴利教學與研究資源舉隅</em>. 《佛教圖書館館訊》第40期，頁21-35.</h3><p><a href="http://www.gaya.org.tw/journal/m40/40-main2.pdf" target="_blank" rel="noopener">http://www.gaya.org.tw/journal/m40/40-main2.pdf</a></p>
-<h3 id="蔡奇林-2006-巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想-中華佛學學報第19期-p107-146"><a href="#蔡奇林-2006-巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想-中華佛學學報第19期-p107-146" class="headerlink" title="蔡奇林. (2006). 巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想. 中華佛學學報第19期 (p107-146)"></a>蔡奇林. (2006). <em>巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想</em>. 中華佛學學報第19期 (p107-146)</h3><p>全文連結：<a href="http://www.chibs.edu.tw/ch_html/chbj/19/chbj1906.htm" target="_blank" rel="noopener">http://www.chibs.edu.tw/ch_html/chbj/19/chbj1906.htm</a></p>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
       </tags>
   </entry>
   <entry>
@@ -1040,23 +969,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TF-IDF</title>
-    <url>/tf-idf/</url>
-    <content><![CDATA[<h1 id="TF-IDF是什麼"><a href="#TF-IDF是什麼" class="headerlink" title="TF-IDF是什麼"></a>TF-IDF是什麼</h1><p>TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。</p>
-<h1 id="所以TF-IDF用來做什麼"><a href="#所以TF-IDF用來做什麼" class="headerlink" title="所以TF-IDF用來做什麼"></a>所以TF-IDF用來做什麼</h1><p>顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的<strong>預設</strong>是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？</p>
-<a id="more"></a>
-<h1 id="先說普通版本的詞頻計算"><a href="#先說普通版本的詞頻計算" class="headerlink" title="先說普通版本的詞頻計算"></a>先說普通版本的詞頻計算</h1><p>最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。</p>
-<h1 id="可是卻沒有考量到不同詞的特性"><a href="#可是卻沒有考量到不同詞的特性" class="headerlink" title="可是卻沒有考量到不同詞的特性"></a>可是卻沒有考量到不同詞的特性</h1><p>雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。</p>
-<h1 id="所以要想個方法可以降低常用詞詞頻的干擾"><a href="#所以要想個方法可以降低常用詞詞頻的干擾" class="headerlink" title="所以要想個方法可以降低常用詞詞頻的干擾"></a>所以要想個方法可以降低常用詞詞頻的干擾</h1><p>這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。<br>但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。<br>因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。<br>還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。</p>
-]]></content>
-      <categories>
-        <category>自然語言處理</category>
-      </categories>
-      <tags>
-        <tag>TF-IDF</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>台灣同性婚姻論述分析(I)</title>
     <url>/taiwan-same-sex-marriage-1/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>近年來，同婚議題在台灣社會逐漸受到重視，並在2017年大法官宣布目前保障一男一女的民法婚姻制度違憲之後，更帶來保守派反動力量的復甦。同婚的支持方與反對方之間的對立在2018年大選時達到高峰，首先由反對方（以下一代幸福聯盟為代表）提出了三案公投案，而後支持方（以伴侶盟為代表）也提出了兩案公投案。也因此使得同婚議題浮上政治檯面，無論支持兩好三壞或是三好兩壞，可以說同婚議題首次以如此「高調」的方式登上台灣社會的舞台。</p>
@@ -1148,6 +1060,23 @@
 <p>另一個有趣的現象是兩邊論述中對於對立方的命名：「同運」方與「反同」方，「同運」方不太會稱呼自己為「同運」，「反同」方更不會稱呼自己為「反同」。這些關鍵詞提供了我們在閱讀某些論述時，判斷該論述立場偏向哪一方的線索。</p>
 <p>同婚議題像是個有待詞語照亮的燈籠罩，一個一個的詞語在燈籠裡的不同位置點亮火光，於是兩造立場的論述形成了樣式截然不同的燈籠。當選擇使用（或無意識地使用）一個詞語的時候，同時也是壓抑著其他詞語選項的出現。這或許就是透過高頻詞分析可以看見的，看見一個原本黯淡無光的燈籠如何妝點亮相呈現在世人眼前，為了吸引讀者的目光，或為了影響讀者的想法，當然更讓我們能回頭看見點亮燈籠的人所使用的技巧與手法。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>TF-IDF</title>
+    <url>/tf-idf/</url>
+    <content><![CDATA[<h1 id="TF-IDF是什麼"><a href="#TF-IDF是什麼" class="headerlink" title="TF-IDF是什麼"></a>TF-IDF是什麼</h1><p>TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。</p>
+<h1 id="所以TF-IDF用來做什麼"><a href="#所以TF-IDF用來做什麼" class="headerlink" title="所以TF-IDF用來做什麼"></a>所以TF-IDF用來做什麼</h1><p>顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的<strong>預設</strong>是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？</p>
+<a id="more"></a>
+<h1 id="先說普通版本的詞頻計算"><a href="#先說普通版本的詞頻計算" class="headerlink" title="先說普通版本的詞頻計算"></a>先說普通版本的詞頻計算</h1><p>最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。</p>
+<h1 id="可是卻沒有考量到不同詞的特性"><a href="#可是卻沒有考量到不同詞的特性" class="headerlink" title="可是卻沒有考量到不同詞的特性"></a>可是卻沒有考量到不同詞的特性</h1><p>雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。</p>
+<h1 id="所以要想個方法可以降低常用詞詞頻的干擾"><a href="#所以要想個方法可以降低常用詞詞頻的干擾" class="headerlink" title="所以要想個方法可以降低常用詞詞頻的干擾"></a>所以要想個方法可以降低常用詞詞頻的干擾</h1><p>這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。<br>但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。<br>因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。<br>還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。</p>
+]]></content>
+      <categories>
+        <category>自然語言處理</category>
+      </categories>
+      <tags>
+        <tag>TF-IDF</tag>
+      </tags>
   </entry>
   <entry>
     <title>執著, 取 Upaya / Upādāna / Ādāna</title>
@@ -1257,41 +1186,6 @@
       </tags>
   </entry>
   <entry>
-    <title>德文反身動詞以及中文的「讓自己...」</title>
-    <url>/%E5%BE%B7%E6%96%87%E5%8F%8D%E8%BA%AB%E5%8B%95%E8%A9%9E%E4%BB%A5%E5%8F%8A%E4%B8%AD%E6%96%87%E7%9A%84%E3%80%8C%E8%AE%93%E8%87%AA%E5%B7%B1-%E3%80%8D/</url>
-    <content><![CDATA[<h2 id="列舉幾個德文的反身動詞"><a href="#列舉幾個德文的反身動詞" class="headerlink" title="列舉幾個德文的反身動詞"></a>列舉幾個德文的反身動詞</h2><ul>
-<li>sich entspannen 讓自己放鬆</li>
-<li>sich merken 讓自己記住; 記得</li>
-<li>sich verbessern 讓自己變得更好; 進步</li>
-<li>sich ändern 讓自己改變</li>
-</ul>
-<h2 id="觀察一"><a href="#觀察一" class="headerlink" title="觀察一"></a>觀察一</h2><ul>
-<li>這些動詞似乎都有一個及物動詞的用法，有時是以物作主語: Lesen entspannt. (閱讀使人放鬆); Dieses Erlebnis hat ihn sehr geändert. (這一經歷使他大大的改變了看法。)</li>
-<li>有時是人做主語: Er will damit seine finanzielle Lage verbessern. (他想以此改善自己的經濟狀況。) Ich habe gemerkt, … (我有發現到…)</li>
-</ul>
-]]></content>
-      <categories>
-        <category>德文</category>
-      </categories>
-      <tags>
-        <tag>德文</tag>
-        <tag>學習心得</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>天城體輸入法</title>
-    <url>/%E5%A4%A9%E5%9F%8E%E9%AB%94%E8%BC%B8%E5%85%A5%E6%B3%95/</url>
-    <content><![CDATA[<p>請參考 <a href="https://github.com/ratreya/lipika-ime" target="_blank" rel="noopener">LipikaIME</a>，可以輸入天城體，也可以輸入IPA。並提供多個<a href="https://github.com/ratreya/lipika-ime/wiki/Transliteration-Schemes" target="_blank" rel="noopener">Transliteration</a>的轉換。</p>
-]]></content>
-      <categories>
-        <category>電腦</category>
-      </categories>
-      <tags>
-        <tag>梵文</tag>
-        <tag>天城體</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在GitHub上對其他人的專案做出貢獻</title>
     <url>/%E5%A6%82%E4%BD%95%E5%9C%A8GitHub%E4%B8%8A%E5%B0%8D%E5%85%B6%E4%BB%96%E4%BA%BA%E7%9A%84%E5%B0%88%E6%A1%88%E5%81%9A%E5%87%BA%E8%B2%A2%E7%8D%BB/</url>
     <content><![CDATA[<h2 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h2><p>以下步驟整理自參考資料的第一個連結：</p>
@@ -1362,6 +1256,19 @@
       </tags>
   </entry>
   <entry>
+    <title>天城體輸入法</title>
+    <url>/%E5%A4%A9%E5%9F%8E%E9%AB%94%E8%BC%B8%E5%85%A5%E6%B3%95/</url>
+    <content><![CDATA[<p>請參考 <a href="https://github.com/ratreya/lipika-ime" target="_blank" rel="noopener">LipikaIME</a>，可以輸入天城體，也可以輸入IPA。並提供多個<a href="https://github.com/ratreya/lipika-ime/wiki/Transliteration-Schemes" target="_blank" rel="noopener">Transliteration</a>的轉換。</p>
+]]></content>
+      <categories>
+        <category>電腦</category>
+      </categories>
+      <tags>
+        <tag>梵文</tag>
+        <tag>天城體</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>巴利三藏各經縮寫</title>
     <url>/%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E5%90%84%E7%B6%93%E7%B8%AE%E5%AF%AB/</url>
     <content><![CDATA[<ul>
@@ -1416,6 +1323,88 @@
       </tags>
   </entry>
   <entry>
+    <title>巴利經文的詞頻表</title>
+    <url>/%E5%B7%B4%E5%88%A9%E7%B6%93%E6%96%87%E7%9A%84%E8%A9%9E%E9%A0%BB%E8%A1%A8/</url>
+    <content><![CDATA[<p>在 <a href="https://palistudies.blogspot.com/2018/05/learn-pali-where-to-begin.html" target="_blank" rel="noopener">Learn Pali: Best way to start? 5 Tips to make it easy</a> 這篇文章中提到：</p>
+<blockquote><p>學單字的時候，為什麼不從最常出現在經藏中的單字開始學起呢？</p>
+<p>在經藏當中：</p>
+<ul>
+<li>有 3 個詞的出現次數超過十萬次</li>
+<li>有 70 個詞的出現次數超過一萬次</li>
+<li>有 900 個詞的的出現次數超過一千次<br>If learning vocabulary, why not start with the most frequently occurring terms in the Sutta Pitaka?</li>
+</ul>
+<p>事實上，只要先學了那 900 個單字，就能讀懂出現在經藏中 42% 的單字。</p>
+<footer><strong>Learn Pali Language</strong><cite><a href="https://palistudies.blogspot.com/2018/05/learn-pali-where-to-begin.htm" target="_blank" rel="noopener">Learn Pali: Best way to start? 5 Tips to make it easy</a></cite></footer></blockquote>
+<p>該文作者也上傳了一個詞頻表的檔案供大家使用(<a href="https://drive.google.com/file/d/1LqpE0o7kmQEgX6HaRgAL4VUU4D2Z3US8/view" target="_blank" rel="noopener">連結</a>)，之後有時間我再把這個詞頻表做成網頁上的圖表。</p>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>巴利三藏的註釋書</title>
+    <url>/%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E7%9A%84%E8%A8%BB%E9%87%8B%E6%9B%B8/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://www.accesstoinsight.org/noncanon/fieldguide.html" target="_blank" rel="noopener">Beyond the Tipitaka: A Field Guide to Post-canonical Pali Literature [Access to Insight]</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>三藏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>德文反身動詞以及中文的「讓自己...」</title>
+    <url>/%E5%BE%B7%E6%96%87%E5%8F%8D%E8%BA%AB%E5%8B%95%E8%A9%9E%E4%BB%A5%E5%8F%8A%E4%B8%AD%E6%96%87%E7%9A%84%E3%80%8C%E8%AE%93%E8%87%AA%E5%B7%B1-%E3%80%8D/</url>
+    <content><![CDATA[<h2 id="列舉幾個德文的反身動詞"><a href="#列舉幾個德文的反身動詞" class="headerlink" title="列舉幾個德文的反身動詞"></a>列舉幾個德文的反身動詞</h2><ul>
+<li>sich entspannen 讓自己放鬆</li>
+<li>sich merken 讓自己記住; 記得</li>
+<li>sich verbessern 讓自己變得更好; 進步</li>
+<li>sich ändern 讓自己改變</li>
+</ul>
+<h2 id="觀察一"><a href="#觀察一" class="headerlink" title="觀察一"></a>觀察一</h2><ul>
+<li>這些動詞似乎都有一個及物動詞的用法，有時是以物作主語: Lesen entspannt. (閱讀使人放鬆); Dieses Erlebnis hat ihn sehr geändert. (這一經歷使他大大的改變了看法。)</li>
+<li>有時是人做主語: Er will damit seine finanzielle Lage verbessern. (他想以此改善自己的經濟狀況。) Ich habe gemerkt, … (我有發現到…)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>德文</category>
+      </categories>
+      <tags>
+        <tag>德文</tag>
+        <tag>學習心得</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>巴利經藏的編碼方式</title>
+    <url>/%E5%B7%B4%E5%88%A9%E7%B6%93%E8%97%8F%E7%9A%84%E7%B7%A8%E7%A2%BC%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://palistudies.blogspot.com/2018/05/navigating-sutta-numbering-schemes.html" target="_blank" rel="noopener">Navigating the Sutta Pitaka, A Simple guide to the Numbering Schemes [Learn Pali Language] </a><ul>
+<li>經藏的編碼方式主要有兩種<ul>
+<li>以第幾個經文為主: <code>DN 7</code> 表示 經藏長部第7經</li>
+<li>以 Pali Text Society (PTS) 出版之頁碼為主: <code>D i 159</code> 表示長部第一冊第 159 頁。（所以讀者必須去找出PTS所出版的長部第一冊）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://accesstoinsight.org/abbrev.html" target="_blank" rel="noopener">Abbreviations, Symbols, and Sutta Reference Numbers [Access to Insight]</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>三藏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>拜拜/別太執著/</title>
     <url>/%E6%8B%9C%E6%8B%9C-%E5%88%A5%E5%A4%AA%E5%9F%B7%E8%91%97/</url>
     <content><![CDATA[<p><a href="https://www.youtube.com/watch?v=WLpjq8LS2gc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WLpjq8LS2gc</a></p>
@@ -1443,43 +1432,6 @@
       </categories>
       <tags>
         <tag>德語</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>梵文二上-W1筆記</title>
-    <url>/%E6%A2%B5%E6%96%87%E4%BA%8C%E4%B8%8A-W1%E7%AD%86%E8%A8%98/</url>
-    <content><![CDATA[<h2 id="朗讀心經"><a href="#朗讀心經" class="headerlink" title="朗讀心經"></a>朗讀心經</h2><h2 id="The-Joy-of-Sanskrit"><a href="#The-Joy-of-Sanskrit" class="headerlink" title="The Joy of Sanskrit"></a>The Joy of Sanskrit</h2><p>本課程使用的教科書 <a href="https://press.anu.edu.au/publications/textbooks/joy-sanskrit" target="_blank" rel="noopener">The Joy of Sanskrit (Taylor &amp; Scotellaro 2014)</a></p>
-<h4 id="nbsp"><a href="#nbsp" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>अभ्यासो न हि त्यक्तव्यो अभ्यासो हि परं बलम्<br>abhyāso na hi tyaktavyo abhyāso hi paraṃ balam<br>反覆練習 否定 強調 應被放棄的 反覆練習 強調 至高 力量<br>M.SG.NOM. NEG. Par. FPP. M.SG.NOM. Par. N.SG.NOM. N.SG.NOM.<br>反覆練習是不應被放棄的，反覆練習是至高的力量；</p>
-</blockquote>
-<h4 id="nbsp-1"><a href="#nbsp-1" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>अनभ्यासे विषं विद्या अजीर्ने अजीर्णे विषम्<br>abhyāse viṣaṃ vidyā ajīrṇe bhojanaṃ viṣam<br>於不反覆練習 毒 知識 於不消化 食物 毒<br>M.SG.LOC. N.SG.NOM. F.SG.NOM. M.SG.LOC. N.SG.NOM. N.SG.NOM.<br>知識於不反覆練習時是毒藥，食物於不消化時是毒藥。</p>
-</blockquote>
-<h4 id="nbsp-2"><a href="#nbsp-2" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>नमो नमः<br>namo namaḥ<br>你好！</p>
-</blockquote>
-<h4 id="nbsp-3"><a href="#nbsp-3" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>भवतः नाम किम्<br>bhavataḥ nāma kim<br>M.SG.GEN. M.SG.NOM. M.SG.NOM.<br>bhavant的屬格 {} {}<br>您叫什麼名字？（您的名字是什麼？）（對男生）</p>
-</blockquote>
-<h4 id="nbsp-4"><a href="#nbsp-4" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>भवत्याः  नाम किम्<br>bhavatyāḥ nāma kim<br>F.SG.GEN. M.SG.NOM. M.SG.NOM.<br>bhavantī {} {}<br>您叫什麼名字？（對女生）</p>
-</blockquote>
-<h4 id="nbsp-5"><a href="#nbsp-5" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>मम नाम …<br>mama nāma …<br>1.SG.GEN. M.SG.NOM.<br>我的名字是…</p>
-</blockquote>
-<h4 id="nbsp-6"><a href="#nbsp-6" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>भवतः कुशलम् अस्ति वा<br>bhavataḥ kuśalam asti vā<br>M.SG.GEN. N.SG.NOM. 3.SG.PRES.<br>bhavant {} {}<br>您好嗎？（對男生）</p>
-</blockquote>
-<h4 id="nbsp-7"><a href="#nbsp-7" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
-<p>भवतः कुशलम् अस्ति वा<br>bhavataḥ kuśalam asti vā<br>M.SG.GEN. N.SG.NOM. 3.SG.PRES.<br>bhavant {} {}<br>您好嗎？（對男生）</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>梵文</category>
-        <category>上課筆記</category>
-      </categories>
-      <tags>
-        <tag>梵文</tag>
       </tags>
   </entry>
   <entry>
@@ -1549,27 +1501,40 @@
       </tags>
   </entry>
   <entry>
-    <title>泰文語料庫總整理</title>
-    <url>/%E6%B3%B0%E6%96%87%E8%AA%9E%E6%96%99%E5%BA%AB%E7%B8%BD%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<p>這篇文章主要目的在於把網路上找得到的泰文語料庫做全局的綜覽，使用幾個指標去評分每個語料庫的特色。當你找到適合自己的語料庫系統後，可以再到個別語料庫的詳細使用說明，我會再將個別語料庫的使用說明一一整理成單獨的貼文。<br><a id="more"></a></p>
-<h2 id="語料庫-Corpus-是什麼？"><a href="#語料庫-Corpus-是什麼？" class="headerlink" title="語料庫(Corpus)是什麼？"></a>語料庫(Corpus)是什麼？</h2><p>簡單來說，可以把語料庫想成是一間圖書館，裡面收集著大量的句子，這些句子可能是從網路上抓下來的、從出版的書裡擷取下來的、甚至是從影片中取下來的。除了收集大量資料以外，語料庫還提供一個搜尋系統，假設我是一個正在學中文的外國人，然後我今天剛好在課本上學到了「發揮」這個中文詞，學到「每個人都應該好好發揮自己的才能」，但我還想知道除了「發揮才能」之外，「發揮」的後面還可以接什麼名詞，這時候我就可以使用語料庫的搜尋介面，查詢所有包含「發揮」這兩個字的句子，那麼我就可以一次學到很多「發揮」的用法，像是「發揮愛心」、「發揮功能」、「發揮正義感」等等。</p>
-<p>所以語料庫除了能給語言學家用來做研究以外，還可以作為一個對外語學習者非常好的學習輔助工具：一般的字典給你的是一個詞的意義跟少量的例句，而語料庫能給你的是關於一個詞的大量真實使用的例句。</p>
-<p>下面我會將網路上能找到的語料庫系統分成單語語料庫和雙語語料庫，單語語料庫的就是如果我下一個泰文詞的搜尋，他只會給出所有包含該泰文詞的泰文句子。而雙語語料庫就是如果我下一個泰文詞的搜尋，他除了會給出包含該泰文詞的泰文句子之外，還會給出另一個指定的語言中相對應的句子。</p>
-<h2 id="單語語料庫"><a href="#單語語料庫" class="headerlink" title="單語語料庫"></a>單語語料庫</h2><h3 id="泰國國家語料庫-Thai-National-Corpus-第一版"><a href="#泰國國家語料庫-Thai-National-Corpus-第一版" class="headerlink" title="泰國國家語料庫 Thai National Corpus (第一版)"></a>泰國國家語料庫 Thai National Corpus (第一版)</h3><p><img src="http://thai-an-hour-later.com/wp-content/uploads/2020/05/截圖-2020-05-23-下午10.16.16-1024x477.png" alt></p>
-<p>泰國國家語料庫 (TNC) 第一版介面截圖</p>
-<p>連結：<a href="https://cqpweb.lancs.ac.uk/tncv1" target="_blank" rel="noopener">https://cqpweb.lancs.ac.uk/tncv1](https://cqpweb.lancs.ac.uk/tncv1</a></p>
-<p>是否需要註冊：是<br>總收集詞數：約3400萬個詞<br>介面美觀：看起來很複雜<br>是否支援詞組搜尋：是<br>是否支援搭配詞搜尋：是<br>是否支援CQL搜尋：是</p>
-<h3 id="泰國國家語料庫-Thai-National-Corpus-第三版"><a href="#泰國國家語料庫-Thai-National-Corpus-第三版" class="headerlink" title="泰國國家語料庫 Thai National Corpus (第三版)"></a>泰國國家語料庫 Thai National Corpus (第三版)</h3><p><img src="http://thai-an-hour-later.com/wp-content/uploads/2020/05/截圖-2020-05-23-下午10.18.33-1024x461.png" alt></p>
-<p>泰國國家語料庫 (TNC) 第三版介面截圖</p>
-<p>連結：<a href="http://www.arts.chula.ac.th/~ling/tnc3/" target="_blank" rel="noopener">http://www.arts.chula.ac.th/~ling/tnc3/</a></p>
-<p>是否需要註冊：否<br>總收集詞數：約3000萬個詞<br>介面美觀：較第一版簡潔<br>是否支援詞組搜尋：否<br>是否支援搭配詞搜尋：是<br>是否支援CQL搜尋：否</p>
-<h3 id="Twitter語料庫"><a href="#Twitter語料庫" class="headerlink" title="Twitter語料庫"></a>Twitter語料庫</h3><h2 id="雙語語料庫"><a href="#雙語語料庫" class="headerlink" title="雙語語料庫"></a>雙語語料庫</h2>]]></content>
+    <title>梵文二上-W1筆記</title>
+    <url>/%E6%A2%B5%E6%96%87%E4%BA%8C%E4%B8%8A-W1%E7%AD%86%E8%A8%98/</url>
+    <content><![CDATA[<h2 id="朗讀心經"><a href="#朗讀心經" class="headerlink" title="朗讀心經"></a>朗讀心經</h2><h2 id="The-Joy-of-Sanskrit"><a href="#The-Joy-of-Sanskrit" class="headerlink" title="The Joy of Sanskrit"></a>The Joy of Sanskrit</h2><p>本課程使用的教科書 <a href="https://press.anu.edu.au/publications/textbooks/joy-sanskrit" target="_blank" rel="noopener">The Joy of Sanskrit (Taylor &amp; Scotellaro 2014)</a></p>
+<h4 id="nbsp"><a href="#nbsp" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>अभ्यासो न हि त्यक्तव्यो अभ्यासो हि परं बलम्<br>abhyāso na hi tyaktavyo abhyāso hi paraṃ balam<br>反覆練習 否定 強調 應被放棄的 反覆練習 強調 至高 力量<br>M.SG.NOM. NEG. Par. FPP. M.SG.NOM. Par. N.SG.NOM. N.SG.NOM.<br>反覆練習是不應被放棄的，反覆練習是至高的力量；</p>
+</blockquote>
+<h4 id="nbsp-1"><a href="#nbsp-1" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>अनभ्यासे विषं विद्या अजीर्ने अजीर्णे विषम्<br>abhyāse viṣaṃ vidyā ajīrṇe bhojanaṃ viṣam<br>於不反覆練習 毒 知識 於不消化 食物 毒<br>M.SG.LOC. N.SG.NOM. F.SG.NOM. M.SG.LOC. N.SG.NOM. N.SG.NOM.<br>知識於不反覆練習時是毒藥，食物於不消化時是毒藥。</p>
+</blockquote>
+<h4 id="nbsp-2"><a href="#nbsp-2" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>नमो नमः<br>namo namaḥ<br>你好！</p>
+</blockquote>
+<h4 id="nbsp-3"><a href="#nbsp-3" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवतः नाम किम्<br>bhavataḥ nāma kim<br>M.SG.GEN. M.SG.NOM. M.SG.NOM.<br>bhavant的屬格 {} {}<br>您叫什麼名字？（您的名字是什麼？）（對男生）</p>
+</blockquote>
+<h4 id="nbsp-4"><a href="#nbsp-4" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवत्याः  नाम किम्<br>bhavatyāḥ nāma kim<br>F.SG.GEN. M.SG.NOM. M.SG.NOM.<br>bhavantī {} {}<br>您叫什麼名字？（對女生）</p>
+</blockquote>
+<h4 id="nbsp-5"><a href="#nbsp-5" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>मम नाम …<br>mama nāma …<br>1.SG.GEN. M.SG.NOM.<br>我的名字是…</p>
+</blockquote>
+<h4 id="nbsp-6"><a href="#nbsp-6" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवतः कुशलम् अस्ति वा<br>bhavataḥ kuśalam asti vā<br>M.SG.GEN. N.SG.NOM. 3.SG.PRES.<br>bhavant {} {}<br>您好嗎？（對男生）</p>
+</blockquote>
+<h4 id="nbsp-7"><a href="#nbsp-7" class="headerlink" title="&nbsp;"></a>&nbsp;</h4><blockquote>
+<p>भवतः कुशलम् अस्ति वा<br>bhavataḥ kuśalam asti vā<br>M.SG.GEN. N.SG.NOM. 3.SG.PRES.<br>bhavant {} {}<br>您好嗎？（對男生）</p>
+</blockquote>
+]]></content>
       <categories>
-        <category>泰語</category>
+        <category>梵文</category>
+        <category>上課筆記</category>
       </categories>
       <tags>
-        <tag>語料庫</tag>
-        <tag>泰語</tag>
+        <tag>梵文</tag>
       </tags>
   </entry>
   <entry>
@@ -1596,22 +1561,27 @@
       </tags>
   </entry>
   <entry>
-    <title>書寫系統總整理: r12a.github.io</title>
-    <url>/%E8%B3%87%E6%BA%90%E5%88%86%E4%BA%AB-%E6%9B%B8%E5%AF%AB%E7%B3%BB%E7%B5%B1%E7%B8%BD%E6%95%B4%E7%90%86-r12a-github-io/</url>
-    <content><![CDATA[<p>無意間發現這個網站，有很多關於書寫系統和Unicode等等的介紹。</p>
-<p>連結：<a href="https://r12a.github.io/" target="_blank" rel="noopener">https://r12a.github.io/</a></p>
-<h2 id="幾篇覺得不錯的文章"><a href="#幾篇覺得不錯的文章" class="headerlink" title="幾篇覺得不錯的文章"></a>幾篇覺得不錯的文章</h2><ul>
-<li><a href="https://r12a.github.io/scripts/bopomofo/ontheweb" target="_blank" rel="noopener">Bopomofo on the Web</a>: 關於注音符號的介紹。</li>
-<li><a href="https://r12a.github.io/scripts/indic-overview/" target="_blank" rel="noopener">An Introduction to Indic Scripts</a>: 介紹印度各種書寫系統。</li>
-<li><a href="https://r12a.github.io/scripts/myanmar/" target="_blank" rel="noopener">Myanmar/Burmese</a>: 像這一篇就是清楚地介紹緬甸文字。</li>
-</ul>
-]]></content>
+    <title>泰文語料庫總整理</title>
+    <url>/%E6%B3%B0%E6%96%87%E8%AA%9E%E6%96%99%E5%BA%AB%E7%B8%BD%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<p>這篇文章主要目的在於把網路上找得到的泰文語料庫做全局的綜覽，使用幾個指標去評分每個語料庫的特色。當你找到適合自己的語料庫系統後，可以再到個別語料庫的詳細使用說明，我會再將個別語料庫的使用說明一一整理成單獨的貼文。<br><a id="more"></a></p>
+<h2 id="語料庫-Corpus-是什麼？"><a href="#語料庫-Corpus-是什麼？" class="headerlink" title="語料庫(Corpus)是什麼？"></a>語料庫(Corpus)是什麼？</h2><p>簡單來說，可以把語料庫想成是一間圖書館，裡面收集著大量的句子，這些句子可能是從網路上抓下來的、從出版的書裡擷取下來的、甚至是從影片中取下來的。除了收集大量資料以外，語料庫還提供一個搜尋系統，假設我是一個正在學中文的外國人，然後我今天剛好在課本上學到了「發揮」這個中文詞，學到「每個人都應該好好發揮自己的才能」，但我還想知道除了「發揮才能」之外，「發揮」的後面還可以接什麼名詞，這時候我就可以使用語料庫的搜尋介面，查詢所有包含「發揮」這兩個字的句子，那麼我就可以一次學到很多「發揮」的用法，像是「發揮愛心」、「發揮功能」、「發揮正義感」等等。</p>
+<p>所以語料庫除了能給語言學家用來做研究以外，還可以作為一個對外語學習者非常好的學習輔助工具：一般的字典給你的是一個詞的意義跟少量的例句，而語料庫能給你的是關於一個詞的大量真實使用的例句。</p>
+<p>下面我會將網路上能找到的語料庫系統分成單語語料庫和雙語語料庫，單語語料庫的就是如果我下一個泰文詞的搜尋，他只會給出所有包含該泰文詞的泰文句子。而雙語語料庫就是如果我下一個泰文詞的搜尋，他除了會給出包含該泰文詞的泰文句子之外，還會給出另一個指定的語言中相對應的句子。</p>
+<h2 id="單語語料庫"><a href="#單語語料庫" class="headerlink" title="單語語料庫"></a>單語語料庫</h2><h3 id="泰國國家語料庫-Thai-National-Corpus-第一版"><a href="#泰國國家語料庫-Thai-National-Corpus-第一版" class="headerlink" title="泰國國家語料庫 Thai National Corpus (第一版)"></a>泰國國家語料庫 Thai National Corpus (第一版)</h3><p><img src="http://thai-an-hour-later.com/wp-content/uploads/2020/05/截圖-2020-05-23-下午10.16.16-1024x477.png" alt></p>
+<p>泰國國家語料庫 (TNC) 第一版介面截圖</p>
+<p>連結：<a href="https://cqpweb.lancs.ac.uk/tncv1" target="_blank" rel="noopener">https://cqpweb.lancs.ac.uk/tncv1](https://cqpweb.lancs.ac.uk/tncv1</a></p>
+<p>是否需要註冊：是<br>總收集詞數：約3400萬個詞<br>介面美觀：看起來很複雜<br>是否支援詞組搜尋：是<br>是否支援搭配詞搜尋：是<br>是否支援CQL搜尋：是</p>
+<h3 id="泰國國家語料庫-Thai-National-Corpus-第三版"><a href="#泰國國家語料庫-Thai-National-Corpus-第三版" class="headerlink" title="泰國國家語料庫 Thai National Corpus (第三版)"></a>泰國國家語料庫 Thai National Corpus (第三版)</h3><p><img src="http://thai-an-hour-later.com/wp-content/uploads/2020/05/截圖-2020-05-23-下午10.18.33-1024x461.png" alt></p>
+<p>泰國國家語料庫 (TNC) 第三版介面截圖</p>
+<p>連結：<a href="http://www.arts.chula.ac.th/~ling/tnc3/" target="_blank" rel="noopener">http://www.arts.chula.ac.th/~ling/tnc3/</a></p>
+<p>是否需要註冊：否<br>總收集詞數：約3000萬個詞<br>介面美觀：較第一版簡潔<br>是否支援詞組搜尋：否<br>是否支援搭配詞搜尋：是<br>是否支援CQL搜尋：否</p>
+<h3 id="Twitter語料庫"><a href="#Twitter語料庫" class="headerlink" title="Twitter語料庫"></a>Twitter語料庫</h3><h2 id="雙語語料庫"><a href="#雙語語料庫" class="headerlink" title="雙語語料庫"></a>雙語語料庫</h2>]]></content>
       <categories>
-        <category>書寫系統</category>
+        <category>泰語</category>
       </categories>
       <tags>
-        <tag>書寫系統</tag>
-        <tag>資源分享</tag>
+        <tag>語料庫</tag>
+        <tag>泰語</tag>
       </tags>
   </entry>
   <entry>
@@ -1665,6 +1635,23 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo中的helper使用方法</title>
+    <url>/hexo%E4%B8%AD%E7%9A%84helper%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>Hexo中的Helpers是不能用在source當中的，一定要寫在theme當中的layout裡頭才可以。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="https://hexo.io/api/helper" target="_blank" rel="noopener">官網: Helper</a></li>
+<li><a href="https://stackoverflow.com/questions/33729493/how-to-use-helpers-in-hexo-source-files" target="_blank" rel="noopener">How to use helpers in Hexo source files?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>貝葉經參考文獻</title>
     <url>/%E8%B2%9D%E8%91%89%E7%B6%93%E5%8F%83%E8%80%83%E6%96%87%E7%8D%BB/</url>
     <content><![CDATA[<p>貝葉，巴利 patta，梵文 pattra，泰文</p>
@@ -1679,6 +1666,79 @@
       <tags>
         <tag>巴利文</tag>
         <tag>貝葉經</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>巴利語參考文獻和學習資源</title>
+    <url>/pali-references-and-learning-resource/</url>
+    <content><![CDATA[<p>巴利語學習資源整理。</p>
+<a id="more"></a>
+<!-- toc -->
+<h2 id="巴利語概述"><a href="#巴利語概述" class="headerlink" title="巴利語概述"></a>巴利語概述</h2><h3 id="Geiger-Wilhelm-1916-1943-Pali-Literature-and-Language"><a href="#Geiger-Wilhelm-1916-1943-Pali-Literature-and-Language" class="headerlink" title="Geiger, Wilhelm. (1916/1943). Pāli Literature and Language."></a>Geiger, Wilhelm. (1916/1943). <em>Pāli Literature and Language</em>.</h3><p>原書為德文，1943年由Batakrishna Ghosh翻譯成英文。</p>
+<h3 id="Hazra-Kanai-Lal-1994-Pali-Language-and-Literature-A-Systematic-Survey-and-Historical-Study-Vol-1-Language-History-and-Structure-Literature-Canonical-Pali-Texts-Vol-2-Literature-Non-Canonical-Pali-Texts"><a href="#Hazra-Kanai-Lal-1994-Pali-Language-and-Literature-A-Systematic-Survey-and-Historical-Study-Vol-1-Language-History-and-Structure-Literature-Canonical-Pali-Texts-Vol-2-Literature-Non-Canonical-Pali-Texts" class="headerlink" title="Hazra, Kanai Lal. (1994). Pāli Language and Literature: A Systematic Survey and Historical Study (Vol. 1: Language: History and Structure, Literature: Canonical Pāli Texts; Vol. 2: Literature: Non-Canonical Pāli Texts)."></a>Hazra, Kanai Lal. (1994). <em>Pāli Language and Literature: A Systematic Survey and Historical Study (Vol. 1: Language: History and Structure, Literature: Canonical Pāli Texts; Vol. 2: Literature: Non-Canonical Pāli Texts)</em>.</h3><p>兩大冊，第一冊講語言的歷史和結構以及佛典文學，第二冊講非佛典的巴利文文學。</p>
+<h3 id="De-Alvis-James-1863-An-Introduction-to-Kachchayana’s-Grammar-of-the-Pali-Language"><a href="#De-Alvis-James-1863-An-Introduction-to-Kachchayana’s-Grammar-of-the-Pali-Language" class="headerlink" title="De Alvis, James. (1863). An Introduction to Kachchāyana’s Grammar of the Pāli Language."></a>De Alvis, James. (1863). An Introduction to Kachchāyana’s Grammar of the Pāli Language.</h3><p>連結: <a href="https://archive.org/details/cu31924074308432" target="_blank" rel="noopener">https://archive.org/details/cu31924074308432</a></p>
+<h2 id="巴利語教材"><a href="#巴利語教材" class="headerlink" title="巴利語教材"></a>巴利語教材</h2><h3 id="溫宗堃-編譯-2015-展讀巴利新課程-進入佛陀的語言世界-法鼓文化"><a href="#溫宗堃-編譯-2015-展讀巴利新課程-進入佛陀的語言世界-法鼓文化" class="headerlink" title="溫宗堃 (編譯). (2015). 展讀巴利新課程: 進入佛陀的語言世界. 法鼓文化."></a>溫宗堃 (編譯). (2015). <em>展讀巴利新課程: 進入佛陀的語言世界</em>. 法鼓文化.</h3><p>本書編譯自Gair, James W. &amp; Karunatillake, W. S. (1994). <em>A New Course in Reading Pāli: Entering the World of the Buddha</em>.</p>
+<p>本書特點為一開始就為學習者呈現原汁原味的佛典內容，一邊介紹文法，一邊選用有相應文法內容的佛經，讓學習者從一開始就能一邊學巴利文、一邊讀原典。但由於這樣的選擇，也讓每一課的信息量變得非常多，每課為了要讓讀者看懂經文，都會列出數十個出現在選文中的單字，而文法內容也非常密集。</p>
+<h3 id="Andersen-1907-A-Pali-reader-with-notes-and-glossary"><a href="#Andersen-1907-A-Pali-reader-with-notes-and-glossary" class="headerlink" title="Andersen. (1907). A Pāli reader: with notes and glossary."></a>Andersen. (1907). A Pāli reader: with notes and glossary.</h3><p>本書有Part I 和 Part II，Part I 為本生故事和法句經的原文，Part II 則是辭典。</p>
+<p>Part I 連結: <a href="https://archive.org/details/palireaderpaligl0000dine_f8r8/page/118/mode/2up" target="_blank" rel="noopener">https://archive.org/details/palireaderpaligl0000dine_f8r8/page/118/mode/2up</a><br>Part II 連結: <a href="https://archive.org/details/cu31924071132082/page/n7/mode/2up" target="_blank" rel="noopener">https://archive.org/details/cu31924071132082/page/n7/mode/2up</a> </p>
+<h3 id="An-Easy-Introduction-to-Pali"><a href="#An-Easy-Introduction-to-Pali" class="headerlink" title="An Easy Introduction to Pāli"></a>An Easy Introduction to Pāli</h3><p>連結: <a href="https://ia800105.us.archive.org/26/items/MyPaliCourse/Easy%20Intro%20Pali.pdf" target="_blank" rel="noopener">https://ia800105.us.archive.org/26/items/MyPaliCourse/Easy%20Intro%20Pali.pdf</a></p>
+<p>這本教科書在最後部分給出了各種書寫巴利文的書寫系統，並有清楚的表格並列。至於內容我尚未回顧。</p>
+<h2 id="巴利語辭典"><a href="#巴利語辭典" class="headerlink" title="巴利語辭典"></a>巴利語辭典</h2><h3 id="線上-巴利字典-https-palidictionary-appspot-com"><a href="#線上-巴利字典-https-palidictionary-appspot-com" class="headerlink" title="[線上] 巴利字典 https://palidictionary.appspot.com/"></a>[線上] 巴利字典 <a href="https://palidictionary.appspot.com/" target="_blank" rel="noopener">https://palidictionary.appspot.com/</a></h3><p>網站作者: Siong-Ui Te (戴上為) [<a href="https://github.com/siongui" target="_blank" rel="noopener">GitHub</a>]</p>
+<p>將多本巴利字典編譯為可線上搜尋的好用電子資源，目前有巴-漢, 巴-日, 巴-英, 巴-越, 巴-緬五種雙語詞典。</p>
+<p>據網站作者所稱，本網站所使用的電子字典資源來自<a href="http://dhamma.sutta.org/pali-course/Pali-Chinese-English%20Dictionary.html" target="_blank" rel="noopener">Pali Canon E-Dictionary Version 1.95 (PCED)</a></p>
+<h3 id="巴-英-Childers-R-C-1875-A-Dictionary-of-the-Pali-Language"><a href="#巴-英-Childers-R-C-1875-A-Dictionary-of-the-Pali-Language" class="headerlink" title="[巴-英] Childers, R. C. (1875) A Dictionary of the Pali Language."></a>[巴-英] Childers, R. C. (1875) <em>A Dictionary of the Pali Language</em>.</h3><p>下載連結：<a href="https://archive.org/details/adictionaryplil00chilgoog" target="_blank" rel="noopener">https://archive.org/details/adictionaryplil00chilgoog</a></p>
+<p>可選擇pdf, txt, epub, kindle…等格式，pdf檔為字典的圖片檔，而txt, epub, kindle檔則是使用OCR將圖片轉為文字的版本，因此可以使用簡易的單字查詢功能。</p>
+<h3 id="巴-泰-英-Bhikkhu-P-A-Payutto’s-Dictionary-of-Buddhism"><a href="#巴-泰-英-Bhikkhu-P-A-Payutto’s-Dictionary-of-Buddhism" class="headerlink" title="[巴-泰-英] Bhikkhu P. A. Payutto’s Dictionary of Buddhism"></a>[巴-泰-英] Bhikkhu P. A. Payutto’s <em>Dictionary of Buddhism</em></h3><p>介紹與下載連結請參見：<a href="https://www.tipitaka.org/thai-dict" target="_blank" rel="noopener">https://www.tipitaka.org/thai-dict</a></p>
+<p>實際上包含了三份檔案：</p>
+<ul>
+<li>Dictionary of Numerical Dhammas （介紹各種法數的名相，也就是各個含有數字的佛教名詞，例如一心、二門、三界、四諦、五蘊、六度…等。其他類似編譯方式的經典：《增一阿含經》和《法集名數經》。）</li>
+<li>Thai-English Buddhist Dictionary</li>
+<li>English-Thai Buddhist Dictionary</li>
+</ul>
+<h3 id="巴利文專有名詞辭典"><a href="#巴利文專有名詞辭典" class="headerlink" title="巴利文專有名詞辭典"></a>巴利文專有名詞辭典</h3><p>連結: <a href="http://www.metta.lk/pali-utils/Pali-Proper-Names/index.html" target="_blank" rel="noopener">http://www.metta.lk/pali-utils/Pali-Proper-Names/index.html</a></p>
+<h3 id="DILA佛學術語字辭典"><a href="#DILA佛學術語字辭典" class="headerlink" title="DILA佛學術語字辭典"></a>DILA佛學術語字辭典</h3><p>連結: <a href="http://glossaries.dila.edu.tw/api?locale=zh-TW" target="_blank" rel="noopener">http://glossaries.dila.edu.tw/api?locale=zh-TW</a></p>
+<h3 id="A-Critical-Pali-Dictionary-the-University-of-Cologne"><a href="#A-Critical-Pali-Dictionary-the-University-of-Cologne" class="headerlink" title="A Critical Pāli Dictionary (the University of Cologne)"></a>A Critical Pāli Dictionary (the University of Cologne)</h3><p>連結: <a href="https://cpd.uni-koeln.de/search" target="_blank" rel="noopener">https://cpd.uni-koeln.de/search</a><br>本字典來由詳細介紹: <a href="https://cpd.uni-koeln.de/intro/" target="_blank" rel="noopener">https://cpd.uni-koeln.de/intro/</a></p>
+<p>實際上本字典只編到 kapeti</p>
+<h2 id="巴利經典閱讀"><a href="#巴利經典閱讀" class="headerlink" title="巴利經典閱讀"></a>巴利經典閱讀</h2><h3 id="Digital-Pali-Reader"><a href="#Digital-Pali-Reader" class="headerlink" title="Digital Pāli Reader"></a>Digital Pāli Reader</h3><p>連結：<a href="https://www.digitalpalireader.online/_dprhtml/index.html" target="_blank" rel="noopener">https://www.digitalpalireader.online/_dprhtml/index.html</a><br>可線上閱讀/搜尋/查詢巴利經文。</p>
+<h2 id="書寫巴利語的各種書寫文字"><a href="#書寫巴利語的各種書寫文字" class="headerlink" title="書寫巴利語的各種書寫文字"></a>書寫巴利語的各種書寫文字</h2><h3 id="水野弘元巴利文語法附錄"><a href="#水野弘元巴利文語法附錄" class="headerlink" title="水野弘元巴利文語法附錄"></a>水野弘元巴利文語法附錄</h3><h3 id="An-East-introduction-to-Pali附錄"><a href="#An-East-introduction-to-Pali附錄" class="headerlink" title="An East introduction to Pali附錄"></a>An East introduction to Pali附錄</h3><h3 id="大影"><a href="#大影" class="headerlink" title="大影"></a>大影</h3><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="GRETIL-巴利原文文本下載"><a href="#GRETIL-巴利原文文本下載" class="headerlink" title="GRETIL: 巴利原文文本下載"></a>GRETIL: 巴利原文文本下載</h3><p>GRETIL - Göttingen Register of Electronic Texts in Indian Languages</p>
+<p>三藏內和三藏外的文本皆有。</p>
+<p>連結: <a href="http://gretil.sub.uni-goettingen.de/gretil.html#Pali" target="_blank" rel="noopener">http://gretil.sub.uni-goettingen.de/gretil.html#Pali</a></p>
+<h3 id="The-OCBS-Pali-Bibliography"><a href="#The-OCBS-Pali-Bibliography" class="headerlink" title="The OCBS Pali Bibliography"></a>The OCBS Pali Bibliography</h3><p>由 Oxford Centre for Buddhist Studies 所維護的巴利語相關文獻。</p>
+<ul>
+<li>連結: <a href="http://palihub.org/the-ocbs-pali-bibliography/" target="_blank" rel="noopener">http://palihub.org/the-ocbs-pali-bibliography/</a></li>
+<li>連結: <a href="https://www.zotero.org/palibib/library" target="_blank" rel="noopener">https://www.zotero.org/palibib/library</a></li>
+</ul>
+<h3 id="南傳佛教圖書館-Theravada-Buddhism-E-Library"><a href="#南傳佛教圖書館-Theravada-Buddhism-E-Library" class="headerlink" title="南傳佛教圖書館 Theravada Buddhism E-Library"></a>南傳佛教圖書館 Theravada Buddhism E-Library</h3><p>連結: <a href="http://kusala.online-dhamma.net/%e6%96%87%e5%ad%97%e8%b3%87%e6%96%99/%e5%8d%97%e5%82%b3%e4%bd%9b%e6%95%99%e5%9c%96%e6%9b%b8%e9%a4%a8%20Theravada%20Buddhism%20E-Library/" target="_blank" rel="noopener">http://kusala.online-dhamma.net/%e6%96%87%e5%ad%97%e8%b3%87%e6%96%99/%e5%8d%97%e5%82%b3%e4%bd%9b%e6%95%99%e5%9c%96%e6%9b%b8%e9%a4%a8%20Theravada%20Buddhism%20E-Library/</a></p>
+<p>有大量資源提供下載。</p>
+<h3 id="法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典"><a href="#法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典" class="headerlink" title="法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典"></a>法鼓佛教研修學院數位圖書館：佛教語文學習材料與字辭典</h3><p>連結: <a href="http://kusala.online-dhamma.net/%E6%96%87%E5%AD%97%E8%B3%87%E6%96%99/%E5%8D%97%E5%82%B3%E4%BD%9B%E6%95%99%E5%9C%96%E6%9B%B8%E9%A4%A8%20Theravada%20Buddhism%20E-Library/069%20%E5%B7%B4%E5%88%A9%E8%BE%AD%E5%85%B8%20-%E4%B8%AD/%E4%BD%9B%E6%95%99%E8%AA%9E%E6%96%87%E5%AD%B8%E7%BF%92%E6%9D%90%E6%96%99%E8%88%87%E5%AD%97%E8%BE%AD%E5%85%B8%E3%80%80Language%20Study,%20Dictionaries.htm" target="_blank" rel="noopener">http://kusala.online-dhamma.net/%E6%96%87%E5%AD%97%E8%B3%87%E6%96%99/%E5%8D%97%E5%82%B3%E4%BD%9B%E6%95%99%E5%9C%96%E6%9B%B8%E9%A4%A8%20Theravada%20Buddhism%20E-Library/069%20%E5%B7%B4%E5%88%A9%E8%BE%AD%E5%85%B8%20-%E4%B8%AD/%E4%BD%9B%E6%95%99%E8%AA%9E%E6%96%87%E5%AD%B8%E7%BF%92%E6%9D%90%E6%96%99%E8%88%87%E5%AD%97%E8%BE%AD%E5%85%B8%E3%80%80Language%20Study,%20Dictionaries.htm</a></p>
+<h3 id="巴利語詞頻統計"><a href="#巴利語詞頻統計" class="headerlink" title="巴利語詞頻統計"></a>巴利語詞頻統計</h3><p><a href="http://dhamma.sutta.org/pali-course/Pali-Chinese-translate-project.html" target="_blank" rel="noopener">http://dhamma.sutta.org/pali-course/Pali-Chinese-translate-project.html</a></p>
+<h3 id="蔡奇林-2004-網海一滴：網路上的巴利教學與研究資源舉隅-《佛教圖書館館訊》第40期，頁21-35"><a href="#蔡奇林-2004-網海一滴：網路上的巴利教學與研究資源舉隅-《佛教圖書館館訊》第40期，頁21-35" class="headerlink" title="蔡奇林. (2004). 網海一滴：網路上的巴利教學與研究資源舉隅. 《佛教圖書館館訊》第40期，頁21-35."></a>蔡奇林. (2004). <em>網海一滴：網路上的巴利教學與研究資源舉隅</em>. 《佛教圖書館館訊》第40期，頁21-35.</h3><p><a href="http://www.gaya.org.tw/journal/m40/40-main2.pdf" target="_blank" rel="noopener">http://www.gaya.org.tw/journal/m40/40-main2.pdf</a></p>
+<h3 id="蔡奇林-2006-巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想-中華佛學學報第19期-p107-146"><a href="#蔡奇林-2006-巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想-中華佛學學報第19期-p107-146" class="headerlink" title="蔡奇林. (2006). 巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想. 中華佛學學報第19期 (p107-146)"></a>蔡奇林. (2006). <em>巴利數位文獻資源現況評述與未來展望──兼談「初期佛教聖典多語多本平行語料庫」的幾點構想</em>. 中華佛學學報第19期 (p107-146)</h3><p>全文連結：<a href="http://www.chibs.edu.tw/ch_html/chbj/19/chbj1906.htm" target="_blank" rel="noopener">http://www.chibs.edu.tw/ch_html/chbj/19/chbj1906.htm</a></p>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>書寫系統總整理: r12a.github.io</title>
+    <url>/%E8%B3%87%E6%BA%90%E5%88%86%E4%BA%AB-%E6%9B%B8%E5%AF%AB%E7%B3%BB%E7%B5%B1%E7%B8%BD%E6%95%B4%E7%90%86-r12a-github-io/</url>
+    <content><![CDATA[<p>無意間發現這個網站，有很多關於書寫系統和Unicode等等的介紹。</p>
+<p>連結：<a href="https://r12a.github.io/" target="_blank" rel="noopener">https://r12a.github.io/</a></p>
+<h2 id="幾篇覺得不錯的文章"><a href="#幾篇覺得不錯的文章" class="headerlink" title="幾篇覺得不錯的文章"></a>幾篇覺得不錯的文章</h2><ul>
+<li><a href="https://r12a.github.io/scripts/bopomofo/ontheweb" target="_blank" rel="noopener">Bopomofo on the Web</a>: 關於注音符號的介紹。</li>
+<li><a href="https://r12a.github.io/scripts/indic-overview/" target="_blank" rel="noopener">An Introduction to Indic Scripts</a>: 介紹印度各種書寫系統。</li>
+<li><a href="https://r12a.github.io/scripts/myanmar/" target="_blank" rel="noopener">Myanmar/Burmese</a>: 像這一篇就是清楚地介紹緬甸文字。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>書寫系統</category>
+      </categories>
+      <tags>
+        <tag>書寫系統</tag>
+        <tag>資源分享</tag>
       </tags>
   </entry>
   <entry>
