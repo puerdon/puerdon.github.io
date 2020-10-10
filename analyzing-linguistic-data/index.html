@@ -10,6 +10,8 @@
     <meta name="author" content="puerdon">
     
     
+        <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
+    
     
     <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"作者: Baayen出版年: 2013書名: Analyzing linguistic data - a practical introduction to satistics using R\n\nCH1: An introduction to R\nFactor: A non-numeric predicatorc (p. 9)\nLevels: Values of s factor (p. 9) \nContingency table (crosstab): (p. 13)\n\nCH2: Graphical data exploration2.1 何謂隨機變數 (Random variables)?一個實驗的結果即是一個隨機變數。\n\n例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。\n例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。\n例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。\n\n「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。\n2.2 視覺化單一隨機變數Bar chart 和 histogram 的差別Bar chart 用於離散變數或 factor 上。Histogram 用於連續變數上，且 histogram 中的資料面積總和為 1。\n為何常常需要將尺度以log轉換? (p. 31下方)降低隨機變數分布的偏移。\n2.3 視覺化兩個以上的變數\nmosaic plot:\n先將資料轉成contingency table (xtabs())\n再丟進 mosalplot()\n\n\nscatter plot: 用於表示兩個連續隨機變數之間的關係。\nheteroskadastic\ncorrrelation \nscatter smoother\n\n\npairs plot (scatterplot matrix)\n適合兩個以上的隨機變數，兩兩之間互相比較，呈現關係\nmulticollinearlity (p. 37)  \n\n\n\n\n\n2.4 Trellis graphics (格狀圖)CH3: Probability distributionsMany statistical tests exploit the properties of the probability distributions of random variables. (許多統計檢定在做的事就在發揮隨機變數的機率分佈性質。)\n3.1 Distributions一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:\n\n離散\n連續\n\n3.2 離散分佈問題：在CELEX lexical database (Bayen et al., 1995)中列出了一個 1860萬詞的語料庫中，各個英文詞彙出現的頻率。發現 the 這個功能詞出現的頻率為 1093547 次，換成機率也就是 0.05885575 （這個值可以視為 the 出現在英文當中的機率的估計值）。然後現在我們又看到更早的Brown語料庫，在這個含有100萬詞的語料庫中，按照剛剛 0.05885575 的機率值，我們預期應該可以看到 the 出現 58856 次，但實際上卻找到了 69971 次。我們想知道的是，預期中與實際中的差異究竟算不算太大？\n詞彙定義：\n\nprobability of success (p)\nprobability of failure (1-p)\nnumber of trials (n)\nbinomially dstributed random variable with parameters p and n\n還要區分兩種對象:\n母體(population)的性質\n樣本(sample)的性質\n\n\nPoisson distrbution\n\n3.3 連續分佈CH4: Basic statistical methodsThe logic underlying the statistical tests: a statistical test produces a test statistic (檢定統計量) of which the distribution is known.\n我們想知道的是，這個檢定統計量是否是一個極端值，極端到不能只用巧合來解釋（巧合的相反是必然）。\n一般做法是先提出一個像是稻草人般的虛無假設，這個虛無假設的檢定統計量不是極端值。如果我們透過統計檢定發現得到的檢定統計量是個極端值\n本書採用的立場為 Frequentist statistical inference 而非 Bayesian inference。\np-valueA measure of suurprise\nCH5: Clustering and classificationCH6: Regression modelingCH7: Mixed models","dateCreated":"2018-12-26T22:11:28+08:00","dateModified":"2020-09-21T17:41:09+08:00","datePublished":"2018-12-26T22:11:28+08:00","description":"作者: Baayen出版年: 2013書名: Analyzing linguistic data - a practical introduction to satistics using R","headline":"[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/analyzing-linguistic-data/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/analyzing-linguistic-data/","keywords":"R, 統計, 計算語言學"}</script>
     <meta name="description" content="作者: Baayen出版年: 2013書名: Analyzing linguistic data - a practical introduction to satistics using R">
@@ -36,7 +38,7 @@
     <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-momrjblcs0xrz9edyybtwmnfzrkb66jzknc2uljg8n4xkj1f7t1bqdhcyhhw.min.css">
+    <link rel="stylesheet" href="/assets/css/style-vveetxotjwuhgirmdw3oj1ceukg2fi0i4nblo8rv08wgbuyjgb2y1olr4wtw.min.css">
     <!--STYLES END-->
     
 
@@ -238,6 +240,8 @@
                         hasCoverMetaIn
                         ">
                 
+
+
 <article class="post">
     
     
@@ -384,7 +388,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -434,7 +438,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -499,7 +503,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -549,7 +553,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -647,7 +651,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/Wavey-Fingerprint.svg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-mwdyh7tmb2hjabmr3vhhtepusgvce71aifniprdzfpntlufsckkky8m1qyjs.min.js"></script>
+<script src="/assets/js/script-cufy8ebh5fm3kswxibbnxptexwc8uthwkiaibrx0fx0xjou0dl3t6jjomjha.min.js"></script>
 <!--SCRIPTS END-->
 
 
@@ -945,7 +949,7 @@
             }
           }
 
-          if ('auto' === 'manual') {
+          if ('auto' === 'auto') {
             input.addEventListener('input', inputEventFunction);
           } else {
             jQuery('.search-icon').click(inputEventFunction);

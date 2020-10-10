@@ -10,6 +10,8 @@
     <meta name="author" content="puerdon">
     
     
+        <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
+    
     
     <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"commit\n分支branch\nbranch本質上僅僅是個指向 commit 物件的可變指標。Git 會使用 master 作為分支的預設名字。在若干次提交後，你其實已經有了一個指向最後一次提交物件的 master 分支，它在每次提交的時候都會自動向前移動。\n\n分支其實就是從某個commit物件往回看的歷史。\n建立新分支1$ git branch &lt;new_branch_name&gt;\n這個指令僅僅建立了新的分支，而不會自動將所在位址切換到這個新分支上。要切換到新分支上，需透過下方的git checkout指令：\n1$ git checkout &lt;branch_name&gt;\n執行 git checkout 就是把HEAD指標指到新的分支上。\n捷徑：建立新分支，同時切換到該分支\n1$ git checkout -b &lt;new_branch_name&gt;\n合併分支使用merge使用rebase\n指向目前所在分支的HEAD指標指向目前所checkout的commit。每次執行git checkout指令，都會連帶改動HEAD所指向的reference。\n例如在執行下面代碼後：\n1$ git checkout &lt;a_commit&gt;\nHEAD就會同時指向該a_commit。\nHEAD通常指向一個分支的名稱\n","dateCreated":"2018-06-19T16:08:31+08:00","dateModified":"2018-08-01T16:22:58+08:00","datePublished":"2018-06-19T16:08:31+08:00","description":"","headline":"git筆記","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/git-note/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/git-note/","keywords":"Git"}</script>
     <meta name="description" content="commit 分支branch branch本質上僅僅是個指向 commit 物件的可變指標。Git 會使用 master 作為分支的預設名字。在若干次提交後，你其實已經有了一個指向最後一次提交物件的 master 分支，它在每次提交的時候都會自動向前移動。  分支其實就是從某個commit物件往回看的歷史。 建立新分支1$ git branch &amp;lt;new_branch_name&amp;gt; 這">
@@ -36,7 +38,7 @@
     <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-momrjblcs0xrz9edyybtwmnfzrkb66jzknc2uljg8n4xkj1f7t1bqdhcyhhw.min.css">
+    <link rel="stylesheet" href="/assets/css/style-vveetxotjwuhgirmdw3oj1ceukg2fi0i4nblo8rv08wgbuyjgb2y1olr4wtw.min.css">
     <!--STYLES END-->
     
 
@@ -238,6 +240,8 @@
                         hasCoverMetaIn
                         ">
                 
+
+
 <article class="post">
     
     
@@ -340,7 +344,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -390,7 +394,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -455,7 +459,7 @@
             <a
                 class="post-action-btn btn btn--default btn-open-shareoptions"
                 href="#btn-open-shareoptions"
-                aria-label="Share this post"
+                aria-label="Diesen Beitrag teilen"
             >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
@@ -505,7 +509,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -603,7 +607,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/Wavey-Fingerprint.svg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-mwdyh7tmb2hjabmr3vhhtepusgvce71aifniprdzfpntlufsckkky8m1qyjs.min.js"></script>
+<script src="/assets/js/script-cufy8ebh5fm3kswxibbnxptexwc8uthwkiaibrx0fx0xjou0dl3t6jjomjha.min.js"></script>
 <!--SCRIPTS END-->
 
 
@@ -901,7 +905,7 @@
             }
           }
 
-          if ('auto' === 'manual') {
+          if ('auto' === 'auto') {
             input.addEventListener('input', inputEventFunction);
           } else {
             jQuery('.search-icon').click(inputEventFunction);
