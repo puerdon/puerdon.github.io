@@ -1,116 +1,20 @@
+
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html class="theme-next mist" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-  <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="CH2 三個重要方法corpus 的定義 the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is c">
+<html lang="zh-tw">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Puerdon Biki">
+    <title>Quantitative Corpus Linguistics with R - Puerdon Biki</title>
+    <meta name="author" content="puerdon">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"CH2 三個重要方法corpus 的定義\nthe notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. \n\n各種 corporageneral vs. specificraw vs. annotated幾種annoation:\n\nlemmatized\nPOS tag\nmorphological\nphonological\nsyntactically parsed\netc.歷時 vs. 共時靜態 vs. 動態\n\ncorpora能提供什麼資訊簡單來說就是頻率：\n\n各種pattern的出現頻率\npattern之間的共同出現頻率\n\nFrequency詞的頻率。\n但什麼是詞？不同語言中的詞。\ntype vs. token\n從頻率能看出些什麼 (p. 14)CollocationLexical Co-occurence\n三種co-occurence\ncollocation (本篇重點)\ncolligation\ncollostruction\n\n應用\n語言教學\n語義學\n\nConcordance(Lexico-)Grammatical Co-occurence\n相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。\n","dateCreated":"2018-08-17T15:00:58+08:00","dateModified":"2018-12-26T22:38:31+08:00","datePublished":"2018-08-17T15:00:58+08:00","description":"","headline":"Quantitative Corpus Linguistics with R","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/CH2 三個重要方法/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/CH2 三個重要方法/","keywords":"語言學, R, 語料庫"}</script>
+    <meta name="description" content="CH2 三個重要方法corpus 的定義 the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is c">
 <meta name="keywords" content="語言學,R,語料庫">
-<meta property="og:type" content="article">
+<meta property="og:type" content="blog">
 <meta property="og:title" content="Quantitative Corpus Linguistics with R">
 <meta property="og:url" content="https://puerdon.github.io/CH2 三個重要方法/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
@@ -120,166 +24,33 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Quantitative Corpus Linguistics with R">
 <meta name="twitter:description" content="CH2 三個重要方法corpus 的定義 the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is c">
+    
+    
+        
+    
+    
+    
+    
+    
 
+    <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-ptsuk4hsku2rfpob9hycw4zgdshzqyq0bu89ro7mv44jij5dwgv9tlz1wvjj.min.css">
+    <!--STYLES END-->
+    
 
+    
 
-
-
-
-  <link rel="canonical" href="https://puerdon.github.io/CH2 三個重要方法/">
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>Quantitative Corpus Linguistics with R | Puerdon Biki</title>
-  
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
-  
+    
+        
+    
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Puerdon Biki</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-hashtag"></i> <br>Tags</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-object-group"></i> <br>Categories</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-chinese_pali_dict">
-    <a href="/chinese-pali-dict/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-book"></i> <br>中文巴利文</a>
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
+    <body>
+        <div id="local_search_div">
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
-        </li>
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
+                  <div class="popup search-popup local-search-popup">
   <div class="local-search-header clearfix">
     <span class="search-icon">
       <i class="fa fa-search"></i>
@@ -288,164 +59,217 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="請入搜尋關鍵字" spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
 </div>
+            
+        </div>
+        <div id="blog">
+            <!-- Define author's picture -->
 
 
+    
 
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Puerdon Biki
+        </a>
     </div>
-  
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="打開鏈接: /#about"
+            >
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="首頁"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">首頁</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="分類"
+                        >
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">分類</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="標籤"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">標籤</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="所有文章"
+                        >
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">所有文章</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/chinese-pali-dict"
+                            
+                            rel="noopener"
+                            title="中文巴利文字典"
+                        >
+                        <i class="sidebar-button-icon fa fa-book" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">中文巴利文字典</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link popup-trigger"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="搜尋"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">搜尋</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="mailto:dondon726@gmail.com"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Email"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Email</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
 </nav>
 
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
     
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://puerdon.github.io/CH2 三個重要方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="puerdon">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Puerdon Biki">
-    </span>
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Quantitative Corpus Linguistics with R
-              
-            
-          </h1>
-        
-
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            Quantitative Corpus Linguistics with R
+        </h1>
+    
+    
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-17 15:00:58" itemprop="dateCreated datePublished" datetime="2018-08-17T15:00:58+08:00">2018-08-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-26 22:38:31" itemprop="dateModified" datetime="2018-12-26T22:38:31+08:00">2018-12-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/語料庫語言學/" itemprop="url" rel="index"><span itemprop="name">語料庫語言學</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
+    <time datetime="2018-08-17T15:00:58+08:00">
+	
+		    8月 17, 2018
+    	
+    </time>
     
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/語料庫語言學/">語料庫語言學</a>
+
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
 
-      
-      
+    
+</div>
 
-      
-        <h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
 <p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
 </blockquote>
 <h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
@@ -478,568 +302,341 @@
 <h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
 <p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
 
-      
+            
+
+
+        </div>
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/語言學/" rel="tag"># 語言學</a>
-          
-            <a href="/tags/R/" rel="tag"># R</a>
-          
-            <a href="/tags/語料庫/" rel="tag"># 語料庫</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/algebraic-data-type-in-Haskell/" rel="next" title="Haskell 中的 Algebraic data type">
-                <i class="fa fa-chevron-left"></i> Haskell 中的 Algebraic data type
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/functor-and-applicative-functor/" rel="prev" title="functor-and-applicative-functor">
-                functor-and-applicative-functor <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">標籤</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/R/">R</a> <a class="tag tag--primary tag--small t-link" href="/tags/語料庫/">語料庫</a> <a class="tag tag--primary tag--small t-link" href="/tags/語言學/">語言學</a>
 
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/functor-and-applicative-functor/"
+                    data-tooltip="functor-and-applicative-functor"
+                    aria-label="上一篇: functor-and-applicative-functor"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/algebraic-data-type-in-Haskell/"
+                    data-tooltip="Haskell 中的 Algebraic data type"
+                    aria-label="下一篇: Haskell 中的 Algebraic data type"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
         </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">puerdon</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">42</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">19</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">46</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/puerdon" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-            <div class="links-of-blogroll-title">
-                <!-- 設定你要的fa fa icon-->
-                <i class="fa fa-history fa-" aria-hidden="true"></i>
-                近期文章
-            </div>
-            <ul class="links-of-blogroll-list">
-                
-                
-                <li>
-                    <a href="/以泰文書寫巴利語時的ญ和ฐ/" title="以泰文書寫巴利語時的ญ和ฐ" target="_blank">以泰文書寫巴利語時的ญ和ฐ</a>
-                </li>
-                
-                <li>
-                    <a href="/如何在GitHub上對其他人的專案做出貢獻/" title="如何在GitHub上對其他人的專案做出貢獻" target="_blank">如何在GitHub上對其他人的專案做出貢獻</a>
-                </li>
-                
-                <li>
-                    <a href="/德文反身動詞以及中文的「讓自己-」/" title="德文反身動詞以及中文的「讓自己...」" target="_blank">德文反身動詞以及中文的「讓自己...」</a>
-                </li>
-                
-                <li>
-                    <a href="/關於Childers巴利字典的例句引用/" title="關於Childers巴利字典的例句引用" target="_blank">關於Childers巴利字典的例句引用</a>
-                </li>
-                
-                <li>
-                    <a href="/拜拜-別太執著/" title="拜拜/別太執著/" target="_blank">拜拜/別太執著/</a>
-                </li>
-                
-                <li>
-                    <a href="/upaya-執著/" title="執著, 取 Upaya / Upādāna / Ādāna" target="_blank">執著, 取 Upaya / Upādāna / Ādāna</a>
-                </li>
-                
-                <li>
-                    <a href="/pali-references-and-learning-resource/" title="巴利語參考文獻和學習資源" target="_blank">巴利語參考文獻和學習資源</a>
-                </li>
-                
-                <li>
-                    <a href="/巴利三藏各經縮寫/" title="巴利三藏各經縮寫" target="_blank">巴利三藏各經縮寫</a>
-                </li>
-                
-            </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CH2-三個重要方法"><span class="nav-number">1.</span> <span class="nav-text">CH2 三個重要方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#corpus-的定義"><span class="nav-number">1.1.</span> <span class="nav-text">corpus 的定義</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各種-corpora"><span class="nav-number">1.2.</span> <span class="nav-text">各種 corpora</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#general-vs-specific"><span class="nav-number">1.2.1.</span> <span class="nav-text">general vs. specific</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raw-vs-annotated"><span class="nav-number">1.2.2.</span> <span class="nav-text">raw vs. annotated</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#歷時-vs-共時"><span class="nav-number">1.2.3.</span> <span class="nav-text">歷時 vs. 共時</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#靜態-vs-動態"><span class="nav-number">1.2.4.</span> <span class="nav-text">靜態 vs. 動態</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#corpora能提供什麼資訊"><span class="nav-number">1.3.</span> <span class="nav-text">corpora能提供什麼資訊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Frequency"><span class="nav-number">1.3.1.</span> <span class="nav-text">Frequency</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#從頻率能看出些什麼-p-14"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">從頻率能看出些什麼 (p. 14)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collocation"><span class="nav-number">1.3.2.</span> <span class="nav-text">Collocation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三種co-occurence"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">三種co-occurence</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#應用"><span class="nav-number">1.3.3.</span> <span class="nav-text">應用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concordance"><span class="nav-number">1.3.4.</span> <span class="nav-text">Concordance</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
         
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-shower"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">puerdon</span>
-
-  
-
-  
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/CH2 三個重要方法/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/CH2 三個重要方法/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://puerdon.github.io/CH2 三個重要方法/"
+                    title="分享到 Google+"
+                    aria-label="分享到 Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.9.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+        
+        
+            
+        
+    </div>
+</article>
 
 
 
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 puerdon. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/functor-and-applicative-functor/"
+                    data-tooltip="functor-and-applicative-functor"
+                    aria-label="上一篇: functor-and-applicative-functor"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/algebraic-data-type-in-Haskell/"
+                    data-tooltip="Haskell 中的 Algebraic data type"
+                    aria-label="下一篇: Haskell 中的 Algebraic data type"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Diesen Beitrag teilen"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/CH2 三個重要方法/"
+                    title="分享到 Facebook"
+                    aria-label="分享到 Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/CH2 三個重要方法/"
+                    title="分享到 Twitter"
+                    aria-label="分享到 Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://puerdon.github.io/CH2 三個重要方法/"
+                    title="分享到 Google+"
+                    aria-label="分享到 Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/CH2 三個重要方法/"
+                        aria-label="分享到 Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/CH2 三個重要方法/"
+                        aria-label="分享到 Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://plus.google.com/share?url=https://puerdon.github.io/CH2 三個重要方法/"
+                        aria-label="分享到 Google+"
+                    >
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>分享到 Google+</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+
+            
+
+
+        </div>
+
+        
 
         
 
 
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">puerdon</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
 
-
-
-
-
+            </div>
+        
+        
+    </div>
+</div>
 
         
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
         
-      </div>
-    
+        
+<div id="cover" style="background-image:url('/assets/images/Wavey-Fingerprint.svg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-spg96lgqruujgscy30jxwvjpgby7uhvs8vmvfbbketvijxpovljz8lk7dex9.min.js"></script>
+<!--SCRIPTS END-->
+
 
     
 
-  </div>
 
-  
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+
+<!-- Leipzig glossing -->
+<script src="https://cdn.jsdelivr.net/npm/leipzig@latest/dist/leipzig.min.js"></script>
+<script>
+    var x = jQuery('div.to-gloss');
+    console.log(x);
+    jQuery(function() { Leipzig(x).gloss(); });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
+        
+            
 
   <script type="text/javascript">
     // Popup Window;
@@ -1056,24 +653,24 @@
     // monitor main search box;
 
     var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
+      jQuery('.popup').hide();
+      jQuery('#local-search-input').val('');
+      jQuery('.search-result-list').remove();
+      jQuery('#no-result').remove();
+      jQuery(".local-search-pop-overlay").remove();
+      jQuery('body').css('overflow', '');
     }
 
     function proceedsearch() {
-      $("body")
+      jQuery("body")
         .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
         .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
+      jQuery('.search-popup-overlay').click(onPopupClose);
+      jQuery('.popup').toggle();
+      var jQuerylocalSearchInput = jQuery('#local-search-input');
+      jQuerylocalSearchInput.attr("autocapitalize", "none");
+      jQuerylocalSearchInput.attr("autocorrect", "off");
+      jQuerylocalSearchInput.focus();
     }
 
     // search function;
@@ -1081,33 +678,34 @@
       'use strict';
 
       // start loading animation
-      $("body")
+      jQuery("body")
         .append('<div class="search-popup-overlay local-search-pop-overlay">' +
           '<div id="search-loading-icon">' +
           '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
           '</div>' +
           '</div>')
         .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      jQuery("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
-      
+     
 
-      $.ajax({
+      jQuery.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
         async: true,
         success: function(res) {
           // get the contents from search data
           isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
+          jQuery('.popup').detach().appendTo('#local_search_div');
+          var datas = isXml ? jQuery("entry", res).map(function() {
             return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
+              title: jQuery("title", this).text(),
+              content: jQuery("content",this).text(),
+              url: jQuery("url" , this).text()
             };
           }).get() : res;
           var input = document.getElementById(search_id);
+          console.log(input);
           var resultContent = document.getElementById(content_id);
           var inputEventFunction = function() {
             var searchText = input.value.trim().toLowerCase();
@@ -1318,10 +916,10 @@
             }
           }
 
-          if ('auto' === 'auto') {
+          if ('auto' === 'manual') {
             input.addEventListener('input', inputEventFunction);
           } else {
-            $('.search-icon').click(inputEventFunction);
+            jQuery('.search-icon').click(inputEventFunction);
             input.addEventListener('keypress', function (event) {
               if (event.keyCode === 13) {
                 inputEventFunction();
@@ -1330,8 +928,8 @@
           }
 
           // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
+          jQuery(".local-search-pop-overlay").remove();
+          jQuery('body').css('overflow', '');
 
           proceedsearch();
         }
@@ -1339,8 +937,8 @@
     }
 
     // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
+    jQuery('.popup-trigger').click(function(e) {
+      // e.stopPropagation();
       if (isfetched === false) {
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
@@ -1348,13 +946,13 @@
       };
     });
 
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
+    jQuery('.popup-btn-close').click(onPopupClose);
+    jQuery('.popup').click(function(e){
       e.stopPropagation();
     });
-    $(document).on('keyup', function (event) {
+    jQuery(document).on('keyup', function (event) {
       var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
+        jQuery('.search-popup').is(':visible');
       if (shouldDismissSearchPopup) {
         onPopupClose();
       }
@@ -1363,35 +961,6 @@
 
 
 
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
+        
+    </body>
 </html>
