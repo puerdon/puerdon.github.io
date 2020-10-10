@@ -10596,6 +10596,16 @@ a.tag--small,
   z-index: 9999;
   border-radius: 5px; }
 
+@media only screen and (max-width: 767px) {
+  .local-search-popup {
+    padding: 0;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0; } }
+
 .local-search-popup ul.search-result-list {
   padding: 0;
   margin: 0 5px; }
