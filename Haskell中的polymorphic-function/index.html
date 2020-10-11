@@ -13,9 +13,9 @@
         <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。\n\n以length函數為例：  \n‘’’length :: [a] -&gt; Int‘’’\nlength函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。  \nlength函數簽名中的 type variable a 即是用以指涉它的函數輸入接受各種元素類型的list。\n再舉個例子：\n‘’’id :: a -&gt; a‘’’\nid函數是一個不管給他什麼參數，都會回傳自己的參數。可以觀察到兩件事：\n\nid函數的簽名中，只出現 type variable a，也就是說id函數可以接收任何type的參數。\nid函數接收的type和回傳的type是同一個。\n\n","dateCreated":"2018-08-01T16:30:32+08:00","dateModified":"2018-08-17T10:48:24+08:00","datePublished":"2018-08-01T16:30:32+08:00","description":"所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。","headline":"Haskell中的polymorphic-function","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/Haskell中的polymorphic-function/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/Haskell中的polymorphic-function/","keywords":"Haskell, function, polymorphic function"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。\n\n以length函數為例：  \n‘’’length :: [a] -&gt; Int‘’’\nlength函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含幾個元素，而非哪種元素，因此length被定義為一個多態的函數。  \nlength函數簽名中的 type variable a 即是用以指涉它的函數輸入接受各種元素類型的list。\n再舉個例子：\n‘’’id :: a -&gt; a‘’’\nid函數是一個不管給他什麼參數，都會回傳自己的參數。可以觀察到兩件事：\n\nid函數的簽名中，只出現 type variable a，也就是說id函數可以接收任何type的參數。\nid函數接收的type和回傳的type是同一個。\n\n","dateCreated":"2018-08-01T16:30:32+08:00","dateModified":"2018-08-17T10:48:24+08:00","datePublished":"2018-08-01T16:30:32+08:00","description":"所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。","headline":"Haskell中的polymorphic-function","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/Haskell中的polymorphic-function/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/Haskell中的polymorphic-function/","keywords":"Haskell, polymorphic function, function"}</script>
     <meta name="description" content="所謂polymorphic function(多態函數)指的是可作用於多種類型的輸入的函數。">
-<meta name="keywords" content="Haskell,function,polymorphic function">
+<meta name="keywords" content="Haskell,polymorphic function,function">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Haskell中的polymorphic-function">
 <meta property="og:url" content="https://puerdon.github.io/Haskell中的polymorphic-function/index.html">
@@ -38,7 +38,7 @@
     <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-cujy8gwzv2ig5c7zzhvvoibu3kevabehb7u9vhmvzlbeexg0dcnysnuzgqu2.min.css">
+    <link rel="stylesheet" href="/assets/css/style-lkaf74qs7zm0w0af7fy6djgn9ayobagzfr0dllvvccbkbw7ri8olfbhknjei.min.css">
     <!--STYLES END-->
     
 
@@ -387,6 +387,16 @@
         
         
             
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
         
         <li class="post-action">
             
@@ -401,6 +411,10 @@
 
         
         
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
             
         
     </div>
@@ -501,6 +515,16 @@
             </li>
         
         
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Kommentieren"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
             
         
         <li class="post-action">
@@ -603,10 +627,28 @@
         
 <div id="cover" style="background-image:url('/assets/images/Wavey-Fingerprint.svg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-ip6mglwoqvzdx9a6tdgvqded5sje1sqipcq0enteax836ac2h4kezovzfxy3.min.js"></script>
+<script src="/assets/js/script-dflhakg88zcmigi1bxl92htca0medgyhfwq2prd9f55js9okuuaswdvqwsqw.min.js"></script>
 <!--SCRIPTS END-->
 
 
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'https://puerdon.github.io/Haskell中的polymorphic-function/';
+            this.language = 'zh_TW';
+              
+            this.page.identifier = 'Haskell中的polymorphic-function/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'puerdon';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
     
 
 
@@ -615,9 +657,7 @@
 <!-- Leipzig glossing -->
 <script src="https://cdn.jsdelivr.net/npm/leipzig@latest/dist/leipzig.min.js"></script>
 <script>
-    var x = jQuery('div.to-gloss');
-    console.log(x);
-    jQuery(function() { Leipzig(x).gloss(); });
+    jQuery(function() { Leipzig().gloss(); });
 </script>
 
         
