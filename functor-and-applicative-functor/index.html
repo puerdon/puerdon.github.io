@@ -13,7 +13,7 @@
         <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"lifting(a -&gt; b) -&gt; (f a -&gt; f b)\n接收一個函數a -&gt; b，回傳一個新的函數f a -&gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [）\n這件事情在Haskell中叫做lifting。\n比較使用 list comprehesion[x * y | x &lt;- [1..5], y &lt;- [6..10]]\n使用 Functor 和 Applicative(*) &lt;$&gt; [1..5] &lt;*&gt; [6..10]\nIO Action也是Applicative123456instance Applicative IO where    pure    = return    a &lt;*&gt; b = do        f &lt;- a        x &lt;- b        return (f x)\nIO action 也是 Applicative 的一個 instance。IO action 中的 Applicative 涉及 sequencing。\n根據上面的定義，在a &lt;*&gt; b當中：\n\n先執行 IO Action a \npure is all about putting a value in a minimal context that still holds it as its result\n\n\n   If &lt;*&gt; were specialized for IO it would have a type of (&lt;*&gt;) :: IO (a -&gt; b) -&gt; IO a -&gt; IO b. It would take an I/O action that yields a function as its result and another I/O action and create a new I/O action from those two that, when performed, first performs the first one to get the function and then performs the second one to get the value and then it would yield that function applied to the value as its result. We used do syntax to implement it here. Remember, do syntax is about taking several I/O actions and gluing them into one, which is exactly what we do here.\nWith Maybe and [], we could think of &lt;*&gt; as simply extracting a function from its left parameter and then sort of applying it over the right one. With IO, extracting is still in the game, but now we also have a notion of sequencing, because we’re taking two I/O actions and we’re sequencing, or gluing, them into one. We have to extract the function from the first I/O action, but to extract a result from an I/O action, it has to be performed.\n","dateCreated":"2018-08-22T14:01:48+08:00","dateModified":"2018-08-22T17:32:11+08:00","datePublished":"2018-08-22T14:01:48+08:00","description":"","headline":"functor-and-applicative-functor","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/functor-and-applicative-functor/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/functor-and-applicative-functor/"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"lifting(a -&gt; b) -&gt; (f a -&gt; f b)\n接收一個函數a -&gt; b，回傳一個新的函數f a -&gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [）\n這件事情在Haskell中叫做lifting。\n比較使用 list comprehesion[x * y | x &lt;- [1..5], y &lt;- [6..10]]\n使用 Functor 和 Applicative(*) &lt;$&gt; [1..5] &lt;*&gt; [6..10]\nIO Action也是Applicative123456instance Applicative IO where    pure    = return    a &lt;*&gt; b = do        f &lt;- a        x &lt;- b        return (f x)\nIO action 也是 Applicative 的一個 instance。IO action 中的 Applicative 涉及 sequencing。\n根據上面的定義，在a &lt;*&gt; b當中：\n\n先執行 IO Action a \npure is all about putting a value in a minimal context that still holds it as its result\n\n\n   If &lt;*&gt; were specialized for IO it would have a type of (&lt;*&gt;) :: IO (a -&gt; b) -&gt; IO a -&gt; IO b. It would take an I/O action that yields a function as its result and another I/O action and create a new I/O action from those two that, when performed, first performs the first one to get the function and then performs the second one to get the value and then it would yield that function applied to the value as its result. We used do syntax to implement it here. Remember, do syntax is about taking several I/O actions and gluing them into one, which is exactly what we do here.\nWith Maybe and [], we could think of &lt;*&gt; as simply extracting a function from its left parameter and then sort of applying it over the right one. With IO, extracting is still in the game, but now we also have a notion of sequencing, because we’re taking two I/O actions and we’re sequencing, or gluing, them into one. We have to extract the function from the first I/O action, but to extract a result from an I/O action, it has to be performed.\n","dateCreated":"2018-08-22T14:01:48+08:00","dateModified":"2018-08-22T17:32:11+08:00","datePublished":"2018-08-22T14:01:48+08:00","description":"","headline":"functor-and-applicative-functor","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/functor-and-applicative-functor/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/functor-and-applicative-functor/"}</script>
     <meta name="description" content="lifting(a -&amp;gt; b) -&amp;gt; (f a -&amp;gt; f b) 接收一個函數a -&amp;gt; b，回傳一個新的函數f a -&amp;gt; f b，新函數和舊函數的差別在於新函數可以處理任何type為functor typeclass的instance的值（例如[Int], [） 這件事情在Haskell中叫做lifting。 比較使用 list comprehesion[x * y |">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="functor-and-applicative-functor">
@@ -30,6 +30,8 @@
         
     
     
+        <meta property="og:image" content="https://puerdon.github.io/assets/images/c.jpg"/>
+    
     
     
     
@@ -37,7 +39,7 @@
     <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-nugcgrxaln81jyd4qntaceuiw5s0hktea8ap36pubzjt0hx943k4isp1mihy.min.css">
+    <link rel="stylesheet" href="/assets/css/style-bsrgncjn8c3trqg0ifo9txfqddmyswfbgb4xevcrxwwrdwjdmuxw5vfqgyst.min.css">
     <!--STYLES END-->
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180297173-1"></script>
@@ -83,6 +85,10 @@
 
 
     
+        
+            
+        
+    
 
 <header id="header" data-behavior="5">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
@@ -104,6 +110,8 @@
             >
         
         
+            <img class="header-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+        
         </a>
     
 </header>
@@ -111,8 +119,26 @@
             <!-- Define author's picture -->
 
 
+
+        
+    
+
 <nav id="sidebar" data-behavior="5">
     <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="閱讀有關作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+                </a>
+                <h4 class="sidebar-profile-name">puerdon</h4>
+                
+                    <h4 class="sidebar-profile-bio"><p>學習筆記 / 資源整理 / 雜物堆放</p>
+</h4>
+                
+            </div>
         
         
             <ul class="sidebar-buttons">
@@ -596,22 +622,28 @@
         
 
 
+    
+        
+    
+
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
             <i class="fa fa-times"></i>
         </div>
         
+            <img id="about-card-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+        
             <h4 id="about-card-name">puerdon</h4>
         
-            <div id="about-card-bio"><p>author.bio</p>
+            <div id="about-card-bio"><p>學習筆記 / 資源整理 / 雜物堆放</p>
 </div>
         
         
             <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>author.job</p>
+                <p>語言學研究</p>
 
             </div>
         
@@ -624,7 +656,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/Wavey-Fingerprint.svg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-icw3khgopyyqpvwx4hbkfcrneklhwwgg30zufzrxiis5hzg0iikgv9v6usud.min.js"></script>
+<script src="/assets/js/script-aetjvyktz17qluf8ocltzu6gt6travkkszybgyi4ioqv7b5oufsrmtzg2aas.min.js"></script>
 <!--SCRIPTS END-->
 
 

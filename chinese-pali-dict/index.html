@@ -3,6 +3,8 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="一個以中文詞搜尋相應巴利文條目的簡易搜尋網站">
     <meta property="og:type" content="website">
     <meta property="og:title" content="中文-巴利文字典">
@@ -35,7 +37,7 @@
         background: yellow;
     }
 
-    .is-large.input,
+    /*    .is-large.input,
     .is-large.textarea,
     .message,
     .modal p,
@@ -46,13 +48,13 @@
 
     .message-body {
         padding: 0.5em 0.75em;
-    }
+    }*/
 
     [v-cloak] {
         display: none;
     }
 
-/*    .modal {
+    /*    .modal {
         align-items: center;
         display: flex;
         flex-direction: column;
@@ -69,7 +71,7 @@
         <nav class="navbar has-background-info-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item pl-5" href="https://puerdon.github.io/chinese-pali-dict">
-                    <h1 class="title is-1 has-text-white pt-4 pb-4">中文－巴利文字典</h1>
+                    <h1 class="title is-3 has-text-white">中文－巴利文字典</h1>
                 </a>
             </div>
         </nav>
@@ -92,13 +94,16 @@
                         <!-- 按鈕 -->
                         <div class="field is-grouped">
                             <div class="control">
-                                <button @click="submit" type="submit" v-bind:class="{'is-loading': isLoading }" class="button is-link is-large">查詢</button>
+                                <button @click="submit" type="submit" v-bind:class="{'is-loading': isLoading }" class="button is-link is-normal">查詢</button>
                             </div>
                             <div class="control">
-                                <button @click="clear" class="button is-link is-light is-large">清除</button>
+                                <button @click="clear" class="button is-link is-light is-normal">清除</button>
                             </div>
                             <div class="control">
-                                <button @click="openInfo" class="button is-outlined is-large">關於本搜尋介面</button>
+                                <button @click="openInfo" class="button is-outlined is-normal">關於本搜尋介面</button>
+                            </div>
+                            <div class="control">
+                                <button @click="openLog" class="button is-outlined is-normal">更新日誌</button>
                             </div>
                         </div>
                         <!-- 錯誤訊息 -->
@@ -111,11 +116,11 @@
                         <article v-for="r in result" :key="r.word" class="message is-link">
                             <div class="message-header">
                                 <!-- <h5 class="card-header-title title is-5  has-text-white"> -->
-                                <p class="is-size-3">{{ r.word }}</p>
+                                <p class="">{{ r.word }}</p>
                                 <!-- </h5> -->
                             </div>
                             <div class="message-body has-text-black">
-                                <p class="is-size-3" v-html="highlight(r.meaning)"></p>
+                                <p class="" v-html="highlight(r.meaning)"></p>
                             </div>
                         </article>
                         <!-- modal -->
@@ -128,7 +133,38 @@
                                 </header>
                                 <section class="modal-card-body">
                                     <p class="block">本搜尋介面所使用的字典為A.P. Buddhadatta Mahāthera所編纂的Concise Pali-English Dictionary，後由大馬比丘 Mahāñāṇo 進行漢譯，並由明法比丘繼續編輯至 2009 年。網頁版字典請見<a href="http://www.dhammarain.org.tw/books/concise-pali-Han-revised-by-Ven-Metta-2009.htm" target="_blank">此連結</a>。本網站所使用的csv檔來自<a href="https://github.com/siongui/data/tree/master/dictionary" target="_blank">siongui的GitHub倉庫</a>。</p>
-                                    <p class="block">若有任何使用上的疑問與建議，請來信至：<pre>dondon726 小老鼠 gmail 點 com </pre></p>
+                                    <p class="block">若有任何使用上的疑問與建議，請來信至：
+                                        <pre>dondon726 小老鼠 gmail 點 com </pre>
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                        <!-- modal -->
+                        <div class="modal" v-show="showLog" style="display: flex">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">更新日誌</p>
+                                    <button class="delete" aria-label="close" @click="closeLog"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    2020-10-14
+                                                </td>
+                                                <td>
+                                                    <ul>
+                                                        <li>搜尋結果按照關鍵字在釋義中出現位置排序</li>
+                                                        <li>
+                                                            輸入英文關鍵字時，忽略大小寫差別
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </section>
                             </div>
                         </div>
@@ -149,7 +185,9 @@
             error_message: "",
             init: false,
             isLoading: false,
-            showInfo:false
+            showInfo: false,
+            showLog: false
+
         },
         methods: {
             submit: function() {
@@ -195,6 +233,12 @@
             },
             closeInfo: function() {
                 this.showInfo = false
+            },
+            openLog: function() {
+                this.showLog = true
+            },
+            closeLog: function() {
+                this.showLog = false
             }
         },
         computed: {

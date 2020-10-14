@@ -13,7 +13,7 @@
         <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"TF-IDF是什麼TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。\n所以TF-IDF用來做什麼顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的預設是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？\n\n先說普通版本的詞頻計算最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。\n可是卻沒有考量到不同詞的特性雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。\n所以要想個方法可以降低常用詞詞頻的干擾這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。\n","dateCreated":"2018-08-04T22:25:28+08:00","dateModified":"2018-08-10T10:55:52+08:00","datePublished":"2018-08-04T22:25:28+08:00","description":"TF-IDF是什麼TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。\n所以TF-IDF用來做什麼顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的預設是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？","headline":"TF-IDF","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/tf-idf/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/tf-idf/","keywords":"TF-IDF"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"TF-IDF是什麼TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。\n所以TF-IDF用來做什麼顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的預設是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？\n\n先說普通版本的詞頻計算最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。\n可是卻沒有考量到不同詞的特性雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。\n所以要想個方法可以降低常用詞詞頻的干擾這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。\n","dateCreated":"2018-08-04T22:25:28+08:00","dateModified":"2018-08-10T10:55:52+08:00","datePublished":"2018-08-04T22:25:28+08:00","description":"TF-IDF是什麼TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。\n所以TF-IDF用來做什麼顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的預設是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？","headline":"TF-IDF","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/tf-idf/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/tf-idf/","keywords":"TF-IDF"}</script>
     <meta name="description" content="TF-IDF是什麼TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。 所以TF-IDF用來做什麼顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的預設是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？">
 <meta name="keywords" content="TF-IDF">
 <meta property="og:type" content="blog">
@@ -31,6 +31,8 @@
         
     
     
+        <meta property="og:image" content="https://puerdon.github.io/assets/images/c.jpg"/>
+    
     
     
     
@@ -38,7 +40,7 @@
     <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-nugcgrxaln81jyd4qntaceuiw5s0hktea8ap36pubzjt0hx943k4isp1mihy.min.css">
+    <link rel="stylesheet" href="/assets/css/style-bsrgncjn8c3trqg0ifo9txfqddmyswfbgb4xevcrxwwrdwjdmuxw5vfqgyst.min.css">
     <!--STYLES END-->
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180297173-1"></script>
@@ -84,6 +86,10 @@
 
 
     
+        
+            
+        
+    
 
 <header id="header" data-behavior="5">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
@@ -105,6 +111,8 @@
             >
         
         
+            <img class="header-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+        
         </a>
     
 </header>
@@ -112,8 +120,26 @@
             <!-- Define author's picture -->
 
 
+
+        
+    
+
 <nav id="sidebar" data-behavior="5">
     <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="閱讀有關作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+                </a>
+                <h4 class="sidebar-profile-name">puerdon</h4>
+                
+                    <h4 class="sidebar-profile-bio"><p>學習筆記 / 資源整理 / 雜物堆放</p>
+</h4>
+                
+            </div>
         
         
             <ul class="sidebar-buttons">
@@ -601,22 +627,28 @@
         
 
 
+    
+        
+    
+
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
             <i class="fa fa-times"></i>
         </div>
         
+            <img id="about-card-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+        
             <h4 id="about-card-name">puerdon</h4>
         
-            <div id="about-card-bio"><p>author.bio</p>
+            <div id="about-card-bio"><p>學習筆記 / 資源整理 / 雜物堆放</p>
 </div>
         
         
             <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>author.job</p>
+                <p>語言學研究</p>
 
             </div>
         
@@ -629,7 +661,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/Wavey-Fingerprint.svg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-icw3khgopyyqpvwx4hbkfcrneklhwwgg30zufzrxiis5hzg0iikgv9v6usud.min.js"></script>
+<script src="/assets/js/script-aetjvyktz17qluf8ocltzu6gt6travkkszybgyi4ioqv7b5oufsrmtzg2aas.min.js"></script>
 <!--SCRIPTS END-->
 
 

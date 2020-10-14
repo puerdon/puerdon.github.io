@@ -13,7 +13,7 @@
         <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"articleBody":"問題意識如何根據現有的type組成新的type？有哪些組成方式？\n\n讓我們先把 type 想成是 一組值的集合，舉例來說，正整數的type是從1開始一路往上加1的所有值所組成的一個集合；而Bool type則是由True和False這兩個值所組成的集合。\n我們現在問的問題是，要如何根據原有的type組出新的type，就好像是在問說，我們要怎麼根據現有的不同集合，去拼湊出一個新的集合。\n\n兩種思路1. and思維／組合／Product Type使用 and，將兩種以上的type組合在一起。假設我們想為一本書的建模，那麼我們可以說一本書是由:\n\n書名\n作者\n出版年份\n頁數\nISBN\n\n所構成。物件導向語言中的Class，遵循的就是這樣的思路，把和一個類別相關連的所有屬性組織在一起。舉例來說，我們可以建立一個名為Book的類別，相對應的，這個Book class中具有:\n\n書名屬性（字串）\n作者屬性（字串）\n出版年份屬性（正整數）\n頁數屬性（正整數）\nISBN屬性（正整數屬性）\n\n透過上述這種利用並列組合的思考方式，稱為Product Type。\n12345678# python程式碼範例class Book:    def __init__(self, title, author, year, pages, isbn):        self.title = title        self.author = author        self.year = year        self.pages = pages        self.isbn = isbn\n更多例子\n一台電腦由CPU、記憶體、鍵盤、螢幕…等所組成\n一個地址由郵遞區號、國家、縣市、路名、巷弄、號碼所組成\n\n為什麼叫作Product type\nProduct type的名稱與集合論中的笛卡爾積(Cartesian Product)有關。\n\n一個簡化的模型，\ndata ABC = ABC Bool Bool Bool\n(True, False)\n(False, True)\n(True, True)\n(False, False)\n(待補)\n2. or思維／並列／Sum Type上面的and思維把焦點放在一個類型由哪些成分組合成在一起。但我們還有另一種看世界的方式：一個類型可以分別是哪些東西。舉個例子來說，我們可以根據男生、女生、其他這三種type，並列組合成性別這個新的type。\n我們來對比一下兩種說法：\n\n一本書由[書名、作者、出版年、頁數]所組成\n一個性別由[男生、女生、其他]所組成\n\n表面上，這兩個句子都是以「…由…所組成」的句型，乍看之下好像是同一件事，但其實仔細去想一下後，就可以發現其中最大的差別：\n\n一本書必須同時具有[書名、作者、出版年、頁數]\n一個人的性別只能是[男生]或者[女生]或者[其他]其中之一\n\n使用 or，例如 Bool type 由 True 或 False 組成。。稱為Sum Type。\n0與1在乘法中，任何數a乘以1還是等於a自己。\na * 1 = a\n在加法中，任何數a加上0還是等於a自己。\na + 0 = a\nVoid: 是一個不具有任何元素的type。\n\ndata VoidVoid是一個type constructorVoid沒有data constructor，因為Void這個type不具有任何元素\n\n1data X a = X a | Y Void\nUnit: 是一個只具有一個元素的type，以()表示。 \n\nUnit是一個type constructorUnit只有一個元素： ()\n\n1type Y a = (a, ())\n將Type與代數計算相關連以代數中的加法與乘法來看資料結構：\n代數\nSymbols: 0, 1, 2, …, x, y, z, ….\nOperations: +, -, *, /\nLaws: 結合律、分配律、0+x=x\n\nHaskell\nSymbols: (), Int, Bool, …\nOperations: Type Constructors (Maybe, Either, [],…)\nLaws: ???\n\nOnedata Unit = Unit\ndata () = ()type 為 Unit, 其 data constructor 沒有參數。只有一個值。\n加法data a:+ b = AddL a | AddR b\ndata Either a b = Left a | Right b\n以Either Bool Bool為例，一共有四個值：\n\nLeft True\nLeft False\nRight True\nRight False\n\n因此可以作為加法的定義。\n乘法data a:* b = Mul a b\ndata (a, b) = (a, b)\n以(Bool, Bool)為例，一共有四個值：\n\n(T, T)\n(T, F)\n(F, T)\n(F, F)\n\ntuple的第一個元素有T和F兩種選項，第二個元素也有T和F兩種選項，所以(Bool, Bool)會有 2 * 2 = 4 種可能。\nZerodata Void\nVoid是一個含有0個值的type。\nTwotype Two = Unit :+ Unit\ndata Bool = True | False\nFunctiondata a -&gt; b\na-&gt;b &lt;=&gt; b^ a因此可以作為加法的定義。\n\n\n\n\n數學\nHaskell\n\n\n\n\nSymbols\\n東西\n\n\n\n\nOperations\n\n\n\n\nLaws\n\n\n\n\n參考資料\nWikipedia: Algebraic Data Type\nWhy Sum Types Matter in Haskell\nThe algebra (and calculus!) of algebraic data types\nThe Algebra of Algebraic Data Types\nHaskell’s algebraic data types\n資源整理\n\n","dateCreated":"2018-08-17T15:00:58+08:00","dateModified":"2018-08-22T17:32:13+08:00","datePublished":"2018-08-17T15:00:58+08:00","description":"","headline":"Haskell 中的 Algebraic data type","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/algebraic-data-type-in-Haskell/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"]},"url":"https://puerdon.github.io/algebraic-data-type-in-Haskell/"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"問題意識如何根據現有的type組成新的type？有哪些組成方式？\n\n讓我們先把 type 想成是 一組值的集合，舉例來說，正整數的type是從1開始一路往上加1的所有值所組成的一個集合；而Bool type則是由True和False這兩個值所組成的集合。\n我們現在問的問題是，要如何根據原有的type組出新的type，就好像是在問說，我們要怎麼根據現有的不同集合，去拼湊出一個新的集合。\n\n兩種思路1. and思維／組合／Product Type使用 and，將兩種以上的type組合在一起。假設我們想為一本書的建模，那麼我們可以說一本書是由:\n\n書名\n作者\n出版年份\n頁數\nISBN\n\n所構成。物件導向語言中的Class，遵循的就是這樣的思路，把和一個類別相關連的所有屬性組織在一起。舉例來說，我們可以建立一個名為Book的類別，相對應的，這個Book class中具有:\n\n書名屬性（字串）\n作者屬性（字串）\n出版年份屬性（正整數）\n頁數屬性（正整數）\nISBN屬性（正整數屬性）\n\n透過上述這種利用並列組合的思考方式，稱為Product Type。\n12345678# python程式碼範例class Book:    def __init__(self, title, author, year, pages, isbn):        self.title = title        self.author = author        self.year = year        self.pages = pages        self.isbn = isbn\n更多例子\n一台電腦由CPU、記憶體、鍵盤、螢幕…等所組成\n一個地址由郵遞區號、國家、縣市、路名、巷弄、號碼所組成\n\n為什麼叫作Product type\nProduct type的名稱與集合論中的笛卡爾積(Cartesian Product)有關。\n\n一個簡化的模型，\ndata ABC = ABC Bool Bool Bool\n(True, False)\n(False, True)\n(True, True)\n(False, False)\n(待補)\n2. or思維／並列／Sum Type上面的and思維把焦點放在一個類型由哪些成分組合成在一起。但我們還有另一種看世界的方式：一個類型可以分別是哪些東西。舉個例子來說，我們可以根據男生、女生、其他這三種type，並列組合成性別這個新的type。\n我們來對比一下兩種說法：\n\n一本書由[書名、作者、出版年、頁數]所組成\n一個性別由[男生、女生、其他]所組成\n\n表面上，這兩個句子都是以「…由…所組成」的句型，乍看之下好像是同一件事，但其實仔細去想一下後，就可以發現其中最大的差別：\n\n一本書必須同時具有[書名、作者、出版年、頁數]\n一個人的性別只能是[男生]或者[女生]或者[其他]其中之一\n\n使用 or，例如 Bool type 由 True 或 False 組成。。稱為Sum Type。\n0與1在乘法中，任何數a乘以1還是等於a自己。\na * 1 = a\n在加法中，任何數a加上0還是等於a自己。\na + 0 = a\nVoid: 是一個不具有任何元素的type。\n\ndata VoidVoid是一個type constructorVoid沒有data constructor，因為Void這個type不具有任何元素\n\n1data X a = X a | Y Void\nUnit: 是一個只具有一個元素的type，以()表示。 \n\nUnit是一個type constructorUnit只有一個元素： ()\n\n1type Y a = (a, ())\n將Type與代數計算相關連以代數中的加法與乘法來看資料結構：\n代數\nSymbols: 0, 1, 2, …, x, y, z, ….\nOperations: +, -, *, /\nLaws: 結合律、分配律、0+x=x\n\nHaskell\nSymbols: (), Int, Bool, …\nOperations: Type Constructors (Maybe, Either, [],…)\nLaws: ???\n\nOnedata Unit = Unit\ndata () = ()type 為 Unit, 其 data constructor 沒有參數。只有一個值。\n加法data a:+ b = AddL a | AddR b\ndata Either a b = Left a | Right b\n以Either Bool Bool為例，一共有四個值：\n\nLeft True\nLeft False\nRight True\nRight False\n\n因此可以作為加法的定義。\n乘法data a:* b = Mul a b\ndata (a, b) = (a, b)\n以(Bool, Bool)為例，一共有四個值：\n\n(T, T)\n(T, F)\n(F, T)\n(F, F)\n\ntuple的第一個元素有T和F兩種選項，第二個元素也有T和F兩種選項，所以(Bool, Bool)會有 2 * 2 = 4 種可能。\nZerodata Void\nVoid是一個含有0個值的type。\nTwotype Two = Unit :+ Unit\ndata Bool = True | False\nFunctiondata a -&gt; b\na-&gt;b &lt;=&gt; b^ a因此可以作為加法的定義。\n\n\n\n\n數學\nHaskell\n\n\n\n\nSymbols\\n東西\n\n\n\n\nOperations\n\n\n\n\nLaws\n\n\n\n\n參考資料\nWikipedia: Algebraic Data Type\nWhy Sum Types Matter in Haskell\nThe algebra (and calculus!) of algebraic data types\nThe Algebra of Algebraic Data Types\nHaskell’s algebraic data types\n資源整理\n\n","dateCreated":"2018-08-17T15:00:58+08:00","dateModified":"2018-08-22T17:32:13+08:00","datePublished":"2018-08-17T15:00:58+08:00","description":"","headline":"Haskell 中的 Algebraic data type","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/algebraic-data-type-in-Haskell/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/algebraic-data-type-in-Haskell/"}</script>
     <meta name="description" content="問題意識如何根據現有的type組成新的type？有哪些組成方式？  讓我們先把 type 想成是 一組值的集合，舉例來說，正整數的type是從1開始一路往上加1的所有值所組成的一個集合；而Bool type則是由True和False這兩個值所組成的集合。 我們現在問的問題是，要如何根據原有的type組出新的type，就好像是在問說，我們要怎麼根據現有的不同集合，去拼湊出一個新的集合。  兩種思路1">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Haskell 中的 Algebraic data type">
@@ -30,6 +30,8 @@
         
     
     
+        <meta property="og:image" content="https://puerdon.github.io/assets/images/c.jpg"/>
+    
     
     
     
@@ -37,7 +39,7 @@
     <meta name="google-site-verification" content="vOyvfQAFYLmvRlnZlvjy_NYsLX9uYxnTJqsW3C7igb4">
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-nugcgrxaln81jyd4qntaceuiw5s0hktea8ap36pubzjt0hx943k4isp1mihy.min.css">
+    <link rel="stylesheet" href="/assets/css/style-bsrgncjn8c3trqg0ifo9txfqddmyswfbgb4xevcrxwwrdwjdmuxw5vfqgyst.min.css">
     <!--STYLES END-->
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180297173-1"></script>
@@ -83,6 +85,10 @@
 
 
     
+        
+            
+        
+    
 
 <header id="header" data-behavior="5">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
@@ -104,6 +110,8 @@
             >
         
         
+            <img class="header-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+        
         </a>
     
 </header>
@@ -111,8 +119,26 @@
             <!-- Define author's picture -->
 
 
+
+        
+    
+
 <nav id="sidebar" data-behavior="5">
     <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a
+                    href="/#about"
+                    aria-label="閱讀有關作者的更多信息"
+                >
+                    <img class="sidebar-profile-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+                </a>
+                <h4 class="sidebar-profile-name">puerdon</h4>
+                
+                    <h4 class="sidebar-profile-bio"><p>學習筆記 / 資源整理 / 雜物堆放</p>
+</h4>
+                
+            </div>
         
         
             <ul class="sidebar-buttons">
@@ -722,22 +748,28 @@
         
 
 
+    
+        
+    
+
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
             <i class="fa fa-times"></i>
         </div>
         
+            <img id="about-card-picture" src="/assets/images/c.jpg" alt="作者的圖片"/>
+        
             <h4 id="about-card-name">puerdon</h4>
         
-            <div id="about-card-bio"><p>author.bio</p>
+            <div id="about-card-bio"><p>學習筆記 / 資源整理 / 雜物堆放</p>
 </div>
         
         
             <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>author.job</p>
+                <p>語言學研究</p>
 
             </div>
         
@@ -750,7 +782,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/Wavey-Fingerprint.svg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-icw3khgopyyqpvwx4hbkfcrneklhwwgg30zufzrxiis5hzg0iikgv9v6usud.min.js"></script>
+<script src="/assets/js/script-aetjvyktz17qluf8ocltzu6gt6travkkszybgyi4ioqv7b5oufsrmtzg2aas.min.js"></script>
 <!--SCRIPTS END-->
 
 
