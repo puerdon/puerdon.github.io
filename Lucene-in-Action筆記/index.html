@@ -6,29 +6,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Puerdon Biki">
-    <title>以泰文書寫巴利語時的ญ和ฐ - Puerdon Biki</title>
+    <title>Lucene in Action筆記 - Puerdon Biki</title>
     <meta name="author" content="puerdon">
     
     
         <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u ุ 、長母音 ū ู 以及 ฺ 的時候，底座會自動不見，例如：ญุ ญู ญฺ ฐุ ฐู ฐฺ）。\n\n於是就開始在網路上找資料、問朋友，首先是在維基百科上者兩個字母的條目(ญ條目、ฐ條目)中讀到，有底座的 ญ 叫做 ญ แบบมีเชิง ，沒有底座的叫做 ญ แบบไม่มีเชิง，有了這個關鍵字，應該就會更容易在搜尋引擎中找到答案。\nWikipedia中同時還提到，其實 Unicode 是有給這兩個沒有底座的符號一個編碼的：\n\n沒有底座的 ญ 在 U+F70F\n沒有底座的 ฐ 在 U+F700\n\n只不過並不是每個泰文字型都有對這兩個Unicode碼做處理，所以如果是看一些以泰文拼寫巴利經文的網站，這兩個字母常常會顯示成亂碼，像是這樣：\n圖片來源\n你可以看到小框框亂碼中所顯示的正是他們的Unicode編碼，有的是 F70F，有的是 F700。\n後來泰國朋友幫我找到了一個支援這兩個編碼的泰文字型網站，\n\n點擊上圖中的紅色框框即可以下載字型並安裝，一共提供有以下幾個字型：\n\nAngsana Bali\nBali Aksaramatee (還有黑體, 斜體, 斜黑體)\nBali Garuda (還有黑體, 斜體, 斜黑體)\n\n另外我還在別的地方看到字體 Arial Unicode MS 也有支援這兩個沒有底座的Unicode字體。\n","dateCreated":"2020-10-09T14:22:44+08:00","dateModified":"2020-10-09T14:22:44+08:00","datePublished":"2020-10-09T14:22:44+08:00","description":"現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u ุ 、長母音 ū ู 以及 ฺ 的時候，底座會自動不見，例如：ญุ ญู ญฺ ฐุ ฐู ฐฺ）。","headline":"以泰文書寫巴利語時的ญ和ฐ","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/","keywords":"巴利文, 泰文"}</script>
-    <meta name="description" content="現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u ุ 、長母音 ū ู 以及 ฺ 的時候">
-<meta name="keywords" content="巴利文,泰文">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"&nbsp;\nCh 1: Meet Lucene1.5 Understanding the core indexing classes (p. 25)\nIndexWriter: 創建或開啟既存的index，然後對index進行新增/刪除/更新Documents.\nDirectory:\nAnalyzer: 所有text進行索引前，要先進行”分析” (如何從文本中抓出token) [見ch. 4]\nDocument: Field的集合\nField: 每個Field包含一對name:value，還有一些關於如何索引field的選項 [見2.4 (p. 43)]\n\n1.6 Understanding the core searching classes (p. 28)\nIndexSearcher\nTerm\nQuery (Query只是一個abstract class)\nBooleanQuery\nPhraseQuery\nPrefixQuery\nPhrasePrefixQuery\nTermRangeQuery\nNumericRangeQuery\nFilteredQuery\nSpanQuery\n\n\nTermQuery\nTopDocs\n\nCh 2: Building a search index2.1 How Lucene models content關於 term vector:\nWhat is term vector in Lucene\n2.2 Understanding the indexing process\n抽取文本，建立Document\nAnalysis\n加入Index\n使用 inverted index (p. 35 有還不錯的說明)\nIndex segments: Lucene特有的資料結構\n\n\n\n2.3 Basic index operation將document加進index123456789IndexWriter writer = getWriter();// 先建立Document，再把Field一一加入Document doc = new Document();doc.add(new Field(\"id\", 0, Field.Store.YES, Field.Index.No));doc.add(new Field(\"country\", \"Taiwan\", Field.Store.YES, Field.Index.No));// 最關鍵的一步writer.addDocument(doc);\n將document從index中刪除1writer.deleteDocuments();\n見 p.40 關於刪除文件的更多選項。\n更新index12writer.updateDocument(Term, Document, Analyzer);writer.updateDocument(new Term(\"ID\", documentId), newDocument);\n2.4 Field options [非常重要！] (這裡講的都是字串值的Field)決定了每個field將如何被索引。\n2.4.1 options for indexing\nField.Index.ANALYZED: 索引時，使用Analyzer將field value拆解成token\nField.Index.NOT_ANALYZED：不要使用Analyzer (適合用於網址, ID 等等的搜尋)\nField.Index.ANALYZED_NO_NORMS：如Field.Index.ANALYZED，只是不儲存norm 資訊 (用於boosting)\nField.Index.NOT_ANALYZED_NO_NORMS\nField.Index.NO: 完全不要索引這個field值，所以在搜尋時也查不到\n\n在建立inverted index時，Lucene預設儲存所有能實作Vector Space Model的必要資訊，例如：計算某個term出現在某doc中的總頻率，還有每個occurrence出現在文件中的位置。但如果你知道有某個field只需要做Boolean searching (i.e. only for filtering)，像是日期的話，那麼可以下Field.setOmitTermFreqAndPositions(true)。可以節省空間。\n2.4.2 options for storing: 決定是否要將該field的完整值存起來，存起來的話，在搜尋提取階段就可以重新叫回\nField.Store.YES\nField.Store.NO: 像是如果只是要叫出一個網頁URL，而不要叫出全部網頁內容，就可以不用STORE。\n\n2.4.3 options for using term vectors有關於什麼是term vector的說明：mix of stored field and indexed field. (p.44)\n至於term vector可以用來做什麼，請看 Ch. 5.9 (可以比較相近文件, 分群)\n\nTermVector.YES: 儲存一個Doc中的所有unique terms和次數。\nTermVector.WITH_POSITIONS: TermVector.YES + 每個term的每個occurence的位置\nTermVector.WITH_OFFSETS: TermVector.YES + 每個term的每個occurence的的起始/結束位元位置\nTermVector.WITH_POSITIONS_PFFSETS\nTermVector.NO\n\n2.4.4 Reader, TokenStream, byte[] field value (使用非String的field value)\nReader: if holding the full String in memory is too costly\nTokenStream: for preanalyzed fields\nbinary values: for storing\n\n2.4.5 Field option combination2.4.6 如何正確對欄位索引，讓欄位之後可以進行排序\n數字值的欄位記得用 NumbericField\ntextual欄位記得要…\n\n2.4.7 Multivalued fields假設作者欄位有多個作者怎麼辦？直接用同一個Field name，加不同的field value即可。\n2.5 Boosting docs and fields (進行加權; 暫時跳過)2.6 對非文字(數字, 日期, 時間)進行索引“controls how important specific fields and documents are during Lucene’s scoring”\n\n情況一：數字出現在文本當中，之後想對他搜尋，那麼就要找不會丟棄數字的Analyzer。\n情況二：欄位中出現單一的數字，之後想對他做filtering, range searching, sorting。使用NumbericField\n\n1doc.add(new NumericField(\"price\").setDoubleValue(19.99);\nCh 3: Adding search to your application3.2 Using IndexSearcher","dateCreated":"2020-10-16T23:25:12+08:00","dateModified":"2020-10-20T10:45:11+08:00","datePublished":"2020-10-16T23:25:12+08:00","description":"&nbsp;","headline":"Lucene in Action筆記","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/Lucene-in-Action筆記/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/Lucene-in-Action筆記/","keywords":"Lucene"}</script>
+    <meta name="description" content="&amp;nbsp;">
+<meta name="keywords" content="Lucene">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="以泰文書寫巴利語時的ญ和ฐ">
-<meta property="og:url" content="https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/index.html">
+<meta property="og:title" content="Lucene in Action筆記">
+<meta property="og:url" content="https://puerdon.github.io/Lucene-in-Action筆記/index.html">
 <meta property="og:site_name" content="Puerdon Biki">
-<meta property="og:description" content="現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u ุ 、長母音 ū ู 以及 ฺ 的時候">
+<meta property="og:description" content="&amp;nbsp;">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://puerdon.github.io/images/泰文拼寫巴利文網頁亂碼.png">
-<meta property="og:image" content="https://puerdon.github.io/images/泰文巴利文字型下載.png">
-<meta property="og:updated_time" content="2020-10-09T06:22:44.701Z">
+<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ce6232a-3dd3-46eb-b053-97ad5c273aca/_2020-06-04_11.28.11.png">
+<meta property="og:updated_time" content="2020-10-20T02:45:11.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="以泰文書寫巴利語時的ญ和ฐ">
-<meta name="twitter:description" content="現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u ุ 、長母音 ū ู 以及 ฺ 的時候">
-<meta name="twitter:image" content="https://puerdon.github.io/images/泰文拼寫巴利文網頁亂碼.png">
+<meta name="twitter:title" content="Lucene in Action筆記">
+<meta name="twitter:description" content="&amp;nbsp;">
+<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ce6232a-3dd3-46eb-b053-97ad5c273aca/_2020-06-04_11.28.11.png">
     
     
         
@@ -286,20 +285,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            以泰文書寫巴利語時的ญ和ฐ
+            Lucene in Action筆記
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2020-10-09T14:22:44+08:00">
+    <time datetime="2020-10-16T23:25:12+08:00">
 	
-		    10月 09, 2020
+		    10月 16, 2020
     	
     </time>
     
         <span>分類 </span>
         
-    <a class="category-link" href="/categories/巴利文/">巴利文</a>
+    <a class="category-link" href="/categories/Lucene/">Lucene</a>
 
 
     
@@ -311,27 +310,85 @@
     
     <div class="post-content markdown">
         <div class="main-content-wrap">
-            <p>現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u <code>ุ</code> 、長母音 ū <code>ู</code> 以及 <code>ฺ</code> 的時候，底座會自動不見，例如：ญุ ญู ญฺ ฐุ ฐู ฐฺ）。</p>
-<a id="more"></a>
-<p>於是就開始在網路上找資料、問朋友，首先是在維基百科上者兩個字母的條目(<a href="https://th.wikipedia.org/wiki/ฐ" target="_blank" rel="noopener">ญ條目</a>、<a href="https://th.wikipedia.org/wiki/ญ" target="_blank" rel="noopener">ฐ條目</a>)中讀到，有底座的 ญ 叫做 <code>ญ แบบมีเชิง</code> ，沒有底座的叫做 <code>ญ แบบไม่มีเชิง</code>，有了這個關鍵字，應該就會更容易在搜尋引擎中找到答案。</p>
-<p>Wikipedia中同時還提到，其實 Unicode 是有給這兩個沒有底座的符號一個編碼的：</p>
-<ul>
-<li>沒有底座的 ญ 在 <a href="https://www.fileformat.info/info/unicode/char/f70f/index.htm" target="_blank" rel="noopener">U+F70F</a></li>
-<li>沒有底座的 ฐ 在 <a href="https://www.fileformat.info/info/unicode/char/f700/index.htm" target="_blank" rel="noopener">U+F700</a></li>
+            <p>&nbsp;<br><a id="more"></a></p>
+<h1 id="Ch-1-Meet-Lucene"><a href="#Ch-1-Meet-Lucene" class="headerlink" title="Ch 1: Meet Lucene"></a>Ch 1: Meet Lucene</h1><h2 id="1-5-Understanding-the-core-indexing-classes-p-25"><a href="#1-5-Understanding-the-core-indexing-classes-p-25" class="headerlink" title="1.5 Understanding the core indexing classes (p. 25)"></a>1.5 Understanding the core indexing classes (p. 25)</h2><ul>
+<li>IndexWriter: 創建或開啟既存的index，然後對index進行新增/刪除/更新Documents.</li>
+<li>Directory:</li>
+<li>Analyzer: 所有text進行索引前，要先進行”分析” (如何從文本中抓出token) [見ch. 4]</li>
+<li>Document: Field的集合</li>
+<li>Field: 每個Field包含一對name:value，還有一些關於如何索引field的選項 [見2.4 (p. 43)]</li>
 </ul>
-<p>只不過並不是每個泰文字型都有對這兩個Unicode碼做處理，所以如果是看一些以泰文拼寫巴利經文的網站，這兩個字母常常會顯示成亂碼，像是這樣：</p>
-<p><img src="/images/泰文拼寫巴利文網頁亂碼.png" alt><br><a href="https://84000.org/tipitaka/read/pali_read.php?B=17&amp;A=355&amp;w=&amp;modeTY=1&amp;pagebreak=" target="_blank" rel="noopener">圖片來源</a></p>
-<p>你可以看到小框框亂碼中所顯示的正是他們的Unicode編碼，有的是 <code>F70F</code>，有的是 <code>F700</code>。</p>
-<p>後來泰國朋友幫我找到了一個支援這兩個編碼的<a href="http://mahaoath.com/2012/04/แจก-font-บาลี" target="_blank" rel="noopener">泰文字型網站</a>，</p>
-<p><img src="/images/泰文巴利文字型下載.png" alt></p>
-<p>點擊上圖中的紅色框框即可以下載字型並安裝，一共提供有以下幾個字型：</p>
-<ul>
-<li>Angsana Bali</li>
-<li>Bali Aksaramatee (還有黑體, 斜體, 斜黑體)</li>
-<li>Bali Garuda (還有黑體, 斜體, 斜黑體)</li>
+<h2 id="1-6-Understanding-the-core-searching-classes-p-28"><a href="#1-6-Understanding-the-core-searching-classes-p-28" class="headerlink" title="1.6 Understanding the core searching classes (p. 28)"></a>1.6 Understanding the core searching classes (p. 28)</h2><ul>
+<li>IndexSearcher</li>
+<li>Term</li>
+<li>Query (Query只是一個abstract class)<ul>
+<li>BooleanQuery</li>
+<li>PhraseQuery</li>
+<li>PrefixQuery</li>
+<li>PhrasePrefixQuery</li>
+<li>TermRangeQuery</li>
+<li>NumericRangeQuery</li>
+<li>FilteredQuery</li>
+<li>SpanQuery</li>
 </ul>
-<p>另外我還在<a href="https://www.fileformat.info/info/unicode/char/f700/fontsupport.htm" target="_blank" rel="noopener">別的地方</a>看到字體 Arial Unicode MS 也有支援這兩個沒有底座的Unicode字體。</p>
-
+</li>
+<li>TermQuery</li>
+<li>TopDocs</li>
+</ul>
+<h1 id="Ch-2-Building-a-search-index"><a href="#Ch-2-Building-a-search-index" class="headerlink" title="Ch 2: Building a search index"></a>Ch 2: Building a search index</h1><h2 id="2-1-How-Lucene-models-content"><a href="#2-1-How-Lucene-models-content" class="headerlink" title="2.1 How Lucene models content"></a>2.1 How Lucene models content</h2><p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ce6232a-3dd3-46eb-b053-97ad5c273aca/_2020-06-04_11.28.11.png" alt><br>關於 term vector:</p>
+<p><a href="http://makble.com/what-is-term-vector-in-lucene" target="_blank" rel="noopener">What is term vector in Lucene</a></p>
+<h2 id="2-2-Understanding-the-indexing-process"><a href="#2-2-Understanding-the-indexing-process" class="headerlink" title="2.2 Understanding the indexing process"></a>2.2 Understanding the indexing process</h2><ol>
+<li>抽取文本，建立Document</li>
+<li>Analysis</li>
+<li>加入Index<ol>
+<li>使用 inverted index (p. 35 有還不錯的說明)</li>
+<li>Index segments: Lucene特有的資料結構</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-Basic-index-operation"><a href="#2-3-Basic-index-operation" class="headerlink" title="2.3 Basic index operation"></a>2.3 Basic index operation</h2><h3 id="將document加進index"><a href="#將document加進index" class="headerlink" title="將document加進index"></a>將document加進index</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">IndexWriter writer = getWriter();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先建立Document，再把Field一一加入</span></span><br><span class="line">Document doc = <span class="keyword">new</span> Document();</span><br><span class="line">doc.add(<span class="keyword">new</span> Field(<span class="string">"id"</span>, <span class="number">0</span>, Field.Store.YES, Field.Index.No));</span><br><span class="line">doc.add(<span class="keyword">new</span> Field(<span class="string">"country"</span>, <span class="string">"Taiwan"</span>, Field.Store.YES, Field.Index.No));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最關鍵的一步</span></span><br><span class="line">writer.addDocument(doc);</span><br></pre></td></tr></table></figure>
+<h3 id="將document從index中刪除"><a href="#將document從index中刪除" class="headerlink" title="將document從index中刪除"></a>將document從index中刪除</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.deleteDocuments();</span><br></pre></td></tr></table></figure>
+<p>見 p.40 關於刪除文件的更多選項。</p>
+<h3 id="更新index"><a href="#更新index" class="headerlink" title="更新index"></a>更新index</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">writer.updateDocument(Term, Document, Analyzer);</span><br><span class="line">writer.updateDocument(<span class="keyword">new</span> Term(<span class="string">"ID"</span>, documentId), newDocument);</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-Field-options-非常重要！-這裡講的都是字串值的Field"><a href="#2-4-Field-options-非常重要！-這裡講的都是字串值的Field" class="headerlink" title="2.4 Field options [非常重要！] (這裡講的都是字串值的Field)"></a>2.4 Field options [非常重要！] (這裡講的都是字串值的Field)</h2><p>決定了每個field將如何被索引。</p>
+<h3 id="2-4-1-options-for-indexing"><a href="#2-4-1-options-for-indexing" class="headerlink" title="2.4.1 options for indexing"></a>2.4.1 options for indexing</h3><ul>
+<li>Field.Index.ANALYZED: 索引時，使用Analyzer將field value拆解成token</li>
+<li>Field.Index.NOT_ANALYZED：不要使用Analyzer (適合用於網址, ID 等等的搜尋)</li>
+<li>Field.Index.ANALYZED_NO_NORMS：如Field.Index.ANALYZED，只是不儲存norm 資訊 (用於boosting)</li>
+<li>Field.Index.NOT_ANALYZED_NO_NORMS</li>
+<li>Field.Index.NO: 完全不要索引這個field值，所以在搜尋時也查不到</li>
+</ul>
+<p>在建立inverted index時，Lucene預設儲存所有能實作Vector Space Model的必要資訊，例如：計算某個term出現在某doc中的總頻率，還有每個occurrence出現在文件中的位置。但如果你知道有某個field只需要做Boolean searching (i.e. only for filtering)，像是日期的話，那麼可以下Field.setOmitTermFreqAndPositions(true)。可以節省空間。</p>
+<h3 id="2-4-2-options-for-storing-決定是否要將該field的完整值存起來，存起來的話，在搜尋提取階段就可以重新叫回"><a href="#2-4-2-options-for-storing-決定是否要將該field的完整值存起來，存起來的話，在搜尋提取階段就可以重新叫回" class="headerlink" title="2.4.2 options for storing: 決定是否要將該field的完整值存起來，存起來的話，在搜尋提取階段就可以重新叫回"></a>2.4.2 options for storing: 決定是否要將該field的完整值存起來，存起來的話，在搜尋提取階段就可以重新叫回</h3><ul>
+<li>Field.Store.YES</li>
+<li>Field.Store.NO: 像是如果只是要叫出一個網頁URL，而不要叫出全部網頁內容，就可以不用STORE。</li>
+</ul>
+<h3 id="2-4-3-options-for-using-term-vectors"><a href="#2-4-3-options-for-using-term-vectors" class="headerlink" title="2.4.3 options for using term vectors"></a>2.4.3 options for using term vectors</h3><p>有關於什麼是term vector的說明：mix of stored field and indexed field. (p.44)</p>
+<p>至於term vector可以用來做什麼，請看 Ch. 5.9 (可以比較相近文件, 分群)</p>
+<ul>
+<li>TermVector.YES: 儲存一個Doc中的所有unique terms和次數。</li>
+<li>TermVector.WITH_POSITIONS: TermVector.YES + 每個term的每個occurence的位置</li>
+<li>TermVector.WITH_OFFSETS: TermVector.YES + 每個term的每個occurence的的起始/結束位元位置</li>
+<li>TermVector.WITH_POSITIONS_PFFSETS</li>
+<li>TermVector.NO</li>
+</ul>
+<h3 id="2-4-4-Reader-TokenStream-byte-field-value-使用非String的field-value"><a href="#2-4-4-Reader-TokenStream-byte-field-value-使用非String的field-value" class="headerlink" title="2.4.4 Reader, TokenStream, byte[] field value (使用非String的field value)"></a>2.4.4 Reader, TokenStream, byte[] field value (使用非String的field value)</h3><ul>
+<li>Reader: if holding the full String in memory is too costly</li>
+<li>TokenStream: for preanalyzed fields</li>
+<li>binary values: for storing</li>
+</ul>
+<h3 id="2-4-5-Field-option-combination"><a href="#2-4-5-Field-option-combination" class="headerlink" title="2.4.5 Field option combination"></a>2.4.5 Field option combination</h3><h3 id="2-4-6-如何正確對欄位索引，讓欄位之後可以進行排序"><a href="#2-4-6-如何正確對欄位索引，讓欄位之後可以進行排序" class="headerlink" title="2.4.6 如何正確對欄位索引，讓欄位之後可以進行排序"></a>2.4.6 如何正確對欄位索引，讓欄位之後可以進行排序</h3><ul>
+<li>數字值的欄位記得用 NumbericField</li>
+<li>textual欄位記得要…</li>
+</ul>
+<h3 id="2-4-7-Multivalued-fields"><a href="#2-4-7-Multivalued-fields" class="headerlink" title="2.4.7 Multivalued fields"></a>2.4.7 Multivalued fields</h3><p>假設作者欄位有多個作者怎麼辦？直接用同一個Field name，加不同的field value即可。</p>
+<h2 id="2-5-Boosting-docs-and-fields-進行加權-暫時跳過"><a href="#2-5-Boosting-docs-and-fields-進行加權-暫時跳過" class="headerlink" title="2.5 Boosting docs and fields (進行加權; 暫時跳過)"></a>2.5 Boosting docs and fields (進行加權; 暫時跳過)</h2><h2 id="2-6-對非文字-數字-日期-時間-進行索引"><a href="#2-6-對非文字-數字-日期-時間-進行索引" class="headerlink" title="2.6 對非文字(數字, 日期, 時間)進行索引"></a>2.6 對非文字(數字, 日期, 時間)進行索引</h2><p>“controls how important specific fields and documents are during Lucene’s scoring”</p>
+<ul>
+<li>情況一：數字出現在文本當中，之後想對他搜尋，那麼就要找不會丟棄數字的Analyzer。</li>
+<li>情況二：欄位中出現單一的數字，之後想對他做filtering, range searching, sorting。<br>使用NumbericField</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doc.add(<span class="keyword">new</span> NumericField(<span class="string">"price"</span>).setDoubleValue(<span class="number">19.99</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="Ch-3-Adding-search-to-your-application"><a href="#Ch-3-Adding-search-to-your-application" class="headerlink" title="Ch 3: Adding search to your application"></a>Ch 3: Adding search to your application</h1><h2 id="3-2-Using-IndexSearcher"><a href="#3-2-Using-IndexSearcher" class="headerlink" title="3.2 Using IndexSearcher"></a>3.2 Using IndexSearcher</h2>
             
 
 
@@ -342,7 +399,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">標籤</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/巴利文/">巴利文</a> <a class="tag tag--primary tag--small t-link" href="/tags/泰文/">泰文</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/Lucene/">Lucene</a>
 
             </div>
         
@@ -355,9 +412,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/貝葉經參考文獻/"
-                    data-tooltip="貝葉經參考文獻"
-                    aria-label="上一篇: 貝葉經參考文獻"
+                    href="/德文modal-particles/"
+                    data-tooltip="德文modal particles"
+                    aria-label="上一篇: 德文modal particles"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -369,9 +426,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/如何在GitHub上對其他人的專案做出貢獻/"
-                    data-tooltip="如何在GitHub上對其他人的專案做出貢獻"
-                    aria-label="下一篇: 如何在GitHub上對其他人的專案做出貢獻"
+                    href="/Lucene筆記/"
+                    data-tooltip="Lucene筆記"
+                    aria-label="下一篇: Lucene筆記"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -396,7 +453,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/Lucene-in-Action筆記/"
                     title="分享到 Facebook"
                     aria-label="分享到 Facebook"
                 >
@@ -409,7 +466,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/Lucene-in-Action筆記/"
                     title="分享到 Twitter"
                     aria-label="分享到 Twitter"
                 >
@@ -422,7 +479,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                    target="new" href="https://plus.google.com/share?url=https://puerdon.github.io/Lucene-in-Action筆記/"
                     title="分享到 Google+"
                     aria-label="分享到 Google+"
                 >
@@ -484,9 +541,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/貝葉經參考文獻/"
-                    data-tooltip="貝葉經參考文獻"
-                    aria-label="上一篇: 貝葉經參考文獻"
+                    href="/德文modal-particles/"
+                    data-tooltip="德文modal particles"
+                    aria-label="上一篇: 德文modal particles"
                 >
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -498,9 +555,9 @@
                     
                 <a
                     class="post-action-btn btn btn--default tooltip--top"
-                    href="/如何在GitHub上對其他人的專案做出貢獻/"
-                    data-tooltip="如何在GitHub上對其他人的專案做出貢獻"
-                    aria-label="下一篇: 如何在GitHub上對其他人的專案做出貢獻"
+                    href="/Lucene筆記/"
+                    data-tooltip="Lucene筆記"
+                    aria-label="下一篇: Lucene筆記"
                 >
                     
                         <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
@@ -525,7 +582,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/Lucene-in-Action筆記/"
                     title="分享到 Facebook"
                     aria-label="分享到 Facebook"
                 >
@@ -538,7 +595,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/Lucene-in-Action筆記/"
                     title="分享到 Twitter"
                     aria-label="分享到 Twitter"
                 >
@@ -551,7 +608,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://plus.google.com/share?url=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                    target="new" href="https://plus.google.com/share?url=https://puerdon.github.io/Lucene-in-Action筆記/"
                     title="分享到 Google+"
                     aria-label="分享到 Google+"
                 >
@@ -595,7 +652,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://puerdon.github.io/Lucene-in-Action筆記/"
                         aria-label="分享到 Facebook"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>分享到 Facebook</span>
@@ -608,7 +665,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                        href="https://twitter.com/intent/tweet?text=https://puerdon.github.io/Lucene-in-Action筆記/"
                         aria-label="分享到 Twitter"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
@@ -621,7 +678,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://plus.google.com/share?url=https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/"
+                        href="https://plus.google.com/share?url=https://puerdon.github.io/Lucene-in-Action筆記/"
                         aria-label="分享到 Google+"
                     >
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>分享到 Google+</span>
@@ -685,10 +742,10 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'https://puerdon.github.io/以泰文書寫巴利語時的ญ和ฐ/';
+            this.page.url = 'https://puerdon.github.io/Lucene-in-Action筆記/';
             this.language = 'zh_TW';
               
-            this.page.identifier = '以泰文書寫巴利語時的ญ和ฐ/';
+            this.page.identifier = 'Lucene-in-Action筆記/';
               
           };
           (function() {

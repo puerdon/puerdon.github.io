@@ -270,6 +270,400 @@
                 <section class="postShorten-group main-content-wrap">
     
     
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/algebraic-data-type-in-Haskell/"
+                            aria-label=": Haskell 中的 Algebraic data type"
+                        >
+                            Haskell 中的 Algebraic data type
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-08-17T15:00:58+08:00">
+	
+		    8月 17, 2018
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/Haskell/">Haskell</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1 id="問題意識"><a href="#問題意識" class="headerlink" title="問題意識"></a>問題意識</h1><p>如何根據現有的type組成新的type？有哪些組成方式？</p>
+<blockquote>
+<p>讓我們先把 type 想成是 一組值的集合，舉例來說，正整數的type是從1開始一路往上加1的所有值所組成的一個集合；而<code>Bool</code> type則是由<code>True</code>和F<code>alse</code>這兩個值所組成的集合。</p>
+<p>我們現在問的問題是，要如何根據原有的type組出新的type，就好像是在問說，我們要怎麼根據現有的不同集合，去拼湊出一個新的集合。</p>
+</blockquote>
+<h1 id="兩種思路"><a href="#兩種思路" class="headerlink" title="兩種思路"></a>兩種思路</h1><h2 id="1-and思維／組合／Product-Type"><a href="#1-and思維／組合／Product-Type" class="headerlink" title="1. and思維／組合／Product Type"></a>1. and思維／組合／Product Type</h2><p>使用 and，將兩種以上的type組合在一起。假設我們想為一本書的建模，那麼我們可以說一本書是由:</p>
+<ul>
+<li>書名</li>
+<li>作者</li>
+<li>出版年份</li>
+<li>頁數</li>
+<li>ISBN</li>
+</ul>
+<p>所構成。物件導向語言中的Class，遵循的就是這樣的思路，把和一個類別相關連的所有屬性組織在一起。舉例來說，我們可以建立一個名為Book的類別，相對應的，這個Book class中具有:</p>
+<ul>
+<li>書名屬性（字串）</li>
+<li>作者屬性（字串）</li>
+<li>出版年份屬性（正整數）</li>
+<li>頁數屬性（正整數）</li>
+<li>ISBN屬性（正整數屬性）</li>
+</ul>
+<p>透過上述這種利用並列組合的思考方式，稱為<strong>Product Type</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python程式碼範例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, title, author, year, pages, isbn)</span>:</span></span><br><span class="line">        self.title = title</span><br><span class="line">        self.author = author</span><br><span class="line">        self.year = year</span><br><span class="line">        self.pages = pages</span><br><span class="line">        self.isbn = isbn</span><br></pre></td></tr></table></figure>
+<h3 id="更多例子"><a href="#更多例子" class="headerlink" title="更多例子"></a>更多例子</h3><ul>
+<li>一台電腦由CPU、記憶體、鍵盤、螢幕…等所組成</li>
+<li>一個地址由郵遞區號、國家、縣市、路名、巷弄、號碼所組成</li>
+</ul>
+<h3 id="為什麼叫作Product-type"><a href="#為什麼叫作Product-type" class="headerlink" title="為什麼叫作Product type"></a>為什麼叫作Product type</h3><blockquote>
+<p>Product type的名稱與集合論中的笛卡爾積(Cartesian Product)有關。</p>
+</blockquote>
+<p>一個簡化的模型，</p>
+<p>data ABC = ABC Bool Bool Bool</p>
+<p>(True, False)</p>
+<p>(False, True)</p>
+<p>(True, True)</p>
+<p>(False, False)</p>
+<p>(待補)</p>
+<h2 id="2-or思維／並列／Sum-Type"><a href="#2-or思維／並列／Sum-Type" class="headerlink" title="2. or思維／並列／Sum Type"></a>2. or思維／並列／Sum Type</h2><p>上面的and思維把焦點放在一個類型<strong>由哪些成分組合成在一起</strong>。但我們還有另一種看世界的方式：一個類型<strong>可以分別是哪些東西</strong>。舉個例子來說，我們可以根據男生、女生、其他這三種type，並列組合成<code>性別</code>這個新的type。</p>
+<p>我們來對比一下兩種說法：</p>
+<ul>
+<li>一本書由[書名、作者、出版年、頁數]所組成</li>
+<li>一個性別由[男生、女生、其他]所組成</li>
+</ul>
+<p>表面上，這兩個句子都是以「…由…所組成」的句型，乍看之下好像是同一件事，但其實仔細去想一下後，就可以發現其中最大的差別：</p>
+<ul>
+<li>一本書必須<strong>同時具有</strong>[書名、作者、出版年、頁數]</li>
+<li>一個人的性別只能是[男生]或者[女生]或者[其他]<strong>其中之一</strong></li>
+</ul>
+<p>使用 or，例如 <code>Bool</code> type 由 True 或 False 組成。。稱為<strong>Sum Type</strong>。</p>
+<h1 id="0與1"><a href="#0與1" class="headerlink" title="0與1"></a>0與1</h1><p>在乘法中，任何數a乘以1還是等於a自己。</p>
+<p><code>a * 1 = a</code></p>
+<p>在加法中，任何數a加上0還是等於a自己。</p>
+<p><code>a + 0 = a</code></p>
+<p>Void: 是一個不具有任何元素的type。</p>
+<blockquote>
+<p><code>data Void</code><br><code>Void</code>是一個type constructor<br><code>Void</code>沒有data constructor，因為Void這個type不具有任何元素</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data X a = X a | Y Void</span><br></pre></td></tr></table></figure>
+<p>Unit: 是一個只具有一個元素的type，以<code>()</code>表示。 </p>
+<blockquote>
+<p><code>Unit</code>是一個type constructor<br><code>Unit</code>只有一個元素： <code>()</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type Y a = (a, ())</span><br></pre></td></tr></table></figure>
+<h1 id="將Type與代數計算相關連"><a href="#將Type與代數計算相關連" class="headerlink" title="將Type與代數計算相關連"></a>將Type與代數計算相關連</h1><p>以代數中的加法與乘法來看資料結構：</p>
+<h2 id="代數"><a href="#代數" class="headerlink" title="代數"></a>代數</h2><ul>
+<li>Symbols: 0, 1, 2, …, x, y, z, ….</li>
+<li>Operations: +, -, *, /</li>
+<li>Laws: 結合律、分配律、0+x=x</li>
+</ul>
+<h2 id="Haskell"><a href="#Haskell" class="headerlink" title="Haskell"></a>Haskell</h2><ul>
+<li>Symbols: (), Int, Bool, …</li>
+<li>Operations: Type Constructors (Maybe, Either, [],…)</li>
+<li>Laws: ???</li>
+</ul>
+<h2 id="One"><a href="#One" class="headerlink" title="One"></a>One</h2><p><code>data Unit = Unit</code></p>
+<p><code>data () = ()</code><br>type 為 Unit, 其 data constructor 沒有參數。只有一個值。</p>
+<h2 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h2><p><code>data a:+ b = AddL a | AddR b</code></p>
+<p><code>data Either a b = Left a | Right b</code></p>
+<p>以<code>Either Bool Bool</code>為例，一共有四個值：</p>
+<ul>
+<li>Left True</li>
+<li>Left False</li>
+<li>Right True</li>
+<li>Right False</li>
+</ul>
+<p>因此可以作為加法的定義。</p>
+<h2 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h2><p><code>data a:* b = Mul a b</code></p>
+<p><code>data (a, b) = (a, b)</code></p>
+<p>以<code>(Bool, Bool)</code>為例，一共有四個值：</p>
+<ul>
+<li>(T, T)</li>
+<li>(T, F)</li>
+<li>(F, T)</li>
+<li>(F, F)</li>
+</ul>
+<p>tuple的第一個元素有T和F兩種選項，第二個元素也有T和F兩種選項，所以<code>(Bool, Bool)</code>會有 2 * 2 = 4 種可能。</p>
+<h1 id="Zero"><a href="#Zero" class="headerlink" title="Zero"></a>Zero</h1><p><code>data Void</code></p>
+<p><code>Void</code>是一個含有0個值的type。</p>
+<h1 id="Two"><a href="#Two" class="headerlink" title="Two"></a>Two</h1><p><code>type Two = Unit :+ Unit</code></p>
+<p><code>data Bool = True | False</code></p>
+<h1 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h1><p>data a -&gt; b</p>
+<p>a-&gt;b &lt;=&gt; b^ a<br>因此可以作為加法的定義。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">數學</th>
+<th style="text-align:center">Haskell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Symbols\n東西</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Operations</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Laws</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/Algebraic_data_type" target="_blank" rel="noopener">Wikipedia: Algebraic Data Type</a></li>
+<li><a href="https://medium.com/@willkurt/why-sum-types-matter-in-haskell-ba2c1ab4e372" target="_blank" rel="noopener">Why Sum Types Matter in Haskell</a></li>
+<li><a href="https://codewords.recurse.com/issues/three/algebra-and-calculus-of-algebraic-data-types" target="_blank" rel="noopener">The algebra (and calculus!) of algebraic data types</a></li>
+<li><a href="http://cs.au.dk/~mvp/stt/Algebra_of_Algebraic_Data_Types.pdf" target="_blank" rel="noopener">The Algebra of Algebraic Data Types</a></li>
+<li><a href="https://stackoverflow.com/questions/16770/haskells-algebraic-data-types/5917133#5917133" target="_blank" rel="noopener">Haskell’s algebraic data types</a></li>
+<li><a href="https://github.com/ScalaTaiwan/ScalaTaiwan/tree/master/2018-03-07-Programming_with_Algebraic_Data_Types" target="_blank" rel="noopener">資源整理</a></li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/algebraic-data-type-in-Haskell/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                留言與分享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/likelihood-and-probability/"
+                            aria-label=": likelihood-and-probability"
+                        >
+                            likelihood-and-probability
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-08-10T16:56:14+08:00">
+	
+		    8月 10, 2018
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/統計/">統計</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>似然率和機率是不同的概念。</p>
+<h1 id="名詞定義"><a href="#名詞定義" class="headerlink" title="名詞定義"></a>名詞定義</h1><ul>
+<li>假說 hypothesis: 一個假說由欲估計的data model的一組parameter所構成。</li>
+</ul>
+<p>提出假說的目的在於<strong>根據觀察得到的資料</strong>去回推<strong>現象背後的未知模型</strong>。一</p>
+<p>機率：在給定的一假說（資料分布）之下，抽樣得到某特徵的資料的機率。關注的是<strong>資料</strong>。</p>
+<p>似然率：在給定資料的條件下，去度量不同<strong>假說</strong>成立的可能性。關注的是<strong>假說</strong>。似然率的概念之所以與機率不同，是因為對於一組觀察到的資料而言，會有無窮多個假說，我們不可能全部列舉。但是對於機率而言，一個檢驗的所有可能結果必須先定義好，才能讓所有可能結果的機率加總等於一。</p>
+<h2 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h2><p>根據得到的資料，從眾多假說中找出Likelihood最高的假說，來作為Parameter。</p>
+<p>likelihood是用來看假說的可能性。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="https://www.psychologicalscience.org/observer/bayes-for-beginners-probability-and-likelihood" target="_blank" rel="noopener">Bayes for Beginners: Probability and Likelihood</a></li>
+<li><a href="https://alexanderetz.com/2015/04/15/understanding-bayes-a-look-at-the-likelihood/" target="_blank" rel="noopener">Understanding Bayes: A Look at the Likelihood</a></li>
+<li><a href="https://www.youtube.com/watch?v=pYxNSUDSFH4" target="_blank" rel="noopener">StatQuest: Probability and Likilihood</a></li>
+<li><a href="https://towardsdatascience.com/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1" target="_blank" rel="noopener">這篇文章有簡單提到似然率和機率的差別</a></li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/likelihood-and-probability/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                留言與分享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/python-iterable-iterator-generator/"
+                            aria-label=": Python中的iterable, iterator和generator"
+                        >
+                            Python中的iterable, iterator和generator
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-08-10T10:57:05+08:00">
+	
+		    8月 10, 2018
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/Python/">Python</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>你有一個<code>list</code>，你想依序一次取出一個元素；<br>你有一個<code>string</code>, 你想依序一次取出一個字元；<br>你有一個<code>tuple</code> of <code>tuple</code>，你想依序一次取出一個<code>tuple</code>；<br>你有一個<code>dict</code>，你想一次取出一對<code>(key, value)</code>；<br>你有一個文本的<code>file</code> object，你想一次取出一行；</p>
+<h1 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h1><p>可迭代對象。讓我們先看看Python3官方文件Glossary中Iterable條目的內容：   </p>
+<blockquote>
+<h2 id="Iterable-可迭代物件"><a href="#Iterable-可迭代物件" class="headerlink" title="Iterable (可迭代物件)"></a>Iterable (可迭代物件)</h2><p>iterable(可迭代物件)是一種能夠一次回傳一個成員的物件。所有<strong>sequence類別</strong>的物件（例如<code>list</code>, <code>str</code>, <code>tuple</code>）和一些 <strong>non-sequence類別</strong>的物件（例如<code>dict</code>, <code>file</code> objects）都是iterable物件。另外，任何定義有<code>__iter__()</code>方法或者<code>__getitem__()</code>方法的<code>class</code>，實例化後的物件也算是iterable。</p>
+<blockquote>
+<p>Sequence: 定義有<code>__getitem__()</code>方法（可透過整數索引來存取其成員）和 <code>__len__()</code>方法（回傳sequence長度）的物件。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Iterables可以用在<code>for</code>迴圈和一些需要 sequence 的函數中(例如<code>zip()</code>, <code>map()</code>等等). 當iterable作為內建函數<code>iter()</code>的參數時，該函數會回傳該iterable的 iterator（迭代器）。Iterator可用來將包含一組值的集合拆開，一次取出其中一個值。在使用iterable，使用者通常不必自己呼叫<code>__iter__()</code>來產生iterator. Python中的 <code>for</code> 陳述式已經幫你把事情都處理好了：當你把一個iterable丟給<code>for...in...</code>時（例如<code>for i in [1, 2, 3, 4, 5]</code>），在執行迴圈時，會自動幫你產生一個iterator，並把該iterator賦予一個暫時的未命名變數。</p>
+</blockquote>
+<p>iterable和iterator是用來稱呼同一件事的不同構成要素：可以把iterable想像成有待分配的素材，像是一籃裝有20顆籃球的籃子，籃子中的每一顆籃球都是籃子中的一份子。現在想把籃球發給班上20個人，但籃球不會自己長出腳來走到每個人的腳邊，因此需要指派體育股長，讓他一次從籃子中取出一顆籃球發給每個人，迭代器 (iterator)扮演的角色就如同體育股長一樣，每次從iterable中取出一個成員。</p>
+<h1 id="常見做法"><a href="#常見做法" class="headerlink" title="常見做法"></a>常見做法</h1><p>Often the iterable classes will implement both <strong>iter</strong>() and <strong>next</strong>() in the same class, and have <strong>iter</strong>() return self, which makes the <em>iterable</em> class both an iterable and its own iterator. It’s perfectly fine to return a different object as the iterator, though.</p>
+<h1 id="能產生各種iterator的強大工具itertools"><a href="#能產生各種iterator的強大工具itertools" class="headerlink" title="能產生各種iterator的強大工具itertools"></a>能產生各種iterator的強大工具<code>itertools</code></h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="https://nvie.com/posts/iterators-vs-generators/" target="_blank" rel="noopener">Iterables vs. Iterators vs. Generators</a></li>
+<li><a href="https://www.datacamp.com/community/tutorials/python-iterator-tutorial" target="_blank" rel="noopener">DataCamp: Python Iterator Tutorial</a></li>
+<li><a href="https://anandology.com/python-practice-book/iterators.html" target="_blank" rel="noopener">Python Practice Book: 5. Iterators &amp; Generators</a></li>
+<li><a href="http://www.dabeaz.com/generators-uk/" target="_blank" rel="noopener">Generator Tricks for Systems Programmers (v2.0) by (David M. Beazley)</a></li>
+<li><a href="http://www.dabeaz.com/finalgenerator/" target="_blank" rel="noopener">Generators: The Final Frontier (by David M. Beazley)</a></li>
+<li><a href="https://docs.python.org/3/library/itertools.html" target="_blank" rel="noopener">Python3: <code>itertools</code></a></li>
+<li>為何要在 <code>__iter__</code> 方法中回傳<code>self</code>: <a href="https://stackoverflow.com/questions/35657927/what-is-the-use-of-returning-self-in-the-iter-method" target="_blank" rel="noopener">stackoverflow: What is the use of returning self in the <strong>iter</strong> method?</a></li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/python-iterable-iterator-generator/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                留言與分享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
+                            href="/ngrams-src-code-in-nltk/"
+                            aria-label=": nltk 中 ngrams 原始碼分析"
+                        >
+                            nltk 中 ngrams 原始碼分析
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2018-08-08T11:38:38+08:00">
+	
+		    8月 08, 2018
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/NLP/">NLP</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-excerpt">
+                    <p>在Python自然語言處理套件 <a href="http://www.nltk.org" target="_blank" rel="noopener">nltk</a> 中，在 <a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">nltk.util</a> 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。</p>
+                    
+                        <a
+                            href="/ngrams-src-code-in-nltk/"
+                            class="postShorten-excerpt_link link"
+                            aria-label=": nltk 中 ngrams 原始碼分析"
+                        >
+                            繼續閱讀
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
     <article class="postShorten postShorten--thumbnailimg-right">
         <div class="postShorten-wrap">
             
@@ -619,467 +1013,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/如何在Haskell中宣告type/"
-                            aria-label=": Haskell"
-                        >
-                            Haskell
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2018-07-28T00:22:13+08:00">
-	
-		    7月 28, 2018
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/Haskell/">Haskell</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="使用data宣告全新的type"><a href="#使用data宣告全新的type" class="headerlink" title="使用data宣告全新的type"></a>使用<code>data</code>宣告全新的type</h1><p>與type declaration只是宣告一個「關於既存類型的同義詞」不同，使用<code>data</code>關鍵字可以宣告全新的類型。<br>在Prelude中，<code>Bool</code>類型即是以下列方式宣告的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">data Bool = True | False</span><br><span class="line">```  </span><br><span class="line">- 在``=``左邊的稱為 type constructor (上例中的``Bool``)</span><br><span class="line">- 在``=``右邊的稱為 data constructor 或 value constructor (上例中的``True`` 或 ``False``)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 使用 type parameter 的時機</span><br><span class="line"></span><br><span class="line">&gt; We usually use type parameters when the type that&apos;s contained inside the data type&apos;s various value constructors isn&apos;t really that important for the type to work  </span><br><span class="line"></span><br><span class="line">f</span><br><span class="line"></span><br><span class="line">&gt; 名詞定義：</span><br><span class="line">&gt; concrete types, fully applied type: 像是 ``Maybe Int``, ``Maybe Char``</span><br><span class="line">&gt; 至於``Maybe``本身只是一個**type constructor**，並非具體的type。任何值都必須具有concrete type。  </span><br><span class="line">&gt; 比較 ``Maybe`` 和 ``Maybe Int``:``Maybe``是一個type constructor，``Maybe Int``則是一個 concrete type</span><br><span class="line"></span><br><span class="line">## 好好區分 type constructor 和 data constructor</span><br><span class="line">type constructor只能出現在下面用``...``表示的幾個地方:</span><br><span class="line"></span><br><span class="line">-  ``data ... =`` </span><br><span class="line">-  ``type ... =`` </span><br><span class="line">-  ``::...``</span><br><span class="line">-  ``instance Eq ... where``</span><br><span class="line"></span><br><span class="line"># 使用``type``為現存的type宣告新的別名</span><br><span class="line"></span><br><span class="line">稱為 type synonym。用來給一個既有type提供一個別名。什麼時候需要這樣大費周章為已經存在的type提供新的名稱？</span><br><span class="line"></span><br><span class="line">&gt; We introduce type synonyms either to describe what some existing type represents in our functions (and thus our type declarations become better documentation) or when something has a long-ish type that&apos;s repeated a lot (like ``[(String,String)]``) but represents something more specific in the context of our functions.</span><br><span class="line">&gt; [LYAH](http://learnyouahaskell.com/making-our-own-types-and-typeclasses)</span><br><span class="line"></span><br><span class="line">``Char``是一個Haskell本身就定義好的type，如果要以``Char``為基礎，建立新的type，那麼就要使用``type``:</span><br></pre></td></tr></table></figure></p>
-<p>type String = [Char]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``Int``也是一個Haskell本身就有的、用以表達整數的type，如果想建立一個正整數座標的Point type，並包在tuple中，可以使用：</span><br></pre></td></tr></table></figure></p>
-<p>type Point = (Int, Int)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">當然，定義好新的type之後，新的type就可以用在別的type宣告中。</span><br><span class="line"></span><br><span class="line">也許有一系列的function都與「將一個Point轉換到另一個Point」有關，因此可以為這群函數宣告一個新的type：</span><br></pre></td></tr></table></figure></p>
-<p>type Transformation = Point -&gt; Point<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Type synonym也可以具有type parameters</span><br></pre></td></tr></table></figure></p>
-<p>type Pair a = (a, a)<br><code>`</code><br>一個Pair可以是Pair Int (Int, Int)，可能是(Char, Char)</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="https://wiki.haskell.org/Constructor" target="_blank" rel="noopener">Constructor on Haskell Wiki</a></li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/如何在Haskell中宣告type/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                留言與分享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/git-note/"
-                            aria-label=": git筆記"
-                        >
-                            git筆記
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2018-06-19T16:08:31+08:00">
-	
-		    6月 19, 2018
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/Git/">Git</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h1><hr>
-<h1 id="分支branch"><a href="#分支branch" class="headerlink" title="分支branch"></a>分支<code>branch</code></h1><blockquote>
-<p><code>branch</code>本質上僅僅是個指向 <code>commit 物件</code>的可變<strong>指標</strong>。Git 會使用 <code>master</code> 作為分支的預設名字。在若干次提交後，你其實已經有了一個指向最後一次提交物件的 <code>master</code> 分支，它在每次提交的時候都會自動向前移動。</p>
-</blockquote>
-<p>分支其實就是從某個<code>commit物件</code>往回看的歷史。</p>
-<h2 id="建立新分支"><a href="#建立新分支" class="headerlink" title="建立新分支"></a>建立新分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<p>這個指令僅僅建立了新的分支，而不會自動將所在位址切換到這個新分支上。要切換到新分支上，需透過下方的<code>git checkout</code>指令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
-<p>執行 <code>git checkout</code> 就是把<code>HEAD</code>指標指到新的分支上。</p>
-<p>捷徑：建立新分支，同時切換到該分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h2><h3 id="使用merge"><a href="#使用merge" class="headerlink" title="使用merge"></a>使用<code>merge</code></h3><h3 id="使用rebase"><a href="#使用rebase" class="headerlink" title="使用rebase"></a>使用<code>rebase</code></h3><hr>
-<h1 id="指向目前所在分支的HEAD指標"><a href="#指向目前所在分支的HEAD指標" class="headerlink" title="指向目前所在分支的HEAD指標"></a>指向<strong>目前所在分支</strong>的<code>HEAD</code>指標</h1><p>指向<strong>目前所checkout的commit</strong>。<br>每次執行<code>git checkout</code>指令，都會連帶改動<code>HEAD</code>所指向的reference。</p>
-<p>例如在執行下面代碼後：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;a_commit&gt;</span><br></pre></td></tr></table></figure>
-<p><code>HEAD</code>就會同時指向該<code>a_commit</code>。</p>
-<p><code>HEAD</code>通常指向一個分支的名稱</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/git-note/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                留言與分享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/Sanskrit-noun/"
-                            aria-label=": 梵文名詞表格"
-                        >
-                            梵文名詞表格
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2018-06-15T10:57:21+08:00">
-	
-		    6月 15, 2018
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/梵文/">梵文</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2 id="a-詞幹名詞"><a href="#a-詞幹名詞" class="headerlink" title="-a 詞幹名詞"></a>-a 詞幹名詞</h2><p>-a 詞幹名詞包含了陽性與中性名詞，</p>
-<h3 id="陽性"><a href="#陽性" class="headerlink" title="陽性"></a>陽性</h3><table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">單數</th>
-<th style="text-align:center">雙數</th>
-<th style="text-align:center">複數</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Nom</td>
-<td style="text-align:center">गजः<br>gaj<code>aḥ</code></td>
-<td style="text-align:center">गजौ<br>-au</td>
-<td style="text-align:center">गजाः<br>-āḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Voc</td>
-<td style="text-align:center">गज<br>gaj<code>a</code></td>
-<td style="text-align:center">गजौ<br>-au</td>
-<td style="text-align:center">गजाः<br>-āḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Acc</td>
-<td style="text-align:center">गजम्<br>gaj<code>am</code></td>
-<td style="text-align:center">गजौ<br>-au</td>
-<td style="text-align:center">गजान्<br>-ān</td>
-</tr>
-<tr>
-<td style="text-align:center">Inst</td>
-<td style="text-align:center">गजेन<br>gaj<code>ena</code></td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजैः<br>-aiḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Dat</td>
-<td style="text-align:center">गजाय<br>gaj<code>āya</code></td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजाभ्यः<br>-ābhyaḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Abl</td>
-<td style="text-align:center">गजात्<br>-gaj<code>āt</code></td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजाभ्यः<br>-ābhyaḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Gen</td>
-<td style="text-align:center">गजस्य<br>-gaj<code>asya</code></td>
-<td style="text-align:center">गजयोः<br>-ayoḥ</td>
-<td style="text-align:center">गजानाम्<br>-ānāḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Loc</td>
-<td style="text-align:center">गजे<br>-e</td>
-<td style="text-align:center">गजयोः<br>-ayoḥ</td>
-<td style="text-align:center">गजेषु<br>-eṣu</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="中性"><a href="#中性" class="headerlink" title="中性"></a>中性</h3><blockquote>
-<p>除了 Nom, Voc, Acc 這三格之外，其他的變格皆與<strong>a-詞幹陽性名詞</strong>相同。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">單數</th>
-<th style="text-align:center">雙數</th>
-<th style="text-align:center">複數</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Nom</td>
-<td style="text-align:center">वनम्<br>-am</td>
-<td style="text-align:center">वने<br>-e</td>
-<td style="text-align:center">वनानि<br>-āni</td>
-</tr>
-<tr>
-<td style="text-align:center">Voc</td>
-<td style="text-align:center">वनम्<br>-am</td>
-<td style="text-align:center">वने<br>-e</td>
-<td style="text-align:center">वनानि<br>-āni</td>
-</tr>
-<tr>
-<td style="text-align:center">Acc</td>
-<td style="text-align:center">वनम्<br>-am</td>
-<td style="text-align:center">वने<br>-e</td>
-<td style="text-align:center">वनानि<br>-āni</td>
-</tr>
-<tr>
-<td style="text-align:center">Inst</td>
-<td style="text-align:center">गजेन<br>-ena</td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजैः<br>-aiḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Dat</td>
-<td style="text-align:center">गजाय<br>-āya</td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजाभ्यः<br>-ābhyaḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Abl</td>
-<td style="text-align:center">गजात्<br>-āt</td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजाभ्यः<br>-ābhyaḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Gen</td>
-<td style="text-align:center">गजस्य<br>-asya</td>
-<td style="text-align:center">गजयोः<br>-ayoḥ</td>
-<td style="text-align:center">गजानाम्<br>-ānāḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Loc</td>
-<td style="text-align:center">गजे<br>-e</td>
-<td style="text-align:center">गजयोः<br>-ayoḥ</td>
-<td style="text-align:center">गजेषु<br>-eṣu</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="a-詞幹陰性名詞"><a href="#a-詞幹陰性名詞" class="headerlink" title="-ā 詞幹陰性名詞"></a>-ā 詞幹陰性名詞</h2><blockquote>
-<p>除了 Nom, Voc, Acc 這三格之外，其他的變格皆與<strong>a-詞幹陽性名詞</strong>相同。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">單數</th>
-<th style="text-align:center">雙數</th>
-<th style="text-align:center">複數</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Nom</td>
-<td style="text-align:center">वनम्<br>-am</td>
-<td style="text-align:center">वने<br>-e</td>
-<td style="text-align:center">वनानि<br>-āni</td>
-</tr>
-<tr>
-<td style="text-align:center">Voc</td>
-<td style="text-align:center">वनम्<br>-am</td>
-<td style="text-align:center">वने<br>-e</td>
-<td style="text-align:center">वनानि<br>-āni</td>
-</tr>
-<tr>
-<td style="text-align:center">Acc</td>
-<td style="text-align:center">वनम्<br>-am</td>
-<td style="text-align:center">वने<br>-e</td>
-<td style="text-align:center">वनानि<br>-āni</td>
-</tr>
-<tr>
-<td style="text-align:center">Inst</td>
-<td style="text-align:center">गजेन<br>-ena</td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजैः<br>-aiḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Dat</td>
-<td style="text-align:center">गजाय<br>-āya</td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजाभ्यः<br>-ābhyaḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Abl</td>
-<td style="text-align:center">गजात्<br>-āt</td>
-<td style="text-align:center">गजाभ्याम्<br>-ābhyām</td>
-<td style="text-align:center">गजाभ्यः<br>-ābhyaḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Gen</td>
-<td style="text-align:center">गजस्य<br>-asya</td>
-<td style="text-align:center">गजयोः<br>-ayoḥ</td>
-<td style="text-align:center">गजानाम्<br>-ānāḥ</td>
-</tr>
-<tr>
-<td style="text-align:center">Loc</td>
-<td style="text-align:center">गजे<br>-e</td>
-<td style="text-align:center">गजयोः<br>-ayoḥ</td>
-<td style="text-align:center">गजेषु<br>-eṣu</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li>The Cambridge Introduction To Sanskrit (2016) 一書中作者 A.M.Ruppel 所整理精美文法表格<br><a href="http://cambridge-sanskrit.org/wp-content/uploads/2016/11/Reference-Grammar-A4.pdf" target="_blank" rel="noopener">pdf檔連結</a></li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/Sanskrit-noun/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                留言與分享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/statistics-note/"
-                            aria-label=": 統計筆記"
-                        >
-                            統計筆記
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2018-06-14T17:20:30+08:00">
-	
-		    6月 14, 2018
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/統計/">統計</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><p>生活中有大量的訊息，我們往往希望能從這些雜亂的訊息中<strong>解讀出有用的資訊</strong>甚至是<strong>預測未來的趨勢</strong>。舉例來說，政府統計全台灣各縣市的人均收入，也許按照年齡層、性別、職業別區份，可以讓人民更了解台灣的經濟現況以及不同群體之間的差異性。</p>
-<h1 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h1><ul>
-<li>母體 Population: 宇集</li>
-<li>參數 Parameter: 關於母體的描述統計量，例如母體平均數、母體標準差，或者關於母體的Data model的參數</li>
-<li>樣本 Sample: 母體的子集合</li>
-<li>統計值 Statistics: 關於樣本的描述統計量</li>
-<li>Data Model: 用以產生新Data的模型，通常是未知，因此需要透過推論來得出。</li>
-<li>Likelihood: 用來推論Data model時會有各種假說，透過計算各個假說的Likelihood，來找出符合現有證據最可能為真的假說</li>
-</ul>
-<h1 id="描述統計學"><a href="#描述統計學" class="headerlink" title="描述統計學"></a>描述統計學</h1><p>對於蒐集到的一組資料，要如何描述這組資料的特徵？有哪些特徵可以識別一組資料？</p>
-<h2 id="平均數"><a href="#平均數" class="headerlink" title="平均數"></a>平均數</h2><h2 id="中數"><a href="#中數" class="headerlink" title="中數"></a>中數</h2><h2 id="眾數"><a href="#眾數" class="headerlink" title="眾數"></a>眾數</h2><h2 id="range"><a href="#range" class="headerlink" title="range"></a>range</h2><h2 id="Q3-Q1"><a href="#Q3-Q1" class="headerlink" title="Q3 - Q1"></a>Q3 - Q1</h2><h2 id="變異數"><a href="#變異數" class="headerlink" title="變異數"></a>變異數</h2><h2 id="標準差"><a href="#標準差" class="headerlink" title="標準差"></a>標準差</h2><h1 id="推論統計學"><a href="#推論統計學" class="headerlink" title="推論統計學"></a>推論統計學</h1><p>從蒐集到的樣本，我們希望可以推測出母體的狀態</p>
-<h2 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h2><blockquote>
-<p>Maximum likelihood estimation is a method that determines values for the parameters of a model. The parameter values are found such that they maximise the likelihood that the process described by the model produced the data that were actually observed.</p>
-</blockquote>
-<p><a href="https://towardsdatascience.com/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1" target="_blank" rel="noopener">Probability concepts explained: Maximum likelihood estimation</a></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a
-                                href="/statistics-note/#post-footer"
-                                class="postShorten-excerpt_link link"
-                                aria-label=""
-                            >
-                                留言與分享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1095,7 +1028,18 @@
           </li>
         
         
-        <li class="pagination-number">第 5 頁 共 5 頁</li>
+          <li class="pagination-next">
+            <a
+                class="btn btn--default btn--small"
+                href="/page/6/"
+                aria-label="下一頁"
+            >
+              <span>下一頁</span>
+              <i class="fa fa-angle-right text-base icon-ml"></i>
+            </a>
+          </li>
+        
+        <li class="pagination-number">第 5 頁 共 6 頁</li>
     </ul>
 </div>
 
