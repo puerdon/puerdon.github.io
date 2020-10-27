@@ -22,50 +22,109 @@
       </tags>
   </entry>
   <entry>
-    <title>Haskell中的IO Action</title>
-    <url>/Haskell%E4%B8%AD%E7%9A%84IO-Action/</url>
-    <content><![CDATA[<blockquote>
-<p>參考資料：<br><a href="https://www.reddit.com/r/haskell/comments/2p9cvz/noob_question_what_is_exactly_side_effect/" target="_blank" rel="noopener">r/haskell: what is exactly side effect?</a><br><a href="https://wiki.haskell.org/Introduction_to_Haskell_IO/Actions" target="_blank" rel="noopener">Haskell Wiki: Intro to Haskell IO/Actions</a></p>
-</blockquote>
-<p>在Haskell中，一個interactive program被視為一個「以目前世界狀態為input、以改變後的世界狀態為output」的純函數(pure function)，新的世界狀態反映了在程式執行過程中所產生的副作用(side effect)。  </p>
-<blockquote>
-<p>問題：副作用是什麼？如何定義？</p>
-</blockquote>
-<a id="more"></a>
-<p>假設有個<code>type World</code>用來反映世界的狀態，那麼一個interactive program便可用類別為 <code>World -&gt; World</code> 的函數來表達，並簡稱為<code>IO</code>：  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type IO = World -&gt; World</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>以使用者在鍵盤上敲敲打打的事件為例，可以把<strong>使用者敲打鍵盤之前</strong>的世界狀態視為原本的世界狀態，把<strong>使用者敲打鍵盤之後</strong>的世界狀態視為後來的世界狀態。也就是說，「敲打鍵盤」這個副作用改變了世界的狀態。</p>
-</blockquote>
-<p>但一個interactive program除了副作用之外，我們也有可能希望能回傳值，以供後續使用。像是「使用者在鍵盤上輸入文字」這個副作用，在敲鍵盤之外，我們還希望可以從他的敲鍵盤的行為讀取（萃取？）到他所輸入的值，這個值之後可以用來繼續丟到下一個用來登入系統的函數。因此有必要重新修改一下上面對<code>type IO</code>的定義：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type IO a = World -&gt; (a, World)</span><br></pre></td></tr></table></figure>
-<p>例如：  </p>
+    <title>CWB語料庫系統細節</title>
+    <url>/CWB%E8%AA%9E%E6%96%99%E5%BA%AB%E7%B3%BB%E7%B5%B1%E7%B4%B0%E7%AF%80/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://cran.r-project.org/web/packages/RcppCWB/RcppCWB.pdf" target="_blank" rel="noopener">RcppCWB: 綁定CWB後端的R套件</a></li>
+<li><a href="https://github.com/PolMine/cwbtools" target="_blank" rel="noopener">cwbtools: 與上面套件是來自同一個作者</a></li>
+</ul>
+<p>以下參考連結皆來自 <a href="http://cwb.sourceforge.net/doc_links.php" target="_blank" rel="noopener">CWB官網的References段落</a></p>
 <ul>
-<li>「從user的鍵盤輸入而讀取來的一個字元」具有<code>IO Char</code>的類型。這個字元的類型之所以不只是<code>Char</code>，是因為要強調它是一個<strong>透過副作用(aka IO action)才得來的字元</strong>  </li>
-<li>打印一個字串在螢幕上具有<code>IO ()</code>的類型，因為將一個字串打印在螢幕上，只是<strong>純粹改變螢幕的狀態</strong>，所以回傳一個<code>()</code>代表回傳空值。<code>()</code>稱為unit。</li>
+<li><p><a href="http://cwb.sourceforge.net/files/Evert2008_InsideCWB.pdf" target="_blank" rel="noopener">Inside the IMS Corpus Workbench</a></p>
+<ul>
+<li>Requires special database engine for text corpora<ul>
+<li>effcient indexing of large text corpora with linguistic annotation</li>
+<li>allow non-technical users to write complex search patterns</li>
 </ul>
-<p>一個具有<code>IO</code>類型的表達式(expression)叫做一個IO action。</p>
-<blockquote>
-<h3 id="IO-action的幾個範例："><a href="#IO-action的幾個範例：" class="headerlink" title="IO action的幾個範例："></a>IO action的幾個範例：</h3><ul>
-<li>將字串”hello”印在console上: 具有<code>IO ()</code>類型  </li>
-<li>從console中讀取一行input: 具有<code>IO String</code>類型    </li>
-<li>建立一個網路連線連到 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 的 port 80: 具有<code>IO Socket</code>類型  </li>
-<li>從terminal中讀取兩行輸入，並將兩行的輸入讀取成兩個數字，將兩個數字相加後，印在螢幕上: 具有<code>IO Int</code>類型  </li>
-<li>一個以滑鼠動作為輸入、並將一格格的圖像顯示在螢幕上的第一人稱射擊遊戲: 具有<code>IO ()</code>類型</li>
+</li>
 </ul>
+</li>
+<li><p><a href="https://www.amazon.com/Managing-Gigabytes-Compressing-Multimedia-Information/dp/1558605703" target="_blank" rel="noopener">[Witten et al. 1999 (2nd)] Managing gigabytes</a></p>
+<ul>
+<li>CWB作者自己說CWB的設計大體來自於本書</li>
+</ul>
+</li>
+<li><p><a href="http://cwb.sourceforge.net/files/Christ1994_TR.pdf" target="_blank" rel="noopener">[Christ 1994] Corpus Aministrator’s Manual</a>    </p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>語料庫</category>
+      </categories>
+      <tags>
+        <tag>CWB</tag>
+        <tag>語料庫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quantitative Corpus Linguistics with R</title>
+    <url>/CH2%20%E4%B8%89%E5%80%8B%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
+<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
 </blockquote>
-<p>必須記住的是，一個IO action，由於本身就是一個expression，在Haskell中和<code>Int</code>或<code>Char</code>一樣被當成一個值(value)來看待，既可以<strong>綁定到變數名稱上(使用<code>let</code>或<code>where</code>)</strong>、也可以<strong>作為函數的參數</strong>、更可以<strong>作為函數的回傳值</strong>。</p>
-<p>最後這一點（將<code>IO action</code>作為函數的回傳值）使我們可以細緻區分<code>putStrLn</code>函數與該函數的回傳值之間的區別。  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">putStrLn :: String -&gt; IO ()</span><br></pre></td></tr></table></figure>
-<p>putStrLn<br>是一個以<code>String</code>為參數並回傳函數，</p>
-<h2 id="do區塊"><a href="#do區塊" class="headerlink" title="do區塊"></a><code>do</code>區塊</h2><h2 id="return"><a href="#return" class="headerlink" title="return"></a><code>return</code></h2>]]></content>
+<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
+<ul>
+<li>lemmatized</li>
+<li>POS tag</li>
+<li>morphological</li>
+<li>phonological</li>
+<li>syntactically parsed</li>
+<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
+</ul>
+<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
+<ul>
+<li><strong>各種pattern</strong>的出現頻率</li>
+<li><strong>pattern之間</strong>的共同出現頻率</li>
+</ul>
+<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
+<p>但什麼是詞？不同語言中的詞。</p>
+<p>type vs. token</p>
+<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
+<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
+<li>collocation (本篇重點)</li>
+<li>colligation</li>
+<li>collostruction</li>
+</ul>
+<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
+<li>語言教學</li>
+<li>語義學</li>
+</ul>
+<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
+<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
+]]></content>
+      <categories>
+        <category>語料庫語言學</category>
+      </categories>
+      <tags>
+        <tag>語料庫</tag>
+        <tag>語言學</tag>
+        <tag>R</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Haskell中的polymorphic-function</title>
+    <url>/Haskell%E4%B8%AD%E7%9A%84polymorphic-function/</url>
+    <content><![CDATA[<p>所謂polymorphic function(多態函數)指的是<strong>可作用於多種類型的輸入</strong>的函數。</p>
+<a id="more"></a>
+<p>以length函數為例：  </p>
+<p>‘’’<br>length :: [a] -&gt; Int<br>‘’’</p>
+<p><code>length</code>函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
+<p><code>length</code>函數簽名中的 <em>type variable</em> <code>a</code> 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
+<p>再舉個例子：</p>
+<p>‘’’<br>id :: a -&gt; a<br>‘’’</p>
+<p><code>id</code>函數是一個不管給他什麼參數，都會回傳自己的參數。可以觀察到兩件事：</p>
+<ol>
+<li><code>id</code>函數的簽名中，只出現 <strong>type variable</strong> <code>a</code>，也就是說<code>id</code>函數可以接收任何type的參數。</li>
+<li><code>id</code>函數接收的type和回傳的type是同一個。</li>
+</ol>
+]]></content>
       <categories>
         <category>Haskell</category>
       </categories>
       <tags>
         <tag>Haskell</tag>
-        <tag>IO Action</tag>
-        <tag>副作用</tag>
+        <tag>function</tag>
+        <tag>polymorphic function</tag>
       </tags>
   </entry>
   <entry>
@@ -113,74 +172,50 @@
       </tags>
   </entry>
   <entry>
-    <title>Haskell中的polymorphic-function</title>
-    <url>/Haskell%E4%B8%AD%E7%9A%84polymorphic-function/</url>
-    <content><![CDATA[<p>所謂polymorphic function(多態函數)指的是<strong>可作用於多種類型的輸入</strong>的函數。</p>
+    <title>Haskell中的IO Action</title>
+    <url>/Haskell%E4%B8%AD%E7%9A%84IO-Action/</url>
+    <content><![CDATA[<blockquote>
+<p>參考資料：<br><a href="https://www.reddit.com/r/haskell/comments/2p9cvz/noob_question_what_is_exactly_side_effect/" target="_blank" rel="noopener">r/haskell: what is exactly side effect?</a><br><a href="https://wiki.haskell.org/Introduction_to_Haskell_IO/Actions" target="_blank" rel="noopener">Haskell Wiki: Intro to Haskell IO/Actions</a></p>
+</blockquote>
+<p>在Haskell中，一個interactive program被視為一個「以目前世界狀態為input、以改變後的世界狀態為output」的純函數(pure function)，新的世界狀態反映了在程式執行過程中所產生的副作用(side effect)。  </p>
+<blockquote>
+<p>問題：副作用是什麼？如何定義？</p>
+</blockquote>
 <a id="more"></a>
-<p>以length函數為例：  </p>
-<p>‘’’<br>length :: [a] -&gt; Int<br>‘’’</p>
-<p><code>length</code>函數是用來計算list長度，不管輸入是整數的list、字元的list、tuple的list…，因為這個函數在乎的是包含<strong>幾個</strong>元素，而非<strong>哪種</strong>元素，因此length被定義為一個多態的函數。  </p>
-<p><code>length</code>函數簽名中的 <em>type variable</em> <code>a</code> 即是用以指涉它的函數輸入接受<em>各種元素類型</em>的list。</p>
-<p>再舉個例子：</p>
-<p>‘’’<br>id :: a -&gt; a<br>‘’’</p>
-<p><code>id</code>函數是一個不管給他什麼參數，都會回傳自己的參數。可以觀察到兩件事：</p>
-<ol>
-<li><code>id</code>函數的簽名中，只出現 <strong>type variable</strong> <code>a</code>，也就是說<code>id</code>函數可以接收任何type的參數。</li>
-<li><code>id</code>函數接收的type和回傳的type是同一個。</li>
-</ol>
-]]></content>
+<p>假設有個<code>type World</code>用來反映世界的狀態，那麼一個interactive program便可用類別為 <code>World -&gt; World</code> 的函數來表達，並簡稱為<code>IO</code>：  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type IO = World -&gt; World</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以使用者在鍵盤上敲敲打打的事件為例，可以把<strong>使用者敲打鍵盤之前</strong>的世界狀態視為原本的世界狀態，把<strong>使用者敲打鍵盤之後</strong>的世界狀態視為後來的世界狀態。也就是說，「敲打鍵盤」這個副作用改變了世界的狀態。</p>
+</blockquote>
+<p>但一個interactive program除了副作用之外，我們也有可能希望能回傳值，以供後續使用。像是「使用者在鍵盤上輸入文字」這個副作用，在敲鍵盤之外，我們還希望可以從他的敲鍵盤的行為讀取（萃取？）到他所輸入的值，這個值之後可以用來繼續丟到下一個用來登入系統的函數。因此有必要重新修改一下上面對<code>type IO</code>的定義：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type IO a = World -&gt; (a, World)</span><br></pre></td></tr></table></figure>
+<p>例如：  </p>
+<ul>
+<li>「從user的鍵盤輸入而讀取來的一個字元」具有<code>IO Char</code>的類型。這個字元的類型之所以不只是<code>Char</code>，是因為要強調它是一個<strong>透過副作用(aka IO action)才得來的字元</strong>  </li>
+<li>打印一個字串在螢幕上具有<code>IO ()</code>的類型，因為將一個字串打印在螢幕上，只是<strong>純粹改變螢幕的狀態</strong>，所以回傳一個<code>()</code>代表回傳空值。<code>()</code>稱為unit。</li>
+</ul>
+<p>一個具有<code>IO</code>類型的表達式(expression)叫做一個IO action。</p>
+<blockquote>
+<h3 id="IO-action的幾個範例："><a href="#IO-action的幾個範例：" class="headerlink" title="IO action的幾個範例："></a>IO action的幾個範例：</h3><ul>
+<li>將字串”hello”印在console上: 具有<code>IO ()</code>類型  </li>
+<li>從console中讀取一行input: 具有<code>IO String</code>類型    </li>
+<li>建立一個網路連線連到 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 的 port 80: 具有<code>IO Socket</code>類型  </li>
+<li>從terminal中讀取兩行輸入，並將兩行的輸入讀取成兩個數字，將兩個數字相加後，印在螢幕上: 具有<code>IO Int</code>類型  </li>
+<li>一個以滑鼠動作為輸入、並將一格格的圖像顯示在螢幕上的第一人稱射擊遊戲: 具有<code>IO ()</code>類型</li>
+</ul>
+</blockquote>
+<p>必須記住的是，一個IO action，由於本身就是一個expression，在Haskell中和<code>Int</code>或<code>Char</code>一樣被當成一個值(value)來看待，既可以<strong>綁定到變數名稱上(使用<code>let</code>或<code>where</code>)</strong>、也可以<strong>作為函數的參數</strong>、更可以<strong>作為函數的回傳值</strong>。</p>
+<p>最後這一點（將<code>IO action</code>作為函數的回傳值）使我們可以細緻區分<code>putStrLn</code>函數與該函數的回傳值之間的區別。  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">putStrLn :: String -&gt; IO ()</span><br></pre></td></tr></table></figure>
+<p>putStrLn<br>是一個以<code>String</code>為參數並回傳函數，</p>
+<h2 id="do區塊"><a href="#do區塊" class="headerlink" title="do區塊"></a><code>do</code>區塊</h2><h2 id="return"><a href="#return" class="headerlink" title="return"></a><code>return</code></h2>]]></content>
       <categories>
         <category>Haskell</category>
       </categories>
       <tags>
         <tag>Haskell</tag>
-        <tag>function</tag>
-        <tag>polymorphic function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Quantitative Corpus Linguistics with R</title>
-    <url>/CH2%20%E4%B8%89%E5%80%8B%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="CH2-三個重要方法"><a href="#CH2-三個重要方法" class="headerlink" title="CH2 三個重要方法"></a>CH2 三個重要方法</h1><h2 id="corpus-的定義"><a href="#corpus-的定義" class="headerlink" title="corpus 的定義"></a>corpus 的定義</h2><blockquote>
-<p>the notion of “corpus” refers to a machine-readable collection of (spoken or written) texts that were produced in a natural communicative setting, and the collection of texts is compiled with the intention (I) to be representative and balanced with respe&lt;:t to a particular linguistic variety or register or genre and (2) to be analyzed linguistically. </p>
-</blockquote>
-<h2 id="各種-corpora"><a href="#各種-corpora" class="headerlink" title="各種 corpora"></a>各種 corpora</h2><h3 id="general-vs-specific"><a href="#general-vs-specific" class="headerlink" title="general vs. specific"></a>general vs. specific</h3><h3 id="raw-vs-annotated"><a href="#raw-vs-annotated" class="headerlink" title="raw vs. annotated"></a>raw vs. annotated</h3><p>幾種annoation:</p>
-<ul>
-<li>lemmatized</li>
-<li>POS tag</li>
-<li>morphological</li>
-<li>phonological</li>
-<li>syntactically parsed</li>
-<li>etc.<h3 id="歷時-vs-共時"><a href="#歷時-vs-共時" class="headerlink" title="歷時 vs. 共時"></a>歷時 vs. 共時</h3><h3 id="靜態-vs-動態"><a href="#靜態-vs-動態" class="headerlink" title="靜態 vs. 動態"></a>靜態 vs. 動態</h3></li>
-</ul>
-<h2 id="corpora能提供什麼資訊"><a href="#corpora能提供什麼資訊" class="headerlink" title="corpora能提供什麼資訊"></a>corpora能提供什麼資訊</h2><p>簡單來說就是頻率：</p>
-<ul>
-<li><strong>各種pattern</strong>的出現頻率</li>
-<li><strong>pattern之間</strong>的共同出現頻率</li>
-</ul>
-<h3 id="Frequency"><a href="#Frequency" class="headerlink" title="Frequency"></a>Frequency</h3><p>詞的頻率。</p>
-<p>但什麼是詞？不同語言中的詞。</p>
-<p>type vs. token</p>
-<h4 id="從頻率能看出些什麼-p-14"><a href="#從頻率能看出些什麼-p-14" class="headerlink" title="從頻率能看出些什麼 (p. 14)"></a>從頻率能看出些什麼 (p. 14)</h4><h3 id="Collocation"><a href="#Collocation" class="headerlink" title="Collocation"></a>Collocation</h3><p>Lexical Co-occurence</p>
-<h4 id="三種co-occurence"><a href="#三種co-occurence" class="headerlink" title="三種co-occurence"></a>三種co-occurence</h4><ul>
-<li>collocation (本篇重點)</li>
-<li>colligation</li>
-<li>collostruction</li>
-</ul>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>語言教學</li>
-<li>語義學</li>
-</ul>
-<h3 id="Concordance"><a href="#Concordance" class="headerlink" title="Concordance"></a>Concordance</h3><p>(Lexico-)Grammatical Co-occurence</p>
-<p>相較於collocation，concordance關注的是一個詞所處於的更大的脈絡。</p>
-]]></content>
-      <categories>
-        <category>語料庫語言學</category>
-      </categories>
-      <tags>
-        <tag>語言學</tag>
-        <tag>R</tag>
-        <tag>語料庫</tag>
+        <tag>IO Action</tag>
+        <tag>副作用</tag>
       </tags>
   </entry>
   <entry>
@@ -273,6 +308,43 @@
       </tags>
   </entry>
   <entry>
+    <title>MIT-intro-to-algr-2</title>
+    <url>/MIT-intro-to-algr-2/</url>
+    <content><![CDATA[<h1 id="Random-access-Machine"><a href="#Random-access-Machine" class="headerlink" title="Random access Machine"></a>Random access Machine</h1><h1 id="Pointer-Machine"><a href="#Pointer-Machine" class="headerlink" title="Pointer Machine"></a>Pointer Machine</h1><h1 id="Python-machine"><a href="#Python-machine" class="headerlink" title="Python machine"></a>Python machine</h1><p>更現代的Python結合以上兩種模型。</p>
+<h2 id="基本情況"><a href="#基本情況" class="headerlink" title="基本情況"></a>基本情況</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>Python中實作List的方式使用RAM模型，透過<code>a_list[i]</code>取得list中某一索引的元素，所花的時間為常數時間O(1)。</p>
+<blockquote>
+<p>如果以linked list的方式來實作，那麼取出索引i的元素所花的時間即成為線性時間O(n)。</p>
+</blockquote>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>如果一物件有適當數量的元素，那麼取出該物件屬性的執行時間也是常數時間O(1)。</p>
+<h2 id="幾個例子"><a href="#幾個例子" class="headerlink" title="幾個例子"></a>幾個例子</h2><h3 id="list-append"><a href="#list-append" class="headerlink" title="list.append"></a><code>list.append</code></h3><p>使用 table doubling 方法（在之後的第九課將提到），使執行時間達到常數時間O(n)。</p>
+<h3 id="new-list-list1-list2"><a href="#new-list-list1-list2" class="headerlink" title="new_list = list1 + list2"></a><code>new_list = list1 + list2</code></h3><p>上面的程式碼在底層其實是執行下方的程式碼。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_list = []</span><br><span class="line">for x in list1:</span><br><span class="line">    new_list.append(x)</span><br><span class="line">for y in list2:</span><br><span class="line">    new_list.append(y)</span><br></pre></td></tr></table></figure></p>
+<p>因此可利用<code>append()</code>方法的執行時間來推導將兩個list相連在一起的執行時間: O(|list1| + |list2|)，即正比於兩個list的元素數量總和。</p>
+<h3 id="elm-in-a-list"><a href="#elm-in-a-list" class="headerlink" title="elm in a_list"></a><code>elm in a_list</code></h3><p>線性時間O(n)，從第一個元素依序檢查到最後一個。</p>
+<h3 id="len-a-list"><a href="#len-a-list" class="headerlink" title="len(a_list)"></a><code>len(a_list)</code></h3><p>常數時間O(1)，因為Python在底層已經先計算好並儲存每個list的長度。所以呼叫<code>len(a_list)</code>只是去叫出那個被儲存的值。</p>
+<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>以hash table實作，因此以<code>dict[key]</code>叫出該對應value的執行時間為常數時間O(n)。</p>
+<h2 id="Document-distance-Problem"><a href="#Document-distance-Problem" class="headerlink" title="Document distance Problem"></a>Document distance Problem</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>有兩份文件，想測量這兩份文件的距離，即這兩份文件的共通性。</p>
+<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
+<li>Google index page</li>
+<li>Mirror of Wiki</li>
+<li>檢查兩份期末報告是否互相抄襲</li>
+</ul>
+<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
+<li>文件:由words組成</li>
+<li>word: 為字元(a-z, A-Z, 0-9)組成的字串</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>可以把兩份文件的共通性以兩份文件所包含字詞的共通性來思考。</p>
+<h3 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h3><ol>
+<li>將文件分割為words</li>
+<li>算出每個word的出現頻率</li>
+<li>算兩個文件的word陣列的內積（即角度）</li>
+</ol>
+<h1 id="課程連結"><a href="#課程連結" class="headerlink" title="課程連結"></a>課程連結</h1><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/" target="_blank" rel="noopener">MIT 6.006 Introduction to ALgorithms, Fall 2011</a></p>
+]]></content>
+      <tags>
+        <tag>MIT演算法筆記</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lucene筆記</title>
     <url>/Lucene%E7%AD%86%E8%A8%98/</url>
     <content><![CDATA[<p>&nbsp;<br><a id="more"></a></p>
@@ -312,91 +384,6 @@
       </categories>
       <tags>
         <tag>Lucene</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL</title>
-    <url>/SQL/</url>
-    <content><![CDATA[<h1 id="全名"><a href="#全名" class="headerlink" title="全名"></a>全名</h1><p>SQL 是 Structured Query Language 的縮寫。</p>
-<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>SQL是一種用來處理紀錄在 RDBMS (Relational Database Management System 關聯式資料庫管理系統，例如：MySQL, Oracle, Microsoft Access, PostreSQL) 當中資料的語言。</p>
-<a id="more"></a>
-<p>依據用途可以分成以下四種子語言：</p>
-<ul>
-<li>DDL (Data Definition Language)<br>用來定義、修正、刪除資料表的架構<ul>
-<li><code>CREATE</code></li>
-<li><code>ALTER</code></li>
-<li><code>DROP</code></li>
-<li><code>TRUNCATE</code></li>
-</ul>
-</li>
-<li>DML (Data Manipulation Language)<br>對DB中的資料進行新增、刪除、更新的動作<ul>
-<li><code>INSERT</code></li>
-<li><code>UPDATE</code></li>
-<li><code>DELETE</code></li>
-<li><code>MERGE</code></li>
-</ul>
-</li>
-<li>DQL (Data Query Language)<br>用來查詢DB中的符合特定條件的資料<ul>
-<li><code>SELECT</code></li>
-<li><code>FROM</code></li>
-<li><code>WHERE</code></li>
-</ul>
-</li>
-<li>DCL (Data Control Language)<br>授與特定權限、控制DB操縱事務的發生等等<ul>
-<li><code>GRANT</code></li>
-<li><code>ROLLBACK</code></li>
-<li><code>COMMIT</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="https://en.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">[Wiki] SQL</a></li>
-<li><a href="https://en.wikipedia.org/wiki/SQL_syntax" target="_blank" rel="noopener">[Wiki] SQL syntax</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>資料庫</category>
-      </categories>
-      <tags>
-        <tag>資料庫</tag>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MIT-intro-to-algr-2</title>
-    <url>/MIT-intro-to-algr-2/</url>
-    <content><![CDATA[<h1 id="Random-access-Machine"><a href="#Random-access-Machine" class="headerlink" title="Random access Machine"></a>Random access Machine</h1><h1 id="Pointer-Machine"><a href="#Pointer-Machine" class="headerlink" title="Pointer Machine"></a>Pointer Machine</h1><h1 id="Python-machine"><a href="#Python-machine" class="headerlink" title="Python machine"></a>Python machine</h1><p>更現代的Python結合以上兩種模型。</p>
-<h2 id="基本情況"><a href="#基本情況" class="headerlink" title="基本情況"></a>基本情況</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>Python中實作List的方式使用RAM模型，透過<code>a_list[i]</code>取得list中某一索引的元素，所花的時間為常數時間O(1)。</p>
-<blockquote>
-<p>如果以linked list的方式來實作，那麼取出索引i的元素所花的時間即成為線性時間O(n)。</p>
-</blockquote>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>如果一物件有適當數量的元素，那麼取出該物件屬性的執行時間也是常數時間O(1)。</p>
-<h2 id="幾個例子"><a href="#幾個例子" class="headerlink" title="幾個例子"></a>幾個例子</h2><h3 id="list-append"><a href="#list-append" class="headerlink" title="list.append"></a><code>list.append</code></h3><p>使用 table doubling 方法（在之後的第九課將提到），使執行時間達到常數時間O(n)。</p>
-<h3 id="new-list-list1-list2"><a href="#new-list-list1-list2" class="headerlink" title="new_list = list1 + list2"></a><code>new_list = list1 + list2</code></h3><p>上面的程式碼在底層其實是執行下方的程式碼。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_list = []</span><br><span class="line">for x in list1:</span><br><span class="line">    new_list.append(x)</span><br><span class="line">for y in list2:</span><br><span class="line">    new_list.append(y)</span><br></pre></td></tr></table></figure></p>
-<p>因此可利用<code>append()</code>方法的執行時間來推導將兩個list相連在一起的執行時間: O(|list1| + |list2|)，即正比於兩個list的元素數量總和。</p>
-<h3 id="elm-in-a-list"><a href="#elm-in-a-list" class="headerlink" title="elm in a_list"></a><code>elm in a_list</code></h3><p>線性時間O(n)，從第一個元素依序檢查到最後一個。</p>
-<h3 id="len-a-list"><a href="#len-a-list" class="headerlink" title="len(a_list)"></a><code>len(a_list)</code></h3><p>常數時間O(1)，因為Python在底層已經先計算好並儲存每個list的長度。所以呼叫<code>len(a_list)</code>只是去叫出那個被儲存的值。</p>
-<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>以hash table實作，因此以<code>dict[key]</code>叫出該對應value的執行時間為常數時間O(n)。</p>
-<h2 id="Document-distance-Problem"><a href="#Document-distance-Problem" class="headerlink" title="Document distance Problem"></a>Document distance Problem</h2><h3 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h3><p>有兩份文件，想測量這兩份文件的距離，即這兩份文件的共通性。</p>
-<h3 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h3><ul>
-<li>Google index page</li>
-<li>Mirror of Wiki</li>
-<li>檢查兩份期末報告是否互相抄襲</li>
-</ul>
-<h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
-<li>文件:由words組成</li>
-<li>word: 為字元(a-z, A-Z, 0-9)組成的字串</li>
-</ul>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>可以把兩份文件的共通性以兩份文件所包含字詞的共通性來思考。</p>
-<h3 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h3><ol>
-<li>將文件分割為words</li>
-<li>算出每個word的出現頻率</li>
-<li>算兩個文件的word陣列的內積（即角度）</li>
-</ol>
-<h1 id="課程連結"><a href="#課程連結" class="headerlink" title="課程連結"></a>課程連結</h1><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/" target="_blank" rel="noopener">MIT 6.006 Introduction to ALgorithms, Fall 2011</a></p>
-]]></content>
-      <tags>
-        <tag>MIT演算法筆記</tag>
       </tags>
   </entry>
   <entry>
@@ -617,108 +604,6 @@
       </tags>
   </entry>
   <entry>
-    <title>[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R</title>
-    <url>/analyzing-linguistic-data/</url>
-    <content><![CDATA[<p>作者: Baayen<br>出版年: 2013<br>書名: Analyzing linguistic data - a practical introduction to satistics using R</p>
-<a id="more"></a>
-<h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><ul>
-<li>Factor: A non-numeric predicatorc (p. 9)</li>
-<li>Levels: Values of s factor (p. 9) </li>
-<li>Contingency table (crosstab): (p. 13)</li>
-</ul>
-<h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="2-1-何謂隨機變數-Random-variables"><a href="#2-1-何謂隨機變數-Random-variables" class="headerlink" title="2.1 何謂隨機變數 (Random variables)?"></a>2.1 何謂隨機變數 (Random variables)?</h2><p>一個實驗的結果即是一個隨機變數。</p>
-<ul>
-<li>例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。</li>
-<li>例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。</li>
-<li>例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。</li>
-</ul>
-<p>「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。</p>
-<h2 id="2-2-視覺化單一隨機變數"><a href="#2-2-視覺化單一隨機變數" class="headerlink" title="2.2 視覺化單一隨機變數"></a>2.2 視覺化單一隨機變數</h2><h3 id="Bar-chart-和-histogram-的差別"><a href="#Bar-chart-和-histogram-的差別" class="headerlink" title="Bar chart 和 histogram 的差別"></a>Bar chart 和 histogram 的差別</h3><p>Bar chart 用於離散變數或 factor 上。<br>Histogram 用於連續變數上，且 histogram 中的資料面積總和為<br> 1。</p>
-<h3 id="為何常常需要將尺度以log轉換-p-31下方"><a href="#為何常常需要將尺度以log轉換-p-31下方" class="headerlink" title="為何常常需要將尺度以log轉換? (p. 31下方)"></a>為何常常需要將尺度以log轉換? (p. 31下方)</h3><p>降低隨機變數分布的偏移。</p>
-<h2 id="2-3-視覺化兩個以上的變數"><a href="#2-3-視覺化兩個以上的變數" class="headerlink" title="2.3 視覺化兩個以上的變數"></a>2.3 視覺化兩個以上的變數</h2><ul>
-<li>mosaic plot:<ul>
-<li>先將資料轉成contingency table (<code>xtabs()</code>)</li>
-<li>再丟進 <code>mosalplot()</code></li>
-</ul>
-</li>
-<li>scatter plot: 用於表示兩個連續隨機變數之間的關係。<ul>
-<li>heteroskadastic</li>
-<li>corrrelation </li>
-<li>scatter smoother</li>
-</ul>
-</li>
-<li>pairs plot (scatterplot matrix)<ul>
-<li>適合兩個以上的隨機變數，兩兩之間互相比較，呈現關係<ul>
-<li>multicollinearlity (p. 37)  </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-4-Trellis-graphics-格狀圖"><a href="#2-4-Trellis-graphics-格狀圖" class="headerlink" title="2.4 Trellis graphics (格狀圖)"></a>2.4 Trellis graphics (格狀圖)</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><p>Many statistical tests exploit the properties of the probability distributions of random variables. (許多統計檢定在做的事就在發揮隨機變數的機率分佈性質。)</p>
-<h2 id="3-1-Distributions"><a href="#3-1-Distributions" class="headerlink" title="3.1 Distributions"></a>3.1 Distributions</h2><p>一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:</p>
-<ul>
-<li>離散</li>
-<li>連續</li>
-</ul>
-<h2 id="3-2-離散分佈"><a href="#3-2-離散分佈" class="headerlink" title="3.2 離散分佈"></a>3.2 離散分佈</h2><p>問題：在CELEX lexical database (Bayen et al., 1995)中列出了一個 1860萬詞的語料庫中，各個英文詞彙出現的頻率。發現 the 這個功能詞出現的頻率為 1093547 次，換成機率也就是 0.05885575 （這個值可以視為 the 出現在英文當中的機率的估計值）。然後現在我們又看到更早的Brown語料庫，在這個含有100萬詞的語料庫中，按照剛剛 0.05885575 的機率值，我們預期應該可以看到 the 出現 58856 次，但實際上卻找到了 69971 次。我們想知道的是，<strong>預期中與實際中的差異究竟算不算太大？</strong></p>
-<p>詞彙定義：</p>
-<ul>
-<li>probability of success (p)</li>
-<li>probability of failure (1-p)</li>
-<li>number of trials (n)</li>
-<li>binomially dstributed random variable with parameters p and n</li>
-<li>還要區分兩種對象:<ul>
-<li>母體(population)的性質</li>
-<li>樣本(sample)的性質</li>
-</ul>
-</li>
-<li>Poisson distrbution</li>
-</ul>
-<h2 id="3-3-連續分佈"><a href="#3-3-連續分佈" class="headerlink" title="3.3 連續分佈"></a>3.3 連續分佈</h2><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><p>The logic underlying the statistical tests: a statistical test produces a <strong>test statistic (檢定統計量)</strong> of which the distribution is known.</p>
-<p>我們想知道的是，這個<strong>檢定統計量</strong>是否是一個極端值，極端到不能只用巧合來解釋（巧合的相反是必然）。</p>
-<p>一般做法是先提出一個像是稻草人般的虛無假設，這個虛無假設的檢定統計量不是極端值。如果我們透過統計檢定發現得到的檢定統計量是個極端值</p>
-<p>本書採用的立場為 Frequentist statistical inference 而非 Bayesian inference。</p>
-<h2 id="p-value"><a href="#p-value" class="headerlink" title="p-value"></a>p-value</h2><p>A measure of suurprise</p>
-<h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>]]></content>
-      <categories>
-        <category>統計</category>
-      </categories>
-      <tags>
-        <tag>R</tag>
-        <tag>統計</tag>
-        <tag>計算語言學</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git筆記</title>
-    <url>/git-note/</url>
-    <content><![CDATA[<h1 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h1><hr>
-<h1 id="分支branch"><a href="#分支branch" class="headerlink" title="分支branch"></a>分支<code>branch</code></h1><blockquote>
-<p><code>branch</code>本質上僅僅是個指向 <code>commit 物件</code>的可變<strong>指標</strong>。Git 會使用 <code>master</code> 作為分支的預設名字。在若干次提交後，你其實已經有了一個指向最後一次提交物件的 <code>master</code> 分支，它在每次提交的時候都會自動向前移動。</p>
-</blockquote>
-<p>分支其實就是從某個<code>commit物件</code>往回看的歷史。</p>
-<h2 id="建立新分支"><a href="#建立新分支" class="headerlink" title="建立新分支"></a>建立新分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git branch &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<p>這個指令僅僅建立了新的分支，而不會自動將所在位址切換到這個新分支上。要切換到新分支上，需透過下方的<code>git checkout</code>指令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
-<p>執行 <code>git checkout</code> 就是把<code>HEAD</code>指標指到新的分支上。</p>
-<p>捷徑：建立新分支，同時切換到該分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout -b &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h2><h3 id="使用merge"><a href="#使用merge" class="headerlink" title="使用merge"></a>使用<code>merge</code></h3><h3 id="使用rebase"><a href="#使用rebase" class="headerlink" title="使用rebase"></a>使用<code>rebase</code></h3><hr>
-<h1 id="指向目前所在分支的HEAD指標"><a href="#指向目前所在分支的HEAD指標" class="headerlink" title="指向目前所在分支的HEAD指標"></a>指向<strong>目前所在分支</strong>的<code>HEAD</code>指標</h1><p>指向<strong>目前所checkout的commit</strong>。<br>每次執行<code>git checkout</code>指令，都會連帶改動<code>HEAD</code>所指向的reference。</p>
-<p>例如在執行下面代碼後：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;a_commit&gt;</span><br></pre></td></tr></table></figure>
-<p><code>HEAD</code>就會同時指向該<code>a_commit</code>。</p>
-<p><code>HEAD</code>通常指向一個分支的名稱</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>functor-and-applicative-functor</title>
     <url>/functor-and-applicative-functor/</url>
     <content><![CDATA[<h1 id="lifting"><a href="#lifting" class="headerlink" title="lifting"></a>lifting</h1><p><code>(a -&gt; b) -&gt; (f a -&gt; f b)</code></p>
@@ -739,53 +624,51 @@
 ]]></content>
   </entry>
   <entry>
-    <title>nltk 中 ngrams 原始碼分析</title>
-    <url>/ngrams-src-code-in-nltk/</url>
-    <content><![CDATA[<p>在Python自然語言處理套件 <a href="http://www.nltk.org" target="_blank" rel="noopener">nltk</a> 中，在 <a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">nltk.util</a> 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。</p>
+    <title>SQL</title>
+    <url>/SQL/</url>
+    <content><![CDATA[<h1 id="全名"><a href="#全名" class="headerlink" title="全名"></a>全名</h1><p>SQL 是 Structured Query Language 的縮寫。</p>
+<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p>SQL是一種用來處理紀錄在 RDBMS (Relational Database Management System 關聯式資料庫管理系統，例如：MySQL, Oracle, Microsoft Access, PostreSQL) 當中資料的語言。</p>
 <a id="more"></a>
-<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>以 bigrams（就是2-grams的意思）為例，假設你給他一個string list的輸入，那麽他會輸出一個tuple list，其中每個tuple都是由緊鄰的兩個string所組成，從第一個string到最後一個string。  </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.util <span class="keyword">import</span> bigrams</span><br><span class="line">list(bigrams[<span class="string">'I'</span>, <span class="string">'have'</span>, <span class="string">'a'</span>, <span class="string">'dream'</span>, <span class="string">'.'</span>])</span><br><span class="line"><span class="comment"># 會得到 [('I', 'have'), ('have', 'a'), ('a', 'dream'), ('dream', '.')]</span></span><br></pre></td></tr></table></figure>
-<p>事實上，根據bigrams可以接受任何 Sequence type 或 Iterator type 的值作為輸入。</p>
-<blockquote>
-<p>Python 中的 <a href="https://docs.python.org/3/library/stdtypes.html#typesseq" target="_blank" rel="noopener">Sequence type</a> 包含：<code>str</code>, <code>list</code>, <code>tuple</code>, <code>range</code>, <code>bytes</code>, <code>bytearray</code> 等等。<br>而Python中的 <a href="https://docs.python.org/3/library/stdtypes.html#iterator-types" target="_blank" rel="noopener">Iterator type</a> 則是指那些有定義 <code>__iter__()</code> 和 <code>__next__()</code> 方法的物件。</p>
-</blockquote>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><h2 id="大圖像：6個函數"><a href="#大圖像：6個函數" class="headerlink" title="大圖像：6個函數"></a>大圖像：6個函數</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pad_sequence(  </span><br><span class="line">    sequence,</span><br><span class="line">    n,</span><br><span class="line">    pad_left=False,</span><br><span class="line">    pad_right=False,</span><br><span class="line">    left_pad_symbol=None, </span><br><span class="line">    right_pad_symbol=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>指定是否要在輸入的sequence最前或最後加上識別元素，例如可用來標記句首和句尾，再把加工後的 sequence 丟進<code>iter()</code>，以產生一個 <code>Iterator</code>。</p>
+<p>依據用途可以分成以下四種子語言：</p>
 <ul>
-<li><code>ngrams()</code>: </li>
-<li><code>bigrams()</code></li>
-<li><code>trigrams()</code></li>
-<li><code>everygrams()</code></li>
-<li><code>skipgrams()</code></li>
+<li>DDL (Data Definition Language)<br>用來定義、修正、刪除資料表的架構<ul>
+<li><code>CREATE</code></li>
+<li><code>ALTER</code></li>
+<li><code>DROP</code></li>
+<li><code>TRUNCATE</code></li>
 </ul>
-<h1 id="完整原始碼"><a href="#完整原始碼" class="headerlink" title="完整原始碼"></a>完整原始碼</h1><p><a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">官網原始碼連結</a>  </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">##########################################################################</span></span><br><span class="line"><span class="comment"># Ngram iteration</span></span><br><span class="line"><span class="comment">##########################################################################</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pad_sequence</span><span class="params">(sequence, n, pad_left=False, pad_right=False,</span></span></span><br><span class="line"><span class="function"><span class="params">                 left_pad_symbol=None, right_pad_symbol=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns a padded sequence of items before ngram extraction.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_left=True, pad_right=True, left_pad_symbol='&lt;s&gt;', right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        ['&lt;s&gt;', 1, 2, 3, 4, 5, '&lt;/s&gt;']</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_left=True, left_pad_symbol='&lt;s&gt;'))</span></span><br><span class="line"><span class="string">        ['&lt;s&gt;', 1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_right=True, right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [1, 2, 3, 4, 5, '&lt;/s&gt;']</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be padded</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param pad_left: whether the ngrams should be left-padded</span></span><br><span class="line"><span class="string">    :type pad_left: bool</span></span><br><span class="line"><span class="string">    :param pad_right: whether the ngrams should be right-padded</span></span><br><span class="line"><span class="string">    :type pad_right: bool</span></span><br><span class="line"><span class="string">    :param left_pad_symbol: the symbol to use for left padding (default is None)</span></span><br><span class="line"><span class="string">    :type left_pad_symbol: any</span></span><br><span class="line"><span class="string">    :param right_pad_symbol: the symbol to use for right padding (default is None)</span></span><br><span class="line"><span class="string">    :type right_pad_symbol: any</span></span><br><span class="line"><span class="string">    :rtype: sequence or iter</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sequence = iter(sequence)</span><br><span class="line">    <span class="keyword">if</span> pad_left:</span><br><span class="line">        sequence = chain((left_pad_symbol,) * (n<span class="number">-1</span>), sequence)</span><br><span class="line">    <span class="keyword">if</span> pad_right:</span><br><span class="line">        sequence = chain(sequence, (right_pad_symbol,) * (n<span class="number">-1</span>))</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br><span class="line"></span><br><span class="line"><span class="comment"># add a flag to pad the sequence so we get peripheral ngrams?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ngrams</span><span class="params">(sequence, n, pad_left=False, pad_right=False,</span></span></span><br><span class="line"><span class="function"><span class="params">           left_pad_symbol=None, right_pad_symbol=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the ngrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import ngrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 3))</span></span><br><span class="line"><span class="string">        [(1, 2, 3), (2, 3, 4), (3, 4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Wrap with list for a list version of this function.  Set pad_left</span></span><br><span class="line"><span class="string">    or pad_right to true in order to get additional ngrams:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_right=True))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5), (5, None)]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_right=True, right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5), (5, '&lt;/s&gt;')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_left=True, left_pad_symbol='&lt;s&gt;'))</span></span><br><span class="line"><span class="string">        [('&lt;s&gt;', 1), (1, 2), (2, 3), (3, 4), (4, 5)]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_left=True, pad_right=True, left_pad_symbol='&lt;s&gt;', right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [('&lt;s&gt;', 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, '&lt;/s&gt;')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into ngrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param pad_left: whether the ngrams should be left-padded</span></span><br><span class="line"><span class="string">    :type pad_left: bool</span></span><br><span class="line"><span class="string">    :param pad_right: whether the ngrams should be right-padded</span></span><br><span class="line"><span class="string">    :type pad_right: bool</span></span><br><span class="line"><span class="string">    :param left_pad_symbol: the symbol to use for left padding (default is None)</span></span><br><span class="line"><span class="string">    :type left_pad_symbol: any</span></span><br><span class="line"><span class="string">    :param right_pad_symbol: the symbol to use for right padding (default is None)</span></span><br><span class="line"><span class="string">    :type right_pad_symbol: any</span></span><br><span class="line"><span class="string">    :rtype: sequence or iter</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sequence = pad_sequence(sequence, n, pad_left, pad_right,</span><br><span class="line">                            left_pad_symbol, right_pad_symbol)</span><br><span class="line"></span><br><span class="line">    history = []</span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        history.append(next(sequence))</span><br><span class="line">        n -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> sequence:</span><br><span class="line">        history.append(item)</span><br><span class="line">        <span class="keyword">yield</span> tuple(history)</span><br><span class="line">        <span class="keyword">del</span> history[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bigrams</span><span class="params">(sequence, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the bigrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import bigrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(bigrams([1,2,3,4,5]))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Use bigrams for a list version of this function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into bigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> ngrams(sequence, <span class="number">2</span>, **kwargs):</span><br><span class="line">        <span class="keyword">yield</span> item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trigrams</span><span class="params">(sequence, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the trigrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import trigrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(trigrams([1,2,3,4,5]))</span></span><br><span class="line"><span class="string">        [(1, 2, 3), (2, 3, 4), (3, 4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Use trigrams for a list version of this function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> ngrams(sequence, <span class="number">3</span>, **kwargs):</span><br><span class="line">        <span class="keyword">yield</span> item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">everygrams</span><span class="params">(sequence, min_len=<span class="number">1</span>, max_len=<span class="number">-1</span>, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns all possible ngrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; sent = 'a b c'.split()</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(everygrams(sent))</span></span><br><span class="line"><span class="string">        [('a',), ('b',), ('c',), ('a', 'b'), ('b', 'c'), ('a', 'b', 'c')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(everygrams(sent, max_len=2))</span></span><br><span class="line"><span class="string">        [('a',), ('b',), ('c',), ('a', 'b'), ('b', 'c')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param min_len: minimum length of the ngrams, aka. n-gram order/degree of ngram</span></span><br><span class="line"><span class="string">    :type  min_len: int</span></span><br><span class="line"><span class="string">    :param max_len: maximum length of the ngrams (set to length of sequence by default)</span></span><br><span class="line"><span class="string">    :type  max_len: int</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> max_len == <span class="number">-1</span>:</span><br><span class="line">        max_len = len(sequence)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> range(min_len, max_len+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> ng <span class="keyword">in</span> ngrams(sequence, n, **kwargs):</span><br><span class="line">            <span class="keyword">yield</span> ng</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">skipgrams</span><span class="params">(sequence, n, k, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns all possible skipgrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    Skipgrams are ngrams that allows tokens to be skipped.</span></span><br><span class="line"><span class="string">    Refer to http://homepages.inf.ed.ac.uk/ballison/pdf/lrec_skipgrams.pdf</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; sent = "Insurgents killed in ongoing fighting".split()</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(skipgrams(sent, 2, 2))</span></span><br><span class="line"><span class="string">        [('Insurgents', 'killed'), ('Insurgents', 'in'), ('Insurgents', 'ongoing'), ('killed', 'in'), ('killed', 'ongoing'), ('killed', 'fighting'), ('in', 'ongoing'), ('in', 'fighting'), ('ongoing', 'fighting')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(skipgrams(sent, 3, 2))</span></span><br><span class="line"><span class="string">        [('Insurgents', 'killed', 'in'), ('Insurgents', 'killed', 'ongoing'), ('Insurgents', 'killed', 'fighting'), ('Insurgents', 'in', 'ongoing'), ('Insurgents', 'in', 'fighting'), ('Insurgents', 'ongoing', 'fighting'), ('killed', 'in', 'ongoing'), ('killed', 'in', 'fighting'), ('killed', 'ongoing', 'fighting'), ('in', 'ongoing', 'fighting')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param k: the skip distance</span></span><br><span class="line"><span class="string">    :type  k: int</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Pads the sequence as desired by **kwargs.</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'pad_left'</span> <span class="keyword">in</span> kwargs <span class="keyword">or</span> <span class="string">'pad_right'</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        sequence = pad_sequence(sequence, n, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Note when iterating through the ngrams, the pad_right here is not</span></span><br><span class="line">    <span class="comment"># the **kwargs padding, it's for the algorithm to detect the SENTINEL</span></span><br><span class="line">    <span class="comment"># object on the right pad to stop inner loop.</span></span><br><span class="line">    SENTINEL = object()</span><br><span class="line">    <span class="keyword">for</span> ngram <span class="keyword">in</span> ngrams(sequence, n + k, pad_right=<span class="keyword">True</span>, right_pad_symbol=SENTINEL):</span><br><span class="line">        head = ngram[:<span class="number">1</span>]</span><br><span class="line">        tail = ngram[<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">for</span> skip_tail <span class="keyword">in</span> combinations(tail, n - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> skip_tail[<span class="number">-1</span>] <span class="keyword">is</span> SENTINEL:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">yield</span> head + skip_tail</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>NLP</category>
-      </categories>
-      <tags>
-        <tag>nltk</tag>
-        <tag>python</tag>
-        <tag>nlp</tag>
-        <tag>ngrams</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo中的helper使用方法</title>
-    <url>/hexo%E4%B8%AD%E7%9A%84helper%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>Hexo中的Helpers是不能用在source當中的，一定要寫在theme當中的layout裡頭才可以。</p>
-<p>參考資料：</p>
-<ul>
-<li><a href="https://hexo.io/api/helper" target="_blank" rel="noopener">官網: Helper</a></li>
-<li><a href="https://stackoverflow.com/questions/33729493/how-to-use-helpers-in-hexo-source-files" target="_blank" rel="noopener">How to use helpers in Hexo source files?</a></li>
+</li>
+<li>DML (Data Manipulation Language)<br>對DB中的資料進行新增、刪除、更新的動作<ul>
+<li><code>INSERT</code></li>
+<li><code>UPDATE</code></li>
+<li><code>DELETE</code></li>
+<li><code>MERGE</code></li>
+</ul>
+</li>
+<li>DQL (Data Query Language)<br>用來查詢DB中的符合特定條件的資料<ul>
+<li><code>SELECT</code></li>
+<li><code>FROM</code></li>
+<li><code>WHERE</code></li>
+</ul>
+</li>
+<li>DCL (Data Control Language)<br>授與特定權限、控制DB操縱事務的發生等等<ul>
+<li><code>GRANT</code></li>
+<li><code>ROLLBACK</code></li>
+<li><code>COMMIT</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">[Wiki] SQL</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SQL_syntax" target="_blank" rel="noopener">[Wiki] SQL syntax</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>hexo</category>
+        <category>資料庫</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>資料庫</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -932,6 +815,108 @@
       </categories>
   </entry>
   <entry>
+    <title>git筆記</title>
+    <url>/git-note/</url>
+    <content><![CDATA[<h1 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h1><hr>
+<h1 id="分支branch"><a href="#分支branch" class="headerlink" title="分支branch"></a>分支<code>branch</code></h1><blockquote>
+<p><code>branch</code>本質上僅僅是個指向 <code>commit 物件</code>的可變<strong>指標</strong>。Git 會使用 <code>master</code> 作為分支的預設名字。在若干次提交後，你其實已經有了一個指向最後一次提交物件的 <code>master</code> 分支，它在每次提交的時候都會自動向前移動。</p>
+</blockquote>
+<p>分支其實就是從某個<code>commit物件</code>往回看的歷史。</p>
+<h2 id="建立新分支"><a href="#建立新分支" class="headerlink" title="建立新分支"></a>建立新分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git branch &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
+<p>這個指令僅僅建立了新的分支，而不會自動將所在位址切換到這個新分支上。要切換到新分支上，需透過下方的<code>git checkout</code>指令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
+<p>執行 <code>git checkout</code> 就是把<code>HEAD</code>指標指到新的分支上。</p>
+<p>捷徑：建立新分支，同時切換到該分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout -b &lt;new_branch_name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h2><h3 id="使用merge"><a href="#使用merge" class="headerlink" title="使用merge"></a>使用<code>merge</code></h3><h3 id="使用rebase"><a href="#使用rebase" class="headerlink" title="使用rebase"></a>使用<code>rebase</code></h3><hr>
+<h1 id="指向目前所在分支的HEAD指標"><a href="#指向目前所在分支的HEAD指標" class="headerlink" title="指向目前所在分支的HEAD指標"></a>指向<strong>目前所在分支</strong>的<code>HEAD</code>指標</h1><p>指向<strong>目前所checkout的commit</strong>。<br>每次執行<code>git checkout</code>指令，都會連帶改動<code>HEAD</code>所指向的reference。</p>
+<p>例如在執行下面代碼後：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout &lt;a_commit&gt;</span><br></pre></td></tr></table></figure>
+<p><code>HEAD</code>就會同時指向該<code>a_commit</code>。</p>
+<p><code>HEAD</code>通常指向一個分支的名稱</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[讀書筆記] Analyzing linguistic data - a practical introduction to satistics using R</title>
+    <url>/analyzing-linguistic-data/</url>
+    <content><![CDATA[<p>作者: Baayen<br>出版年: 2013<br>書名: Analyzing linguistic data - a practical introduction to satistics using R</p>
+<a id="more"></a>
+<h1 id="CH1-An-introduction-to-R"><a href="#CH1-An-introduction-to-R" class="headerlink" title="CH1: An introduction to R"></a>CH1: An introduction to R</h1><ul>
+<li>Factor: A non-numeric predicatorc (p. 9)</li>
+<li>Levels: Values of s factor (p. 9) </li>
+<li>Contingency table (crosstab): (p. 13)</li>
+</ul>
+<h1 id="CH2-Graphical-data-exploration"><a href="#CH2-Graphical-data-exploration" class="headerlink" title="CH2: Graphical data exploration"></a>CH2: Graphical data exploration</h1><h2 id="2-1-何謂隨機變數-Random-variables"><a href="#2-1-何謂隨機變數-Random-variables" class="headerlink" title="2.1 何謂隨機變數 (Random variables)?"></a>2.1 何謂隨機變數 (Random variables)?</h2><p>一個實驗的結果即是一個隨機變數。</p>
+<ul>
+<li>例一：在丟硬幣的實驗中，丟出的硬幣是包含兩種結果的隨機變數。</li>
+<li>例二：在丟骰子的實驗中，包含一個隨機變數，這個隨機變數有六種結果。</li>
+<li>例三：在正確詞彙判斷的實驗中，受試者在一定時間之內按下「正確」和「錯誤」其中一個按鍵。在這個實驗中包含兩個隨機變數，第一個隨機變數為時間，其值為連續值。第二個隨機變數為正確性，有兩種結果：正確與錯誤。</li>
+</ul>
+<p>「隨機」的意義來自於事先並不知道會跑出哪一種結果。每個隨機變數都與機率分佈(probability distribution)相關，描述著隨機變數中不同結果出現的似然率(likelihood)。</p>
+<h2 id="2-2-視覺化單一隨機變數"><a href="#2-2-視覺化單一隨機變數" class="headerlink" title="2.2 視覺化單一隨機變數"></a>2.2 視覺化單一隨機變數</h2><h3 id="Bar-chart-和-histogram-的差別"><a href="#Bar-chart-和-histogram-的差別" class="headerlink" title="Bar chart 和 histogram 的差別"></a>Bar chart 和 histogram 的差別</h3><p>Bar chart 用於離散變數或 factor 上。<br>Histogram 用於連續變數上，且 histogram 中的資料面積總和為<br> 1。</p>
+<h3 id="為何常常需要將尺度以log轉換-p-31下方"><a href="#為何常常需要將尺度以log轉換-p-31下方" class="headerlink" title="為何常常需要將尺度以log轉換? (p. 31下方)"></a>為何常常需要將尺度以log轉換? (p. 31下方)</h3><p>降低隨機變數分布的偏移。</p>
+<h2 id="2-3-視覺化兩個以上的變數"><a href="#2-3-視覺化兩個以上的變數" class="headerlink" title="2.3 視覺化兩個以上的變數"></a>2.3 視覺化兩個以上的變數</h2><ul>
+<li>mosaic plot:<ul>
+<li>先將資料轉成contingency table (<code>xtabs()</code>)</li>
+<li>再丟進 <code>mosalplot()</code></li>
+</ul>
+</li>
+<li>scatter plot: 用於表示兩個連續隨機變數之間的關係。<ul>
+<li>heteroskadastic</li>
+<li>corrrelation </li>
+<li>scatter smoother</li>
+</ul>
+</li>
+<li>pairs plot (scatterplot matrix)<ul>
+<li>適合兩個以上的隨機變數，兩兩之間互相比較，呈現關係<ul>
+<li>multicollinearlity (p. 37)  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-4-Trellis-graphics-格狀圖"><a href="#2-4-Trellis-graphics-格狀圖" class="headerlink" title="2.4 Trellis graphics (格狀圖)"></a>2.4 Trellis graphics (格狀圖)</h2><h1 id="CH3-Probability-distributions"><a href="#CH3-Probability-distributions" class="headerlink" title="CH3: Probability distributions"></a>CH3: Probability distributions</h1><p>Many statistical tests exploit the properties of the probability distributions of random variables. (許多統計檢定在做的事就在發揮隨機變數的機率分佈性質。)</p>
+<h2 id="3-1-Distributions"><a href="#3-1-Distributions" class="headerlink" title="3.1 Distributions"></a>3.1 Distributions</h2><p>一個隨機變數的機率分佈說明了該變數不同結果的似然率。隨機變數又能分成兩種:</p>
+<ul>
+<li>離散</li>
+<li>連續</li>
+</ul>
+<h2 id="3-2-離散分佈"><a href="#3-2-離散分佈" class="headerlink" title="3.2 離散分佈"></a>3.2 離散分佈</h2><p>問題：在CELEX lexical database (Bayen et al., 1995)中列出了一個 1860萬詞的語料庫中，各個英文詞彙出現的頻率。發現 the 這個功能詞出現的頻率為 1093547 次，換成機率也就是 0.05885575 （這個值可以視為 the 出現在英文當中的機率的估計值）。然後現在我們又看到更早的Brown語料庫，在這個含有100萬詞的語料庫中，按照剛剛 0.05885575 的機率值，我們預期應該可以看到 the 出現 58856 次，但實際上卻找到了 69971 次。我們想知道的是，<strong>預期中與實際中的差異究竟算不算太大？</strong></p>
+<p>詞彙定義：</p>
+<ul>
+<li>probability of success (p)</li>
+<li>probability of failure (1-p)</li>
+<li>number of trials (n)</li>
+<li>binomially dstributed random variable with parameters p and n</li>
+<li>還要區分兩種對象:<ul>
+<li>母體(population)的性質</li>
+<li>樣本(sample)的性質</li>
+</ul>
+</li>
+<li>Poisson distrbution</li>
+</ul>
+<h2 id="3-3-連續分佈"><a href="#3-3-連續分佈" class="headerlink" title="3.3 連續分佈"></a>3.3 連續分佈</h2><h1 id="CH4-Basic-statistical-methods"><a href="#CH4-Basic-statistical-methods" class="headerlink" title="CH4: Basic statistical methods"></a>CH4: Basic statistical methods</h1><p>The logic underlying the statistical tests: a statistical test produces a <strong>test statistic (檢定統計量)</strong> of which the distribution is known.</p>
+<p>我們想知道的是，這個<strong>檢定統計量</strong>是否是一個極端值，極端到不能只用巧合來解釋（巧合的相反是必然）。</p>
+<p>一般做法是先提出一個像是稻草人般的虛無假設，這個虛無假設的檢定統計量不是極端值。如果我們透過統計檢定發現得到的檢定統計量是個極端值</p>
+<p>本書採用的立場為 Frequentist statistical inference 而非 Bayesian inference。</p>
+<h2 id="p-value"><a href="#p-value" class="headerlink" title="p-value"></a>p-value</h2><p>A measure of suurprise</p>
+<h1 id="CH5-Clustering-and-classification"><a href="#CH5-Clustering-and-classification" class="headerlink" title="CH5: Clustering and classification"></a>CH5: Clustering and classification</h1><h1 id="CH6-Regression-modeling"><a href="#CH6-Regression-modeling" class="headerlink" title="CH6: Regression modeling"></a>CH6: Regression modeling</h1><h1 id="CH7-Mixed-models"><a href="#CH7-Mixed-models" class="headerlink" title="CH7: Mixed models"></a>CH7: Mixed models</h1>]]></content>
+      <categories>
+        <category>統計</category>
+      </categories>
+      <tags>
+        <tag>R</tag>
+        <tag>統計</tag>
+        <tag>計算語言學</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>likelihood-and-probability</title>
     <url>/likelihood-and-probability/</url>
     <content><![CDATA[<p>似然率和機率是不同的概念。</p>
@@ -957,6 +942,23 @@
         <tag>likelihood</tag>
         <tag>prabability</tag>
         <tag>statistics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo中的helper使用方法</title>
+    <url>/hexo%E4%B8%AD%E7%9A%84helper%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>Hexo中的Helpers是不能用在source當中的，一定要寫在theme當中的layout裡頭才可以。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="https://hexo.io/api/helper" target="_blank" rel="noopener">官網: Helper</a></li>
+<li><a href="https://stackoverflow.com/questions/33729493/how-to-use-helpers-in-hexo-source-files" target="_blank" rel="noopener">How to use helpers in Hexo source files?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1011,6 +1013,101 @@
       </categories>
       <tags>
         <tag>巴利文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nltk 中 ngrams 原始碼分析</title>
+    <url>/ngrams-src-code-in-nltk/</url>
+    <content><![CDATA[<p>在Python自然語言處理套件 <a href="http://www.nltk.org" target="_blank" rel="noopener">nltk</a> 中，在 <a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">nltk.util</a> 模組中，有一段用來產生 ngrams 的程式碼，我們先用個例子來看看它的作用是什麼。</p>
+<a id="more"></a>
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>以 bigrams（就是2-grams的意思）為例，假設你給他一個string list的輸入，那麽他會輸出一個tuple list，其中每個tuple都是由緊鄰的兩個string所組成，從第一個string到最後一個string。  </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.util <span class="keyword">import</span> bigrams</span><br><span class="line">list(bigrams[<span class="string">'I'</span>, <span class="string">'have'</span>, <span class="string">'a'</span>, <span class="string">'dream'</span>, <span class="string">'.'</span>])</span><br><span class="line"><span class="comment"># 會得到 [('I', 'have'), ('have', 'a'), ('a', 'dream'), ('dream', '.')]</span></span><br></pre></td></tr></table></figure>
+<p>事實上，根據bigrams可以接受任何 Sequence type 或 Iterator type 的值作為輸入。</p>
+<blockquote>
+<p>Python 中的 <a href="https://docs.python.org/3/library/stdtypes.html#typesseq" target="_blank" rel="noopener">Sequence type</a> 包含：<code>str</code>, <code>list</code>, <code>tuple</code>, <code>range</code>, <code>bytes</code>, <code>bytearray</code> 等等。<br>而Python中的 <a href="https://docs.python.org/3/library/stdtypes.html#iterator-types" target="_blank" rel="noopener">Iterator type</a> 則是指那些有定義 <code>__iter__()</code> 和 <code>__next__()</code> 方法的物件。</p>
+</blockquote>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><h2 id="大圖像：6個函數"><a href="#大圖像：6個函數" class="headerlink" title="大圖像：6個函數"></a>大圖像：6個函數</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pad_sequence(  </span><br><span class="line">    sequence,</span><br><span class="line">    n,</span><br><span class="line">    pad_left=False,</span><br><span class="line">    pad_right=False,</span><br><span class="line">    left_pad_symbol=None, </span><br><span class="line">    right_pad_symbol=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>指定是否要在輸入的sequence最前或最後加上識別元素，例如可用來標記句首和句尾，再把加工後的 sequence 丟進<code>iter()</code>，以產生一個 <code>Iterator</code>。</p>
+<ul>
+<li><code>ngrams()</code>: </li>
+<li><code>bigrams()</code></li>
+<li><code>trigrams()</code></li>
+<li><code>everygrams()</code></li>
+<li><code>skipgrams()</code></li>
+</ul>
+<h1 id="完整原始碼"><a href="#完整原始碼" class="headerlink" title="完整原始碼"></a>完整原始碼</h1><p><a href="http://www.nltk.org/_modules/nltk/util.html" target="_blank" rel="noopener">官網原始碼連結</a>  </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">##########################################################################</span></span><br><span class="line"><span class="comment"># Ngram iteration</span></span><br><span class="line"><span class="comment">##########################################################################</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pad_sequence</span><span class="params">(sequence, n, pad_left=False, pad_right=False,</span></span></span><br><span class="line"><span class="function"><span class="params">                 left_pad_symbol=None, right_pad_symbol=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns a padded sequence of items before ngram extraction.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_left=True, pad_right=True, left_pad_symbol='&lt;s&gt;', right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        ['&lt;s&gt;', 1, 2, 3, 4, 5, '&lt;/s&gt;']</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_left=True, left_pad_symbol='&lt;s&gt;'))</span></span><br><span class="line"><span class="string">        ['&lt;s&gt;', 1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(pad_sequence([1,2,3,4,5], 2, pad_right=True, right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [1, 2, 3, 4, 5, '&lt;/s&gt;']</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be padded</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param pad_left: whether the ngrams should be left-padded</span></span><br><span class="line"><span class="string">    :type pad_left: bool</span></span><br><span class="line"><span class="string">    :param pad_right: whether the ngrams should be right-padded</span></span><br><span class="line"><span class="string">    :type pad_right: bool</span></span><br><span class="line"><span class="string">    :param left_pad_symbol: the symbol to use for left padding (default is None)</span></span><br><span class="line"><span class="string">    :type left_pad_symbol: any</span></span><br><span class="line"><span class="string">    :param right_pad_symbol: the symbol to use for right padding (default is None)</span></span><br><span class="line"><span class="string">    :type right_pad_symbol: any</span></span><br><span class="line"><span class="string">    :rtype: sequence or iter</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sequence = iter(sequence)</span><br><span class="line">    <span class="keyword">if</span> pad_left:</span><br><span class="line">        sequence = chain((left_pad_symbol,) * (n<span class="number">-1</span>), sequence)</span><br><span class="line">    <span class="keyword">if</span> pad_right:</span><br><span class="line">        sequence = chain(sequence, (right_pad_symbol,) * (n<span class="number">-1</span>))</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br><span class="line"></span><br><span class="line"><span class="comment"># add a flag to pad the sequence so we get peripheral ngrams?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ngrams</span><span class="params">(sequence, n, pad_left=False, pad_right=False,</span></span></span><br><span class="line"><span class="function"><span class="params">           left_pad_symbol=None, right_pad_symbol=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the ngrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import ngrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 3))</span></span><br><span class="line"><span class="string">        [(1, 2, 3), (2, 3, 4), (3, 4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Wrap with list for a list version of this function.  Set pad_left</span></span><br><span class="line"><span class="string">    or pad_right to true in order to get additional ngrams:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_right=True))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5), (5, None)]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_right=True, right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5), (5, '&lt;/s&gt;')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_left=True, left_pad_symbol='&lt;s&gt;'))</span></span><br><span class="line"><span class="string">        [('&lt;s&gt;', 1), (1, 2), (2, 3), (3, 4), (4, 5)]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(ngrams([1,2,3,4,5], 2, pad_left=True, pad_right=True, left_pad_symbol='&lt;s&gt;', right_pad_symbol='&lt;/s&gt;'))</span></span><br><span class="line"><span class="string">        [('&lt;s&gt;', 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, '&lt;/s&gt;')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into ngrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param pad_left: whether the ngrams should be left-padded</span></span><br><span class="line"><span class="string">    :type pad_left: bool</span></span><br><span class="line"><span class="string">    :param pad_right: whether the ngrams should be right-padded</span></span><br><span class="line"><span class="string">    :type pad_right: bool</span></span><br><span class="line"><span class="string">    :param left_pad_symbol: the symbol to use for left padding (default is None)</span></span><br><span class="line"><span class="string">    :type left_pad_symbol: any</span></span><br><span class="line"><span class="string">    :param right_pad_symbol: the symbol to use for right padding (default is None)</span></span><br><span class="line"><span class="string">    :type right_pad_symbol: any</span></span><br><span class="line"><span class="string">    :rtype: sequence or iter</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sequence = pad_sequence(sequence, n, pad_left, pad_right,</span><br><span class="line">                            left_pad_symbol, right_pad_symbol)</span><br><span class="line"></span><br><span class="line">    history = []</span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        history.append(next(sequence))</span><br><span class="line">        n -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> sequence:</span><br><span class="line">        history.append(item)</span><br><span class="line">        <span class="keyword">yield</span> tuple(history)</span><br><span class="line">        <span class="keyword">del</span> history[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bigrams</span><span class="params">(sequence, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the bigrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import bigrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(bigrams([1,2,3,4,5]))</span></span><br><span class="line"><span class="string">        [(1, 2), (2, 3), (3, 4), (4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Use bigrams for a list version of this function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into bigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> ngrams(sequence, <span class="number">2</span>, **kwargs):</span><br><span class="line">        <span class="keyword">yield</span> item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trigrams</span><span class="params">(sequence, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return the trigrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    For example:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; from nltk.util import trigrams</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(trigrams([1,2,3,4,5]))</span></span><br><span class="line"><span class="string">        [(1, 2, 3), (2, 3, 4), (3, 4, 5)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Use trigrams for a list version of this function.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> ngrams(sequence, <span class="number">3</span>, **kwargs):</span><br><span class="line">        <span class="keyword">yield</span> item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">everygrams</span><span class="params">(sequence, min_len=<span class="number">1</span>, max_len=<span class="number">-1</span>, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns all possible ngrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; sent = 'a b c'.split()</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(everygrams(sent))</span></span><br><span class="line"><span class="string">        [('a',), ('b',), ('c',), ('a', 'b'), ('b', 'c'), ('a', 'b', 'c')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(everygrams(sent, max_len=2))</span></span><br><span class="line"><span class="string">        [('a',), ('b',), ('c',), ('a', 'b'), ('b', 'c')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param min_len: minimum length of the ngrams, aka. n-gram order/degree of ngram</span></span><br><span class="line"><span class="string">    :type  min_len: int</span></span><br><span class="line"><span class="string">    :param max_len: maximum length of the ngrams (set to length of sequence by default)</span></span><br><span class="line"><span class="string">    :type  max_len: int</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> max_len == <span class="number">-1</span>:</span><br><span class="line">        max_len = len(sequence)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> range(min_len, max_len+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> ng <span class="keyword">in</span> ngrams(sequence, n, **kwargs):</span><br><span class="line">            <span class="keyword">yield</span> ng</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">skipgrams</span><span class="params">(sequence, n, k, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Returns all possible skipgrams generated from a sequence of items, as an iterator.</span></span><br><span class="line"><span class="string">    Skipgrams are ngrams that allows tokens to be skipped.</span></span><br><span class="line"><span class="string">    Refer to http://homepages.inf.ed.ac.uk/ballison/pdf/lrec_skipgrams.pdf</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; sent = "Insurgents killed in ongoing fighting".split()</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(skipgrams(sent, 2, 2))</span></span><br><span class="line"><span class="string">        [('Insurgents', 'killed'), ('Insurgents', 'in'), ('Insurgents', 'ongoing'), ('killed', 'in'), ('killed', 'ongoing'), ('killed', 'fighting'), ('in', 'ongoing'), ('in', 'fighting'), ('ongoing', 'fighting')]</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; list(skipgrams(sent, 3, 2))</span></span><br><span class="line"><span class="string">        [('Insurgents', 'killed', 'in'), ('Insurgents', 'killed', 'ongoing'), ('Insurgents', 'killed', 'fighting'), ('Insurgents', 'in', 'ongoing'), ('Insurgents', 'in', 'fighting'), ('Insurgents', 'ongoing', 'fighting'), ('killed', 'in', 'ongoing'), ('killed', 'in', 'fighting'), ('killed', 'ongoing', 'fighting'), ('in', 'ongoing', 'fighting')]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param sequence: the source data to be converted into trigrams</span></span><br><span class="line"><span class="string">    :type sequence: sequence or iter</span></span><br><span class="line"><span class="string">    :param n: the degree of the ngrams</span></span><br><span class="line"><span class="string">    :type n: int</span></span><br><span class="line"><span class="string">    :param k: the skip distance</span></span><br><span class="line"><span class="string">    :type  k: int</span></span><br><span class="line"><span class="string">    :rtype: iter(tuple)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Pads the sequence as desired by **kwargs.</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'pad_left'</span> <span class="keyword">in</span> kwargs <span class="keyword">or</span> <span class="string">'pad_right'</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        sequence = pad_sequence(sequence, n, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Note when iterating through the ngrams, the pad_right here is not</span></span><br><span class="line">    <span class="comment"># the **kwargs padding, it's for the algorithm to detect the SENTINEL</span></span><br><span class="line">    <span class="comment"># object on the right pad to stop inner loop.</span></span><br><span class="line">    SENTINEL = object()</span><br><span class="line">    <span class="keyword">for</span> ngram <span class="keyword">in</span> ngrams(sequence, n + k, pad_right=<span class="keyword">True</span>, right_pad_symbol=SENTINEL):</span><br><span class="line">        head = ngram[:<span class="number">1</span>]</span><br><span class="line">        tail = ngram[<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">for</span> skip_tail <span class="keyword">in</span> combinations(tail, n - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> skip_tail[<span class="number">-1</span>] <span class="keyword">is</span> SENTINEL:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">yield</span> head + skip_tail</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>NLP</category>
+      </categories>
+      <tags>
+        <tag>nltk</tag>
+        <tag>python</tag>
+        <tag>nlp</tag>
+        <tag>ngrams</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python中的iterable, iterator和generator</title>
+    <url>/python-iterable-iterator-generator/</url>
+    <content><![CDATA[<p>你有一個<code>list</code>，你想依序一次取出一個元素；<br>你有一個<code>string</code>, 你想依序一次取出一個字元；<br>你有一個<code>tuple</code> of <code>tuple</code>，你想依序一次取出一個<code>tuple</code>；<br>你有一個<code>dict</code>，你想一次取出一對<code>(key, value)</code>；<br>你有一個文本的<code>file</code> object，你想一次取出一行；</p>
+<h1 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h1><p>可迭代對象。讓我們先看看Python3官方文件Glossary中Iterable條目的內容：   </p>
+<blockquote>
+<h2 id="Iterable-可迭代物件"><a href="#Iterable-可迭代物件" class="headerlink" title="Iterable (可迭代物件)"></a>Iterable (可迭代物件)</h2><p>iterable(可迭代物件)是一種能夠一次回傳一個成員的物件。所有<strong>sequence類別</strong>的物件（例如<code>list</code>, <code>str</code>, <code>tuple</code>）和一些 <strong>non-sequence類別</strong>的物件（例如<code>dict</code>, <code>file</code> objects）都是iterable物件。另外，任何定義有<code>__iter__()</code>方法或者<code>__getitem__()</code>方法的<code>class</code>，實例化後的物件也算是iterable。</p>
+<blockquote>
+<p>Sequence: 定義有<code>__getitem__()</code>方法（可透過整數索引來存取其成員）和 <code>__len__()</code>方法（回傳sequence長度）的物件。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Iterables可以用在<code>for</code>迴圈和一些需要 sequence 的函數中(例如<code>zip()</code>, <code>map()</code>等等). 當iterable作為內建函數<code>iter()</code>的參數時，該函數會回傳該iterable的 iterator（迭代器）。Iterator可用來將包含一組值的集合拆開，一次取出其中一個值。在使用iterable，使用者通常不必自己呼叫<code>__iter__()</code>來產生iterator. Python中的 <code>for</code> 陳述式已經幫你把事情都處理好了：當你把一個iterable丟給<code>for...in...</code>時（例如<code>for i in [1, 2, 3, 4, 5]</code>），在執行迴圈時，會自動幫你產生一個iterator，並把該iterator賦予一個暫時的未命名變數。</p>
+</blockquote>
+<p>iterable和iterator是用來稱呼同一件事的不同構成要素：可以把iterable想像成有待分配的素材，像是一籃裝有20顆籃球的籃子，籃子中的每一顆籃球都是籃子中的一份子。現在想把籃球發給班上20個人，但籃球不會自己長出腳來走到每個人的腳邊，因此需要指派體育股長，讓他一次從籃子中取出一顆籃球發給每個人，迭代器 (iterator)扮演的角色就如同體育股長一樣，每次從iterable中取出一個成員。</p>
+<h1 id="常見做法"><a href="#常見做法" class="headerlink" title="常見做法"></a>常見做法</h1><p>Often the iterable classes will implement both <strong>iter</strong>() and <strong>next</strong>() in the same class, and have <strong>iter</strong>() return self, which makes the <em>iterable</em> class both an iterable and its own iterator. It’s perfectly fine to return a different object as the iterator, though.</p>
+<h1 id="能產生各種iterator的強大工具itertools"><a href="#能產生各種iterator的強大工具itertools" class="headerlink" title="能產生各種iterator的強大工具itertools"></a>能產生各種iterator的強大工具<code>itertools</code></h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="https://nvie.com/posts/iterators-vs-generators/" target="_blank" rel="noopener">Iterables vs. Iterators vs. Generators</a></li>
+<li><a href="https://www.datacamp.com/community/tutorials/python-iterator-tutorial" target="_blank" rel="noopener">DataCamp: Python Iterator Tutorial</a></li>
+<li><a href="https://anandology.com/python-practice-book/iterators.html" target="_blank" rel="noopener">Python Practice Book: 5. Iterators &amp; Generators</a></li>
+<li><a href="http://www.dabeaz.com/generators-uk/" target="_blank" rel="noopener">Generator Tricks for Systems Programmers (v2.0) by (David M. Beazley)</a></li>
+<li><a href="http://www.dabeaz.com/finalgenerator/" target="_blank" rel="noopener">Generators: The Final Frontier (by David M. Beazley)</a></li>
+<li><a href="https://docs.python.org/3/library/itertools.html" target="_blank" rel="noopener">Python3: <code>itertools</code></a></li>
+<li>為何要在 <code>__iter__</code> 方法中回傳<code>self</code>: <a href="https://stackoverflow.com/questions/35657927/what-is-the-use-of-returning-self-in-the-iter-method" target="_blank" rel="noopener">stackoverflow: What is the use of returning self in the <strong>iter</strong> method?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>iterator</tag>
+        <tag>iterable</tag>
+        <tag>generator</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>統計筆記</title>
+    <url>/statistics-note/</url>
+    <content><![CDATA[<h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><p>生活中有大量的訊息，我們往往希望能從這些雜亂的訊息中<strong>解讀出有用的資訊</strong>甚至是<strong>預測未來的趨勢</strong>。舉例來說，政府統計全台灣各縣市的人均收入，也許按照年齡層、性別、職業別區份，可以讓人民更了解台灣的經濟現況以及不同群體之間的差異性。</p>
+<h1 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h1><ul>
+<li>母體 Population: 宇集</li>
+<li>參數 Parameter: 關於母體的描述統計量，例如母體平均數、母體標準差，或者關於母體的Data model的參數</li>
+<li>樣本 Sample: 母體的子集合</li>
+<li>統計值 Statistics: 關於樣本的描述統計量</li>
+<li>Data Model: 用以產生新Data的模型，通常是未知，因此需要透過推論來得出。</li>
+<li>Likelihood: 用來推論Data model時會有各種假說，透過計算各個假說的Likelihood，來找出符合現有證據最可能為真的假說</li>
+</ul>
+<h1 id="描述統計學"><a href="#描述統計學" class="headerlink" title="描述統計學"></a>描述統計學</h1><p>對於蒐集到的一組資料，要如何描述這組資料的特徵？有哪些特徵可以識別一組資料？</p>
+<h2 id="平均數"><a href="#平均數" class="headerlink" title="平均數"></a>平均數</h2><h2 id="中數"><a href="#中數" class="headerlink" title="中數"></a>中數</h2><h2 id="眾數"><a href="#眾數" class="headerlink" title="眾數"></a>眾數</h2><h2 id="range"><a href="#range" class="headerlink" title="range"></a>range</h2><h2 id="Q3-Q1"><a href="#Q3-Q1" class="headerlink" title="Q3 - Q1"></a>Q3 - Q1</h2><h2 id="變異數"><a href="#變異數" class="headerlink" title="變異數"></a>變異數</h2><h2 id="標準差"><a href="#標準差" class="headerlink" title="標準差"></a>標準差</h2><h1 id="推論統計學"><a href="#推論統計學" class="headerlink" title="推論統計學"></a>推論統計學</h1><p>從蒐集到的樣本，我們希望可以推測出母體的狀態</p>
+<h2 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h2><blockquote>
+<p>Maximum likelihood estimation is a method that determines values for the parameters of a model. The parameter values are found such that they maximise the likelihood that the process described by the model produced the data that were actually observed.</p>
+</blockquote>
+<p><a href="https://towardsdatascience.com/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1" target="_blank" rel="noopener">Probability concepts explained: Maximum likelihood estimation</a></p>
+]]></content>
+      <categories>
+        <category>統計</category>
+      </categories>
+      <tags>
+        <tag>統計</tag>
       </tags>
   </entry>
   <entry>
@@ -1109,32 +1206,6 @@
       </tags>
   </entry>
   <entry>
-    <title>統計筆記</title>
-    <url>/statistics-note/</url>
-    <content><![CDATA[<h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><p>生活中有大量的訊息，我們往往希望能從這些雜亂的訊息中<strong>解讀出有用的資訊</strong>甚至是<strong>預測未來的趨勢</strong>。舉例來說，政府統計全台灣各縣市的人均收入，也許按照年齡層、性別、職業別區份，可以讓人民更了解台灣的經濟現況以及不同群體之間的差異性。</p>
-<h1 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h1><ul>
-<li>母體 Population: 宇集</li>
-<li>參數 Parameter: 關於母體的描述統計量，例如母體平均數、母體標準差，或者關於母體的Data model的參數</li>
-<li>樣本 Sample: 母體的子集合</li>
-<li>統計值 Statistics: 關於樣本的描述統計量</li>
-<li>Data Model: 用以產生新Data的模型，通常是未知，因此需要透過推論來得出。</li>
-<li>Likelihood: 用來推論Data model時會有各種假說，透過計算各個假說的Likelihood，來找出符合現有證據最可能為真的假說</li>
-</ul>
-<h1 id="描述統計學"><a href="#描述統計學" class="headerlink" title="描述統計學"></a>描述統計學</h1><p>對於蒐集到的一組資料，要如何描述這組資料的特徵？有哪些特徵可以識別一組資料？</p>
-<h2 id="平均數"><a href="#平均數" class="headerlink" title="平均數"></a>平均數</h2><h2 id="中數"><a href="#中數" class="headerlink" title="中數"></a>中數</h2><h2 id="眾數"><a href="#眾數" class="headerlink" title="眾數"></a>眾數</h2><h2 id="range"><a href="#range" class="headerlink" title="range"></a>range</h2><h2 id="Q3-Q1"><a href="#Q3-Q1" class="headerlink" title="Q3 - Q1"></a>Q3 - Q1</h2><h2 id="變異數"><a href="#變異數" class="headerlink" title="變異數"></a>變異數</h2><h2 id="標準差"><a href="#標準差" class="headerlink" title="標準差"></a>標準差</h2><h1 id="推論統計學"><a href="#推論統計學" class="headerlink" title="推論統計學"></a>推論統計學</h1><p>從蒐集到的樣本，我們希望可以推測出母體的狀態</p>
-<h2 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum Likelihood Estimation"></a>Maximum Likelihood Estimation</h2><blockquote>
-<p>Maximum likelihood estimation is a method that determines values for the parameters of a model. The parameter values are found such that they maximise the likelihood that the process described by the model produced the data that were actually observed.</p>
-</blockquote>
-<p><a href="https://towardsdatascience.com/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1" target="_blank" rel="noopener">Probability concepts explained: Maximum likelihood estimation</a></p>
-]]></content>
-      <categories>
-        <category>統計</category>
-      </categories>
-      <tags>
-        <tag>統計</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>台灣同性婚姻論述分析(I)</title>
     <url>/taiwan-same-sex-marriage-1/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>近年來，同婚議題在台灣社會逐漸受到重視，並在2017年大法官宣布目前保障一男一女的民法婚姻制度違憲之後，更帶來保守派反動力量的復甦。同婚的支持方與反對方之間的對立在2018年大選時達到高峰，首先由反對方（以下一代幸福聯盟為代表）提出了三案公投案，而後支持方（以伴侶盟為代表）也提出了兩案公投案。也因此使得同婚議題浮上政治檯面，無論支持兩好三壞或是三好兩壞，可以說同婚議題首次以如此「高調」的方式登上台灣社會的舞台。</p>
@@ -1228,42 +1299,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Python中的iterable, iterator和generator</title>
-    <url>/python-iterable-iterator-generator/</url>
-    <content><![CDATA[<p>你有一個<code>list</code>，你想依序一次取出一個元素；<br>你有一個<code>string</code>, 你想依序一次取出一個字元；<br>你有一個<code>tuple</code> of <code>tuple</code>，你想依序一次取出一個<code>tuple</code>；<br>你有一個<code>dict</code>，你想一次取出一對<code>(key, value)</code>；<br>你有一個文本的<code>file</code> object，你想一次取出一行；</p>
-<h1 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h1><p>可迭代對象。讓我們先看看Python3官方文件Glossary中Iterable條目的內容：   </p>
-<blockquote>
-<h2 id="Iterable-可迭代物件"><a href="#Iterable-可迭代物件" class="headerlink" title="Iterable (可迭代物件)"></a>Iterable (可迭代物件)</h2><p>iterable(可迭代物件)是一種能夠一次回傳一個成員的物件。所有<strong>sequence類別</strong>的物件（例如<code>list</code>, <code>str</code>, <code>tuple</code>）和一些 <strong>non-sequence類別</strong>的物件（例如<code>dict</code>, <code>file</code> objects）都是iterable物件。另外，任何定義有<code>__iter__()</code>方法或者<code>__getitem__()</code>方法的<code>class</code>，實例化後的物件也算是iterable。</p>
-<blockquote>
-<p>Sequence: 定義有<code>__getitem__()</code>方法（可透過整數索引來存取其成員）和 <code>__len__()</code>方法（回傳sequence長度）的物件。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>Iterables可以用在<code>for</code>迴圈和一些需要 sequence 的函數中(例如<code>zip()</code>, <code>map()</code>等等). 當iterable作為內建函數<code>iter()</code>的參數時，該函數會回傳該iterable的 iterator（迭代器）。Iterator可用來將包含一組值的集合拆開，一次取出其中一個值。在使用iterable，使用者通常不必自己呼叫<code>__iter__()</code>來產生iterator. Python中的 <code>for</code> 陳述式已經幫你把事情都處理好了：當你把一個iterable丟給<code>for...in...</code>時（例如<code>for i in [1, 2, 3, 4, 5]</code>），在執行迴圈時，會自動幫你產生一個iterator，並把該iterator賦予一個暫時的未命名變數。</p>
-</blockquote>
-<p>iterable和iterator是用來稱呼同一件事的不同構成要素：可以把iterable想像成有待分配的素材，像是一籃裝有20顆籃球的籃子，籃子中的每一顆籃球都是籃子中的一份子。現在想把籃球發給班上20個人，但籃球不會自己長出腳來走到每個人的腳邊，因此需要指派體育股長，讓他一次從籃子中取出一顆籃球發給每個人，迭代器 (iterator)扮演的角色就如同體育股長一樣，每次從iterable中取出一個成員。</p>
-<h1 id="常見做法"><a href="#常見做法" class="headerlink" title="常見做法"></a>常見做法</h1><p>Often the iterable classes will implement both <strong>iter</strong>() and <strong>next</strong>() in the same class, and have <strong>iter</strong>() return self, which makes the <em>iterable</em> class both an iterable and its own iterator. It’s perfectly fine to return a different object as the iterator, though.</p>
-<h1 id="能產生各種iterator的強大工具itertools"><a href="#能產生各種iterator的強大工具itertools" class="headerlink" title="能產生各種iterator的強大工具itertools"></a>能產生各種iterator的強大工具<code>itertools</code></h1><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="https://nvie.com/posts/iterators-vs-generators/" target="_blank" rel="noopener">Iterables vs. Iterators vs. Generators</a></li>
-<li><a href="https://www.datacamp.com/community/tutorials/python-iterator-tutorial" target="_blank" rel="noopener">DataCamp: Python Iterator Tutorial</a></li>
-<li><a href="https://anandology.com/python-practice-book/iterators.html" target="_blank" rel="noopener">Python Practice Book: 5. Iterators &amp; Generators</a></li>
-<li><a href="http://www.dabeaz.com/generators-uk/" target="_blank" rel="noopener">Generator Tricks for Systems Programmers (v2.0) by (David M. Beazley)</a></li>
-<li><a href="http://www.dabeaz.com/finalgenerator/" target="_blank" rel="noopener">Generators: The Final Frontier (by David M. Beazley)</a></li>
-<li><a href="https://docs.python.org/3/library/itertools.html" target="_blank" rel="noopener">Python3: <code>itertools</code></a></li>
-<li>為何要在 <code>__iter__</code> 方法中回傳<code>self</code>: <a href="https://stackoverflow.com/questions/35657927/what-is-the-use-of-returning-self-in-the-iter-method" target="_blank" rel="noopener">stackoverflow: What is the use of returning self in the <strong>iter</strong> method?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>iterator</tag>
-        <tag>iterable</tag>
-        <tag>generator</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>執著, 取 Upaya / Upādāna / Ādāna</title>
     <url>/upaya-%E5%9F%B7%E8%91%97/</url>
     <content><![CDATA[<h2 id="Upaya"><a href="#Upaya" class="headerlink" title="Upaya"></a>Upaya</h2><p>來自 upa + -i，也作upāya，只用形容詞，例如anūpaya (an + upaya: unattached) 和 rūpūpaya (rūpa + upaya: clinging to form)。</p>
@@ -1279,23 +1314,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TF-IDF</title>
-    <url>/tf-idf/</url>
-    <content><![CDATA[<h1 id="TF-IDF是什麼"><a href="#TF-IDF是什麼" class="headerlink" title="TF-IDF是什麼"></a>TF-IDF是什麼</h1><p>TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。</p>
-<h1 id="所以TF-IDF用來做什麼"><a href="#所以TF-IDF用來做什麼" class="headerlink" title="所以TF-IDF用來做什麼"></a>所以TF-IDF用來做什麼</h1><p>顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的<strong>預設</strong>是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？</p>
-<a id="more"></a>
-<h1 id="先說普通版本的詞頻計算"><a href="#先說普通版本的詞頻計算" class="headerlink" title="先說普通版本的詞頻計算"></a>先說普通版本的詞頻計算</h1><p>最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。</p>
-<h1 id="可是卻沒有考量到不同詞的特性"><a href="#可是卻沒有考量到不同詞的特性" class="headerlink" title="可是卻沒有考量到不同詞的特性"></a>可是卻沒有考量到不同詞的特性</h1><p>雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。</p>
-<h1 id="所以要想個方法可以降低常用詞詞頻的干擾"><a href="#所以要想個方法可以降低常用詞詞頻的干擾" class="headerlink" title="所以要想個方法可以降低常用詞詞頻的干擾"></a>所以要想個方法可以降低常用詞詞頻的干擾</h1><p>這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。<br>但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。<br>因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。<br>還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。</p>
-]]></content>
-      <categories>
-        <category>自然語言處理</category>
-      </categories>
-      <tags>
-        <tag>TF-IDF</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>จัด(ได้)ว่า... (可以)算作是...</title>
     <url>/%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B9%88%E0%B8%B2-%E5%8F%AF%E4%BB%A5%E7%AE%97%E4%BD%9C%E6%98%AF/</url>
     <content><![CDATA[<p>เธอบอกว่าคุณจัดว่าเป็นดาว<br>她說你可以算是一個明星。</p>
@@ -1307,47 +1325,6 @@
       </categories>
       <tags>
         <tag>泰文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>天城體輸入法</title>
-    <url>/%E5%A4%A9%E5%9F%8E%E9%AB%94%E8%BC%B8%E5%85%A5%E6%B3%95/</url>
-    <content><![CDATA[<p>請參考 <a href="https://github.com/ratreya/lipika-ime" target="_blank" rel="noopener">LipikaIME</a>，可以輸入天城體，也可以輸入IPA。並提供多個<a href="https://github.com/ratreya/lipika-ime/wiki/Transliteration-Schemes" target="_blank" rel="noopener">Transliteration</a>的轉換。</p>
-]]></content>
-      <categories>
-        <category>電腦</category>
-      </categories>
-      <tags>
-        <tag>梵文</tag>
-        <tag>天城體</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《法句經 Dhammapada》第183偈</title>
-    <url>/%E3%80%8A%E6%B3%95%E5%8F%A5%E7%B6%93-dhammapada%E3%80%8B%E7%AC%AC183%E5%81%88/</url>
-    <content><![CDATA[<p>sabbapāpassa akaraṇaṃ 諸惡莫作</p>
-<p>kusalassa upasampadā 眾善奉行</p>
-<p>sacittapariyodapanaṃ 自淨其意</p>
-<p>etaṃ bhuddhāna sāsanaṃ 是諸佛教<br><a id="more"></a><br>以下附上同一段以泰文拼讀的偈誦：</p>
-<blockquote>
-<p>สพฺพปาปสฺส อกรณํ</p>
-<p>กุสลสฺสูปสมฺปทา</p>
-<p>สจิตฺตปริโยทปนํ</p>
-<p>เอตํ พุทฺธาน สาสนํ</p>
-</blockquote>
-<h2 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h2><ul>
-<li>sabbapāpassa = sabba (所有) + pāpa (惡) + -assa (M. Sg. Gen.)</li>
-<li>upasampadā 是什麼意思？為什麼是善之具足？</li>
-<li>pariyodapanaṃ 來自 pariyodapeti (dapeti: dā的causative) + ana (Nominal deriavative)</li>
-<li>sacittapariyodapanaṃ = sa (自己的; Sk. sva) + citta (心) + pariyodapanaṃ (澄淨)</li>
-</ul>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
-        <tag>法句經</tag>
       </tags>
   </entry>
   <entry>
@@ -1366,6 +1343,128 @@
       </categories>
       <tags>
         <tag>梵文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>天城體輸入法</title>
+    <url>/%E5%A4%A9%E5%9F%8E%E9%AB%94%E8%BC%B8%E5%85%A5%E6%B3%95/</url>
+    <content><![CDATA[<p>請參考 <a href="https://github.com/ratreya/lipika-ime" target="_blank" rel="noopener">LipikaIME</a>，可以輸入天城體，也可以輸入IPA。並提供多個<a href="https://github.com/ratreya/lipika-ime/wiki/Transliteration-Schemes" target="_blank" rel="noopener">Transliteration</a>的轉換。</p>
+]]></content>
+      <categories>
+        <category>電腦</category>
+      </categories>
+      <tags>
+        <tag>梵文</tag>
+        <tag>天城體</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《法句經 Dhammapada》第183偈</title>
+    <url>/%E3%80%8A%E6%B3%95%E5%8F%A5%E7%B6%93-dhammapada%E3%80%8B%E7%AC%AC183%E5%81%88/</url>
+    <content><![CDATA[<p>諸惡莫作<br>眾善奉行<br>自淨其意<br>是諸佛教</p>
+<a id="more"></a>
+<h1 id="巴利文版本"><a href="#巴利文版本" class="headerlink" title="巴利文版本"></a>巴利文版本</h1><p>sabbapāpassa akaraṇaṃ<br>kusalassa upasampadā<br>sacittapariyodapanaṃ<br>etaṃ bhuddhāna sāsanaṃ</p>
+<h2 id="泰文拼讀的巴利文版本"><a href="#泰文拼讀的巴利文版本" class="headerlink" title="泰文拼讀的巴利文版本"></a>泰文拼讀的巴利文版本</h2><p>สพฺพปาปสฺส อกรณํ<br>กุสลสฺสูปสมฺปทา<br>สจิตฺตปริโยทปนํ<br>เอตํ พุทฺธาน สาสนํ</p>
+<h2 id="學習筆記"><a href="#學習筆記" class="headerlink" title="學習筆記"></a>學習筆記</h2><ul>
+<li>sabbapāpassa = sabba (所有) + pāpa (惡) + -assa (M. Sg. Gen.)</li>
+<li>upasampadā 是什麼意思？為什麼是善之具足？</li>
+<li>pariyodapanaṃ 來自 pariyodapeti (dapeti: dā的causative) + ana (Nominal deriavative)</li>
+<li>sacittapariyodapanaṃ = sa (自己的; Sk. sva) + citta (心) + pariyodapanaṃ (澄淨)</li>
+</ul>
+<h1 id="梵文版本"><a href="#梵文版本" class="headerlink" title="梵文版本"></a>梵文版本</h1><p>sarvapāpasyākaraṇaṃ<br>kuśalasyopasaṃpadaḥ<br>svacittaparyavadanam<br>etad buddhasya śāsanam</p>
+<h1 id="梵文版"><a href="#梵文版" class="headerlink" title="梵文版"></a>梵文版</h1><p>Udāna-varga 28: Pāpa-varga （〈優陀那品〉第二十八：惡行品）</p>
+
+<div data-gloss>
+	<p>sarvapāpasyākaraṇaṃ</p>
+	<p>sarva-pāpasya-akaraṇaṃ</p>
+	<p>所有-惡的-不造作</p>
+	<p>諸惡莫作</p>
+</div>
+
+<div data-gloss>
+	<p>kuśalasyopasaṃpadaḥ</p>
+	<p>kuśala-upasaṃpadaḥ</p>
+	<p>善-{to reach, obtain}</p>
+	<p>眾善奉行</p>
+</div>
+
+<div data-gloss>
+	<p>svacittaparyavadanam</p>
+	<p>sva-citta-paryavadanam</p>
+	<p>自己-心-清淨</p>
+	<p>自淨其意</p>
+</div>
+
+<div data-gloss>
+	<p>etad buddhasya śāsanam</p>
+	<p>etad buddhasya śāsanam</p>
+	<p>這 佛的 {√śās + ana}</p>
+	<p>是諸佛教</p>
+</div>
+
+
+
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>梵文</tag>
+        <tag>法句經</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Haskell</title>
+    <url>/%E5%A6%82%E4%BD%95%E5%9C%A8Haskell%E4%B8%AD%E5%AE%A3%E5%91%8Atype/</url>
+    <content><![CDATA[<h1 id="使用data宣告全新的type"><a href="#使用data宣告全新的type" class="headerlink" title="使用data宣告全新的type"></a>使用<code>data</code>宣告全新的type</h1><p>與type declaration只是宣告一個「關於既存類型的同義詞」不同，使用<code>data</code>關鍵字可以宣告全新的類型。<br>在Prelude中，<code>Bool</code>類型即是以下列方式宣告的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data Bool = True | False</span><br><span class="line">```  </span><br><span class="line">- 在``=``左邊的稱為 type constructor (上例中的``Bool``)</span><br><span class="line">- 在``=``右邊的稱為 data constructor 或 value constructor (上例中的``True`` 或 ``False``)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 使用 type parameter 的時機</span><br><span class="line"></span><br><span class="line">&gt; We usually use type parameters when the type that&apos;s contained inside the data type&apos;s various value constructors isn&apos;t really that important for the type to work  </span><br><span class="line"></span><br><span class="line">f</span><br><span class="line"></span><br><span class="line">&gt; 名詞定義：</span><br><span class="line">&gt; concrete types, fully applied type: 像是 ``Maybe Int``, ``Maybe Char``</span><br><span class="line">&gt; 至於``Maybe``本身只是一個**type constructor**，並非具體的type。任何值都必須具有concrete type。  </span><br><span class="line">&gt; 比較 ``Maybe`` 和 ``Maybe Int``:``Maybe``是一個type constructor，``Maybe Int``則是一個 concrete type</span><br><span class="line"></span><br><span class="line">## 好好區分 type constructor 和 data constructor</span><br><span class="line">type constructor只能出現在下面用``...``表示的幾個地方:</span><br><span class="line"></span><br><span class="line">-  ``data ... =`` </span><br><span class="line">-  ``type ... =`` </span><br><span class="line">-  ``::...``</span><br><span class="line">-  ``instance Eq ... where``</span><br><span class="line"></span><br><span class="line"># 使用``type``為現存的type宣告新的別名</span><br><span class="line"></span><br><span class="line">稱為 type synonym。用來給一個既有type提供一個別名。什麼時候需要這樣大費周章為已經存在的type提供新的名稱？</span><br><span class="line"></span><br><span class="line">&gt; We introduce type synonyms either to describe what some existing type represents in our functions (and thus our type declarations become better documentation) or when something has a long-ish type that&apos;s repeated a lot (like ``[(String,String)]``) but represents something more specific in the context of our functions.</span><br><span class="line">&gt; [LYAH](http://learnyouahaskell.com/making-our-own-types-and-typeclasses)</span><br><span class="line"></span><br><span class="line">``Char``是一個Haskell本身就定義好的type，如果要以``Char``為基礎，建立新的type，那麼就要使用``type``:</span><br></pre></td></tr></table></figure></p>
+<p>type String = [Char]<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">``Int``也是一個Haskell本身就有的、用以表達整數的type，如果想建立一個正整數座標的Point type，並包在tuple中，可以使用：</span><br></pre></td></tr></table></figure></p>
+<p>type Point = (Int, Int)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">當然，定義好新的type之後，新的type就可以用在別的type宣告中。</span><br><span class="line"></span><br><span class="line">也許有一系列的function都與「將一個Point轉換到另一個Point」有關，因此可以為這群函數宣告一個新的type：</span><br></pre></td></tr></table></figure></p>
+<p>type Transformation = Point -&gt; Point<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## Type synonym也可以具有type parameters</span><br></pre></td></tr></table></figure></p>
+<p>type Pair a = (a, a)<br><code>`</code><br>一個Pair可以是Pair Int (Int, Int)，可能是(Char, Char)</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a href="https://wiki.haskell.org/Constructor" target="_blank" rel="noopener">Constructor on Haskell Wiki</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Haskell</category>
+      </categories>
+      <tags>
+        <tag>Haskell</tag>
+        <tag>type</tag>
+        <tag>typeclass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>以泰文書寫巴利語時的ญ和ฐ</title>
+    <url>/%E4%BB%A5%E6%B3%B0%E6%96%87%E6%9B%B8%E5%AF%AB%E5%B7%B4%E5%88%A9%E8%AA%9E%E6%99%82%E7%9A%84%E0%B8%8D%E5%92%8C%E0%B8%90/</url>
+    <content><![CDATA[<p>現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u <code>ุ</code> 、長母音 ū <code>ู</code> 以及 <code>ฺ</code> 的時候，底座會自動不見，例如：ญุ ญู ญฺ ฐุ ฐู ฐฺ）。</p>
+<a id="more"></a>
+<p>於是就開始在網路上找資料、問朋友，首先是在維基百科上者兩個字母的條目(<a href="https://th.wikipedia.org/wiki/ฐ" target="_blank" rel="noopener">ญ條目</a>、<a href="https://th.wikipedia.org/wiki/ญ" target="_blank" rel="noopener">ฐ條目</a>)中讀到，有底座的 ญ 叫做 <code>ญ แบบมีเชิง</code> ，沒有底座的叫做 <code>ญ แบบไม่มีเชิง</code>，有了這個關鍵字，應該就會更容易在搜尋引擎中找到答案。</p>
+<p>Wikipedia中同時還提到，其實 Unicode 是有給這兩個沒有底座的符號一個編碼的：</p>
+<ul>
+<li>沒有底座的 ญ 在 <a href="https://www.fileformat.info/info/unicode/char/f70f/index.htm" target="_blank" rel="noopener">U+F70F</a></li>
+<li>沒有底座的 ฐ 在 <a href="https://www.fileformat.info/info/unicode/char/f700/index.htm" target="_blank" rel="noopener">U+F700</a></li>
+</ul>
+<p>只不過並不是每個泰文字型都有對這兩個Unicode碼做處理，所以如果是看一些以泰文拼寫巴利經文的網站，這兩個字母常常會顯示成亂碼，像是這樣：</p>
+<p><img src="/images/泰文拼寫巴利文網頁亂碼.png" alt><br><a href="https://84000.org/tipitaka/read/pali_read.php?B=17&amp;A=355&amp;w=&amp;modeTY=1&amp;pagebreak=" target="_blank" rel="noopener">圖片來源</a></p>
+<p>你可以看到小框框亂碼中所顯示的正是他們的Unicode編碼，有的是 <code>F70F</code>，有的是 <code>F700</code>。</p>
+<p>後來泰國朋友幫我找到了一個支援這兩個編碼的<a href="http://mahaoath.com/2012/04/แจก-font-บาลี" target="_blank" rel="noopener">泰文字型網站</a>，</p>
+<p><img src="/images/泰文巴利文字型下載.png" alt></p>
+<p>點擊上圖中的紅色框框即可以下載字型並安裝，一共提供有以下幾個字型：</p>
+<ul>
+<li>Angsana Bali</li>
+<li>Bali Aksaramatee (還有黑體, 斜體, 斜黑體)</li>
+<li>Bali Garuda (還有黑體, 斜體, 斜黑體)</li>
+</ul>
+<p>另外我還在<a href="https://www.fileformat.info/info/unicode/char/f700/fontsupport.htm" target="_blank" rel="noopener">別的地方</a>看到字體 Arial Unicode MS 也有支援這兩個沒有底座的Unicode字體。</p>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>泰文</tag>
       </tags>
   </entry>
   <entry>
@@ -1418,72 +1517,6 @@
       </tags>
   </entry>
   <entry>
-    <title>以泰文書寫巴利語時的ญ和ฐ</title>
-    <url>/%E4%BB%A5%E6%B3%B0%E6%96%87%E6%9B%B8%E5%AF%AB%E5%B7%B4%E5%88%A9%E8%AA%9E%E6%99%82%E7%9A%84%E0%B8%8D%E5%92%8C%E0%B8%90/</url>
-    <content><![CDATA[<p>現在在以泰文拼寫的巴利文中，有兩個特別的字母需要注意，那就是 ญ 和 ฐ。我們可以看到在這兩個字母下面有兩個小小的東西，叫做 เฃิง 或 ฐาน，為「基座」的意思。當 ญ 被用來表示 ñ 、 ฐ 被用來表示 ṭh 的時候，其實是要以沒有底座的形式來書寫的。問題是一般泰文字型並無法單獨顯示這兩個子音沒有基座時的樣子。（有兩個例外，當這兩個字母加上短母音 -u <code>ุ</code> 、長母音 ū <code>ู</code> 以及 <code>ฺ</code> 的時候，底座會自動不見，例如：ญุ ญู ญฺ ฐุ ฐู ฐฺ）。</p>
-<a id="more"></a>
-<p>於是就開始在網路上找資料、問朋友，首先是在維基百科上者兩個字母的條目(<a href="https://th.wikipedia.org/wiki/ฐ" target="_blank" rel="noopener">ญ條目</a>、<a href="https://th.wikipedia.org/wiki/ญ" target="_blank" rel="noopener">ฐ條目</a>)中讀到，有底座的 ญ 叫做 <code>ญ แบบมีเชิง</code> ，沒有底座的叫做 <code>ญ แบบไม่มีเชิง</code>，有了這個關鍵字，應該就會更容易在搜尋引擎中找到答案。</p>
-<p>Wikipedia中同時還提到，其實 Unicode 是有給這兩個沒有底座的符號一個編碼的：</p>
-<ul>
-<li>沒有底座的 ญ 在 <a href="https://www.fileformat.info/info/unicode/char/f70f/index.htm" target="_blank" rel="noopener">U+F70F</a></li>
-<li>沒有底座的 ฐ 在 <a href="https://www.fileformat.info/info/unicode/char/f700/index.htm" target="_blank" rel="noopener">U+F700</a></li>
-</ul>
-<p>只不過並不是每個泰文字型都有對這兩個Unicode碼做處理，所以如果是看一些以泰文拼寫巴利經文的網站，這兩個字母常常會顯示成亂碼，像是這樣：</p>
-<p><img src="/images/泰文拼寫巴利文網頁亂碼.png" alt><br><a href="https://84000.org/tipitaka/read/pali_read.php?B=17&amp;A=355&amp;w=&amp;modeTY=1&amp;pagebreak=" target="_blank" rel="noopener">圖片來源</a></p>
-<p>你可以看到小框框亂碼中所顯示的正是他們的Unicode編碼，有的是 <code>F70F</code>，有的是 <code>F700</code>。</p>
-<p>後來泰國朋友幫我找到了一個支援這兩個編碼的<a href="http://mahaoath.com/2012/04/แจก-font-บาลี" target="_blank" rel="noopener">泰文字型網站</a>，</p>
-<p><img src="/images/泰文巴利文字型下載.png" alt></p>
-<p>點擊上圖中的紅色框框即可以下載字型並安裝，一共提供有以下幾個字型：</p>
-<ul>
-<li>Angsana Bali</li>
-<li>Bali Aksaramatee (還有黑體, 斜體, 斜黑體)</li>
-<li>Bali Garuda (還有黑體, 斜體, 斜黑體)</li>
-</ul>
-<p>另外我還在<a href="https://www.fileformat.info/info/unicode/char/f700/fontsupport.htm" target="_blank" rel="noopener">別的地方</a>看到字體 Arial Unicode MS 也有支援這兩個沒有底座的Unicode字體。</p>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
-        <tag>泰文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Haskell</title>
-    <url>/%E5%A6%82%E4%BD%95%E5%9C%A8Haskell%E4%B8%AD%E5%AE%A3%E5%91%8Atype/</url>
-    <content><![CDATA[<h1 id="使用data宣告全新的type"><a href="#使用data宣告全新的type" class="headerlink" title="使用data宣告全新的type"></a>使用<code>data</code>宣告全新的type</h1><p>與type declaration只是宣告一個「關於既存類型的同義詞」不同，使用<code>data</code>關鍵字可以宣告全新的類型。<br>在Prelude中，<code>Bool</code>類型即是以下列方式宣告的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data Bool = True | False</span><br><span class="line">```  </span><br><span class="line">- 在``=``左邊的稱為 type constructor (上例中的``Bool``)</span><br><span class="line">- 在``=``右邊的稱為 data constructor 或 value constructor (上例中的``True`` 或 ``False``)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 使用 type parameter 的時機</span><br><span class="line"></span><br><span class="line">&gt; We usually use type parameters when the type that&apos;s contained inside the data type&apos;s various value constructors isn&apos;t really that important for the type to work  </span><br><span class="line"></span><br><span class="line">f</span><br><span class="line"></span><br><span class="line">&gt; 名詞定義：</span><br><span class="line">&gt; concrete types, fully applied type: 像是 ``Maybe Int``, ``Maybe Char``</span><br><span class="line">&gt; 至於``Maybe``本身只是一個**type constructor**，並非具體的type。任何值都必須具有concrete type。  </span><br><span class="line">&gt; 比較 ``Maybe`` 和 ``Maybe Int``:``Maybe``是一個type constructor，``Maybe Int``則是一個 concrete type</span><br><span class="line"></span><br><span class="line">## 好好區分 type constructor 和 data constructor</span><br><span class="line">type constructor只能出現在下面用``...``表示的幾個地方:</span><br><span class="line"></span><br><span class="line">-  ``data ... =`` </span><br><span class="line">-  ``type ... =`` </span><br><span class="line">-  ``::...``</span><br><span class="line">-  ``instance Eq ... where``</span><br><span class="line"></span><br><span class="line"># 使用``type``為現存的type宣告新的別名</span><br><span class="line"></span><br><span class="line">稱為 type synonym。用來給一個既有type提供一個別名。什麼時候需要這樣大費周章為已經存在的type提供新的名稱？</span><br><span class="line"></span><br><span class="line">&gt; We introduce type synonyms either to describe what some existing type represents in our functions (and thus our type declarations become better documentation) or when something has a long-ish type that&apos;s repeated a lot (like ``[(String,String)]``) but represents something more specific in the context of our functions.</span><br><span class="line">&gt; [LYAH](http://learnyouahaskell.com/making-our-own-types-and-typeclasses)</span><br><span class="line"></span><br><span class="line">``Char``是一個Haskell本身就定義好的type，如果要以``Char``為基礎，建立新的type，那麼就要使用``type``:</span><br></pre></td></tr></table></figure></p>
-<p>type String = [Char]<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">``Int``也是一個Haskell本身就有的、用以表達整數的type，如果想建立一個正整數座標的Point type，並包在tuple中，可以使用：</span><br></pre></td></tr></table></figure></p>
-<p>type Point = (Int, Int)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">當然，定義好新的type之後，新的type就可以用在別的type宣告中。</span><br><span class="line"></span><br><span class="line">也許有一系列的function都與「將一個Point轉換到另一個Point」有關，因此可以為這群函數宣告一個新的type：</span><br></pre></td></tr></table></figure></p>
-<p>type Transformation = Point -&gt; Point<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## Type synonym也可以具有type parameters</span><br></pre></td></tr></table></figure></p>
-<p>type Pair a = (a, a)<br><code>`</code><br>一個Pair可以是Pair Int (Int, Int)，可能是(Char, Char)</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
-<li><a href="https://wiki.haskell.org/Constructor" target="_blank" rel="noopener">Constructor on Haskell Wiki</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Haskell</category>
-      </categories>
-      <tags>
-        <tag>Haskell</tag>
-        <tag>type</tag>
-        <tag>typeclass</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>實用Linux指令</title>
-    <url>/%E5%AF%A6%E7%94%A8Linux%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="移動資料夾相關"><a href="#移動資料夾相關" class="headerlink" title="移動資料夾相關"></a>移動資料夾相關</h1><p>將<code>/home/don/dir1/dir2</code>移動到<code>/home/don/dir2</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mv /home/don/dir1/dir2 /home/don/dir2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>實用指令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>巴利三藏各經縮寫</title>
     <url>/%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E5%90%84%E7%B6%93%E7%B8%AE%E5%AF%AB/</url>
     <content><![CDATA[<ul>
@@ -1525,6 +1558,34 @@
       </tags>
   </entry>
   <entry>
+    <title>巴利三藏的註釋書</title>
+    <url>/%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E7%9A%84%E8%A8%BB%E9%87%8B%E6%9B%B8/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://www.accesstoinsight.org/noncanon/fieldguide.html" target="_blank" rel="noopener">Beyond the Tipitaka: A Field Guide to Post-canonical Pali Literature [Access to Insight]</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>三藏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>實用Linux指令</title>
+    <url>/%E5%AF%A6%E7%94%A8Linux%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="移動資料夾相關"><a href="#移動資料夾相關" class="headerlink" title="移動資料夾相關"></a>移動資料夾相關</h1><p>將<code>/home/don/dir1/dir2</code>移動到<code>/home/don/dir2</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mv /home/don/dir1/dir2 /home/don/dir2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>實用指令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>巴利經文的詞頻表</title>
     <url>/%E5%B7%B4%E5%88%A9%E7%B6%93%E6%96%87%E7%9A%84%E8%A9%9E%E9%A0%BB%E8%A1%A8/</url>
     <content><![CDATA[<p>在 <a href="https://palistudies.blogspot.com/2018/05/learn-pali-where-to-begin.html" target="_blank" rel="noopener">Learn Pali: Best way to start? 5 Tips to make it easy</a> 這篇文章中提到：</p>
@@ -1547,18 +1608,22 @@
       </tags>
   </entry>
   <entry>
-    <title>巴利三藏的註釋書</title>
-    <url>/%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E7%9A%84%E8%A8%BB%E9%87%8B%E6%9B%B8/</url>
+    <title>德文modal particles</title>
+    <url>/%E5%BE%B7%E6%96%87modal-particles/</url>
     <content><![CDATA[<ul>
-<li><a href="https://www.accesstoinsight.org/noncanon/fieldguide.html" target="_blank" rel="noopener">Beyond the Tipitaka: A Field Guide to Post-canonical Pali Literature [Access to Insight]</a></li>
+<li><a href="https://calper.la.psu.edu/publications/publication-items/teaching-german-modal-particles-a-corpus-based-approach/" target="_blank" rel="noopener">Vyatkina &amp; Johnson. (2007). Teaching German Modal Particles: A Corpus-based Approach.</a><ul>
+<li>此網站有提供Handout的下載連結，很實用的練習</li>
+</ul>
+</li>
+<li><a href="https://www.researchgate.net/publication/230881580_German_modal_particles_and_the_common_ground" target="_blank" rel="noopener">Bross, Fabian. (2012). German modal particles and the common ground</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>巴利文</category>
+        <category>德文</category>
       </categories>
       <tags>
-        <tag>巴利文</tag>
-        <tag>三藏</tag>
+        <tag>德文</tag>
+        <tag>modal particles</tag>
       </tags>
   </entry>
   <entry>
@@ -1590,14 +1655,34 @@
       </tags>
   </entry>
   <entry>
-    <title>德文modal particles</title>
-    <url>/%E5%BE%B7%E6%96%87modal-particles/</url>
-    <content><![CDATA[<ul>
-<li><a href="https://calper.la.psu.edu/publications/publication-items/teaching-german-modal-particles-a-corpus-based-approach/" target="_blank" rel="noopener">Vyatkina &amp; Johnson. (2007). Teaching German Modal Particles: A Corpus-based Approach.</a><ul>
-<li>此網站有提供Handout的下載連結，很實用的練習</li>
+    <title>TF-IDF</title>
+    <url>/tf-idf/</url>
+    <content><![CDATA[<h1 id="TF-IDF是什麼"><a href="#TF-IDF是什麼" class="headerlink" title="TF-IDF是什麼"></a>TF-IDF是什麼</h1><p>TF-IDF為Term Frequency-Inverse Document Frequency的縮寫。</p>
+<h1 id="所以TF-IDF用來做什麼"><a href="#所以TF-IDF用來做什麼" class="headerlink" title="所以TF-IDF用來做什麼"></a>所以TF-IDF用來做什麼</h1><p>顧名思義，他是用來計算一個詞在一整組文件中所出現的頻率，而計算詞頻可以進一步用來反映對於某份文件而言，哪些關鍵字是比較重要的（這裡的<strong>預設</strong>是，一個詞越常出現，它在文件中就越重要）。而TF-IDF加強版的算法。但什麼叫加強版？對哪種普通版本的加強？</p>
+<a id="more"></a>
+<h1 id="先說普通版本的詞頻計算"><a href="#先說普通版本的詞頻計算" class="headerlink" title="先說普通版本的詞頻計算"></a>先說普通版本的詞頻計算</h1><p>最直接計算詞頻的方式，就是用一詞在所有文件中出現的次數，去除以所有文件的詞彙量總和。這樣的想法當然達成了計算該詞在所有文件裡出現頻率的目的。到這裡我們完成的是TF-IDF的前半部——詞頻（Term Frequency）沒錯。</p>
+<h1 id="可是卻沒有考量到不同詞的特性"><a href="#可是卻沒有考量到不同詞的特性" class="headerlink" title="可是卻沒有考量到不同詞的特性"></a>可是卻沒有考量到不同詞的特性</h1><p>雖然可以用程式去跑一整組文件裡每個詞的在所有文件中的出現頻率，但這樣的做法忽略了一個事實：有些常用詞幾乎會在所有文件中大量出現，像是「這個」、「的」…等，所以這幾個常用詞的TF會非常高。如此一來便不能用來反映屬於每份文件中最具特色的詞是什麼。</p>
+<h1 id="所以要想個方法可以降低常用詞詞頻的干擾"><a href="#所以要想個方法可以降低常用詞詞頻的干擾" class="headerlink" title="所以要想個方法可以降低常用詞詞頻的干擾"></a>所以要想個方法可以降低常用詞詞頻的干擾</h1><p>這時候我們就要想辦法利用加權的方式，讓一些常用詞的權數小一點，讓一些真正特殊的詞的權重高一點，才能算出對我們有意義的結果。<br>但我們要怎麼知道哪些詞是常用詞、哪些不是？第一種做法是先去找出一張中文常用詞列表就完成了。但這個做法是靜態的，一切都是那張列表說了算，無法反映我們手頭上文件的真實狀況。<br>因此這時有了第二種做法，要求出在我們手上的文件中哪些是常用詞，可以用「手上的文件中有該詞出現的文件總數」除以「手上的文件總數」，像是「的」這個詞，我想幾乎所有的文件都會出現這個詞，因此用「手上的文件中有『的』出現的文件總數」除以「手上的文件總數」，應該會趨近於1。<br>還記得我們的目的嗎？我們想要降低「的」這個超級常用詞的權數，所以我們把它倒過來（所以叫做Inverse），作為權數，去乘上前面已經算好的TF，就完成了TF-IDF的計算。</p>
+]]></content>
+      <categories>
+        <category>自然語言處理</category>
+      </categories>
+      <tags>
+        <tag>TF-IDF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>德文反身動詞以及中文的「讓自己...」</title>
+    <url>/%E5%BE%B7%E6%96%87%E5%8F%8D%E8%BA%AB%E5%8B%95%E8%A9%9E%E4%BB%A5%E5%8F%8A%E4%B8%AD%E6%96%87%E7%9A%84%E3%80%8C%E8%AE%93%E8%87%AA%E5%B7%B1-%E3%80%8D/</url>
+    <content><![CDATA[<h2 id="列舉幾個德文的反身動詞"><a href="#列舉幾個德文的反身動詞" class="headerlink" title="列舉幾個德文的反身動詞"></a>列舉幾個德文的反身動詞</h2><ul>
+<li>sich entspannen 讓自己放鬆</li>
+<li>sich merken 讓自己記住; 記得</li>
+<li>sich verbessern 讓自己變得更好; 進步</li>
+<li>sich ändern 讓自己改變</li>
 </ul>
-</li>
-<li><a href="https://www.researchgate.net/publication/230881580_German_modal_particles_and_the_common_ground" target="_blank" rel="noopener">Bross, Fabian. (2012). German modal particles and the common ground</a></li>
+<h2 id="觀察一"><a href="#觀察一" class="headerlink" title="觀察一"></a>觀察一</h2><ul>
+<li>這些動詞似乎都有一個及物動詞的用法，有時是以物作主語: Lesen entspannt. (閱讀使人放鬆); Dieses Erlebnis hat ihn sehr geändert. (這一經歷使他大大的改變了看法。)</li>
+<li>有時是人做主語: Er will damit seine finanzielle Lage verbessern. (他想以此改善自己的經濟狀況。) Ich habe gemerkt, … (我有發現到…)</li>
 </ul>
 ]]></content>
       <categories>
@@ -1605,67 +1690,7 @@
       </categories>
       <tags>
         <tag>德文</tag>
-        <tag>modal particles</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>巴利經藏的編碼方式</title>
-    <url>/%E5%B7%B4%E5%88%A9%E7%B6%93%E8%97%8F%E7%9A%84%E7%B7%A8%E7%A2%BC%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<ul>
-<li><a href="https://palistudies.blogspot.com/2018/05/navigating-sutta-numbering-schemes.html" target="_blank" rel="noopener">Navigating the Sutta Pitaka, A Simple guide to the Numbering Schemes [Learn Pali Language] </a><ul>
-<li>經藏的編碼方式主要有兩種<ul>
-<li>以第幾個經文為主: <code>DN 7</code> 表示 經藏長部第7經</li>
-<li>以 Pali Text Society (PTS) 出版之頁碼為主: <code>D i 159</code> 表示長部第一冊第 159 頁。（所以讀者必須去找出PTS所出版的長部第一冊）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="https://accesstoinsight.org/abbrev.html" target="_blank" rel="noopener">Abbreviations, Symbols, and Sutta Reference Numbers [Access to Insight]</a></li>
-<li><p>The Contents and Structure of the Pali Canon and its Commentaries by the UK Association for Buddhist Studies at the University of Sunderland</p>
-<ul>
-<li>這份文件我是從上一個連結中找到的，上一個連結說這邊給了目前巴利佛典編碼系統一個不錯的回顧，只不過原本所附的連結掛掉了，後來我找到了一下兩個備份連結<ul>
-<li><a href="https://web.archive.org/web/20021213225729/http://www.sunderland.ac.uk:80/~os0dwe/bs12.html" target="_blank" rel="noopener">連結一(Wayback Machine)</a></li>
-<li><a href="https://scdd.sfo2.cdn.digitaloceanspaces.com/uploads/original/2X/2/260d7b3b86800cbf6589dee48ab88ea4b301b22f.pdf" target="_blank" rel="noopener">連結二(pdf檔)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a href="https://suttacentral.net/general-guide-sujato" target="_blank" rel="noopener">Bhikkhu Sujato. (2019). A Reader’s Guide to the Pali Suttas</a></p>
-<ul>
-<li>這一篇文章主要是給入門者看的閱讀指引，非常值得得一讀</li>
-<li>在這網頁中的”Looking Up References”一節介紹的即是巴利經文的編碼系統，本文作者認為與其採用PTS出版之頁碼的方式，不如採用更貼近、更按照經典語意意涵的編碼方式，也就是按照某部第幾經第幾節的方式。</li>
-<li>這個網頁是對巴利經典的概覽（見網頁最上方General的頁籤），<strong>讀者還可以點到其旁邊的Long (長部), Middle (中部), Linked (相應部), Numbered (增支部)去讀各部的概覽</strong>。</li>
-<li>各章節內容<ul>
-<li>About These Guides: 前言<ul>
-<li>An Approachable Translation: 作者在翻譯佛典所採取的精神，要讓就算不懂佛法的人也能容易親近的翻譯</li>
-<li>Plan Your Route or Wander in the Garden: 如何在佛典之林中漫遊</li>
-<li>Looking Up References: 如何看懂佛典的編碼方式，以及據此找出原文段落</li>
-<li><strong>Elements of Structure: 佛典中的文字結構</strong></li>
-</ul>
-</li>
-<li><strong>譬喻、敘事結構、大量重複、縮略、標題</strong></li>
-<li><strong>章節區分：Vagga (“Chapter”, 品, 章), Paṇṇāsaka (“Fifty”), Nipāta (“Group”, 集篇), Saṁyutta (“Collection of Linked Discourses”, 相應), Nikāya or Āgama (“Division”, 尼柯耶, 阿含, 部)</strong><ul>
-<li>In the Buddha’s Day: A Time of Change: 考古對這時代的發現不多；佛陀時代的大環境，印度列國時代(janapada)，佛陀為釋迦(sakka)族，是一個小型城邦共和國，依附於十六國中的拘薩羅國(Kosala)。</li>
-<li>Economics and Politics: 當時的政治經濟環境；當時開始出現的新技術：冶鐵與黑陶(Northern Black Polished Ware)</li>
-<li>Social Life: 此時尚未出現整套完整的種姓制度，但已有粗略的區分</li>
-<li>The Many Spiritual Paths of Ancient India</li>
-<li>Cosmology</li>
-<li>On the Pali Commentaries: 關於巴利經典的註釋書；主要的註釋書由覺音於五世紀時集結而成，從當時的僧伽羅文再重新翻回巴利文</li>
-<li>A Brief and Incomplete Textual History: 關於佛典編輯的歷史；PTS其歷史與問題；本網站採用第六次集結的Mahāsaṅgīti的巴利文版本</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
-        <tag>三藏</tag>
+        <tag>學習心得</tag>
       </tags>
   </entry>
   <entry>
@@ -1674,66 +1699,151 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>梵文心經</title>
-    <url>/%E6%A2%B5%E6%96%87%E5%BF%83%E7%B6%93/</url>
-    <content><![CDATA[<p>&nbsp;<br><a id="more"></a></p>
-
-<div class="box" data-gloss>
-<p>Āryāvalokiteśvaro bodhisattvo gambhīrāyāṃ prajñāpāramitāyāṃ caryāṃ caramāṇo vyavalokayati sma pañca skandhāḥ tāṃś ca svabhāvaśūnyān paśyati sma</p>
-<p>Ārya-ava(從上而下)+lokita(√lok的PPP)-iśvaraḥ bodhi-sattvaḥ gambhīrāyāṃ prajñā-pāramitāyāṃ caryāṃ(√car) caramāṇaḥ(√car的PPR) vi-ava-lokayati(√lok的CAUS) sma pañca skandhāḥ tān ca sva-bhāva-śūnyān paśyati(√dṛś) sma</p>
-<p>高超的-觀看-自在 覺-有情 深奧的 般若-波羅蜜多 運行 運行者 關照 (過去式標記) 五 積聚 那些 以及 自-性-空 看 (過去式標記)</p>
-<p>M.SG.NOM. M.SG.NOM. F.SG.LOC. F.SG.LOC. F.SG.ACC. PPR.M.SG.NOM. PRES.3.SG. PART. M.PL.NOM. M.PL.NOM. M.PL.ACC. PART. M.PL.ACC. PRES.3.SG. PART.</p>
-<p>觀自在菩薩，行深般若密多時，觀照五蘊，而將此等五蘊看成在本身的存在是空的。</p>
-</div>
-
-<div data-gloss>
-<p>iha śāriputra rūpaṃ śūnyatā śūnyataiva rūpaṃ</p>
-<p>iha śāriputra rūpaṃ śūnyatā śūnyatā-eva rūpaṃ</p>
-<p>在此 舍利子 色 空性 空性-就 色</p>
-<p>IND. M.SG.NOM. N.SG.NOM. F.SG.NOM. F.SG.NOM.-IND. N.SG.NOM.</p>
-<p>舍利子！色即是空性，而空性即是色。</p>
-</div>
-
-<div data-gloss>
-<p>rūpān na pṛthak śūnyatā śūnyatāyā na pṛthag rūpaṃ</p>
-<p>rūpāt na pṛthak śūnya-tā śūnya-tā-yā na pṛthak rūpaṃ</p>
-<p>色 不 異於 空-性 空-性 不 異於 色</p>
-<p>N.SG.ABL. IND. IND. F.SG.NOM. F.SG.ABL. IND. IND. N.SG.NOM.</p>
-<p>色不異於空，空不異於色。</p>
-</div>
-
-<div data-gloss>
-<p>yad rūpāṃ sā śūnyatā yā śūnyatā tad rūpam</p>
-<p>yad rūpāṃ sā śūnya-tā yā śūnya-tā tad rūpaṃ</p>
-<p>凡是 色 皆是 空-性 凡是 空-性 皆是 色</p>
-<p>N.SG.NOM. N.SG.NOM. F.SG.NOM. F.SG.NOM. F.SG.NOM. F.SG.NOM. N.SG.NOM. N.SG.NOM.</p>
-<p>凡為色的皆是空性，凡為空性的皆是色。</p>
-</div>
-
-<div data-gloss>
-<p>evameva vedanāsaṃjñāsaṃskāravijñānāni</p>
-<p>evam-eva vedanā-saṃjñā-saṃskāra-vijñānāni</p>
-<p>如此-就 受-想-行-識</p>
-<p>IND.-IND. N.PL.NOM.</p>
-<p>受想行識，亦復如是。</p>
-</div>
-
-<div data-gloss>
-<p>iha Sāriputra sarvadharmāḥ śūnyatālakṣaṇā anutpannā aniruddhā amalā na vimalā nonā na paripūrṇāḥ</p>
-<p>iha Sāriputra sarva-dharmāḥ śūnya-tā-lakṣaṇāḥ an-utpannāḥ a-niruddhāḥ a-malāḥ na vi-malāḥ na unāḥ-na pari-pūrṇāḥ(√pṝ的PPP.)</p>
-<p>在此 舍利子 所有-法 空-性-相 未-已生起 未-已熄滅 非-污垢 非 離-污垢 非 減-非 遍-增</p>
-<p>IND.-IND. N.PL.NOM.</p>
-<p>舍利子！是諸法空相，不生不滅，不垢不淨，不增不減。</p>
-</div>
-
-]]></content>
+    <title>梵文內連音(Internal Sandhi)</title>
+    <url>/%E6%A2%B5%E6%96%87%E5%85%A7%E9%80%A3%E9%9F%B3-Internal-Sandhi/</url>
+    <content><![CDATA[<p>內連音出現在詞內，例如一個動詞詞根要加上<code>-ta</code>形成過去被動分詞時，動詞詞根的尾音和<code>-t</code>可能就會產生內連音。</p>
+<h1 id="t-的內連音"><a href="#t-的內連音" class="headerlink" title="-t 的內連音"></a>-t 的內連音</h1><h2 id="使用場景："><a href="#使用場景：" class="headerlink" title="使用場景："></a>使用場景：</h2><ul>
+<li>不定式 (Inf.): 動詞詞根 + -tum</li>
+<li>過去被動分詞 (P.P.P): 動詞詞根 + -ta</li>
+<li>Absolutive: 動詞詞根 + -tvā</li>
+</ul>
+<h2 id="原則一：動詞詞根的末子音要盡量接近t的發音特徵"><a href="#原則一：動詞詞根的末子音要盡量接近t的發音特徵" class="headerlink" title="原則一：動詞詞根的末子音要盡量接近t的發音特徵"></a>原則一：動詞詞根的末子音要盡量接近<code>t</code>的發音特徵</h2><p>由於 <code>t</code> 是一個無聲不送氣的子音 <code>[-voiced][-aspirated]</code> ，所以當動詞詞根原本的末子音是有聲時，就要變成無聲；原本的末子音是送氣時，就要變成不送氣。</p>
+<p>例如：</p>
+<ul>
+<li>d &gt; t: chid -&gt; chittvā</li>
+<li></li>
+</ul>
+<h2 id="特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h"><a href="#特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h" class="headerlink" title="特殊規則：動詞詞根的末子音是有聲有送氣時 (jh, ḍh, dh, bh, h)"></a>特殊規則：動詞詞根的末子音是<code>有聲有送氣</code>時 (jh, ḍh, dh, bh, h)</h2><h1 id="s-gt-s-Ruki"><a href="#s-gt-s-Ruki" class="headerlink" title="s -&gt; ṣ (Ruki)"></a>s -&gt; ṣ (Ruki)</h1><h2 id="使用場景：名詞複數位格-su"><a href="#使用場景：名詞複數位格-su" class="headerlink" title="使用場景：名詞複數位格 (-su)"></a>使用場景：名詞複數位格 (-su)</h2><h1 id="n-gt-n-Ruki"><a href="#n-gt-n-Ruki" class="headerlink" title="n -&gt; ṇ (Ruki)"></a>n -&gt; ṇ (Ruki)</h1><h2 id="使用場景：陽性-中性-a-名詞單數具格-ena"><a href="#使用場景：陽性-中性-a-名詞單數具格-ena" class="headerlink" title="使用場景：陽性, 中性 -a 名詞單數具格 (-ena)"></a>使用場景：陽性, 中性 -a 名詞單數具格 (-ena)</h2>]]></content>
       <categories>
         <category>梵文</category>
       </categories>
       <tags>
         <tag>梵文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梵文二上筆記</title>
+    <url>/%E6%A2%B5%E6%96%87%E4%BA%8C%E4%B8%8A%E7%AD%86%E8%A8%98/</url>
+    <content><![CDATA[<p>本課程使用的教科書 <a href="https://press.anu.edu.au/publications/textbooks/joy-sanskrit" target="_blank" rel="noopener">The Joy of Sanskrit (Taylor &amp; Scotellaro 2014)</a>，以及老師自己所給的佛教梵文經典。</p>
+<h1 id="W1-2020-9-18"><a href="#W1-2020-9-18" class="headerlink" title="W1 2020-9-18"></a>W1 2020-9-18</h1>
+<div data-gloss>
+	<p>अभ्यासो न हि त्यक्तव्यो अभ्यासो हि परं बलम्</p>
+	<p>abhyāso na hi tyaktavyo abhyāso hi paraṃ balam</p>
+	<p>反覆練習 否定 強調 應被放棄的 反覆練習 強調 至高 力量</p>
+	<p>M.SG.NOM. NEG. Par. FPP. M.SG.NOM. Par. N.SG.NOM. N.SG.NOM.</p>
+	<p>反覆練習是不應被放棄的，反覆練習是至高的力量；</p>
+</div>
+
+<div data-gloss>
+	<p>अनभ्यासे विषं विद्या अजीर्ने अजीर्णे विषम् </p>
+	<p>abhyāse viṣaṃ vidyā ajīrṇe bhojanaṃ viṣam</p>
+	<p>於不反覆練習 毒 知識 於不消化 食物 毒</p>
+	<p>M.SG.LOC. N.SG.NOM. F.SG.NOM. M.SG.LOC. N.SG.NOM. N.SG.NOM.</p>
+	<p>知識於不反覆練習時是毒藥，食物於不消化時是毒藥。</p>
+</div>
+
+<div data-gloss>
+	<p>नमो नमः</p>
+	<p>namo namaḥ</p>
+	<p>你好！</p>
+</div>
+
+<div data-gloss>
+	<p>भवतः नाम किम् </p>
+	<p>bhavataḥ nāma kim</p>
+	<p>M.SG.GEN. M.SG.NOM. M.SG.NOM.</p>
+	<p>bhavant的屬格 {} {}</p>
+	<p>您叫什麼名字？（您的名字是什麼？）（對男生）</p>
+</div>
+
+<div data-gloss>
+	<p>भवत्याः  नाम किम् </p>
+	<p>bhavatyāḥ nāma kim</p>
+	<p>F.SG.GEN. M.SG.NOM. M.SG.NOM.</p>
+	<p>bhavantī {} {}</p>
+	<p>您叫什麼名字？（對女生）</p>
+</div>
+
+<div data-gloss>
+	<p>मम नाम ...</p>
+	<p>mama nāma ...</p>
+	<p>1.SG.GEN. M.SG.NOM.</p>
+	<p>我的名字是...</p>
+</div>
+
+<div data-gloss>
+	<p>भवतः कुशलम् अस्ति वा </p>
+	<p>bhavataḥ kuśalam asti vā</p>
+	<p>M.SG.GEN. N.SG.NOM. 3.SG.PRES. </p>
+	<p>bhavant {} {}</p>
+	<p>您好嗎？（對男生）</p>
+</div>
+
+<div data-gloss>
+	<p>भवतः कुशलम् अस्ति वा </p>
+	<p>bhavataḥ kuśalam asti vā</p>
+	<p>M.SG.GEN. N.SG.NOM. 3.SG.PRES. </p>
+	<p>bhavant {} {}</p>
+	<p>您好嗎？（對男生）</p>
+</div>
+
+
+<h1 id="W4-5"><a href="#W4-5" class="headerlink" title="W4-5"></a>W4-5</h1><p>心經</p>
+<h1 id="W6-2020-10-23"><a href="#W6-2020-10-23" class="headerlink" title="W6 2020-10-23"></a>W6 2020-10-23</h1><h2 id="Dharma-kaya-gatha-〈法身偈〉"><a href="#Dharma-kaya-gatha-〈法身偈〉" class="headerlink" title="Dharma-kāya-gāthā 〈法身偈〉"></a>Dharma-kāya-gāthā 〈法身偈〉</h2><p>ye dharmā hetu-prabhavā<br>hetuṃ teṣāṃ tathāgato hy avadat<br>teṣāṃ ca yo nirodha<br>evaṃ-vādī mahā-śramaṇaḥ</p>
+<p>舉凡諸法乃從因素而產生，如來即解說諸法之因素，<br>與諸法之熄滅；偉大的沙門即如此宣說。</p>
+<p>單字：</p>
+<ul>
+<li>kāya: 由多樣所造成的集合<ul>
+<li>Dharma-kāya 不應理解為 kāya of dharma，而應理解為 dharma as kāya</li>
+</ul>
+</li>
+<li>hetu: 因</li>
+<li>prabhavā: pra- 朝向 + √bhu 存在 + guṇa + -a 名詞化結尾</li>
+<li>teṣāṃ: Pron. M/N. PL. GEN. 在此表示 hetuṃ of dhārmāḥ，因此 teṣāṃ 與 dhārmāḥ 同性數格。</li>
+<li>avadat: √vad 的 Imp. 3. SG.</li>
+<li>nirodha: ni 熄滅 + √rudh 阻礙, 障礙 + guṇa + -a 名詞化詞尾<ul>
+<li>熄滅不是破滅(vyaya)</li>
+<li>熄滅是找到開關後，把他關掉</li>
+</ul>
+</li>
+<li>śramaṇaḥ: 沙門, 隱遁者, 修行者 (巴利: samaṇa)</li>
+<li>vādī: 提倡者, 講說者, 宣說者 (基本型為-in的陽性名詞, 單數主格為 -ī)<ul>
+<li>e.g. 說一切有部: Sarvāsti<strong>vādin</strong> </li>
+</ul>
+</li>
+</ul>
+<p>本偈參考資料：</p>
+<ul>
+<li>巴利文版本在律藏中的大品</li>
+<li><a href="https://mp.weixin.qq.com/s/32HpOkbu5k3XdrRe4fF61w" target="_blank" rel="noopener">Ye dharmā偈颂的渊源与流变——从舍利弗和目犍连的皈依谈起（上）</a></li>
+<li><a href="https://mp.weixin.qq.com/s/GbxugsNX1oLH7H2uJCwbzQ" target="_blank" rel="noopener">Ye dharmā偈颂的渊源与流变——从舍利弗和目犍连的皈依谈起（下）</a></li>
+</ul>
+<h2 id="Anitya-gatha"><a href="#Anitya-gatha" class="headerlink" title="Anitya-gāthā"></a>Anitya-gāthā</h2><p>anityā bata saṃskārā<br>utpāda-vyaya-dharmiṇaḥ<br>utpadya, hi nirudhyante<br>teṣāṃ vyupaśamaḥ sukham</p>
+<p>單字：</p>
+<ul>
+<li>saṃskārā: saṃ + √kṛ 行為, 造作 + -a 名詞化詞尾 + 複數<ul>
+<li>理解「行」的方式：由背後眾多條件所成的、由複合的成分所組成的</li>
+</ul>
+</li>
+<li>vyaya: 壞滅, 破壞.<ul>
+<li>√i 去, 行進 + guna =&gt; e</li>
+<li>e + -a 名詞化字尾 =&gt; aya</li>
+<li>vi- 拆散 + aya =&gt; vyaya</li>
+</ul>
+</li>
+<li>dharmiṇaḥ: dharma + -ina</li>
+<li>utpadya: Abs.</li>
+<li>nirudhyante: Cl 7. Ā. 3. PL.</li>
+<li>vyupaśamaḥ: vi- + upa- + √śam 止息</li>
+</ul>
+]]></content>
+      <categories>
+        <category>梵文</category>
+        <category>上課筆記</category>
+      </categories>
+      <tags>
+        <tag>梵文</tag>
         <tag>glossing</tag>
-        <tag>心經</tag>
       </tags>
   </entry>
   <entry>
@@ -1861,51 +1971,6 @@
       </tags>
   </entry>
   <entry>
-    <title>梵文內連音(Internal Sandhi)</title>
-    <url>/%E6%A2%B5%E6%96%87%E5%85%A7%E9%80%A3%E9%9F%B3-Internal-Sandhi/</url>
-    <content><![CDATA[<p>內連音出現在詞內，例如一個動詞詞根要加上<code>-ta</code>形成過去被動分詞時，動詞詞根的尾音和<code>-t</code>可能就會產生內連音。</p>
-<h1 id="t-的內連音"><a href="#t-的內連音" class="headerlink" title="-t 的內連音"></a>-t 的內連音</h1><h2 id="使用場景："><a href="#使用場景：" class="headerlink" title="使用場景："></a>使用場景：</h2><ul>
-<li>不定式 (Inf.): 動詞詞根 + -tum</li>
-<li>過去被動分詞 (P.P.P): 動詞詞根 + -ta</li>
-<li>Absolutive: 動詞詞根 + -tvā</li>
-</ul>
-<h2 id="原則一：動詞詞根的末子音要盡量接近t的發音特徵"><a href="#原則一：動詞詞根的末子音要盡量接近t的發音特徵" class="headerlink" title="原則一：動詞詞根的末子音要盡量接近t的發音特徵"></a>原則一：動詞詞根的末子音要盡量接近<code>t</code>的發音特徵</h2><p>由於 <code>t</code> 是一個無聲不送氣的子音 <code>[-voiced][-aspirated]</code> ，所以當動詞詞根原本的末子音是有聲時，就要變成無聲；原本的末子音是送氣時，就要變成不送氣。</p>
-<p>例如：</p>
-<ul>
-<li>d &gt; t: chid -&gt; chittvā</li>
-<li></li>
-</ul>
-<h2 id="特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h"><a href="#特殊規則：動詞詞根的末子音是有聲有送氣時-jh-dh-dh-bh-h" class="headerlink" title="特殊規則：動詞詞根的末子音是有聲有送氣時 (jh, ḍh, dh, bh, h)"></a>特殊規則：動詞詞根的末子音是<code>有聲有送氣</code>時 (jh, ḍh, dh, bh, h)</h2><h1 id="s-gt-s-Ruki"><a href="#s-gt-s-Ruki" class="headerlink" title="s -&gt; ṣ (Ruki)"></a>s -&gt; ṣ (Ruki)</h1><h2 id="使用場景：名詞複數位格-su"><a href="#使用場景：名詞複數位格-su" class="headerlink" title="使用場景：名詞複數位格 (-su)"></a>使用場景：名詞複數位格 (-su)</h2><h1 id="n-gt-n-Ruki"><a href="#n-gt-n-Ruki" class="headerlink" title="n -&gt; ṇ (Ruki)"></a>n -&gt; ṇ (Ruki)</h1><h2 id="使用場景：陽性-中性-a-名詞單數具格-ena"><a href="#使用場景：陽性-中性-a-名詞單數具格-ena" class="headerlink" title="使用場景：陽性, 中性 -a 名詞單數具格 (-ena)"></a>使用場景：陽性, 中性 -a 名詞單數具格 (-ena)</h2>]]></content>
-      <categories>
-        <category>梵文</category>
-      </categories>
-      <tags>
-        <tag>梵文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>德文反身動詞以及中文的「讓自己...」</title>
-    <url>/%E5%BE%B7%E6%96%87%E5%8F%8D%E8%BA%AB%E5%8B%95%E8%A9%9E%E4%BB%A5%E5%8F%8A%E4%B8%AD%E6%96%87%E7%9A%84%E3%80%8C%E8%AE%93%E8%87%AA%E5%B7%B1-%E3%80%8D/</url>
-    <content><![CDATA[<h2 id="列舉幾個德文的反身動詞"><a href="#列舉幾個德文的反身動詞" class="headerlink" title="列舉幾個德文的反身動詞"></a>列舉幾個德文的反身動詞</h2><ul>
-<li>sich entspannen 讓自己放鬆</li>
-<li>sich merken 讓自己記住; 記得</li>
-<li>sich verbessern 讓自己變得更好; 進步</li>
-<li>sich ändern 讓自己改變</li>
-</ul>
-<h2 id="觀察一"><a href="#觀察一" class="headerlink" title="觀察一"></a>觀察一</h2><ul>
-<li>這些動詞似乎都有一個及物動詞的用法，有時是以物作主語: Lesen entspannt. (閱讀使人放鬆); Dieses Erlebnis hat ihn sehr geändert. (這一經歷使他大大的改變了看法。)</li>
-<li>有時是人做主語: Er will damit seine finanzielle Lage verbessern. (他想以此改善自己的經濟狀況。) Ich habe gemerkt, … (我有發現到…)</li>
-</ul>
-]]></content>
-      <categories>
-        <category>德文</category>
-      </categories>
-      <tags>
-        <tag>德文</tag>
-        <tag>學習心得</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>泰文語料庫總整理</title>
     <url>/%E6%B3%B0%E6%96%87%E8%AA%9E%E6%96%99%E5%BA%AB%E7%B8%BD%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<p>這篇文章主要目的在於把網路上找得到的泰文語料庫做全局的綜覽，使用幾個指標去評分每個語料庫的特色。當你找到適合自己的語料庫系統後，可以再到個別語料庫的詳細使用說明，我會再將個別語料庫的使用說明一一整理成單獨的貼文。<br><a id="more"></a></p>
@@ -1930,81 +1995,6 @@
       </tags>
   </entry>
   <entry>
-    <title>梵文二上筆記</title>
-    <url>/%E6%A2%B5%E6%96%87%E4%BA%8C%E4%B8%8A-W1%E7%AD%86%E8%A8%98/</url>
-    <content><![CDATA[<p>本課程使用的教科書 <a href="https://press.anu.edu.au/publications/textbooks/joy-sanskrit" target="_blank" rel="noopener">The Joy of Sanskrit (Taylor &amp; Scotellaro 2014)</a></p>
-
-<div data-gloss>
-<p>अभ्यासो न हि त्यक्तव्यो अभ्यासो हि परं बलम्</p>
-<p>abhyāso na hi tyaktavyo abhyāso hi paraṃ balam</p>
-<p>反覆練習 否定 強調 應被放棄的 反覆練習 強調 至高 力量</p>
-<p>M.SG.NOM. NEG. Par. FPP. M.SG.NOM. Par. N.SG.NOM. N.SG.NOM.</p>
-<p>反覆練習是不應被放棄的，反覆練習是至高的力量；</p>
-
-</div>
-<div data-gloss>
-<p>अनभ्यासे विषं विद्या अजीर्ने अजीर्णे विषम् </p>
-<p>abhyāse viṣaṃ vidyā ajīrṇe bhojanaṃ viṣam</p>
-<p>於不反覆練習 毒 知識 於不消化 食物 毒</p>
-<p>M.SG.LOC. N.SG.NOM. F.SG.NOM. M.SG.LOC. N.SG.NOM. N.SG.NOM.</p>
-<p>知識於不反覆練習時是毒藥，食物於不消化時是毒藥。</p>
-
-</div>
-<div data-gloss>
-<p>नमो नमः</p>
-<p>namo namaḥ</p>
-<p>你好！</p>
-
-</div>
-<div data-gloss>
-<p>भवतः नाम किम् </p>
-<p>bhavataḥ nāma kim</p>
-<p>M.SG.GEN. M.SG.NOM. M.SG.NOM.</p>
-<p>bhavant的屬格 {} {}</p>
-<p>您叫什麼名字？（您的名字是什麼？）（對男生）</p>
-
-</div>
-<div data-gloss>
-<p>भवत्याः  नाम किम् </p>
-<p>bhavatyāḥ nāma kim</p>
-<p>F.SG.GEN. M.SG.NOM. M.SG.NOM.</p>
-<p>bhavantī {} {}</p>
-<p>您叫什麼名字？（對女生）</p>
-
-</div>
-<div data-gloss>
-<p>मम नाम ...</p>
-<p>mama nāma ...</p>
-<p>1.SG.GEN. M.SG.NOM.</p>
-<p>我的名字是...</p>
-
-</div>
-<div data-gloss>
-<p>भवतः कुशलम् अस्ति वा </p>
-<p>bhavataḥ kuśalam asti vā</p>
-<p>M.SG.GEN. N.SG.NOM. 3.SG.PRES. </p>
-<p>bhavant {} {}</p>
-<p>您好嗎？（對男生）</p>
-
-</div>
-<div data-gloss>
-<p>भवतः कुशलम् अस्ति वा </p>
-<p>bhavataḥ kuśalam asti vā</p>
-<p>M.SG.GEN. N.SG.NOM. 3.SG.PRES. </p>
-<p>bhavant {} {}</p>
-<p>您好嗎？（對男生）</p>
-
-</div>]]></content>
-      <categories>
-        <category>梵文</category>
-        <category>上課筆記</category>
-      </categories>
-      <tags>
-        <tag>梵文</tag>
-        <tag>glossing</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>法句經義注</title>
     <url>/%E6%B3%95%E5%8F%A5%E7%B6%93%E7%BE%A9%E6%B3%A8/</url>
     <content><![CDATA[<ul>
@@ -2025,6 +2015,114 @@
       <tags>
         <tag>巴利文</tag>
         <tag>法句經</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梵文心經</title>
+    <url>/%E6%A2%B5%E6%96%87%E5%BF%83%E7%B6%93/</url>
+    <content><![CDATA[<p>&nbsp;<br><a id="more"></a></p>
+
+<div class="box" data-gloss>
+<p>Āryāvalokiteśvaro bodhisattvo gambhīrāyāṃ prajñāpāramitāyāṃ caryāṃ caramāṇo vyavalokayati sma pañca skandhāḥ tāṃś ca svabhāvaśūnyān paśyati sma</p>
+<p>Ārya-ava(從上而下)+lokita(√lok的PPP)-iśvaraḥ bodhi-sattvaḥ gambhīrāyāṃ prajñā-pāramitāyāṃ caryāṃ(√car) caramāṇaḥ(√car的PPR) vi-ava-lokayati(√lok的CAUS) sma pañca skandhāḥ tān ca sva-bhāva-śūnyān paśyati(√dṛś) sma</p>
+<p>高超的-觀看-自在 覺-有情 深奧的 般若-波羅蜜多 運行 運行者 關照 (過去式標記) 五 積聚 那些 以及 自-性-空 看 (過去式標記)</p>
+<p>M.SG.NOM. M.SG.NOM. F.SG.LOC. F.SG.LOC. F.SG.ACC. PPR.M.SG.NOM. PRES.3.SG. PART. M.PL.NOM. M.PL.NOM. M.PL.ACC. PART. M.PL.ACC. PRES.3.SG. PART.</p>
+<p>觀自在菩薩，行深般若密多時，觀照五蘊，而將此等五蘊看成在本身的存在是空的。</p>
+</div>
+
+<div data-gloss>
+<p>iha śāriputra rūpaṃ śūnyatā śūnyataiva rūpaṃ</p>
+<p>iha śāriputra rūpaṃ śūnyatā śūnyatā-eva rūpaṃ</p>
+<p>在此 舍利子 色 空性 空性-就 色</p>
+<p>IND. M.SG.NOM. N.SG.NOM. F.SG.NOM. F.SG.NOM.-IND. N.SG.NOM.</p>
+<p>舍利子！色即是空性，而空性即是色。</p>
+</div>
+
+<div data-gloss>
+<p>rūpān na pṛthak śūnyatā śūnyatāyā na pṛthag rūpaṃ</p>
+<p>rūpāt na pṛthak śūnya-tā śūnya-tā-yā na pṛthak rūpaṃ</p>
+<p>色 不 異於 空-性 空-性 不 異於 色</p>
+<p>N.SG.ABL. IND. IND. F.SG.NOM. F.SG.ABL. IND. IND. N.SG.NOM.</p>
+<p>色不異於空，空不異於色。</p>
+</div>
+
+<div data-gloss>
+<p>yad rūpāṃ sā śūnyatā yā śūnyatā tad rūpam</p>
+<p>yad rūpāṃ sā śūnya-tā yā śūnya-tā tad rūpaṃ</p>
+<p>凡是 色 皆是 空-性 凡是 空-性 皆是 色</p>
+<p>N.SG.NOM. N.SG.NOM. F.SG.NOM. F.SG.NOM. F.SG.NOM. F.SG.NOM. N.SG.NOM. N.SG.NOM.</p>
+<p>凡為色的皆是空性，凡為空性的皆是色。</p>
+</div>
+
+<div data-gloss>
+<p>evameva vedanāsaṃjñāsaṃskāravijñānāni</p>
+<p>evam-eva vedanā-saṃjñā-saṃskāra-vijñānāni</p>
+<p>如此-就 受-想-行-識</p>
+<p>IND.-IND. N.PL.NOM.</p>
+<p>受想行識，亦復如是。</p>
+</div>
+
+<div data-gloss>
+<p>iha Sāriputra sarvadharmāḥ śūnyatālakṣaṇā anutpannā aniruddhā amalā na vimalā nonā na paripūrṇāḥ</p>
+<p>iha Sāriputra sarva-dharmāḥ śūnya-tā-lakṣaṇāḥ an-utpannāḥ a-niruddhāḥ a-malāḥ na vi-malāḥ na unāḥ-na pari-pūrṇāḥ(√pṝ的PPP.)</p>
+<p>在此 舍利子 所有-法 空-性-相 未-已生起 未-已熄滅 非-污垢 非 離-污垢 非 減-非 遍-增</p>
+<p>IND.-IND. N.PL.NOM.</p>
+<p>舍利子！是諸法空相，不生不滅，不垢不淨，不增不減。</p>
+</div>
+
+]]></content>
+      <categories>
+        <category>梵文</category>
+      </categories>
+      <tags>
+        <tag>梵文</tag>
+        <tag>glossing</tag>
+        <tag>心經</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>無我相經 Anattalakkhaṇa Sutta (SN 22.59)</title>
+    <url>/%E7%84%A1%E6%88%91%E7%9B%B8%E7%B6%93-Anattalakkhana-Sutta-SN-22-59/</url>
+    <content><![CDATA[<p>&nbsp;<br><a id="more"></a></p>
+
+<div data-gloss>
+	<p>Ekaṃ samayaṃ bhagavā bārāṇasiyaṃ viharati isipatane migadāye</p>
+	<p>M.SG.ACC. M.SG.ACC. M.SG.NOM. F.SG.LOC. 3.SG.PRS. N.SG.LOC. M.SG.LOC.</p>
+	<p>eka samaya bhagavant bārāṇasī viharati isi-patana miga-dāya</p>
+	<p>一 時 世尊 瓦拉納西 住 仙人墮處 鹿野苑</p>
+	<p>一時世尊在波羅奈城附近仙人降落處的鹿野苑</p>
+</div>
+
+<div data-gloss>
+	<p>Tatra kho bhagavā pañcavaggiye bhikkhū āmantesi: “bhikkhavo” ti</p>
+	<p>ADV. ADV. M.SG.NOM. M.PL.ACC. M.PL.ACC. 3.SG.AOR. M.PL.VOC. IND.</p>
+	<p>tatra kho bhagavant pañca-vagga-iya bhikkhu ā-manteti bhikkhū ti</p>
+	<p>在那裡 (語氣詞) 世尊 五人一組 比丘們 告訴 比丘們 (引號)</p>
+	<p>在那裡，世尊對五個為一群的比丘們稱呼：「比丘們！」</p>
+</div>
+
+<div data-gloss>
+	<p>“Bhadante” ti te bhikkhū bhagavato paccassosuṁ</p>
+	<p>M.SG.VOC. IND. M.PL.NOM. M.PL.NOM. M.SG.DAT. 3.PL.AOR.</p>
+	<p>bhadanta ti taṃ bhikkhu bhagavant paṭi-(s)suṇāti</p>
+	<p>祥善者 (引號) 那些 比丘們 世尊 回答</p>
+	<p>「祥善者！」那些比丘們如此回應世尊</p>
+</div>
+
+<div data-gloss>
+	<p>Bhagavā etadavoca</p>
+	<p>M.SG.NOM. M.SG.ACC.-3.SG.AOR.</p>
+	<p>bhagavant etad-vacati</p>
+	<p>世尊 此-說</p>
+	<p>世尊做此說：</p>
+</div>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>glossing</tag>
       </tags>
   </entry>
   <entry>
@@ -2078,68 +2176,6 @@
       </tags>
   </entry>
   <entry>
-    <title>貝葉經參考文獻</title>
-    <url>/%E8%B2%9D%E8%91%89%E7%B6%93%E5%8F%83%E8%80%83%E6%96%87%E7%8D%BB/</url>
-    <content><![CDATA[<p>貝葉，巴利 patta，梵文 pattra，泰文</p>
-<p>找到一篇適合作為研究起點的中文文獻：</p>
-<ul>
-<li>葉, 淑慧. (2005). 論述貝葉經整理與編目工作. 中華民國圖書館學會會報第75期. <a href="http://lac4.glis.ntnu.edu.tw/admin/ArticleFolder/2/75%E6%9C%9F/3643-75-15.pdf" target="_blank" rel="noopener">連結</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
-        <tag>貝葉經</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>無我相經 Anattalakkhaṇa Sutta (SN 22.59)</title>
-    <url>/%E7%84%A1%E6%88%91%E7%9B%B8%E7%B6%93-Anattalakkhana-Sutta-SN-22-59/</url>
-    <content><![CDATA[<p>&nbsp;<br><a id="more"></a></p>
-
-<div data-gloss>
-	<p>Ekaṃ samayaṃ bhagavā bārāṇasiyaṃ viharati isipatane migadāye</p>
-	<p>M.SG.ACC. M.SG.ACC. M.SG.NOM. F.SG.LOC. 3.SG.PRS. N.SG.LOC. M.SG.LOC.</p>
-	<p>eka samaya bhagavant bārāṇasī viharati isi-patana miga-dāya</p>
-	<p>一 時 世尊 瓦拉納西 住 仙人墮處 鹿野苑</p>
-	<p>一時世尊在波羅奈城附近仙人降落處的鹿野苑</p>
-</div>
-
-<div data-gloss>
-	<p>Tatra kho bhagavā pañcavaggiye bhikkhū āmantesi: “bhikkhavo” ti</p>
-	<p>ADV. ADV. M.SG.NOM. M.PL.ACC. M.PL.ACC. 3.SG.AOR. M.PL.VOC. IND.</p>
-	<p>tatra kho bhagavant pañca-vagga-iya bhikkhu ā-manteti bhikkhū ti</p>
-	<p>在那裡 (語氣詞) 世尊 五人一組 比丘們 告訴 比丘們 (引號)</p>
-	<p>在那裡，世尊對五個為一群的比丘們稱呼：「比丘們！」</p>
-</div>
-
-<div data-gloss>
-	<p>“Bhadante” ti te bhikkhū bhagavato paccassosuṁ</p>
-	<p>M.SG.VOC. IND. M.PL.NOM. M.PL.NOM. M.SG.DAT. 3.PL.AOR.</p>
-	<p>bhadanta ti taṃ bhikkhu bhagavant paṭi-(s)suṇāti</p>
-	<p>祥善者 (引號) 那些 比丘們 世尊 回答</p>
-	<p>「祥善者！」那些比丘們如此回應世尊</p>
-</div>
-
-<div data-gloss>
-	<p>Bhagavā etadavoca</p>
-	<p>M.SG.NOM. M.SG.ACC.-3.SG.AOR.</p>
-	<p>bhagavant etad-vacati</p>
-	<p>世尊 此-說</p>
-	<p>世尊做此說：</p>
-</div>
-]]></content>
-      <categories>
-        <category>巴利文</category>
-      </categories>
-      <tags>
-        <tag>巴利文</tag>
-        <tag>glossing</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>書寫系統總整理: r12a.github.io</title>
     <url>/%E8%B3%87%E6%BA%90%E5%88%86%E4%BA%AB-%E6%9B%B8%E5%AF%AB%E7%B3%BB%E7%B5%B1%E7%B8%BD%E6%95%B4%E7%90%86-r12a-github-io/</url>
     <content><![CDATA[<p>無意間發現這個網站，有很多關於書寫系統和Unicode等等的介紹。</p>
@@ -2156,6 +2192,23 @@
       <tags>
         <tag>書寫系統</tag>
         <tag>資源分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>貝葉經參考文獻</title>
+    <url>/%E8%B2%9D%E8%91%89%E7%B6%93%E5%8F%83%E8%80%83%E6%96%87%E7%8D%BB/</url>
+    <content><![CDATA[<p>貝葉，巴利 patta，梵文 pattra，泰文</p>
+<p>找到一篇適合作為研究起點的中文文獻：</p>
+<ul>
+<li>葉, 淑慧. (2005). 論述貝葉經整理與編目工作. 中華民國圖書館學會會報第75期. <a href="http://lac4.glis.ntnu.edu.tw/admin/ArticleFolder/2/75%E6%9C%9F/3643-75-15.pdf" target="_blank" rel="noopener">連結</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>貝葉經</tag>
       </tags>
   </entry>
   <entry>
@@ -2200,6 +2253,66 @@
         <tag>巴利文</tag>
         <tag>梵文</tag>
         <tag>盂蘭盆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>巴利經藏的編碼方式</title>
+    <url>/%E5%B7%B4%E5%88%A9%E7%B6%93%E8%97%8F%E7%9A%84%E7%B7%A8%E7%A2%BC%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://palistudies.blogspot.com/2018/05/navigating-sutta-numbering-schemes.html" target="_blank" rel="noopener">Navigating the Sutta Pitaka, A Simple guide to the Numbering Schemes [Learn Pali Language] </a><ul>
+<li>經藏的編碼方式主要有兩種<ul>
+<li>以第幾個經文為主: <code>DN 7</code> 表示 經藏長部第7經</li>
+<li>以 Pali Text Society (PTS) 出版之頁碼為主: <code>D i 159</code> 表示長部第一冊第 159 頁。（所以讀者必須去找出PTS所出版的長部第一冊）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://accesstoinsight.org/abbrev.html" target="_blank" rel="noopener">Abbreviations, Symbols, and Sutta Reference Numbers [Access to Insight]</a></li>
+<li><p>The Contents and Structure of the Pali Canon and its Commentaries by the UK Association for Buddhist Studies at the University of Sunderland</p>
+<ul>
+<li>這份文件我是從上一個連結中找到的，上一個連結說這邊給了目前巴利佛典編碼系統一個不錯的回顧，只不過原本所附的連結掛掉了，後來我找到了一下兩個備份連結<ul>
+<li><a href="https://web.archive.org/web/20021213225729/http://www.sunderland.ac.uk:80/~os0dwe/bs12.html" target="_blank" rel="noopener">連結一(Wayback Machine)</a></li>
+<li><a href="https://scdd.sfo2.cdn.digitaloceanspaces.com/uploads/original/2X/2/260d7b3b86800cbf6589dee48ab88ea4b301b22f.pdf" target="_blank" rel="noopener">連結二(pdf檔)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://suttacentral.net/general-guide-sujato" target="_blank" rel="noopener">Bhikkhu Sujato. (2019). A Reader’s Guide to the Pali Suttas</a></p>
+<ul>
+<li>這一篇文章主要是給入門者看的閱讀指引，非常值得得一讀</li>
+<li>在這網頁中的”Looking Up References”一節介紹的即是巴利經文的編碼系統，本文作者認為與其採用PTS出版之頁碼的方式，不如採用更貼近、更按照經典語意意涵的編碼方式，也就是按照某部第幾經第幾節的方式。</li>
+<li>這個網頁是對巴利經典的概覽（見網頁最上方General的頁籤），<strong>讀者還可以點到其旁邊的Long (長部), Middle (中部), Linked (相應部), Numbered (增支部)去讀各部的概覽</strong>。</li>
+<li>各章節內容<ul>
+<li>About These Guides: 前言<ul>
+<li>An Approachable Translation: 作者在翻譯佛典所採取的精神，要讓就算不懂佛法的人也能容易親近的翻譯</li>
+<li>Plan Your Route or Wander in the Garden: 如何在佛典之林中漫遊</li>
+<li>Looking Up References: 如何看懂佛典的編碼方式，以及據此找出原文段落</li>
+<li><strong>Elements of Structure: 佛典中的文字結構</strong></li>
+</ul>
+</li>
+<li><strong>譬喻、敘事結構、大量重複、縮略、標題</strong></li>
+<li><strong>章節區分：Vagga (“Chapter”, 品, 章), Paṇṇāsaka (“Fifty”), Nipāta (“Group”, 集篇), Saṁyutta (“Collection of Linked Discourses”, 相應), Nikāya or Āgama (“Division”, 尼柯耶, 阿含, 部)</strong><ul>
+<li>In the Buddha’s Day: A Time of Change: 考古對這時代的發現不多；佛陀時代的大環境，印度列國時代(janapada)，佛陀為釋迦(sakka)族，是一個小型城邦共和國，依附於十六國中的拘薩羅國(Kosala)。</li>
+<li>Economics and Politics: 當時的政治經濟環境；當時開始出現的新技術：冶鐵與黑陶(Northern Black Polished Ware)</li>
+<li>Social Life: 此時尚未出現整套完整的種姓制度，但已有粗略的區分</li>
+<li>The Many Spiritual Paths of Ancient India</li>
+<li>Cosmology</li>
+<li>On the Pali Commentaries: 關於巴利經典的註釋書；主要的註釋書由覺音於五世紀時集結而成，從當時的僧伽羅文再重新翻回巴利文</li>
+<li>A Brief and Incomplete Textual History: 關於佛典編輯的歷史；PTS其歷史與問題；本網站採用第六次集結的Mahāsaṅgīti的巴利文版本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>巴利文</category>
+      </categories>
+      <tags>
+        <tag>巴利文</tag>
+        <tag>三藏</tag>
       </tags>
   </entry>
 </search>
