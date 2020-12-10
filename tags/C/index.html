@@ -305,7 +305,16 @@
             
                 <div class="postShorten-content">
                     <h1 id="function-是傳值的-pass-by-value"><a href="#function-是傳值的-pass-by-value" class="headerlink" title="function 是傳值的 (pass by value)"></a>function 是傳值的 (pass by value)</h1><p>所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。</p>
-<h1 id="const-char-作為函數的形式參數"><a href="#const-char-作為函數的形式參數" class="headerlink" title="const char * 作為函數的形式參數"></a><code>const char *</code> 作為函數的形式參數</h1><p>這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。</p>
+<h1 id="const-作為函數的形式參數"><a href="#const-作為函數的形式參數" class="headerlink" title="const 作為函數的形式參數"></a><code>const</code> 作為函數的形式參數</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">a_function</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *)</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。</p>
+<blockquote>
+<p>Generally, if you pass the value of a variable into a function (with no &amp;), you can be assured that the function can’t modify your original variable. When you pass a pointer, you should assume that the function can and will change the variable’s value. If you want to write a function that takes a pointer argument but promises not to modify the target of the pointer, use const, like this:</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">printPointerTarget(<span class="keyword">const</span> <span class="keyword">int</span> *p)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, *p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(see <a href="http://cs.yale.edu/homes/aspnes/classes/223/notes.html#cb200" target="_blank" rel="noopener">link</a>)</p>
+<h2 id="為什麼要傳-pointer-作為函數的參數"><a href="#為什麼要傳-pointer-作為函數的參數" class="headerlink" title="為什麼要傳 pointer 作為函數的參數?"></a>為什麼要傳 pointer 作為函數的參數?</h2><blockquote>
+<p>Passing const pointers is mostly used when passing large structures to functions, where copying a 32-bit pointer is cheaper than copying the thing it points to. (see <a href="http://cs.yale.edu/homes/aspnes/classes/223/notes.html#cb201" target="_blank" rel="noopener">link</a>)</p>
+</blockquote>
 
                     
                         
