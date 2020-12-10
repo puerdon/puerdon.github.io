@@ -13,7 +13,7 @@
         <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。\nconst 作為函數的形式參數1void a_function (const char *) &#123;...&#125;\n這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。\n\nGenerally, if you pass the value of a variable into a function (with no &amp;), you can be assured that the function can’t modify your original variable. When you pass a pointer, you should assume that the function can and will change the variable’s value. If you want to write a function that takes a pointer argument but promises not to modify the target of the pointer, use const, like this:\n\n12345voidprintPointerTarget(const int *p)&#123;    printf(\"%d\\n\", *p);&#125;\n(see link)\n為什麼要傳 pointer 作為函數的參數?\nPassing const pointers is mostly used when passing large structures to functions, where copying a 32-bit pointer is cheaper than copying the thing it points to. (see link)\n\n","dateCreated":"2020-11-28T20:35:28+08:00","dateModified":"2020-12-10T20:48:40+08:00","datePublished":"2020-11-28T20:35:28+08:00","description":"","headline":"C語言筆記","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/C語言筆記/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/C語言筆記/","keywords":"C"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。\nconst 作為函數的形式參數1void a_function (const char *) &#123;...&#125;\n這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。\n\nGenerally, if you pass the value of a variable into a function (with no &amp;), you can be assured that the function can’t modify your original variable. When you pass a pointer, you should assume that the function can and will change the variable’s value. If you want to write a function that takes a pointer argument but promises not to modify the target of the pointer, use const, like this:\n\n12345voidprintPointerTarget(const int *p)&#123;    printf(\"%d\\n\", *p);&#125;\n(see link)\n為什麼要傳 pointer 作為函數的參數?\nPassing const pointers is mostly used when passing large structures to functions, where copying a 32-bit pointer is cheaper than copying the thing it points to. (see link)\n\nDebugging tools\ngdb (在OSX上是 lldb)\n\n參考資料\n\nlink\n\n\n\n","dateCreated":"2020-11-28T20:35:28+08:00","dateModified":"2020-12-10T21:12:10+08:00","datePublished":"2020-11-28T20:35:28+08:00","description":"","headline":"C語言筆記","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/C語言筆記/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/C語言筆記/","keywords":"C"}</script>
     <meta name="description" content="function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。 const 作為函數的形式參數1void a_function (const char *) &amp;#123;...&amp;#125; 這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。  Generally, if you pa">
 <meta name="keywords" content="C">
 <meta property="og:type" content="blog">
@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Puerdon Biki">
 <meta property="og:description" content="function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。 const 作為函數的形式參數1void a_function (const char *) &amp;#123;...&amp;#125; 這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。  Generally, if you pa">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-12-10T12:48:40.479Z">
+<meta property="og:updated_time" content="2020-12-10T13:12:10.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C語言筆記">
 <meta name="twitter:description" content="function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。 const 作為函數的形式參數1void a_function (const char *) &amp;#123;...&amp;#125; 這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。  Generally, if you pa">
@@ -319,6 +319,15 @@
 <h2 id="為什麼要傳-pointer-作為函數的參數"><a href="#為什麼要傳-pointer-作為函數的參數" class="headerlink" title="為什麼要傳 pointer 作為函數的參數?"></a>為什麼要傳 pointer 作為函數的參數?</h2><blockquote>
 <p>Passing const pointers is mostly used when passing large structures to functions, where copying a 32-bit pointer is cheaper than copying the thing it points to. (see <a href="http://cs.yale.edu/homes/aspnes/classes/223/notes.html#cb201" target="_blank" rel="noopener">link</a>)</p>
 </blockquote>
+<h1 id="Debugging-tools"><a href="#Debugging-tools" class="headerlink" title="Debugging tools"></a>Debugging tools</h1><ul>
+<li><p>gdb (在OSX上是 lldb)</p>
+</li>
+<li><p>參考資料</p>
+<ul>
+<li><a href="http://cs.yale.edu/homes/aspnes/classes/223/notes.html#gdb" target="_blank" rel="noopener">link</a></li>
+</ul>
+</li>
+</ul>
 
             
 
