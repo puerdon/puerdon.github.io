@@ -13,7 +13,7 @@
         <link rel="icon" href="https://puerdon.github.io/assets/images/favicon.ico">
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。\nconst 作為函數的形式參數1void a_function (const char *) &#123;...&#125;\n這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。\n\nGenerally, if you pass the value of a variable into a function (with no &amp;), you can be assured that the function can’t modify your original variable. When you pass a pointer, you should assume that the function can and will change the variable’s value. If you want to write a function that takes a pointer argument but promises not to modify the target of the pointer, use const, like this:\n\n12345voidprintPointerTarget(const int *p)&#123;    printf(\"%d\\n\", *p);&#125;\n(see link)\n為什麼要傳 pointer 作為函數的參數?\nPassing const pointers is mostly used when passing large structures to functions, where copying a 32-bit pointer is cheaper than copying the thing it points to. (see link)\n\nDebugging tools\ngdb (在OSX上是 lldb)\n\n參考資料\n\nlink\n\n\n\n","dateCreated":"2020-11-28T20:35:28+08:00","dateModified":"2020-12-10T21:12:10+08:00","datePublished":"2020-11-28T20:35:28+08:00","description":"","headline":"C語言筆記","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/C語言筆記/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/C語言筆記/","keywords":"C"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg"},"articleBody":"function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。\nconst 作為函數的形式參數1void a_function (const char *) &#123;...&#125;\n這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。\n\nGenerally, if you pass the value of a variable into a function (with no &amp;), you can be assured that the function can’t modify your original variable. When you pass a pointer, you should assume that the function can and will change the variable’s value. If you want to write a function that takes a pointer argument but promises not to modify the target of the pointer, use const, like this:\n\n12345voidprintPointerTarget(const int *p)&#123;    printf(\"%d\\n\", *p);&#125;\n(see link)\n為什麼要傳 pointer 作為函數的參數?\nPassing const pointers is mostly used when passing large structures to functions, where copying a 32-bit pointer is cheaper than copying the thing it points to. (see link)\n\nDebugging tools\ngdb (在OSX上是 lldb)\n\n參考資料\n\nlink\n\n\n\nAutomatic variable ( = local variable)\nEach local variable in a function comes into existence only when the function is called, and disappears when the function is exited. This is why such variables are usually known as automatic variables, following terminology in other languages. (see K&amp;R 2nd. 1.10)\n\n只存活於某個函式執行時，執行完畢後，這些automatic variable就會消失。相對於此就有持存在函數之外的變數。\n\n相對的概念:\n在函式當中的標有 static 的 local variable，他們在多次函數的調用時保持值不變 (see K&amp;R ch4)\n宣告在所有函數外部的變量，並且只能定義一次 (see External variable)\n關鍵字: storage class\n\n\n\nExternal variable\nAs an alternative to automatic variables, it is possible to define variables that are external to all functions, that is, variables that can be accessed by name by any function. (This mechanism is rather like Fortran COMMON or Pascal variables declared in the outermost block.) Because external variables are globally accessible, they can be used instead of argument lists to communicate data between functions. Furthermore, because external variables remain in existence permanently, rather than appearing and disappearing as functions are called and exited, they retain their values even after the functions that set them have returned.\n\n\nAn external variable must be defined, exactly once, outside of any function; this sets aside storage for it. The variable must also be declared in each function that wants to access it; this states the type of the variable. The declaration may be an explicit extern statement or may be implicit from context (see K&amp;R 2nd. 1.10)\n\nDefinition vs. Declaration\nDefinition&#39;&#39; refers to the place where the variable is created or assigned storage;declaration’’ refers to places where the nature of the variable is stated but no storage is allocated. (see K&amp;R 2nd. 1.10)\n\n\nsee Declare vs Define in C and C++\n\nConstant expression 常量表達式\nA constant expression is an expression that involves only constants. Such expressions may be evaluated at during compilation rather than run-time. (see K&amp;R 2nd. 2.3)\n\n","dateCreated":"2020-11-28T20:35:28+08:00","dateModified":"2020-12-10T22:59:05+08:00","datePublished":"2020-11-28T20:35:28+08:00","description":"","headline":"C語言筆記","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://puerdon.github.io/C語言筆記/"},"publisher":{"@type":"Organization","name":"puerdon","sameAs":["https://github.com/","mailto:dondon726@gmail.com"],"image":"c.jpg","logo":{"@type":"ImageObject","url":"c.jpg"}},"url":"https://puerdon.github.io/C語言筆記/","keywords":"C"}</script>
     <meta name="description" content="function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。 const 作為函數的形式參數1void a_function (const char *) &amp;#123;...&amp;#125; 這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。  Generally, if you pa">
 <meta name="keywords" content="C">
 <meta property="og:type" content="blog">
@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Puerdon Biki">
 <meta property="og:description" content="function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。 const 作為函數的形式參數1void a_function (const char *) &amp;#123;...&amp;#125; 這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。  Generally, if you pa">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-12-10T13:12:10.694Z">
+<meta property="og:updated_time" content="2020-12-10T14:59:05.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C語言筆記">
 <meta name="twitter:description" content="function 是傳值的 (pass by value)所以如果要改動某一個記憶體中的位置的話，一定要傳某變數的地址給函數，而函數的形式參數也要指定為指標類型的才行。 const 作為函數的形式參數1void a_function (const char *) &amp;#123;...&amp;#125; 這麼做只是為了要保護傳進來的字串(字元指標)不能被修改而已。  Generally, if you pa">
@@ -328,6 +328,33 @@
 </ul>
 </li>
 </ul>
+<h1 id="Automatic-variable-local-variable"><a href="#Automatic-variable-local-variable" class="headerlink" title="Automatic variable ( = local variable)"></a>Automatic variable ( = local variable)</h1><blockquote>
+<p>Each local variable in a function comes into existence only when the function is called, and disappears when the function is exited. This is why such variables are usually known as automatic variables, following terminology in other languages. (see K&amp;R 2nd. 1.10)</p>
+</blockquote>
+<p>只存活於某個函式執行時，執行完畢後，這些automatic variable就會消失。相對於此就有持存在函數之外的變數。</p>
+<ul>
+<li>相對的概念:<ul>
+<li>在函式當中的標有 <code>static</code> 的 local variable，他們在多次函數的調用時保持值不變 (see K&amp;R ch4)</li>
+<li>宣告在所有函數外部的變量，並且只能定義一次 (see External variable)</li>
+<li>關鍵字: storage class</li>
+</ul>
+</li>
+</ul>
+<h1 id="External-variable"><a href="#External-variable" class="headerlink" title="External variable"></a>External variable</h1><blockquote>
+<p>As an alternative to automatic variables, it is possible to define variables that are external to all functions, that is, variables that can be accessed by name by any function. (This mechanism is rather like Fortran COMMON or Pascal variables declared in the outermost block.) Because external variables are globally accessible, they can be used instead of argument lists to communicate data between functions. Furthermore, because external variables remain in existence permanently, rather than appearing and disappearing as functions are called and exited, they retain their values even after the functions that set them have returned.</p>
+</blockquote>
+<blockquote>
+<p>An external variable must be defined, exactly once, outside of any function; this sets aside storage for it. The variable must also be declared in each function that wants to access it; this states the type of the variable. The declaration may be an explicit extern statement or may be implicit from context (see K&amp;R 2nd. 1.10)</p>
+</blockquote>
+<h1 id="Definition-vs-Declaration"><a href="#Definition-vs-Declaration" class="headerlink" title="Definition vs. Declaration"></a>Definition vs. Declaration</h1><blockquote>
+<p><code>Definition&#39;&#39; refers to the place where the variable is created or assigned storage;</code>declaration’’ refers to places where the nature of the variable is stated but no storage is allocated. (see K&amp;R 2nd. 1.10)</p>
+</blockquote>
+<ul>
+<li>see <a href="https://www.cprogramming.com/declare_vs_define.html" target="_blank" rel="noopener">Declare vs Define in C and C++</a></li>
+</ul>
+<h1 id="Constant-expression-常量表達式"><a href="#Constant-expression-常量表達式" class="headerlink" title="Constant expression 常量表達式"></a>Constant expression 常量表達式</h1><blockquote>
+<p>A constant expression is an expression that involves only constants. Such expressions may be evaluated at during compilation rather than run-time. (see K&amp;R 2nd. 2.3)</p>
+</blockquote>
 
             
 

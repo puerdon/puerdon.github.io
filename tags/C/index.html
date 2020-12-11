@@ -324,6 +324,33 @@
 </ul>
 </li>
 </ul>
+<h1 id="Automatic-variable-local-variable"><a href="#Automatic-variable-local-variable" class="headerlink" title="Automatic variable ( = local variable)"></a>Automatic variable ( = local variable)</h1><blockquote>
+<p>Each local variable in a function comes into existence only when the function is called, and disappears when the function is exited. This is why such variables are usually known as automatic variables, following terminology in other languages. (see K&amp;R 2nd. 1.10)</p>
+</blockquote>
+<p>只存活於某個函式執行時，執行完畢後，這些automatic variable就會消失。相對於此就有持存在函數之外的變數。</p>
+<ul>
+<li>相對的概念:<ul>
+<li>在函式當中的標有 <code>static</code> 的 local variable，他們在多次函數的調用時保持值不變 (see K&amp;R ch4)</li>
+<li>宣告在所有函數外部的變量，並且只能定義一次 (see External variable)</li>
+<li>關鍵字: storage class</li>
+</ul>
+</li>
+</ul>
+<h1 id="External-variable"><a href="#External-variable" class="headerlink" title="External variable"></a>External variable</h1><blockquote>
+<p>As an alternative to automatic variables, it is possible to define variables that are external to all functions, that is, variables that can be accessed by name by any function. (This mechanism is rather like Fortran COMMON or Pascal variables declared in the outermost block.) Because external variables are globally accessible, they can be used instead of argument lists to communicate data between functions. Furthermore, because external variables remain in existence permanently, rather than appearing and disappearing as functions are called and exited, they retain their values even after the functions that set them have returned.</p>
+</blockquote>
+<blockquote>
+<p>An external variable must be defined, exactly once, outside of any function; this sets aside storage for it. The variable must also be declared in each function that wants to access it; this states the type of the variable. The declaration may be an explicit extern statement or may be implicit from context (see K&amp;R 2nd. 1.10)</p>
+</blockquote>
+<h1 id="Definition-vs-Declaration"><a href="#Definition-vs-Declaration" class="headerlink" title="Definition vs. Declaration"></a>Definition vs. Declaration</h1><blockquote>
+<p><code>Definition&#39;&#39; refers to the place where the variable is created or assigned storage;</code>declaration’’ refers to places where the nature of the variable is stated but no storage is allocated. (see K&amp;R 2nd. 1.10)</p>
+</blockquote>
+<ul>
+<li>see <a href="https://www.cprogramming.com/declare_vs_define.html" target="_blank" rel="noopener">Declare vs Define in C and C++</a></li>
+</ul>
+<h1 id="Constant-expression-常量表達式"><a href="#Constant-expression-常量表達式" class="headerlink" title="Constant expression 常量表達式"></a>Constant expression 常量表達式</h1><blockquote>
+<p>A constant expression is an expression that involves only constants. Such expressions may be evaluated at during compilation rather than run-time. (see K&amp;R 2nd. 2.3)</p>
+</blockquote>
 
                     
                         
