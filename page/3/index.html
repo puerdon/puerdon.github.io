@@ -278,6 +278,101 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/如何在GitHub上對其他人的專案做出貢獻/"
+                            aria-label=": 如何在GitHub上對其他人的專案做出貢獻"
+                        >
+                            如何在GitHub上對其他人的專案做出貢獻
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-10-08T22:08:15+08:00">
+	
+		    10月 08, 2020
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/Git/">Git</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2 id="主要步驟"><a href="#主要步驟" class="headerlink" title="主要步驟"></a>主要步驟</h2><p>以下步驟整理自參考資料的第一個連結：</p>
+<ul>
+<li>Step 1: 到你想修改的專案的GitHub頁面，按下 Fork，這時會把這個專案複製一份到你自己的倉庫裡</li>
+<li>Step 2: 將這個自己倉庫裡的專案 <code>git clone</code> 到自己的電腦裡</li>
+<li>Step 3: 開一個新的分支 <code>git checkout -b &lt;新分支名&gt;</code></li>
+<li>Step 4: 開始修改原始碼</li>
+<li>Step 5: <code>commit</code> 修改後的原始碼<ul>
+<li>先 <code>git add</code></li>
+<li>再 <code>git commit -m &lt;commit的訊息&gt;</code></li>
+</ul>
+</li>
+<li>Step 6: 將這一份專案重新 <code>push</code> 回到 GitHub<ul>
+<li><code>git push origin &lt;新分支名&gt;</code></li>
+</ul>
+</li>
+<li>Step 7: 接下來到你自己GitHub倉庫，找到你剛剛 <code>push</code> 上去的專案，應該會在專案頁面看到一個 <code>Compare &amp; pull request</code> 的綠色按鈕，按下去，這一步會開始比對程式碼是否可以跟原作者的程式碼合併在一起。一個理解 <code>Pull request</code> 的方式就是想像那個原作者站在他的專案裡面，現在你想要「要求」他將你所更新的程式碼給「拉」進來他的專案中。</li>
+<li>Step 8: 填寫 <code>Pull request</code> 的標題和內文，稍微敘述一下你做了什麼，然後按 <code>Create pull request</code> 後送出。</li>
+<li>Step 9: 接下來就等email通知，原作者是否接受你所做的 <code>Pull request</code>。</li>
+</ul>
+<p>在參考資料的第二個連結中，還多了三個步驟要插在上述的 Step 2 後面，主要是做更多的檢查工作，已確保你clone下來的程式碼與原專案的程式碼是同步的（想像一個情況，就在你clone下來以後，原作者剛好更新了他的程式碼，那麼這時你手上有的就不是最新的了），在這裡先一併補上：</p>
+<ul>
+<li>檢查你clone下來的專案的 <code>&quot;origin&quot; remote</code> 是不是就是剛剛 fork 進你 GitHub 倉庫裡的那個（如果Step 1, 2有做對的話，通常這一步就是正確的）<ul>
+<li>以 <code>git remote -v</code> 做檢查</li>
+</ul>
+</li>
+<li>將原作者的專案設為 <code>&quot;upstream&quot; remote</code><ul>
+<li><code>git remote add upstream &lt;原作者的專案的Git網址&gt;</code></li>
+</ul>
+</li>
+<li>從上一部所設定的 <code>&quot;upstream&quot; remote</code> 下載原作者最新的程式碼<ul>
+<li><code>git pull upstream master</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li>GitHub專案: firstcontributions /<br>first-contributions <a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener">https://github.com/firstcontributions/first-contributions</a></li>
+<li>Step-by-step guide to contributing on GitHub (Data School) <a href="https://www.dataschool.io/how-to-contribute-on-github/" target="_blank" rel="noopener">https://www.dataschool.io/how-to-contribute-on-github/</a></li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/如何在GitHub上對其他人的專案做出貢獻/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                留言與分享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/德文反身動詞以及中文的「讓自己-」/"
                             aria-label=": 德文反身動詞以及中文的「讓自己...」"
                         >
@@ -816,57 +911,6 @@
                                 留言與分享
                             </a>
                         </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a
-                            class="link-unstyled"
-                            href="/泰文語料庫總整理/"
-                            aria-label=": 泰文語料庫總整理"
-                        >
-                            泰文語料庫總整理
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2020-10-01T15:18:59+08:00">
-	
-		    10月 01, 2020
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/泰語/">泰語</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt">
-                    <p>這篇文章主要目的在於把網路上找得到的泰文語料庫做全局的綜覽，使用幾個指標去評分每個語料庫的特色。當你找到適合自己的語料庫系統後，可以再到個別語料庫的詳細使用說明，我會再將個別語料庫的使用說明一一整理成單獨的貼文。<br>
-                    
-                        <a
-                            href="/泰文語料庫總整理/"
-                            class="postShorten-excerpt_link link"
-                            aria-label=": 泰文語料庫總整理"
-                        >
-                            繼續閱讀
-                        </a>
-                        
                     
                 </div>
             

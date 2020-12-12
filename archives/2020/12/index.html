@@ -279,6 +279,182 @@
                     
                         <a
                             class="link-unstyled"
+                            href="/讀書筆記-Managing-gigabytes-Ch-3-Indexing/"
+                            aria-label=": [讀書筆記] Managing gigabytes: Ch.3 Indexing"
+                        >
+                            [讀書筆記] Managing gigabytes: Ch.3 Indexing
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2020-12-12T22:13:29+08:00">
+	
+		    12月 12, 2020
+    	
+    </time>
+    
+        <span>分類 </span>
+        
+    <a class="category-link" href="/categories/Indexing/">Indexing</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>第二章所介紹的壓縮技巧的確大幅度地節省了硬碟空間，但是還是無法解決如何有效率地對資訊做搜索的這個問題。本章就是要透過 index 來解決這個問題。本章將介紹各種索引方法以及索引壓縮 (index compression)。</p>
+<p>比較：從一本書的index來查詢某個字出現的地方 v.s. 一頁一頁地找出某個詞 (page-by-page search)</p>
+<h3 id="詞彙定義"><a href="#詞彙定義" class="headerlink" title="詞彙定義"></a>詞彙定義</h3><ul>
+<li>文檔 (document)</li>
+<li>文檔集合 (document collection)</li>
+<li>詞條 (term)</li>
+</ul>
+<h3 id="設計師必須考慮："><a href="#設計師必須考慮：" class="headerlink" title="設計師必須考慮："></a>設計師必須考慮：</h3><ol>
+<li>多大的單位算作一個文檔?</li>
+</ol>
+<p>一句話？一個段落？一篇文章？數篇文章？ </p>
+<blockquote>
+<p>A document will thus be the unit of text that is returned in response to queries. (p. 104, par. 2)</p>
+</blockquote>
+<ol start="2">
+<li>索引的粒度 (The granularity of index, p. 105)</li>
+</ol>
+<p>對於一個詞出現在每個文檔中的位置資訊，我們要記錄的多細？有時候我們只需要知道包含「漢堡」的文檔有哪些就好，所以這時候我們只需紀錄：</p>
+<blockquote>
+<p>漢堡：文檔1、文檔3、…</p>
+</blockquote>
+<p>但如果我們想查詢同時出現「漢堡」和「薯條」的句子，那麼我們還必須更詳細地記錄這些詞出現的位置：</p>
+<blockquote>
+<p>漢堡: (文檔1, 句子3), (文檔2, 句子5), …<br>薯條: (文檔1, 句子5), (文檔2, 句子5), …</p>
+</blockquote>
+<p>如此我們才能比對抽取出哪些句子同時出現漢堡跟薯條。</p>
+<ol start="3">
+<li>什麼算作一個詞條?</li>
+</ol>
+<p>is跟was算作兩個不同的詞條嗎？</p>
+<p>相關議題：transformation (p. 105-6 &amp; Ch. 3.7)</p>
+<ul>
+<li>case folding</li>
+<li>stemming</li>
+<li>stop words</li>
+<li>thesaural substitution (同義詞需不需要合併成一個term? 本章不討論)</li>
+</ul>
+<h1 id="Ch-3-1-文檔集合之樣本-Sample-document-collections"><a href="#Ch-3-1-文檔集合之樣本-Sample-document-collections" class="headerlink" title="Ch. 3.1: 文檔集合之樣本 (Sample document collections)"></a>Ch. 3.1: 文檔集合之樣本 (Sample document collections)</h1><p>這一節以四個文章集合當作實驗對象，並分別列出一些統計數據：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Bible</th>
+<th>GNUbib</th>
+<th>Comact</th>
+<th>TREC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文章總數 N</td>
+<td>31,101</td>
+<td>64,343</td>
+<td>261,829</td>
+<td>741,856</td>
+</tr>
+<tr>
+<td>詞條總數 F</td>
+<td>884,994</td>
+<td>2,570,906</td>
+<td>22,805,920</td>
+<td>333,338,738</td>
+</tr>
+<tr>
+<td>詞條類別總數 n</td>
+<td>8,965</td>
+<td>46,488</td>
+<td>36,660</td>
+<td>535,346</td>
+</tr>
+<tr>
+<td>*索引指標 f</td>
+<td>701,412</td>
+<td>2,226,300</td>
+<td>12,976,418</td>
+<td>134,994,414</td>
+</tr>
+<tr>
+<td>總大小 (MB)</td>
+<td>4.33</td>
+<td>14.05</td>
+<td>131.86</td>
+<td>2070.29</td>
+</tr>
+</tbody>
+</table>
+<p>*索引指標 (Index pointer) 所有 (文檔, 詞條) 組的數量，也就是索引的總大小。</p>
+<h1 id="Ch-3-2-索引方法一-Inverted-file-indexing"><a href="#Ch-3-2-索引方法一-Inverted-file-indexing" class="headerlink" title="Ch. 3.2: 索引方法一: Inverted file indexing"></a>Ch. 3.2: 索引方法一: Inverted file indexing</h1><blockquote>
+<p>An index is a mechanism for locating a given term in a text.</p>
+</blockquote>
+<p>適合作為索引的資料結構：</p>
+<ul>
+<li>inverted file (又稱 postings file, 或者 concordance)  (本節; 是最合適的)</li>
+<li>signature files (Ch. 3.5) (使用時機有限)</li>
+<li>bitmaps (Ch. 3.5) (使用時機有限)</li>
+</ul>
+<blockquote>
+<p>在大多數的應用中，比起 signature files 和 bitmaps，inverted files 在索引大小和處理搜索的速度都有較好的表現。(p. 111)</p>
+</blockquote>
+<p>一個 inverted file 包含了 lexicon 當中每一個 term 的 inverted list (又稱為 postings list)，每個 inverted list 都儲存了指向該 term 所出現位置的 list of pointers，每個 pointer (又稱為 postings) 其實指向該詞出現的某篇文檔。</p>
+<p>一本書後面的 Index 其實就是一個 inverted file的格式。</p>
+<p>每個 inverted file index都需要 lexicon，lexicon就是 a list of all terms that appear in the database。</p>
+<p>接著討論又回到了索引的粒度。紀錄的位置資訊越詳細，索引的大小當然就越大。</p>
+<p>最後討論了未經壓縮的inverted files的尺寸大小，常常會佔原始文檔集合的 50 ~ 100%。</p>
+<h1 id="Ch-3-3-Inverted-file-compression"><a href="#Ch-3-3-Inverted-file-compression" class="headerlink" title="Ch. 3.3: Inverted file compression"></a>Ch. 3.3: Inverted file compression</h1><p>最簡單的方法：d-gaps (p. 114-5)</p>
+<p>各種方法分類：（這部分未讀）</p>
+<ul>
+<li>Global methods</li>
+<li>Local methods</li>
+</ul>
+<h1 id="Ch-3-4-比較各種索引壓縮方法的表現"><a href="#Ch-3-4-比較各種索引壓縮方法的表現" class="headerlink" title="Ch. 3.4: 比較各種索引壓縮方法的表現"></a>Ch. 3.4: 比較各種索引壓縮方法的表現</h1><p>未讀。</p>
+<h1 id="Ch-3-5-其他兩個索引方法"><a href="#Ch-3-5-其他兩個索引方法" class="headerlink" title="Ch. 3.5: 其他兩個索引方法"></a>Ch. 3.5: 其他兩個索引方法</h1><h2 id="Signature-files"><a href="#Signature-files" class="headerlink" title="Signature files"></a>Signature files</h2><h2 id="Bitmaps"><a href="#Bitmaps" class="headerlink" title="Bitmaps"></a>Bitmaps</h2><h1 id="Ch-3-6-比較三種索引方法"><a href="#Ch-3-6-比較三種索引方法" class="headerlink" title="Ch. 3.6: 比較三種索引方法"></a>Ch. 3.6: 比較三種索引方法</h1><p>本節結論（也就是最後一句話）：經過壓縮的inverted files無疑是最好的方法，最適用於巨大的文檔集合。</p>
+<h1 id="Ch-3-7-What-should-be-indexed"><a href="#Ch-3-7-What-should-be-indexed" class="headerlink" title="Ch. 3.7: What should be indexed?"></a>Ch. 3.7: What should be indexed?</h1><p>本節處理在 p.106 已帶出的一些議題，到底在一個 inverted file 當中，如何定義一個詞條是什麼？需要全部轉換成大寫嗎？要以詞根形式作為詞條嗎？是否要去除停用詞？</p>
+<ul>
+<li>Case folding</li>
+<li>Stemming</li>
+<li>Effect on index size</li>
+<li>Stop words</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a
+                                href="/讀書筆記-Managing-gigabytes-Ch-3-Indexing/#post-footer"
+                                class="postShorten-excerpt_link link"
+                                aria-label=""
+                            >
+                                留言與分享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a
+                            class="link-unstyled"
                             href="/B-tree/"
                             aria-label=": B-tree"
                         >
